@@ -1,56 +1,30 @@
 ---
-description: Git configuration for this repository - use charmas3r identity for all commits and pushes.
+description: Git configuration specific to the Lucid project repository
+globs: *
 alwaysApply: true
 ---
-# Git Configuration
 
-Always use the following git identity for commits and pushes in this repository.
+# Git Configuration for Lucid Project
 
-<rule>
-name: git_config_identity
-description: Enforce consistent git user configuration for all commits
+This project MUST use the following git configuration:
 
-actions:
-  - type: suggest
-    message: |
-      ### Git Identity for This Repository
+## Repository
+- **Remote URL**: https://github.com/charmas3r/lucid.git
+- **SSH URL**: git@github.com:charmas3r/lucid.git
 
-      **Always use these credentials when committing or pushing:**
+## User Configuration
+- **Username**: charmas3r
+- **Email**: evansmith0115@gmail.com
 
-      ```bash
-      git config user.name "charmas3r"
-      git config user.email "evansmith0115@gmail.com"
-      ```
+## Rules
+1. All commits to this project must be made with the above user configuration
+2. Always verify the remote is set to the charmas3r/lucid repository before pushing
+3. Use conventional commit messages for all changes
 
-      ### Commit & Push Workflow
-
-      When committing changes:
-      ```bash
-      git add .
-      git commit -m "Your commit message"
-      git push origin main
-      ```
-
-      ### Remote Repository
-      - **Repository:** https://github.com/charmas3r/cursor-website.git
-      - **Branch:** main
-
-      ### Important
-      - Always verify the git config is set before committing
-      - Use descriptive commit messages
-      - Push to the `main` branch
-
-examples:
-  - input: |
-      # Committing changes
-      git config user.name "charmas3r"
-      git config user.email "evansmith0115@gmail.com"
-      git add .
-      git commit -m "Add new feature"
-      git push origin main
-    output: "Correctly configured git push"
-
-metadata:
-  priority: high
-  version: 1.0
-</rule>
+## Setup Commands
+If the git config needs to be reset for this project, run:
+```bash
+git config user.name "charmas3r"
+git config user.email "evansmith0115@gmail.com"
+git remote set-url origin https://github.com/charmas3r/lucid.git
+```
