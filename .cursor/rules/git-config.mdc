@@ -9,8 +9,8 @@ alwaysApply: true
 This project MUST use the following git configuration:
 
 ## Repository
-- **Remote URL**: https://github.com/charmas3r/lucid.git
-- **SSH URL**: git@github.com:charmas3r/lucid.git
+- **Remote URL**: git@github-charmas3r:charmas3r/lucid.git
+- **HTTPS URL**: https://github.com/charmas3r/lucid.git
 
 ## User Configuration
 - **Username**: charmas3r
@@ -26,5 +26,7 @@ If the git config needs to be reset for this project, run:
 ```bash
 git config user.name "charmas3r"
 git config user.email "evansmith0115@gmail.com"
-git remote set-url origin https://github.com/charmas3r/lucid.git
+git remote set-url origin git@github-charmas3r:charmas3r/lucid.git
 ```
+
+**Note**: The `github-charmas3r` SSH alias must be configured in `~/.ssh/config` to authenticate with the charmas3r GitHub account.
