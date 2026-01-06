@@ -1,14 +1,14 @@
 ---
-description: Standards for UI development using Shadcn UI, Radix UI, and Tailwind CSS.
+description: Standards for UI development using Mantine UI library.
 globs: **/*.tsx
 ---
 # UI and Styling Conventions
 
-Best practices for building accessible and maintainable UI components using Shadcn UI, Radix UI, and Tailwind CSS.
+Best practices for building accessible and maintainable UI components using Mantine UI.
 
 <rule>
 name: ui_styling_conventions
-description: Rules for UI development and styling standards
+description: Rules for UI development and styling standards with Mantine
 filters:
   - type: file_extension
     pattern: "\\.tsx$"
@@ -16,36 +16,183 @@ filters:
 actions:
   - type: suggest
     message: |
-      ### Shadcn UI & Radix UI
-      - **Component Customization**: Prefer extending Shadcn components via their `className` prop using `cn()` utility.
-      - **Accessibility**: Ensure all interactive components leverage Radix UI's primitive behaviors for ARIA support and keyboard navigation.
-      - **Modularity**: Keep Shadcn components in the `components/ui` directory and your custom features in `components/features`.
+      ### MantineProvider Setup
+      - **Root Provider**: Wrap the application with `MantineProvider` in the root layout.
+      - **Theme Configuration**: Define a custom theme object and pass it to `MantineProvider`.
+      - **Color Scheme**: Use `ColorSchemeScript` in the `<head>` for SSR-safe dark mode.
+      - **CSS Layers**: Enable `cssVariablesResolver` for custom CSS variable generation.
 
-      ### Tailwind CSS
-      - **Utility-First**: Use Tailwind classes for all styling. Avoid custom CSS files or inline styles unless absolutely necessary for complex animations.
-      - **Class Ordering**: Follow a consistent order for Tailwind classes (Layout -> Spacing -> Sizing -> Typography -> Colors -> Effects). Use the `prettier-plugin-tailwindcss` if available.
-      - **Responsive Design**: Use mobile-first breakpoints (`sm:`, `md:`, `lg:`, `xl:`).
-      - **Theming**: Use CSS variables for colors and design tokens to support dark mode and consistent branding.
+      ```tsx
+      // app/layout.tsx
+      import { MantineProvider, ColorSchemeScript, createTheme } from '@mantine/core';
+      import '@mantine/core/styles.css';
 
-      ### Design System
-      - **Consistency**: Use the `cn()` utility from `lib/utils` to merge Tailwind classes safely (handling conflicts).
-      - **Avoid Hardcoding**: Use defined colors and spacing from `tailwind.config.js`.
+      const theme = createTheme({
+        primaryColor: 'violet',
+        fontFamily: 'Inter, sans-serif',
+        defaultRadius: 'md',
+      });
+
+      export default function RootLayout({ children }) {
+        return (
+          <html lang="en">
+            <head>
+              <ColorSchemeScript defaultColorScheme="auto" />
+            </head>
+            <body>
+              <MantineProvider theme={theme} defaultColorScheme="auto">
+                {children}
+              </MantineProvider>
+            </body>
+          </html>
+        );
+      }
+      ```
+
+      ### Mantine Component Best Practices
+      - **Use Built-in Props First**: Prefer Mantine's component props (`size`, `radius`, `variant`, `color`) over custom styling.
+      - **Polymorphic Components**: Use the `component` prop to render as different HTML elements or Next.js `Link`.
+      - **Accessibility**: Mantine components are accessible by default—don't override ARIA attributes unless necessary.
+      - **Composition**: Use compound components (e.g., `Menu.Item`, `Tabs.Tab`) for complex UI patterns.
+
+      ### Styling Approaches (Priority Order)
+      1. **Component Props**: `<Button size="lg" radius="xl" variant="light" />`
+      2. **Style Props**: `<Box p="md" bg="gray.1" />` (responsive: `p={{ base: 'sm', md: 'lg' }}`)
+      3. **CSS Modules**: For complex, reusable component styles
+      4. **`styles` Prop**: For targeting internal component parts
+      5. **Inline `style` Prop**: Last resort for truly dynamic values
+
+      ### CSS Modules (Recommended for Custom Components)
+      ```tsx
+      // Button.module.css
+      .root {
+        background: linear-gradient(45deg, var(--mantine-color-violet-6), var(--mantine-color-pink-6));
+      }
+
+      // Button.tsx
+      import classes from './Button.module.css';
+      import { Button } from '@mantine/core';
+
+      export function GradientButton({ children }) {
+        return <Button classNames={{ root: classes.root }}>{children}</Button>;
+      }
+      ```
+
+      ### The `styles` Prop (For Internal Component Parts)
+      ```tsx
+      <TextInput
+        label="Email"
+        styles={{
+          input: { borderColor: 'var(--mantine-color-violet-4)' },
+          label: { fontWeight: 600 },
+        }}
+      />
+      ```
+
+      ### Dark Mode with `useMantineColorScheme`
+      ```tsx
+      'use client';
+      import { useMantineColorScheme, ActionIcon } from '@mantine/core';
+      import { IconSun, IconMoon } from '@tabler/icons-react';
+
+      export function ColorSchemeToggle() {
+        const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+        const dark = colorScheme === 'dark';
+
+        return (
+          <ActionIcon
+            variant="outline"
+            onClick={() => toggleColorScheme()}
+            aria-label="Toggle color scheme"
+          >
+            {dark ? <IconSun size={18} /> : <IconMoon size={18} />}
+          </ActionIcon>
+        );
+      }
+      ```
+
+      ### Theming Conventions
+      - **Custom Colors**: Define in theme object with 10 shades (index 0-9).
+      - **CSS Variables**: Access via `var(--mantine-color-{color}-{shade})`.
+      - **Spacing/Sizing**: Use Mantine's scale (`xs`, `sm`, `md`, `lg`, `xl`) or theme values.
+      - **Typography**: Configure `fontFamily`, `headings`, and `fontSizes` in theme.
+
+      ```tsx
+      const theme = createTheme({
+        colors: {
+          brand: [
+            '#f0f9ff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#38bdf8',
+            '#0ea5e9', '#0284c7', '#0369a1', '#075985', '#0c4a6e',
+          ],
+        },
+        primaryColor: 'brand',
+      });
+      ```
+
+      ### File Organization
+      ```
+      src/
+      ├── components/
+      │   ├── ui/              # Mantine component wrappers/extensions
+      │   │   ├── Button/
+      │   │   │   ├── Button.tsx
+      │   │   │   └── Button.module.css
+      │   │   └── index.ts
+      │   └── features/        # Feature-specific components
+      │       └── Dashboard/
+      ├── theme/
+      │   ├── index.ts         # Main theme configuration
+      │   ├── colors.ts        # Custom color definitions
+      │   └── typography.ts    # Font configurations
+      └── lib/
+          └── mantine.ts       # Mantine utilities and helpers
+      ```
+
+      ### Responsive Design
+      - Use style props with breakpoint objects: `p={{ base: 'xs', sm: 'md', lg: 'xl' }}`
+      - Use `useMediaQuery` hook from `@mantine/hooks` for JS-based responsiveness
+      - Mantine breakpoints: `xs` (36em), `sm` (48em), `md` (62em), `lg` (75em), `xl` (88em)
 
 examples:
   - input: |
-      // Bad
-      <div style={{ color: 'red' }} className="flex p-4 mt-2">...</div>
+      // Bad - Inline styles and ignoring Mantine props
+      <Button style={{ backgroundColor: 'blue', padding: '20px' }}>
+        Click me
+      </Button>
 
-      // Good
-      import { cn } from "@/lib/utils";
-      const CustomButton = ({ className }) => (
-        <button className={cn("flex items-center p-4 text-red-500", className)}>
-          Click me
-        </button>
-      );
-    output: "Follows UI and styling conventions"
+      // Bad - Using Tailwind classes with Mantine
+      <Button className="bg-blue-500 p-4 rounded-lg">
+        Click me
+      </Button>
+
+      // Good - Using Mantine's built-in props
+      <Button color="blue" size="lg" radius="md">
+        Click me
+      </Button>
+    output: "Uses Mantine props correctly"
+
+  - input: |
+      // Bad - Hardcoded colors
+      <Box style={{ backgroundColor: '#7c3aed' }}>Content</Box>
+
+      // Good - Using Mantine CSS variables
+      <Box bg="violet.6">Content</Box>
+
+      // Good - Using style props with theme reference
+      <Box style={{ backgroundColor: 'var(--mantine-color-violet-6)' }}>Content</Box>
+    output: "Uses Mantine theming correctly"
+
+  - input: |
+      // Bad - Custom dark mode logic
+      const [isDark, setIsDark] = useState(false);
+      <Box bg={isDark ? '#1a1a1a' : '#ffffff'}>...</Box>
+
+      // Good - Using Mantine's color scheme
+      const { colorScheme } = useMantineColorScheme();
+      <Box bg="var(--mantine-color-body)">...</Box>
+    output: "Uses Mantine dark mode correctly"
 
 metadata:
-  priority: medium
-  version: 1.0
+  priority: high
+  version: 2.0
 </rule>
