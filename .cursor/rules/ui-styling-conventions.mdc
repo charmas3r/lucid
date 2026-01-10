@@ -1,14 +1,14 @@
 ---
-description: Standards for UI development using Mantine UI library.
+description: Standards for UI development using Mantine UI library with metallic blue theme and Framer Motion animations.
 globs: **/*.tsx
 ---
 # UI and Styling Conventions
 
-Best practices for building accessible and maintainable UI components using Mantine UI.
+Best practices for building accessible and maintainable UI components using Mantine UI with the metallic blue color scheme and Framer Motion animations.
 
 <rule>
 name: ui_styling_conventions
-description: Rules for UI development and styling standards with Mantine
+description: Rules for UI development and styling standards with Mantine and Framer Motion
 filters:
   - type: file_extension
     pattern: "\\.tsx$"
@@ -16,183 +16,289 @@ filters:
 actions:
   - type: suggest
     message: |
-      ### MantineProvider Setup
-      - **Root Provider**: Wrap the application with `MantineProvider` in the root layout.
-      - **Theme Configuration**: Define a custom theme object and pass it to `MantineProvider`.
-      - **Color Scheme**: Use `ColorSchemeScript` in the `<head>` for SSR-safe dark mode.
-      - **CSS Layers**: Enable `cssVariablesResolver` for custom CSS variable generation.
-
-      ```tsx
-      // app/layout.tsx
-      import { MantineProvider, ColorSchemeScript, createTheme } from '@mantine/core';
-      import '@mantine/core/styles.css';
-
-      const theme = createTheme({
-        primaryColor: 'violet',
-        fontFamily: 'Inter, sans-serif',
-        defaultRadius: 'md',
-      });
-
-      export default function RootLayout({ children }) {
-        return (
-          <html lang="en">
-            <head>
-              <ColorSchemeScript defaultColorScheme="auto" />
-            </head>
-            <body>
-              <MantineProvider theme={theme} defaultColorScheme="auto">
-                {children}
-              </MantineProvider>
-            </body>
-          </html>
-        );
-      }
-      ```
-
-      ### Mantine Component Best Practices
-      - **Use Built-in Props First**: Prefer Mantine's component props (`size`, `radius`, `variant`, `color`) over custom styling.
-      - **Polymorphic Components**: Use the `component` prop to render as different HTML elements or Next.js `Link`.
-      - **Accessibility**: Mantine components are accessible by default—don't override ARIA attributes unless necessary.
-      - **Composition**: Use compound components (e.g., `Menu.Item`, `Tabs.Tab`) for complex UI patterns.
-
-      ### Styling Approaches (Priority Order)
-      1. **Component Props**: `<Button size="lg" radius="xl" variant="light" />`
-      2. **Style Props**: `<Box p="md" bg="gray.1" />` (responsive: `p={{ base: 'sm', md: 'lg' }}`)
-      3. **CSS Modules**: For complex, reusable component styles
-      4. **`styles` Prop**: For targeting internal component parts
-      5. **Inline `style` Prop**: Last resort for truly dynamic values
-
-      ### CSS Modules (Recommended for Custom Components)
-      ```tsx
-      // Button.module.css
-      .root {
-        background: linear-gradient(45deg, var(--mantine-color-violet-6), var(--mantine-color-pink-6));
-      }
-
-      // Button.tsx
-      import classes from './Button.module.css';
-      import { Button } from '@mantine/core';
-
-      export function GradientButton({ children }) {
-        return <Button classNames={{ root: classes.root }}>{children}</Button>;
-      }
-      ```
-
-      ### The `styles` Prop (For Internal Component Parts)
-      ```tsx
-      <TextInput
-        label="Email"
-        styles={{
-          input: { borderColor: 'var(--mantine-color-violet-4)' },
-          label: { fontWeight: 600 },
-        }}
-      />
-      ```
-
-      ### Dark Mode with `useMantineColorScheme`
+      ## Framer Motion Animation Standards
+      
+      **IMPORTANT**: All animations MUST use Framer Motion. Do not use CSS transitions for complex animations.
+      
+      ### Setup
       ```tsx
       'use client';
-      import { useMantineColorScheme, ActionIcon } from '@mantine/core';
-      import { IconSun, IconMoon } from '@tabler/icons-react';
-
-      export function ColorSchemeToggle() {
-        const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-        const dark = colorScheme === 'dark';
-
-        return (
-          <ActionIcon
-            variant="outline"
-            onClick={() => toggleColorScheme()}
-            aria-label="Toggle color scheme"
-          >
-            {dark ? <IconSun size={18} /> : <IconMoon size={18} />}
-          </ActionIcon>
-        );
-      }
+      import { motion, useInView, AnimatePresence } from 'framer-motion';
+      import { useRef } from 'react';
+      
+      // Create motion components from Mantine components
+      const MotionBox = motion.create(Box);
+      const MotionTitle = motion.create(Title);
+      const MotionText = motion.create(Text);
       ```
-
-      ### Theming Conventions
-      - **Custom Colors**: Define in theme object with 10 shades (index 0-9).
-      - **CSS Variables**: Access via `var(--mantine-color-{color}-{shade})`.
-      - **Spacing/Sizing**: Use Mantine's scale (`xs`, `sm`, `md`, `lg`, `xl`) or theme values.
-      - **Typography**: Configure `fontFamily`, `headings`, and `fontSizes` in theme.
-
+      
+      ### Standard Animation Patterns
+      
+      **Fade In Up (Primary entrance animation)**
       ```tsx
-      const theme = createTheme({
-        colors: {
-          brand: [
-            '#f0f9ff', '#e0f2fe', '#bae6fd', '#7dd3fc', '#38bdf8',
-            '#0ea5e9', '#0284c7', '#0369a1', '#075985', '#0c4a6e',
-          ],
-        },
-        primaryColor: 'brand',
-      });
+      const fadeInUp = {
+        initial: { opacity: 0, y: 30 },
+        animate: { opacity: 1, y: 0 },
+      };
+      
+      <motion.div
+        variants={fadeInUp}
+        transition={{ duration: 0.5 }}
+      >
+        Content
+      </motion.div>
       ```
-
+      
+      **Stagger Children (For lists/grids)**
+      ```tsx
+      const staggerContainer = {
+        animate: {
+          transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2,
+          },
+        },
+      };
+      
+      <motion.div variants={staggerContainer} initial="initial" animate="animate">
+        {items.map((item) => (
+          <motion.div key={item.id} variants={fadeInUp}>
+            {item.content}
+          </motion.div>
+        ))}
+      </motion.div>
+      ```
+      
+      **Scroll-triggered animations (useInView)**
+      ```tsx
+      const ref = useRef(null);
+      const isInView = useInView(ref, { once: true, margin: '-100px' });
+      
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.6 }}
+      >
+        Content appears when scrolled into view
+      </motion.div>
+      ```
+      
+      **Hover animations**
+      ```tsx
+      <motion.div
+        whileHover={{ scale: 1.03, y: -5 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+      >
+        Interactive element
+      </motion.div>
+      ```
+      
+      **Continuous/Looping animations**
+      ```tsx
+      <motion.div
+        animate={{ 
+          y: [0, -10, 0],
+          rotate: [0, 5, 0, -5, 0],
+        }}
+        transition={{ 
+          duration: 4,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      >
+        Floating element
+      </motion.div>
+      ```
+      
+      ### Recommended Easing
+      - **Standard**: `[0.22, 1, 0.36, 1]` (Custom cubic bezier - smooth deceleration)
+      - **Spring**: `{ type: 'spring', stiffness: 300, damping: 20 }`
+      - **Ease out**: `'easeOut'` for entrance animations
+      - **Ease in out**: `'easeInOut'` for looping animations
+      
+      ### Timing Guidelines
+      - **Fast interactions** (hover, tap): 0.2s
+      - **Standard transitions**: 0.3-0.5s
+      - **Entrance animations**: 0.5-0.7s
+      - **Stagger delay**: 0.1s between items
+      - **Scroll trigger delay**: 0.2-0.4s base delay
+      
+      ### AnimatePresence (For exit animations)
+      ```tsx
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            Conditionally rendered content
+          </motion.div>
+        )}
+      </AnimatePresence>
+      ```
+      
+      ## Metallic Blue Color System (Light Theme)
+      
+      | Purpose | Color | Hex Code |
+      |---------|-------|----------|
+      | Primary Metallic Blue | Main brand | `#1F4FD8` |
+      | Electric Blue | Accent/hover | `#4DA3FF` |
+      | Steel Blue | Secondary | `#3A6EA5` |
+      | Deep Navy | Text primary | `#0A1A3F` |
+      | Background White | Main BG | `#FFFFFF` |
+      | Background Light | Section BG | `#F8F9FB` |
+      | Text Muted | Secondary text | `#5A7099` |
+      | Text Light | Tertiary text | `#8A9BB8` |
+      
+      ### Button Styling with Animation
+      ```tsx
+      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+        <Button
+          radius="xl"
+          styles={{
+            root: {
+              background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+              border: 'none',
+              boxShadow: '0 4px 20px rgba(31, 79, 216, 0.3)',
+              transition: 'box-shadow 0.2s ease',
+              '&:hover': {
+                boxShadow: '0 6px 25px rgba(77, 163, 255, 0.4)',
+              },
+            },
+          }}
+        >
+          Primary Action
+        </Button>
+      </motion.div>
+      ```
+      
+      ### Card Hover Animation
+      ```tsx
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        whileHover={{ y: -8 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Box
+          p="xl"
+          style={{
+            background: '#FFFFFF',
+            borderRadius: 16,
+            border: '1px solid rgba(10, 26, 63, 0.06)',
+            boxShadow: '0 1px 3px rgba(10, 26, 63, 0.04)',
+          }}
+        >
+          Card content
+        </Box>
+      </motion.div>
+      ```
+      
+      ### Navigation Bar Animation
+      ```tsx
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <motion.div
+          animate={{
+            backgroundColor: isScrolled 
+              ? 'rgba(255, 255, 255, 0.95)' 
+              : 'rgba(255, 255, 255, 0.85)',
+          }}
+          transition={{ duration: 0.3 }}
+          style={{
+            backdropFilter: 'blur(20px)',
+            borderRadius: 60,
+            padding: '12px 24px',
+          }}
+        >
+          Nav content
+        </motion.div>
+      </motion.header>
+      ```
+      
       ### File Organization
       ```
       src/
       ├── components/
-      │   ├── ui/              # Mantine component wrappers/extensions
-      │   │   ├── Button/
-      │   │   │   ├── Button.tsx
-      │   │   │   └── Button.module.css
-      │   │   └── index.ts
-      │   └── features/        # Feature-specific components
-      │       └── Dashboard/
+      │   ├── Navigation.tsx    # Framer Motion header
+      │   ├── Hero.tsx          # Staggered entrance animations
+      │   ├── Services.tsx      # Card grid with scroll trigger
+      │   ├── FeaturedWork.tsx  # Project cards with hover effects
+      │   ├── Testimonials.tsx  # Quote with scale animation
+      │   ├── About.tsx         # Team cards with stagger
+      │   ├── CTA.tsx           # Interactive calendar
+      │   ├── Footer.tsx        # Fade in on scroll
+      │   └── Logo.tsx          # SVG logo component
       ├── theme/
-      │   ├── index.ts         # Main theme configuration
-      │   ├── colors.ts        # Custom color definitions
-      │   └── typography.ts    # Font configurations
-      └── lib/
-          └── mantine.ts       # Mantine utilities and helpers
+      │   └── index.ts          # Mantine theme
+      └── app/
+          ├── layout.tsx        # MantineProvider
+          ├── globals.css       # CSS utilities
+          └── page.tsx          # Page composition
       ```
-
-      ### Responsive Design
-      - Use style props with breakpoint objects: `p={{ base: 'xs', sm: 'md', lg: 'xl' }}`
-      - Use `useMediaQuery` hook from `@mantine/hooks` for JS-based responsiveness
-      - Mantine breakpoints: `xs` (36em), `sm` (48em), `md` (62em), `lg` (75em), `xl` (88em)
 
 examples:
   - input: |
-      // Bad - Inline styles and ignoring Mantine props
-      <Button style={{ backgroundColor: 'blue', padding: '20px' }}>
-        Click me
-      </Button>
+      // Bad - CSS transitions for complex animations
+      <Box 
+        style={{ transition: 'transform 0.3s ease' }}
+        onMouseEnter={() => setHovered(true)}
+      >
+        Content
+      </Box>
 
-      // Bad - Using Tailwind classes with Mantine
-      <Button className="bg-blue-500 p-4 rounded-lg">
-        Click me
-      </Button>
-
-      // Good - Using Mantine's built-in props
-      <Button color="blue" size="lg" radius="md">
-        Click me
-      </Button>
-    output: "Uses Mantine props correctly"
-
-  - input: |
-      // Bad - Hardcoded colors
-      <Box style={{ backgroundColor: '#7c3aed' }}>Content</Box>
-
-      // Good - Using Mantine CSS variables
-      <Box bg="violet.6">Content</Box>
-
-      // Good - Using style props with theme reference
-      <Box style={{ backgroundColor: 'var(--mantine-color-violet-6)' }}>Content</Box>
-    output: "Uses Mantine theming correctly"
+      // Good - Framer Motion
+      <motion.div
+        whileHover={{ scale: 1.05, y: -5 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+      >
+        Content
+      </motion.div>
+    output: "Uses Framer Motion for animations"
 
   - input: |
-      // Bad - Custom dark mode logic
-      const [isDark, setIsDark] = useState(false);
-      <Box bg={isDark ? '#1a1a1a' : '#ffffff'}>...</Box>
+      // Bad - No scroll-triggered animation
+      <Box>Static content</Box>
 
-      // Good - Using Mantine's color scheme
-      const { colorScheme } = useMantineColorScheme();
-      <Box bg="var(--mantine-color-body)">...</Box>
-    output: "Uses Mantine dark mode correctly"
+      // Good - Scroll-triggered with useInView
+      const ref = useRef(null);
+      const isInView = useInView(ref, { once: true });
+      
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6 }}
+      >
+        Animated content
+      </motion.div>
+    output: "Uses scroll-triggered animations"
+
+  - input: |
+      // Bad - No stagger effect for lists
+      {items.map(item => <Card key={item.id}>{item.name}</Card>)}
+
+      // Good - Staggered children
+      <motion.div variants={staggerContainer} initial="initial" animate="animate">
+        {items.map((item, i) => (
+          <motion.div
+            key={item.id}
+            variants={fadeInUp}
+            transition={{ delay: i * 0.1 }}
+          >
+            <Card>{item.name}</Card>
+          </motion.div>
+        ))}
+      </motion.div>
+    output: "Uses staggered animations for lists"
 
 metadata:
   priority: high
-  version: 2.0
+  version: 4.0
 </rule>
