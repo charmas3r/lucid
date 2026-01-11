@@ -106,7 +106,7 @@ export async function POST(request: Request) {
 
     // Send email via Resend
     const { data, error } = await resend.emails.send({
-      from: 'Lucid Web Studios <onboarding@resend.dev>',
+      from: 'Lucid Web Studios <noreply@notifications.lucidweb.studio>',
       to: ['evan@lucidweb.studio'],
       replyTo: email,
       subject: `New Contact: ${name}${service ? ` - ${service}` : ''}`,
@@ -123,7 +123,7 @@ export async function POST(request: Request) {
 
     // Send confirmation email to the user
     await resend.emails.send({
-      from: 'Lucid Web Studios <onboarding@resend.dev>',
+      from: 'Lucid Web Studios <noreply@notifications.lucidweb.studio>',
       to: [email],
       subject: "We've received your message!",
       html: `

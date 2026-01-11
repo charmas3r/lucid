@@ -189,7 +189,7 @@ export async function POST(request: Request) {
 
     // Send internal notification
     const { error: internalError } = await resend.emails.send({
-      from: 'Lucid Web Studios <onboarding@resend.dev>',
+      from: 'Lucid Web Studios <noreply@notifications.lucidweb.studio>',
       to: ['evan@lucidweb.studio'],
       replyTo: email,
       subject: `🎯 New Report Request: ${reportTypes.map(t => REPORT_NAMES[t]).join(' + ')} - ${websiteUrl}`,
@@ -206,7 +206,7 @@ export async function POST(request: Request) {
 
     // Send customer confirmation
     await resend.emails.send({
-      from: 'Lucid Web Studios <onboarding@resend.dev>',
+      from: 'Lucid Web Studios <noreply@notifications.lucidweb.studio>',
       to: [email],
       subject: '🚀 Your Digital Audit Request is Confirmed!',
       html: customerHtml,
