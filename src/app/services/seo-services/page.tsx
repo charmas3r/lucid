@@ -17,10 +17,8 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
 import {
-  IconArrowRight,
   IconCheck,
   IconBolt,
-  IconRocket,
   IconGauge,
   IconDeviceMobile,
   IconPhoto,
@@ -32,7 +30,7 @@ import {
   IconBrain,
   IconSparkles,
 } from '@tabler/icons-react';
-import { Navigation, Footer, AIQueryDemo } from '@/components';
+import { Navigation, Footer, AIQueryDemo, RequestReportButton } from '@/components';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -334,22 +332,9 @@ export default function SEOServicesPage() {
                 <motion.div variants={fadeInUp} transition={{ duration: 0.6 }}>
                   <Group gap="md" mt="md">
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                      <Button
-                        component={Link}
-                        href="/contact"
-                        size="lg"
-                        radius="xl"
-                        rightSection={<IconArrowRight size={18} />}
-                        styles={{
-                          root: {
-                            background: 'linear-gradient(135deg, #0CCE6B 0%, #0A1A3F 100%)',
-                            border: 'none',
-                            boxShadow: '0 4px 20px rgba(12, 206, 107, 0.3)',
-                          },
-                        }}
-                      >
-                        Get Free Website Analysis
-                      </Button>
+                      <RequestReportButton reportType="seo" size="lg">
+                        Get Free SEO Report
+                      </RequestReportButton>
                     </motion.div>
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                       <Button
@@ -1133,26 +1118,14 @@ export default function SEOServicesPage() {
 
                 <Group gap="md" mt="md">
                   <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                    <Button
-                      component={Link}
-                      href="/contact"
-                      size="lg"
-                      radius="xl"
-                      rightSection={<IconArrowRight size={18} />}
-                      styles={{
-                        root: {
-                          background: '#FFFFFF',
-                          color: '#0A1A3F',
-                        },
-                      }}
-                    >
-                      Get My Free Analysis
-                    </Button>
+                    <RequestReportButton reportType="seo" size="lg" variant="white">
+                      Request Free SEO Report
+                    </RequestReportButton>
                   </motion.div>
                 </Group>
 
                 <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
-                  Takes 2 minutes • No credit card • Results in 24 hours
+                  Takes 2 minutes • No credit card • Personalized report in 2-3 days
                 </Text>
               </Stack>
             </motion.div>

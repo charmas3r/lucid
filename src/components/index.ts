@@ -9,3 +9,4 @@ export { Testimonials } from './Testimonials';
 export { CTA } from './CTA';
 export { Footer } from './Footer';
 export { AIQueryDemo } from './AIQueryDemo';
+export { ReportRequestWizard, RequestReportButton } from './ReportRequestWizard';

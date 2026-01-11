@@ -988,24 +988,34 @@ export default function CaseStudiesPage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button
-                      variant={activeCategory === category.value ? 'filled' : 'light'}
-                      radius="xl"
-                      leftSection={<category.icon size={16} />}
+                    <Box
+                      component="button"
                       onClick={() => setActiveCategory(category.value)}
-                      styles={{
-                        root: {
-                          background: activeCategory === category.value
-                            ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'
-                            : 'rgba(31, 79, 216, 0.06)',
-                          color: activeCategory === category.value ? '#FFFFFF' : '#1F4FD8',
-                          border: 'none',
-                          transition: 'all 0.3s ease',
-                        },
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        padding: '10px 20px',
+                        borderRadius: 50,
+                        background: activeCategory === category.value
+                          ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'
+                          : 'rgba(31, 79, 216, 0.06)',
+                        border: 'none',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
                       }}
                     >
-                      {category.label}
-                    </Button>
+                      <category.icon size={16} style={{ color: activeCategory === category.value ? '#FFFFFF' : '#1F4FD8' }} />
+                      <span
+                        style={{
+                          fontSize: 14,
+                          fontWeight: 500,
+                          color: activeCategory === category.value ? '#FFFFFF' : '#1F4FD8',
+                        }}
+                      >
+                        {category.label}
+                      </span>
+                    </Box>
                   </motion.div>
                 ))}
               </Group>
@@ -1113,15 +1123,9 @@ export default function CaseStudiesPage() {
                       size="lg"
                       radius="xl"
                       rightSection={<IconArrowRight size={18} />}
-                      styles={{
-                        root: {
-                          background: '#FFFFFF',
-                          color: '#1F4FD8',
-                          transition: 'all 0.2s ease',
-                          '&:hover': {
-                            background: '#F8F9FB',
-                          },
-                        },
+                      style={{
+                        background: '#FFFFFF',
+                        color: '#1F4FD8',
                       }}
                     >
                       Start Your Project
@@ -1134,16 +1138,9 @@ export default function CaseStudiesPage() {
                       size="lg"
                       radius="xl"
                       variant="outline"
-                      styles={{
-                        root: {
-                          borderColor: 'rgba(255, 255, 255, 0.3)',
-                          color: '#FFFFFF',
-                          transition: 'all 0.2s ease',
-                          '&:hover': {
-                            background: 'rgba(255, 255, 255, 0.1)',
-                            borderColor: '#FFFFFF',
-                          },
-                        },
+                      style={{
+                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                        color: '#FFFFFF',
                       }}
                     >
                       View Pricing

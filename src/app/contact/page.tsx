@@ -77,15 +77,34 @@ function ContactForm() {
     }
   }, [prefilledDate, prefilledTime]);
 
+  const [error, setError] = useState<string | null>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send message');
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -96,8 +115,8 @@ function ContactForm() {
     {
       icon: IconMail,
       label: 'Email',
-      value: 'hello@lucidwebstudios.com',
-      href: 'mailto:hello@lucidwebstudios.com',
+      value: 'evan@lucidweb.studio',
+      href: 'mailto:evan@lucidweb.studio',
     },
     {
       icon: IconPhone,
@@ -482,6 +501,21 @@ function ContactForm() {
                   },
                 }}
               />
+
+              {error && (
+                <Box
+                  p="sm"
+                  style={{
+                    background: 'rgba(239, 68, 68, 0.1)',
+                    borderRadius: 8,
+                    border: '1px solid rgba(239, 68, 68, 0.2)',
+                  }}
+                >
+                  <Text size="sm" style={{ color: '#DC2626' }}>
+                    {error}
+                  </Text>
+                </Box>
+              )}
 
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button

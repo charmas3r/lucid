@@ -669,15 +669,11 @@ export default function PricingPage() {
                     fontSize: '0.85rem',
                     padding: '12px 20px',
                     color: '#5A7099',
-                    transition: 'all 0.2s ease',
-                    '&[data-active]': {
-                      background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-                      color: '#FFFFFF',
-                    },
-                    '&:hover:not([data-active])': {
-                      background: 'rgba(31, 79, 216, 0.08)',
-                    },
+                    border: 'none',
                   },
+                }}
+                classNames={{
+                  tab: 'pricing-tab',
                 }}
               >
                 <Tabs.List>

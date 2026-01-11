@@ -194,3 +194,17 @@ html {
 .leaflet-control-attribution a {
   color: #1F4FD8 !important;
 }
+
+/* Pricing page tabs */
+.pricing-tab {
+  transition: all 0.2s ease !important;
+}
+
+.pricing-tab:hover:not([data-active]) {
+  background: rgba(31, 79, 216, 0.08) !important;
+}
+
+.pricing-tab[data-active] {
+  background: linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%) !important;
+  color: #FFFFFF !important;
+}

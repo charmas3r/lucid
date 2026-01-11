@@ -27,7 +27,6 @@ import {
   IconTargetArrow,
   IconCode,
   IconBrandGoogle,
-  IconArrowRight,
   IconCheck,
   IconTrendingUp,
   IconUsers,
@@ -38,7 +37,7 @@ import {
   IconSparkles,
   IconBulb,
 } from '@tabler/icons-react';
-import { Navigation, Footer } from '@/components';
+import { Navigation, Footer, RequestReportButton } from '@/components';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -283,26 +282,9 @@ export default function SEOPage() {
                 <motion.div variants={fadeInUp} transition={{ duration: 0.6 }}>
                   <Group gap="md" mt="md">
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                      <Button
-                        component={Link}
-                        href="/contact"
-                        size="lg"
-                        radius="xl"
-                        rightSection={<IconArrowRight size={18} />}
-                        styles={{
-                          root: {
-                            background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-                            border: 'none',
-                            boxShadow: '0 4px 20px rgba(31, 79, 216, 0.3)',
-                            transition: 'box-shadow 0.2s ease',
-                            '&:hover': {
-                              boxShadow: '0 6px 25px rgba(77, 163, 255, 0.4)',
-                            },
-                          },
-                        }}
-                      >
-                        Get Your Free SEO Report
-                      </Button>
+                      <RequestReportButton reportType="seo" size="lg">
+                        Get Free SEO Report
+                      </RequestReportButton>
                     </motion.div>
                     <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                       <Button
@@ -1157,25 +1139,9 @@ export default function SEOPage() {
 
                 <Group gap="md" mt="md">
                   <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                    <Button
-                      component={Link}
-                      href="/contact"
-                      size="lg"
-                      radius="xl"
-                      rightSection={<IconArrowRight size={18} />}
-                      styles={{
-                        root: {
-                          background: '#FFFFFF',
-                          color: '#1F4FD8',
-                          transition: 'all 0.2s ease',
-                          '&:hover': {
-                            background: '#F8F9FB',
-                          },
-                        },
-                      }}
-                    >
-                      Get My Free Report
-                    </Button>
+                    <RequestReportButton reportType="seo" size="lg" variant="white">
+                      Request Free SEO Report
+                    </RequestReportButton>
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                     <Button

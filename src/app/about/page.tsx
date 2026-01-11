@@ -593,9 +593,9 @@ export default function AboutPage() {
                     <IconQuote size={40} color="#1F4FD8" style={{ opacity: 0.3, marginBottom: 16 }} />
                     <Stack gap="lg">
                       <Text size="lg" lh={1.9} style={{ color: '#0A1A3F' }}>
-                        I started Lucid Web Studios because I saw too many amazing local businesses 
-                        struggling with outdated websites and confusing digital strategies. They 
-                        deserved better.
+                        I started Lucid Web Studios because I saw too many amazing local San Diego
+                        businesses struggling with outdated websites and confusing digital strategies.
+                        They deserved better.
                       </Text>
                       <Text size="lg" lh={1.9} style={{ color: '#5A7099' }}>
                         Having worked with enterprise companies, I knew the power of great digital 

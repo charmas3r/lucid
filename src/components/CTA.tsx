@@ -9,18 +9,69 @@ import {
   Badge,
 } from '@mantine/core';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 
 export function CTA() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [selectedDay, setSelectedDay] = useState(5);
-  const [hoveredTime, setHoveredTime] = useState<string | null>(null);
   const router = useRouter();
+  
+  // Get current date info
+  const now = useMemo(() => new Date(), []);
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth();
+  const currentDay = now.getDate();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+  
+  // Month names for display
+  const monthNames = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  
+  // Calculate days in current month
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+  
+  // Calculate what day of week the 1st falls on (0 = Sunday, 6 = Saturday)
+  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+  
+  // Default to today
+  const [selectedDay, setSelectedDay] = useState(currentDay - 1); // 0-indexed
+  const [hoveredTime, setHoveredTime] = useState<string | null>(null);
+
+  // Check if a day is in the past
+  const isDayPast = (dayIndex: number) => {
+    return dayIndex + 1 < currentDay; // dayIndex is 0-indexed, currentDay is 1-indexed
+  };
+
+  // Check if a time slot is past (only relevant for today)
+  const isTimePast = (timeString: string) => {
+    if (selectedDay + 1 !== currentDay) return false; // Not today
+    
+    // Parse time like "4:30 PM"
+    const [time, period] = timeString.split(' ');
+    const [hours, minutes] = time.split(':').map(Number);
+    let hour24 = hours;
+    if (period === 'PM' && hours !== 12) hour24 += 12;
+    if (period === 'AM' && hours === 12) hour24 = 0;
+    
+    // Compare with current time
+    if (hour24 < currentHour) return true;
+    if (hour24 === currentHour && minutes <= currentMinute) return true;
+    return false;
+  };
+
+  const handleDaySelect = (dayIndex: number) => {
+    if (!isDayPast(dayIndex)) {
+      setSelectedDay(dayIndex);
+    }
+  };
 
   const handleTimeSelect = (time: string) => {
-    const date = `January ${selectedDay + 1}, 2026`;
+    if (isTimePast(time)) return;
+    const date = `${monthNames[currentMonth]} ${selectedDay + 1}, ${currentYear}`;
     router.push(`/contact?date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`);
   };
 
@@ -151,7 +202,7 @@ export function CTA() {
                 >
                   <Stack gap="md">
                     <Text fw={600} style={{ color: '#0A1A3F' }}>
-                      January 2026
+                      {monthNames[currentMonth]} {currentYear}
                     </Text>
                     <Box
                       style={{
@@ -166,65 +217,92 @@ export function CTA() {
                           {day}
                         </Text>
                       ))}
-                      {[...Array(31)].map((_, i) => (
-                        <motion.div
-                          key={i}
-                          whileHover={{ scale: 1.15 }}
-                          whileTap={{ scale: 0.95 }}
-                          onClick={() => setSelectedDay(i)}
-                          style={{
-                            padding: 8,
-                            borderRadius: 8,
-                            cursor: 'pointer',
-                            background:
-                              selectedDay === i
-                                ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'
-                                : 'transparent',
-                            color: selectedDay === i ? '#FFFFFF' : '#5A7099',
-                            fontSize: '0.875rem',
-                            boxShadow: selectedDay === i ? '0 4px 15px rgba(31, 79, 216, 0.3)' : 'none',
-                          }}
-                        >
-                          {i + 1}
-                        </motion.div>
+                      {/* Add empty cells for days before the 1st of the month */}
+                      {[...Array(firstDayOfMonth)].map((_, i) => (
+                        <Box key={`empty-${i}`} />
                       ))}
+                      {[...Array(daysInMonth)].map((_, i) => {
+                        const isPast = isDayPast(i);
+                        return (
+                          <motion.div
+                            key={i}
+                            whileHover={!isPast ? { scale: 1.15 } : undefined}
+                            whileTap={!isPast ? { scale: 0.95 } : undefined}
+                            onClick={() => handleDaySelect(i)}
+                            style={{
+                              padding: 8,
+                              borderRadius: 8,
+                              cursor: isPast ? 'not-allowed' : 'pointer',
+                              background:
+                                selectedDay === i
+                                  ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'
+                                  : 'transparent',
+                              color: isPast 
+                                ? '#C9D2E3' 
+                                : selectedDay === i 
+                                  ? '#FFFFFF' 
+                                  : '#5A7099',
+                              fontSize: '0.875rem',
+                              boxShadow: selectedDay === i ? '0 4px 15px rgba(31, 79, 216, 0.3)' : 'none',
+                              opacity: isPast ? 0.5 : 1,
+                              textDecoration: isPast ? 'line-through' : 'none',
+                            }}
+                          >
+                            {i + 1}
+                          </motion.div>
+                        );
+                      })}
                     </Box>
 
                     <Box mt="md">
                       <Text size="sm" mb="xs" style={{ color: '#8A9BB8' }}>
                         Available times:
                       </Text>
-                      {['4:30 PM', '5:00 PM', '5:30 PM'].map((time) => (
-                        <motion.div
-                          key={time}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          onHoverStart={() => setHoveredTime(time)}
-                          onHoverEnd={() => setHoveredTime(null)}
-                          onClick={() => handleTimeSelect(time)}
-                        >
-                          <Box
-                            p="sm"
-                            mb="xs"
-                            style={{
-                              background: hoveredTime === time 
-                                ? 'rgba(31, 79, 216, 0.1)' 
-                                : 'rgba(31, 79, 216, 0.05)',
-                              borderRadius: 8,
-                              textAlign: 'center',
-                              cursor: 'pointer',
-                              border: `1px solid ${hoveredTime === time 
-                                ? 'rgba(31, 79, 216, 0.2)' 
-                                : 'rgba(31, 79, 216, 0.1)'}`,
-                              transition: 'all 0.2s ease',
-                            }}
+                      {['4:30 PM', '5:00 PM', '5:30 PM'].map((time) => {
+                        const isPast = isTimePast(time);
+                        return (
+                          <motion.div
+                            key={time}
+                            whileHover={!isPast ? { scale: 1.02 } : undefined}
+                            whileTap={!isPast ? { scale: 0.98 } : undefined}
+                            onHoverStart={() => !isPast && setHoveredTime(time)}
+                            onHoverEnd={() => setHoveredTime(null)}
+                            onClick={() => handleTimeSelect(time)}
                           >
-                            <Text size="sm" style={{ color: '#1F4FD8' }}>
-                              {time}
-                            </Text>
-                          </Box>
-                        </motion.div>
-                      ))}
+                            <Box
+                              p="sm"
+                              mb="xs"
+                              style={{
+                                background: isPast
+                                  ? 'rgba(138, 155, 184, 0.1)'
+                                  : hoveredTime === time 
+                                    ? 'rgba(31, 79, 216, 0.1)' 
+                                    : 'rgba(31, 79, 216, 0.05)',
+                                borderRadius: 8,
+                                textAlign: 'center',
+                                cursor: isPast ? 'not-allowed' : 'pointer',
+                                border: `1px solid ${isPast
+                                  ? 'rgba(138, 155, 184, 0.15)'
+                                  : hoveredTime === time 
+                                    ? 'rgba(31, 79, 216, 0.2)' 
+                                    : 'rgba(31, 79, 216, 0.1)'}`,
+                                transition: 'all 0.2s ease',
+                                opacity: isPast ? 0.5 : 1,
+                              }}
+                            >
+                              <Text 
+                                size="sm" 
+                                style={{ 
+                                  color: isPast ? '#8A9BB8' : '#1F4FD8',
+                                  textDecoration: isPast ? 'line-through' : 'none',
+                                }}
+                              >
+                                {time}
+                              </Text>
+                            </Box>
+                          </motion.div>
+                        );
+                      })}
                     </Box>
                   </Stack>
                 </Box>
