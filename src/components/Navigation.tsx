@@ -344,28 +344,56 @@ export function Navigation() {
       </Container>
 
       {/* Mobile Drawer */}
-      <AnimatePresence>
-        {opened && (
-          <Drawer
-            opened={opened}
-            onClose={() => {
+      <Drawer
+        opened={opened}
+        onClose={() => {
+          close();
+          setMobileServicesOpen(false);
+          trackEvent(EVENTS.NAV_CLOSE_MOBILE_MENU);
+        }}
+        size="100%"
+        padding="xl"
+        hiddenFrom="md"
+        withCloseButton
+        closeButtonProps={{
+          'aria-label': 'Close navigation menu',
+        }}
+        title={
+          <Link 
+            href="/" 
+            onClick={() => {
               close();
-              setMobileServicesOpen(false);
+              trackEvent(EVENTS.NAV_CLICK_LOGO);
             }}
-            size="100%"
-            padding="xl"
-            hiddenFrom="md"
-            withCloseButton
-            styles={{
-              root: { overflow: 'hidden' },
-              inner: { overflow: 'hidden' },
-              content: { background: '#0A1A3F', overflow: 'hidden' },
-              body: { background: '#0A1A3F', height: '100%', overflow: 'hidden' },
-              header: { background: '#0A1A3F', borderBottom: 'none', zIndex: 10 },
-              close: { color: '#FFFFFF', width: 40, height: 40, zIndex: 11 },
-            }}
+            style={{ textDecoration: 'none' }}
           >
-            <Stack gap="xl" mt="xl">
+            <Image
+              src="/logo.png"
+              alt="Lucid Web Studios"
+              width={120}
+              height={40}
+              style={{ height: 40, width: 'auto' }}
+            />
+          </Link>
+        }
+        transitionProps={{ duration: 200 }}
+        styles={{
+          root: { overflow: 'hidden' },
+          inner: { overflow: 'hidden' },
+          content: { background: '#0A1A3F', overflow: 'hidden' },
+          body: { background: '#0A1A3F', height: '100%', overflow: 'hidden' },
+          header: { background: '#0A1A3F', borderBottom: 'none', padding: '16px 24px' },
+          close: { 
+            color: '#FFFFFF', 
+            width: 44, 
+            height: 44,
+            '&:hover': {
+              background: 'rgba(255, 255, 255, 0.1)',
+            },
+          },
+        }}
+      >
+            <Stack gap="xl" mt="md">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.label}
@@ -512,9 +540,7 @@ export function Navigation() {
                 </Button>
               </motion.div>
             </Stack>
-          </Drawer>
-        )}
-      </AnimatePresence>
+      </Drawer>
       </div>
     </header>
   );
