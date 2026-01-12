@@ -16,6 +16,8 @@ import {
   Select,
   Badge,
 } from '@mantine/core';
+import { DatePickerInput } from '@mantine/dates';
+import '@mantine/dates/styles.css';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { 
@@ -46,13 +48,30 @@ const staggerContainer = {
   },
 };
 
+// Helper to parse date string like "January 6, 2026" to Date object
+const parseDateString = (dateStr: string): Date | null => {
+  if (!dateStr) return null;
+  const parsed = new Date(dateStr);
+  return isNaN(parsed.getTime()) ? null : parsed;
+};
+
+// Helper to format Date to readable string
+const formatDateToString = (date: Date | null): string => {
+  if (!date) return '';
+  return date.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+};
+
 function ContactForm() {
   const searchParams = useSearchParams();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
   
   // Get pre-filled values from URL params
-  const prefilledDate = searchParams.get('date') || '';
+  const prefilledDateStr = searchParams.get('date') || '';
   const prefilledTime = searchParams.get('time') || '';
   
   const [formData, setFormData] = useState({
@@ -61,10 +80,27 @@ function ContactForm() {
     phone: '',
     company: '',
     service: '',
-    preferredDate: prefilledDate,
     preferredTime: prefilledTime,
     message: '',
   });
+  
+  // Separate state for date picker (Date object)
+  const [preferredDate, setPreferredDate] = useState<Date | null>(
+    parseDateString(prefilledDateStr)
+  );
+  
+  // Handler for DatePickerInput that properly converts the value
+  const handleDateChange = (value: string | Date | null) => {
+    if (value === null) {
+      setPreferredDate(null);
+    } else if (value instanceof Date) {
+      setPreferredDate(value);
+    } else {
+      // If string, parse it
+      const parsed = new Date(value);
+      setPreferredDate(isNaN(parsed.getTime()) ? null : parsed);
+    }
+  };
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -83,13 +119,13 @@ function ContactForm() {
   const handleReset = () => {
     setSubmitted(false);
     setCountdown(8);
+    setPreferredDate(null);
     setFormData({
       name: '',
       email: '',
       phone: '',
       company: '',
       service: '',
-      preferredDate: '',
       preferredTime: '',
       message: '',
     });
@@ -97,14 +133,16 @@ function ContactForm() {
 
   // Update form when URL params change
   useEffect(() => {
-    if (prefilledDate || prefilledTime) {
+    if (prefilledDateStr) {
+      setPreferredDate(parseDateString(prefilledDateStr));
+    }
+    if (prefilledTime) {
       setFormData(prev => ({
         ...prev,
-        preferredDate: prefilledDate,
         preferredTime: prefilledTime,
       }));
     }
-  }, [prefilledDate, prefilledTime]);
+  }, [prefilledDateStr, prefilledTime]);
 
   const [error, setError] = useState<string | null>(null);
 
@@ -113,13 +151,19 @@ function ContactForm() {
     setIsSubmitting(true);
     setError(null);
     
+    // Include formatted date in submission
+    const submissionData = {
+      ...formData,
+      preferredDate: formatDateToString(preferredDate),
+    };
+    
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
 
       const result = await response.json();
@@ -130,7 +174,7 @@ function ContactForm() {
 
       trackEvent(EVENTS.FORM_SUBMIT_CONTACT, { 
         service: formData.service || 'not_specified',
-        has_consultation: Boolean(formData.preferredDate && formData.preferredTime)
+        has_consultation: Boolean(preferredDate && formData.preferredTime)
       });
       setSubmitted(true);
     } catch (err) {
@@ -336,7 +380,7 @@ function ContactForm() {
           <Text size="lg" style={{ color: '#5A7099' }} maw={400} mx="auto">
             Thank you for reaching out. We&apos;ll get back to you within 24 hours to discuss your project.
           </Text>
-          {formData.preferredDate && formData.preferredTime && (
+          {preferredDate && formData.preferredTime && (
             <Badge
               size="lg"
               mt="xl"
@@ -346,7 +390,7 @@ function ContactForm() {
               }}
             >
               <IconCalendar size={14} style={{ marginRight: 6 }} />
-              Consultation: {formData.preferredDate} at {formData.preferredTime}
+              Consultation: {formatDateToString(preferredDate)} at {formData.preferredTime}
             </Badge>
           )}
           
@@ -581,9 +625,9 @@ function ContactForm() {
               <Box
                 p="md"
                 style={{
-                  background: prefilledTime ? 'rgba(31, 79, 216, 0.05)' : '#F8F9FB',
+                  background: (preferredDate || prefilledTime) ? 'rgba(31, 79, 216, 0.05)' : '#F8F9FB',
                   borderRadius: 12,
-                  border: prefilledTime 
+                  border: (preferredDate || prefilledTime)
                     ? '1px solid rgba(31, 79, 216, 0.2)' 
                     : '1px solid rgba(10, 26, 63, 0.06)',
                 }}
@@ -593,18 +637,21 @@ function ContactForm() {
                   <Text fw={500} style={{ color: '#0A1A3F' }}>
                     Preferred Consultation Time
                   </Text>
-                  {prefilledTime && (
+                  {(preferredDate || prefilledTime) && (
                     <Badge size="xs" color="blue" variant="light">
                       Pre-selected
                     </Badge>
                   )}
                 </Group>
                 <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
-                  <TextInput
+                  <DatePickerInput
                     label="Date"
-                    placeholder="January 6, 2026"
-                    value={formData.preferredDate}
-                    onChange={(e) => handleChange('preferredDate', e.target.value)}
+                    placeholder="Select date"
+                    value={preferredDate}
+                    onChange={handleDateChange as (value: string | null) => void}
+                    minDate={new Date()}
+                    clearable
+                    valueFormat="MMMM D, YYYY"
                     styles={{
                       label: { color: '#5A7099', fontWeight: 500, marginBottom: 6, fontSize: '0.85rem' },
                       input: {
