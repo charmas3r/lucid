@@ -92,16 +92,14 @@ export function Navigation() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Group gap="sm">
-                  <Logo size={40} />
-                  <Text
-                    fw={700}
-                    size="lg"
-                    style={{ color: '#FFFFFF', fontFamily: 'var(--font-dm-sans)' }}
-                  >
-                    lucid
-                  </Text>
-                </Group>
+                <Image
+                  src="/logo.png"
+                  alt="Lucid Web Studios"
+                  width={140}
+                  height={45}
+                  priority
+                  style={{ height: 45, width: 'auto' }}
+                />
               </motion.div>
             </Link>
 

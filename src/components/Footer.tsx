@@ -17,7 +17,7 @@ import {
   IconBrandX,
 } from '@tabler/icons-react';
 import Link from 'next/link';
-import { Logo } from './Logo';
+import Image from 'next/image';
 import { trackEvent, EVENTS } from '@/lib/analytics';
 
 const socialLinks = [
@@ -56,12 +56,13 @@ export function Footer() {
                 onClick={() => trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: 'logo' })}
               >
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Group gap="sm" mb="xs">
-                    <Logo size={36} />
-                    <Text fw={700} size="lg" style={{ color: '#FFFFFF' }}>
-                      lucid
-                    </Text>
-                  </Group>
+                  <Image
+                    src="/logo.png"
+                    alt="Lucid Web Studios"
+                    width={120}
+                    height={39}
+                    style={{ height: 39, width: 'auto', marginBottom: 8 }}
+                  />
                 </motion.div>
               </Link>
               <Text size="sm" style={{ color: '#7A94BA' }}>
