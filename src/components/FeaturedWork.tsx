@@ -94,7 +94,7 @@ export function FeaturedWork() {
       component="section"
       id="work"
       py={100}
-      style={{ background: '#FFFFFF' }}
+      style={{ background: '#0A1A3F' }}
       ref={ref}
     >
       <Container size="xl">
@@ -117,9 +117,9 @@ export function FeaturedWork() {
                 tt="uppercase"
                 fw={600}
                 style={{
-                  background: 'rgba(31, 79, 216, 0.08)',
-                  color: '#1F4FD8',
-                  border: '1px solid rgba(31, 79, 216, 0.15)',
+                  background: 'rgba(77, 163, 255, 0.15)',
+                  color: '#4DA3FF',
+                  border: '1px solid rgba(77, 163, 255, 0.25)',
                   letterSpacing: '1px',
                   fontSize: '0.7rem',
                   padding: '10px 16px',
@@ -135,14 +135,14 @@ export function FeaturedWork() {
                 style={{
                   fontSize: 'clamp(2rem, 4vw, 3rem)',
                   fontWeight: 700,
-                  color: '#0A1A3F',
+                  color: '#FFFFFF',
                 }}
               >
                 What we have delivered
               </Title>
             </motion.div>
             <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-              <Text size="lg" ta="center" maw={600} style={{ color: '#5A7099' }}>
+              <Text size="lg" ta="center" maw={600} style={{ color: '#A5B4CF' }}>
                 From new digital projects to process optimization and support,
                 we partner with businesses to deliver impactful results.
               </Text>
@@ -177,6 +177,7 @@ export function FeaturedWork() {
         <Stack gap="xl">
           {largeProjects.map((project, index) => {
             const imageUrl = getImageUrl(project.image, 800, 500);
+            const caseStudyUrl = `/case-studies/${project.slug?.current || project._id}`;
             
             return (
               <motion.div
@@ -185,14 +186,13 @@ export function FeaturedWork() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: 0.3 + index * 0.15 }}
                 whileHover={{ scale: 1.01 }}
-                onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: project.title, source: 'featured_work' })}
               >
                 <Box
                   p={{ base: 'lg', md: 'xl' }}
                   style={{
-                    background: '#F8F9FB',
+                    background: '#0D1F4A',
                     borderRadius: 24,
-                    border: '1px solid rgba(10, 26, 63, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
                     overflow: 'hidden',
                     transition: 'box-shadow 0.3s ease',
                   }}
@@ -204,68 +204,74 @@ export function FeaturedWork() {
                       flexDirection: index % 2 === 1 ? 'row-reverse' : 'row',
                     }}
                   >
-                    {/* Project Screenshot */}
+                    {/* Project Screenshot - Clickable */}
                     <motion.div
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                       style={{ order: index % 2 === 1 ? 2 : 1 }}
                     >
-                      {imageUrl ? (
-                        <Box
-                          style={{
-                            borderRadius: 16,
-                            overflow: 'hidden',
-                            boxShadow: '0 10px 40px rgba(10, 26, 63, 0.12)',
-                          }}
-                        >
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                            transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
+                      <Link
+                        href={caseStudyUrl}
+                        onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: project.title, source: 'featured_work_image' })}
+                        style={{ display: 'block', cursor: 'pointer' }}
+                      >
+                        {imageUrl ? (
+                          <Box
+                            style={{
+                              borderRadius: 16,
+                              overflow: 'hidden',
+                              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.25)',
+                            }}
                           >
-                            <Image
-                              src={imageUrl}
-                              alt={project.image?.alt || project.title}
-                              width={800}
-                              height={500}
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                              transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
+                            >
+                              <Image
+                                src={imageUrl}
+                                alt={project.image?.alt || project.title}
+                                width={800}
+                                height={500}
+                                style={{
+                                  width: '100%',
+                                  height: 'auto',
+                                  objectFit: 'cover',
+                                  display: 'block',
+                                }}
+                              />
+                            </motion.div>
+                          </Box>
+                        ) : (
+                          <Box
+                            style={{
+                              background: project.gradient,
+                              borderRadius: 16,
+                              minHeight: 300,
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              padding: 24,
+                              boxShadow: '0 10px 40px rgba(31, 79, 216, 0.25)',
+                            }}
+                          >
+                            <motion.div
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                              transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
                               style={{
-                                width: '100%',
-                                height: 'auto',
-                                objectFit: 'cover',
-                                display: 'block',
+                                width: '90%',
+                                height: '85%',
+                                background: 'rgba(255, 255, 255, 0.95)',
+                                borderRadius: 12,
+                                boxShadow: '0 20px 40px rgba(10, 26, 63, 0.15)',
+                                border: '1px solid rgba(255, 255, 255, 0.5)',
+                                minHeight: 200,
                               }}
                             />
-                          </motion.div>
-                        </Box>
-                      ) : (
-                        <Box
-                          style={{
-                            background: project.gradient,
-                            borderRadius: 16,
-                            minHeight: 300,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            padding: 24,
-                            boxShadow: '0 10px 40px rgba(31, 79, 216, 0.15)',
-                          }}
-                        >
-                          <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                            transition={{ duration: 0.5, delay: 0.5 + index * 0.15 }}
-                            style={{
-                              width: '90%',
-                              height: '85%',
-                              background: 'rgba(255, 255, 255, 0.95)',
-                              borderRadius: 12,
-                              boxShadow: '0 20px 40px rgba(10, 26, 63, 0.15)',
-                              border: '1px solid rgba(255, 255, 255, 0.5)',
-                              minHeight: 200,
-                            }}
-                          />
-                        </Box>
-                      )}
+                          </Box>
+                        )}
+                      </Link>
                     </motion.div>
 
                     {/* Project Info */}
@@ -274,25 +280,25 @@ export function FeaturedWork() {
                       justify="center"
                       style={{ order: index % 2 === 1 ? 1 : 2 }}
                     >
-                      <Text size="sm" fw={600} style={{ color: '#8A9BB8' }}>
+                      <Text size="sm" fw={600} style={{ color: '#7A94BA' }}>
                         {project.title}
                       </Text>
 
-                      <Title order={3} style={{ color: '#0A1A3F' }}>
+                      <Title order={3} style={{ color: '#FFFFFF' }}>
                         {project.title}
                       </Title>
 
-                      <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+                      <Text size="sm" lh={1.7} style={{ color: '#A5B4CF' }}>
                         {project.description}
                       </Text>
 
-                      <Group gap={4} mt="md">
+                      <Group gap={4} mt="xs">
                         {project.services.map((tech, i) => (
                           <Group key={tech} gap={4}>
                             <Text
                               size="xs"
                               fw={500}
-                              style={{ color: '#8A9BB8', letterSpacing: '0.3px' }}
+                              style={{ color: '#7A94BA', letterSpacing: '0.3px' }}
                             >
                               {tech}
                             </Text>
@@ -302,13 +308,38 @@ export function FeaturedWork() {
                                   width: 4,
                                   height: 4,
                                   borderRadius: '50%',
-                                  background: '#1F4FD8',
+                                  background: '#4DA3FF',
                                 }}
                               />
                             )}
                           </Group>
                         ))}
                       </Group>
+
+                      {/* View Full Case Study CTA */}
+                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        <Button
+                          component={Link}
+                          href={caseStudyUrl}
+                          size="md"
+                          radius="xl"
+                          mt="md"
+                          rightSection={<IconArrowRight size={16} />}
+                          onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: project.title, source: 'featured_work_cta' })}
+                          styles={{
+                            root: {
+                              background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                              border: 'none',
+                              transition: 'all 0.2s ease',
+                              '&:hover': {
+                                boxShadow: '0 6px 20px rgba(77, 163, 255, 0.3)',
+                              },
+                            },
+                          }}
+                        >
+                          View Full Case Study
+                        </Button>
+                      </motion.div>
                     </Stack>
                   </SimpleGrid>
                 </Box>
@@ -321,6 +352,7 @@ export function FeaturedWork() {
             <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl">
               {smallProjects.map((project, index) => {
                 const imageUrl = getImageUrl(project.image, 600, 400);
+                const caseStudyUrl = `/case-studies/${project.slug?.current || project._id}`;
                 
                 return (
                   <motion.div
@@ -329,79 +361,85 @@ export function FeaturedWork() {
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                     whileHover={{ y: -5 }}
-                    onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: project.title, source: 'featured_work' })}
                   >
                     <Box
                       p="xl"
                       style={{
-                        background: '#F8F9FB',
+                        background: '#0D1F4A',
                         borderRadius: 24,
-                        border: '1px solid rgba(10, 26, 63, 0.06)',
+                        border: '1px solid rgba(255, 255, 255, 0.08)',
                         height: '100%',
                         transition: 'box-shadow 0.3s ease',
                       }}
                     >
                       <Stack gap="md">
-                        <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
-                          {imageUrl ? (
-                            <Box
-                              style={{
-                                borderRadius: 12,
-                                overflow: 'hidden',
-                                boxShadow: '0 8px 30px rgba(10, 26, 63, 0.1)',
-                              }}
-                            >
-                              <Image
-                                src={imageUrl}
-                                alt={project.image?.alt || project.title}
-                                width={600}
-                                height={400}
-                                style={{
-                                  width: '100%',
-                                  height: 'auto',
-                                  objectFit: 'cover',
-                                  display: 'block',
-                                }}
-                              />
-                            </Box>
-                          ) : (
-                            <Box
-                              style={{
-                                background: project.gradient,
-                                borderRadius: 12,
-                                height: 180,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                boxShadow: '0 8px 30px rgba(31, 79, 216, 0.12)',
-                              }}
-                            >
+                        {/* Clickable Image */}
+                        <Link
+                          href={caseStudyUrl}
+                          onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: project.title, source: 'featured_work_small_image' })}
+                          style={{ display: 'block' }}
+                        >
+                          <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.3 }}>
+                            {imageUrl ? (
                               <Box
                                 style={{
-                                  width: '80%',
-                                  height: '70%',
-                                  background: 'rgba(255, 255, 255, 0.95)',
-                                  borderRadius: 8,
-                                  boxShadow: '0 10px 30px rgba(10, 26, 63, 0.1)',
-                                  border: '1px solid rgba(255, 255, 255, 0.5)',
+                                  borderRadius: 12,
+                                  overflow: 'hidden',
+                                  boxShadow: '0 8px 30px rgba(0, 0, 0, 0.2)',
                                 }}
-                              />
-                            </Box>
-                          )}
-                        </motion.div>
+                              >
+                                <Image
+                                  src={imageUrl}
+                                  alt={project.image?.alt || project.title}
+                                  width={600}
+                                  height={400}
+                                  style={{
+                                    width: '100%',
+                                    height: 'auto',
+                                    objectFit: 'cover',
+                                    display: 'block',
+                                  }}
+                                />
+                              </Box>
+                            ) : (
+                              <Box
+                                style={{
+                                  background: project.gradient,
+                                  borderRadius: 12,
+                                  height: 180,
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  boxShadow: '0 8px 30px rgba(31, 79, 216, 0.2)',
+                                }}
+                              >
+                                <Box
+                                  style={{
+                                    width: '80%',
+                                    height: '70%',
+                                    background: 'rgba(255, 255, 255, 0.95)',
+                                    borderRadius: 8,
+                                    boxShadow: '0 10px 30px rgba(10, 26, 63, 0.1)',
+                                    border: '1px solid rgba(255, 255, 255, 0.5)',
+                                  }}
+                                />
+                              </Box>
+                            )}
+                          </motion.div>
+                        </Link>
 
-                        <Title order={4} style={{ color: '#0A1A3F' }}>
+                        <Title order={4} style={{ color: '#FFFFFF' }}>
                           {project.title}
                         </Title>
 
-                        <Text size="sm" lh={1.6} style={{ color: '#5A7099' }}>
+                        <Text size="sm" lh={1.6} style={{ color: '#A5B4CF' }}>
                           {project.description}
                         </Text>
 
                         <Group gap={4}>
                           {project.services.map((tech, i) => (
                             <Group key={tech} gap={4}>
-                              <Text size="xs" fw={500} style={{ color: '#8A9BB8' }}>
+                              <Text size="xs" fw={500} style={{ color: '#7A94BA' }}>
                                 {tech}
                               </Text>
                               {i < project.services.length - 1 && (
@@ -410,13 +448,38 @@ export function FeaturedWork() {
                                     width: 4,
                                     height: 4,
                                     borderRadius: '50%',
-                                    background: '#1F4FD8',
+                                    background: '#4DA3FF',
                                   }}
                                 />
                               )}
                             </Group>
                           ))}
                         </Group>
+
+                        {/* View Full Case Study CTA */}
+                        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                          <Button
+                            component={Link}
+                            href={caseStudyUrl}
+                            size="sm"
+                            radius="xl"
+                            mt="xs"
+                            rightSection={<IconArrowRight size={14} />}
+                            onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: project.title, source: 'featured_work_small_cta' })}
+                            styles={{
+                              root: {
+                                background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                                border: 'none',
+                                transition: 'all 0.2s ease',
+                                '&:hover': {
+                                  boxShadow: '0 4px 15px rgba(77, 163, 255, 0.3)',
+                                },
+                              },
+                            }}
+                          >
+                            View Full Case Study
+                          </Button>
+                        </motion.div>
                       </Stack>
                     </Box>
                   </motion.div>
