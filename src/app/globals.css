@@ -137,9 +137,9 @@ html {
 /* Mobile: smaller cube animation */
 @media (max-width: 61.99em) {
   .hero-visual {
-    max-height: 280px !important;
-    min-height: 280px !important;
-    height: 280px !important;
+    max-height: 200px !important;
+    min-height: 200px !important;
+    height: 200px !important;
   }
 }
 

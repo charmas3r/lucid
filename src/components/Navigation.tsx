@@ -355,10 +355,14 @@ export function Navigation() {
             size="100%"
             padding="xl"
             hiddenFrom="md"
+            withCloseButton
             styles={{
-              body: { background: '#0A1A3F', height: '100%' },
-              header: { background: '#0A1A3F' },
-              close: { color: '#FFFFFF' },
+              root: { overflow: 'hidden' },
+              inner: { overflow: 'hidden' },
+              content: { background: '#0A1A3F', overflow: 'hidden' },
+              body: { background: '#0A1A3F', height: '100%', overflow: 'hidden' },
+              header: { background: '#0A1A3F', borderBottom: 'none', zIndex: 10 },
+              close: { color: '#FFFFFF', width: 40, height: 40, zIndex: 11 },
             }}
           >
             <Stack gap="xl" mt="xl">

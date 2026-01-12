@@ -146,9 +146,9 @@ export function Hero() {
                     inherit
                     className="metallic-text"
                   >
-                    Digital solutions
+                    Web Development
                   </Text>{' '}
-                  for growing businesses
+                  for San Diego businesses
                 </Title>
               </div>
 
