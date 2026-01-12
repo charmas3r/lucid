@@ -390,13 +390,9 @@ interface CaseStudiesContentProps {
 
 export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
   const heroRef = useRef(null);
-  const statsRef = useRef(null);
-  const gridRef = useRef(null);
   const ctaRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: true });
-  const statsInView = useInView(statsRef, { once: true, margin: '-100px' });
-  const gridInView = useInView(gridRef, { once: true, margin: '-100px' });
   const ctaInView = useInView(ctaRef, { once: true, margin: '-100px' });
 
   const [activeCategory, setActiveCategory] = useState('all');
@@ -406,6 +402,8 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
     : caseStudies.filter((study) => study.category === activeCategory);
 
   const featuredStudy = caseStudies.find((s) => s.featured);
+  
+  const hasCaseStudies = caseStudies.length > 0;
 
   return (
     <>
@@ -427,7 +425,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
             animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6 }}
           >
-            <Stack align="center" gap="lg" mb={60}>
+            <Stack align="center" gap="lg" mb={hasCaseStudies ? 60 : 0}>
               <Badge
                 size="lg"
                 radius="xl"
@@ -464,150 +462,158 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                 maw={700}
                 style={{ color: '#5A7099' }}
               >
-                Discover how we&apos;ve helped businesses transform their digital presence
-                and achieve measurable growth through strategic design and development.
+                {hasCaseStudies 
+                  ? "Discover how we've helped businesses transform their digital presence and achieve measurable growth through strategic design and development."
+                  : "We're currently working with amazing clients on exciting projects. Check back soon to see our success stories!"
+                }
               </Text>
             </Stack>
           </motion.div>
         </Container>
       </Box>
 
-      {/* Stats Section */}
-      <Box component="section" py={60} ref={statsRef} style={{ background: '#FFFFFF' }}>
-        <Container size="xl">
-          <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
-            {overallStats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 30 }}
-                animate={statsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <Stack align="center" gap="xs">
-                  <ThemeIcon
-                    size={50}
-                    radius="xl"
-                    style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                    }}
+      {/* Only show stats, featured, and grid sections if we have case studies */}
+      {hasCaseStudies && (
+        <>
+          {/* Stats Section */}
+          <Box component="section" py={60} style={{ background: '#FFFFFF' }}>
+            <Container size="xl">
+              <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
+                {overallStats.map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <stat.icon size={24} />
-                  </ThemeIcon>
-                  <Text
-                    fw={700}
-                    style={{
-                      fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
-                      color: '#0A1A3F',
-                    }}
-                  >
-                    {stat.value}
-                  </Text>
-                  <Text size="sm" ta="center" style={{ color: '#5A7099' }}>
-                    {stat.label}
-                  </Text>
-                </Stack>
-              </motion.div>
-            ))}
-          </SimpleGrid>
-        </Container>
-      </Box>
-
-      {/* Featured Case Study */}
-      {featuredStudy && (
-        <Box component="section" py={60} style={{ background: '#FFFFFF' }}>
-          <Container size="xl">
-            <FeaturedCaseStudy study={featuredStudy} />
-          </Container>
-        </Box>
-      )}
-
-      {/* Case Studies Grid */}
-      <Box
-        component="section"
-        py={80}
-        ref={gridRef}
-        style={{ background: '#F8F9FB' }}
-      >
-        <Container size="xl">
-          {/* Category Filter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={gridInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Group justify="center" gap="sm" mb={50} wrap="wrap">
-              {categories.map((category) => (
-                <motion.div
-                  key={category.value}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Box
-                    component="button"
-                    onClick={() => {
-                      setActiveCategory(category.value);
-                      trackEvent(EVENTS.CASE_STUDY_FILTER, { category: category.value });
-                    }}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 8,
-                      padding: '10px 20px',
-                      borderRadius: 50,
-                      background: activeCategory === category.value
-                        ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'
-                        : 'rgba(31, 79, 216, 0.06)',
-                      border: 'none',
-                      cursor: 'pointer',
-                      transition: 'all 0.2s ease',
-                    }}
-                  >
-                    <category.icon
-                      size={18}
-                      color={activeCategory === category.value ? '#FFFFFF' : '#1F4FD8'}
-                    />
-                    <Text
-                      size="sm"
-                      fw={500}
-                      style={{
-                        color: activeCategory === category.value ? '#FFFFFF' : '#1F4FD8',
-                      }}
-                    >
-                      {category.label}
-                    </Text>
-                  </Box>
-                </motion.div>
-              ))}
-            </Group>
-          </motion.div>
-
-          {/* Cards Grid */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-            >
-              <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="xl">
-                {filteredStudies.map((study, index) => (
-                  <CaseStudyCard key={study._id} study={study} index={index} />
+                    <Stack align="center" gap="xs">
+                      <ThemeIcon
+                        size={50}
+                        radius="xl"
+                        style={{
+                          background: 'rgba(31, 79, 216, 0.08)',
+                          color: '#1F4FD8',
+                        }}
+                      >
+                        <stat.icon size={24} />
+                      </ThemeIcon>
+                      <Text
+                        fw={700}
+                        style={{
+                          fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+                          color: '#0A1A3F',
+                        }}
+                      >
+                        {stat.value}
+                      </Text>
+                      <Text size="sm" ta="center" style={{ color: '#5A7099' }}>
+                        {stat.label}
+                      </Text>
+                    </Stack>
+                  </motion.div>
                 ))}
               </SimpleGrid>
-            </motion.div>
-          </AnimatePresence>
+            </Container>
+          </Box>
 
-          {filteredStudies.length === 0 && (
-            <Box ta="center" py={60}>
-              <Text size="lg" style={{ color: '#8A9BB8' }}>
-                No case studies found in this category yet.
-              </Text>
+          {/* Featured Case Study */}
+          {featuredStudy && (
+            <Box component="section" py={60} style={{ background: '#FFFFFF' }}>
+              <Container size="xl">
+                <FeaturedCaseStudy study={featuredStudy} />
+              </Container>
             </Box>
           )}
-        </Container>
-      </Box>
+
+          {/* Case Studies Grid */}
+          <Box
+            component="section"
+            py={80}
+            style={{ background: '#F8F9FB' }}
+          >
+            <Container size="xl">
+              {/* Category Filter */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <Group justify="center" gap="sm" mb={50} wrap="wrap">
+                  {categories.map((category) => (
+                    <motion.div
+                      key={category.value}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Box
+                        component="button"
+                        onClick={() => {
+                          setActiveCategory(category.value);
+                          trackEvent(EVENTS.CASE_STUDY_FILTER, { category: category.value });
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: 8,
+                          padding: '10px 20px',
+                          borderRadius: 50,
+                          background: activeCategory === category.value
+                            ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'
+                            : 'rgba(31, 79, 216, 0.06)',
+                          border: 'none',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s ease',
+                        }}
+                      >
+                        <category.icon
+                          size={18}
+                          color={activeCategory === category.value ? '#FFFFFF' : '#1F4FD8'}
+                        />
+                        <Text
+                          size="sm"
+                          fw={500}
+                          style={{
+                            color: activeCategory === category.value ? '#FFFFFF' : '#1F4FD8',
+                          }}
+                        >
+                          {category.label}
+                        </Text>
+                      </Box>
+                    </motion.div>
+                  ))}
+                </Group>
+              </motion.div>
+
+              {/* Cards Grid */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeCategory}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="xl">
+                    {filteredStudies.map((study, index) => (
+                      <CaseStudyCard key={study._id} study={study} index={index} />
+                    ))}
+                  </SimpleGrid>
+                </motion.div>
+              </AnimatePresence>
+
+              {filteredStudies.length === 0 && (
+                <Box ta="center" py={60}>
+                  <Text size="lg" style={{ color: '#8A9BB8' }}>
+                    No case studies found in this category yet.
+                  </Text>
+                </Box>
+              )}
+            </Container>
+          </Box>
+        </>
+      )}
 
       {/* CTA Section */}
       <Box

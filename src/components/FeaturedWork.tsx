@@ -14,52 +14,8 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { IconArrowUpRight } from '@tabler/icons-react';
-import { getFeaturedCaseStudies, SanityCaseStudy } from '@/lib/sanity';
+import { getFeaturedCaseStudies } from '@/lib/sanity';
 import { trackEvent, EVENTS } from '@/lib/analytics';
-
-// Fallback projects when Sanity is unavailable
-const fallbackProjects = [
-  {
-    _id: 'nova-memorial',
-    title: 'Nova Memorial',
-    description:
-      'From complex applications to bespoke platforms, we deliver high-performance systems that align with your goals and fuel business growth.',
-    gradient: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-    services: ['UI/UX DESIGN', 'WEB DEVELOPMENT', 'SEO'],
-    isLarge: true,
-    slug: { current: 'nova-memorial' },
-  },
-  {
-    _id: 'your-delivery',
-    title: 'Your Delivery',
-    description:
-      'A comprehensive delivery management platform with real-time tracking and analytics dashboard.',
-    gradient: 'linear-gradient(135deg, #3A6EA5 0%, #4DA3FF 100%)',
-    services: ['MOBILE APP', 'WEB APP', 'API'],
-    isLarge: true,
-    slug: { current: 'your-delivery' },
-  },
-  {
-    _id: 'coastal-eats',
-    title: 'Coastal Eats',
-    description:
-      'Online ordering system with real-time menu management for a local restaurant chain.',
-    gradient: 'linear-gradient(135deg, #0A1A3F 0%, #1F4FD8 100%)',
-    services: ['E-COMMERCE', 'WEB DESIGN'],
-    isLarge: false,
-    slug: { current: 'coastal-eats' },
-  },
-  {
-    _id: 'techflow-saas',
-    title: 'TechFlow SaaS',
-    description:
-      'Dashboard and analytics platform for B2B workflow automation.',
-    gradient: 'linear-gradient(135deg, #1F4FD8 0%, #3A6EA5 100%)',
-    services: ['WEB APP', 'UI/UX'],
-    isLarge: false,
-    slug: { current: 'techflow-saas' },
-  },
-];
 
 const fadeInUp = {
   initial: { opacity: 0, y: 40 },
@@ -79,7 +35,8 @@ interface Project {
 export function FeaturedWork() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [projects, setProjects] = useState<Project[]>(fallbackProjects);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchProjects() {
@@ -100,11 +57,17 @@ export function FeaturedWork() {
         }
       } catch (error) {
         console.error('Error fetching featured projects:', error);
-        // Keep fallback projects
+      } finally {
+        setIsLoading(false);
       }
     }
     fetchProjects();
   }, []);
+  
+  // Don't render the section if there are no case studies
+  if (!isLoading && projects.length === 0) {
+    return null;
+  }
 
   const largeProjects = projects.filter(p => p.isLarge);
   const smallProjects = projects.filter(p => !p.isLarge);
