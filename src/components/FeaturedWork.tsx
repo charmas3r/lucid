@@ -9,10 +9,13 @@ import {
   Badge,
   Group,
   SimpleGrid,
+  Button,
 } from '@mantine/core';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { IconArrowRight } from '@tabler/icons-react';
 import { getFeaturedCaseStudies, urlFor } from '@/lib/sanity';
 import { trackEvent, EVENTS } from '@/lib/analytics';
 
@@ -143,6 +146,30 @@ export function FeaturedWork() {
                 From new digital projects to process optimization and support,
                 we partner with businesses to deliver impactful results.
               </Text>
+            </motion.div>
+            <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                <Button
+                  component={Link}
+                  href="/case-studies"
+                  size="lg"
+                  radius="xl"
+                  rightSection={<IconArrowRight size={18} />}
+                  styles={{
+                    root: {
+                      background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                      border: 'none',
+                      transition: 'all 0.2s ease',
+                      '&:hover': {
+                        boxShadow: '0 6px 20px rgba(31, 79, 216, 0.3)',
+                      },
+                    },
+                  }}
+                  onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { source: 'featured_work_cta' })}
+                >
+                  View All Case Studies
+                </Button>
+              </motion.div>
             </motion.div>
           </Stack>
         </motion.div>

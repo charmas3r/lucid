@@ -54,26 +54,33 @@ export function Navigation() {
       }}
     >
       <Container size="xl">
-        {/* Rounded pill navbar */}
+        {/* Rounded pill navbar with gradient border */}
         <div
           style={{
-            backgroundColor: isScrolled 
-              ? 'rgba(10, 26, 63, 0.98)' 
-              : 'rgba(10, 26, 63, 0.9)',
-            boxShadow: isScrolled
-              ? '0 4px 30px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2)'
-              : '0 2px 20px rgba(0, 0, 0, 0.2)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            position: 'relative',
             borderRadius: 60,
-            padding: '12px 24px',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
-            transform: 'translate3d(0, 0, 0)', // Force GPU compositing layer
-            backfaceVisibility: 'hidden', // Additional GPU optimization
+            padding: 1, // Space for gradient border
+            background: isScrolled 
+              ? 'linear-gradient(135deg, rgba(77, 163, 255, 0.4) 0%, rgba(31, 79, 216, 0.2) 50%, rgba(77, 163, 255, 0.3) 100%)'
+              : 'linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%)',
+            boxShadow: isScrolled
+              ? '0 4px 30px rgba(77, 163, 255, 0.15), 0 0 20px rgba(77, 163, 255, 0.1)'
+              : '0 2px 20px rgba(0, 0, 0, 0.2)',
+            transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+            transform: 'translate3d(0, 0, 0)',
+            backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
           }}
         >
+          <div
+            style={{
+              backgroundColor: 'rgba(10, 26, 63, 0.95)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              borderRadius: 59,
+              padding: '12px 24px',
+            }}
+          >
           <Group justify="space-between" align="center">
             {/* Logo */}
             <Link 
@@ -300,6 +307,7 @@ export function Navigation() {
               />
             </Group>
           </Group>
+          </div>
         </div>
       </Container>
 
