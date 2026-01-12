@@ -28,6 +28,7 @@ import {
   IconClock,
   IconStar,
 } from '@tabler/icons-react';
+// IconCheck removed - not used
 import { Navigation, Footer } from '@/components';
 import { trackEvent, EVENTS } from '@/lib/analytics';
 import { urlFor } from '@/lib/sanity';
@@ -95,9 +96,9 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
         {/* Image/Header */}
         <Box
           style={{
-            background: study.gradient || 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+            background: imageUrl ? 'transparent' : (study.gradient || 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'),
             height: imageUrl ? 'auto' : 200,
-            minHeight: 200,
+            minHeight: imageUrl ? 0 : 200,
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -108,31 +109,23 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
               style={{
                 position: 'relative',
                 width: '100%',
-                padding: 12,
+                overflow: 'hidden',
               }}
             >
-              <Box
+              <Image
+                src={imageUrl}
+                alt={study.image?.alt || study.title}
+                width={600}
+                height={400}
                 style={{
-                  borderRadius: 12,
-                  overflow: 'hidden',
-                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'cover',
+                  display: 'block',
+                  transition: 'transform 0.4s ease',
+                  transform: isHovered ? 'scale(1.03)' : 'scale(1)',
                 }}
-              >
-                <Image
-                  src={imageUrl}
-                  alt={study.image?.alt || study.title}
-                  width={600}
-                  height={400}
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    objectFit: 'cover',
-                    display: 'block',
-                    transition: 'transform 0.4s ease',
-                    transform: isHovered ? 'scale(1.03)' : 'scale(1)',
-                  }}
-                />
-              </Box>
+              />
             </Box>
           )}
           
@@ -143,7 +136,7 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
               position: 'absolute',
               top: 16,
               left: 16,
-              background: 'rgba(0, 0, 0, 0.4)',
+              background: 'rgba(0, 0, 0, 0.5)',
               color: '#FFFFFF',
               backdropFilter: 'blur(10px)',
               zIndex: 10,
