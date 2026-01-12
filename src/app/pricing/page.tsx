@@ -48,12 +48,30 @@ const staggerContainer = {
   },
 };
 
+// 50% Discount Configuration
+const DISCOUNT_PERCENTAGE = 50;
+const applyDiscount = (price: number) => price * (1 - DISCOUNT_PERCENTAGE / 100);
+const formatPrice = (price: number) => `$${price.toLocaleString()}`;
+
+interface PricingTier {
+  name: string;
+  tagline: string;
+  originalPrice: string | null;
+  price: string;
+  priceNote: string;
+  icon: typeof IconSparkles;
+  popular: boolean;
+  features: string[];
+  gradient: string;
+}
+
 // Web Development Pricing
-const webPricing = [
+const webPricing: PricingTier[] = [
   {
     name: 'Starter Site',
     tagline: 'Perfect for small businesses',
-    price: '$2,500',
+    originalPrice: '$2,500',
+    price: formatPrice(applyDiscount(2500)),
     priceNote: 'starting at',
     icon: IconSparkles,
     popular: false,
@@ -71,7 +89,8 @@ const webPricing = [
   {
     name: 'Business Pro',
     tagline: 'For growing businesses',
-    price: '$7,500',
+    originalPrice: '$7,500',
+    price: formatPrice(applyDiscount(7500)),
     priceNote: 'starting at',
     icon: IconRocket,
     popular: true,
@@ -91,7 +110,8 @@ const webPricing = [
   {
     name: 'Web Application',
     tagline: 'Custom web apps & platforms',
-    price: '$15,000+',
+    originalPrice: '$15,000+',
+    price: '$7,500+',
     priceNote: 'starting at',
     icon: IconCrown,
     popular: false,
@@ -110,11 +130,12 @@ const webPricing = [
 ];
 
 // Mobile App Pricing
-const mobilePricing = [
+const mobilePricing: PricingTier[] = [
   {
     name: 'MVP Launch',
     tagline: 'Validate your idea fast',
-    price: '$15,000',
+    originalPrice: '$15,000',
+    price: formatPrice(applyDiscount(15000)),
     priceNote: 'starting at',
     icon: IconSparkles,
     popular: false,
@@ -132,7 +153,8 @@ const mobilePricing = [
   {
     name: 'Cross-Platform',
     tagline: 'iOS & Android from one codebase',
-    price: '$35,000',
+    originalPrice: '$35,000',
+    price: formatPrice(applyDiscount(35000)),
     priceNote: 'starting at',
     icon: IconRocket,
     popular: true,
@@ -152,6 +174,7 @@ const mobilePricing = [
   {
     name: 'Enterprise App',
     tagline: 'Full-scale mobile solutions',
+    originalPrice: null,
     price: 'Custom',
     priceNote: 'tailored to scope',
     icon: IconCrown,
@@ -171,11 +194,12 @@ const mobilePricing = [
 ];
 
 // E-Commerce Pricing
-const ecommercePricing = [
+const ecommercePricing: PricingTier[] = [
   {
     name: 'Shopify Starter',
     tagline: 'Quick launch online store',
-    price: '$3,500',
+    originalPrice: '$3,500',
+    price: formatPrice(applyDiscount(3500)),
     priceNote: 'starting at',
     icon: IconSparkles,
     popular: false,
@@ -194,7 +218,8 @@ const ecommercePricing = [
   {
     name: 'Custom Storefront',
     tagline: 'Headless commerce solution',
-    price: '$12,000',
+    originalPrice: '$12,000',
+    price: formatPrice(applyDiscount(12000)),
     priceNote: 'starting at',
     icon: IconRocket,
     popular: true,
@@ -214,6 +239,7 @@ const ecommercePricing = [
   {
     name: 'Enterprise Commerce',
     tagline: 'High-volume scalable solution',
+    originalPrice: null,
     price: 'Custom',
     priceNote: 'based on requirements',
     icon: IconCrown,
@@ -233,11 +259,12 @@ const ecommercePricing = [
 ];
 
 // Conversion Optimization Pricing
-const conversionPricing = [
+const conversionPricing: PricingTier[] = [
   {
     name: 'Quick Wins Audit',
     tagline: 'Identify immediate opportunities',
-    price: '$1,500',
+    originalPrice: '$1,500',
+    price: formatPrice(applyDiscount(1500)),
     priceNote: 'one-time',
     icon: IconSparkles,
     popular: false,
@@ -255,7 +282,8 @@ const conversionPricing = [
   {
     name: 'CRO Program',
     tagline: 'Ongoing optimization',
-    price: '$2,500',
+    originalPrice: '$2,500',
+    price: formatPrice(applyDiscount(2500)),
     priceNote: 'per month',
     icon: IconRocket,
     popular: true,
@@ -274,7 +302,8 @@ const conversionPricing = [
   {
     name: 'Full Funnel Redesign',
     tagline: 'Complete conversion overhaul',
-    price: '$8,000',
+    originalPrice: '$8,000',
+    price: formatPrice(applyDiscount(8000)),
     priceNote: 'starting at',
     icon: IconCrown,
     popular: false,
@@ -293,11 +322,12 @@ const conversionPricing = [
 ];
 
 // SEO Pricing
-const seoPricing = [
+const seoPricing: PricingTier[] = [
   {
     name: 'Technical SEO Fix',
     tagline: 'One-time optimization',
-    price: '$2,000',
+    originalPrice: '$2,000',
+    price: formatPrice(applyDiscount(2000)),
     priceNote: 'one-time',
     icon: IconSparkles,
     popular: false,
@@ -315,7 +345,8 @@ const seoPricing = [
   {
     name: 'Growth SEO',
     tagline: 'Monthly optimization',
-    price: '$1,500',
+    originalPrice: '$1,500',
+    price: formatPrice(applyDiscount(1500)),
     priceNote: 'per month',
     icon: IconRocket,
     popular: true,
@@ -334,7 +365,8 @@ const seoPricing = [
   {
     name: 'SEO + Content',
     tagline: 'Full organic growth',
-    price: '$3,500',
+    originalPrice: '$3,500',
+    price: formatPrice(applyDiscount(3500)),
     priceNote: 'per month',
     icon: IconCrown,
     popular: false,
@@ -352,7 +384,7 @@ const seoPricing = [
   },
 ];
 
-const serviceCategories = [
+const serviceCategories: { value: string; label: string; icon: typeof IconCode; pricing: PricingTier[] }[] = [
   { value: 'web', label: 'Web Development', icon: IconCode, pricing: webPricing },
   { value: 'mobile', label: 'Mobile Apps', icon: IconDeviceMobile, pricing: mobilePricing },
   { value: 'ecommerce', label: 'E-Commerce', icon: IconShoppingCart, pricing: ecommercePricing },
@@ -367,7 +399,9 @@ const addOns = [
   { name: 'Photography', price: '$500', description: 'Professional product/team photos' },
 ];
 
-function PricingCard({ tier, index, isInView, category }: { tier: typeof webPricing[0]; index: number; isInView: boolean; category: string }) {
+function PricingCard({ tier, index, isInView, category }: { tier: PricingTier; index: number; isInView: boolean; category: string }) {
+  const hasDiscount = tier.originalPrice !== null;
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -403,6 +437,22 @@ function PricingCard({ tier, index, isInView, category }: { tier: typeof webPric
         )}
 
         <Stack gap="lg" h="100%">
+          {/* Discount Badge - inline above icon */}
+          {hasDiscount && (
+            <Badge
+              style={{
+                background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                color: '#FFFFFF',
+                fontWeight: 700,
+                fontSize: '0.7rem',
+                padding: '6px 12px',
+                alignSelf: 'flex-start',
+              }}
+            >
+              50% OFF
+            </Badge>
+          )}
+          
           <motion.div
             whileHover={{ scale: 1.1, rotate: 5 }}
             transition={{ type: 'spring', stiffness: 300 }}
@@ -448,11 +498,26 @@ function PricingCard({ tier, index, isInView, category }: { tier: typeof webPric
             >
               {tier.priceNote}
             </Text>
+            {hasDiscount && (
+              <Text
+                fw={500}
+                style={{
+                  fontSize: '1.1rem',
+                  color: tier.popular ? 'rgba(255, 255, 255, 0.5)' : '#8A9BB8',
+                  textDecoration: 'line-through',
+                  lineHeight: 1.2,
+                }}
+              >
+                {tier.originalPrice}
+              </Text>
+            )}
             <Text
               fw={700}
               style={{
                 fontSize: '2.5rem',
-                color: tier.popular ? '#FFFFFF' : '#0A1A3F',
+                color: hasDiscount 
+                  ? '#0CCE6B' 
+                  : tier.popular ? '#FFFFFF' : '#0A1A3F',
                 lineHeight: 1.2,
               }}
             >
@@ -572,17 +637,17 @@ export default function PricingPage() {
                     size="lg"
                     radius="xl"
                     tt="uppercase"
-                    fw={600}
+                    fw={700}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                      color: '#FFFFFF',
                       letterSpacing: '1px',
-                      fontSize: '0.7rem',
-                      padding: '10px 16px',
+                      fontSize: '0.75rem',
+                      padding: '12px 20px',
+                      boxShadow: '0 4px 15px rgba(255, 107, 53, 0.4)',
                     }}
                   >
-                    Transparent Pricing
+                    🎉 Limited Time: 50% OFF All Services
                   </Badge>
                 </motion.div>
 
@@ -595,7 +660,7 @@ export default function PricingPage() {
                       fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                       fontWeight: 700,
                       lineHeight: 1.1,
-                      color: '#FFFFFF',
+                      color: '#0A1A3F',
                     }}
                   >
                     Invest in{' '}
@@ -620,10 +685,13 @@ export default function PricingPage() {
                     ta="center"
                     maw={650}
                     lh={1.8}
-                    style={{ color: '#A5B4CF' }}
+                    style={{ color: '#5A7099' }}
                   >
-                    No hidden fees, no surprise charges. Choose the service and package that fits your needs,
-                    or let us create a custom solution for your business.
+                    No hidden fees, no surprise charges. Take advantage of our{' '}
+                    <Text component="span" fw={700} style={{ color: '#0CCE6B' }}>
+                      50% discount
+                    </Text>{' '}
+                    and choose the service that fits your needs.
                   </Text>
                 </motion.div>
               </Stack>

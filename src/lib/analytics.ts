@@ -61,4 +61,8 @@ export const EVENTS = {
   LINK_CLICK_PHONE: 'link_click_phone',
   LINK_CLICK_EMAIL: 'link_click_email',
   LINK_CLICK_EXTERNAL: 'link_click_external',
+  
+  // Banners
+  BANNER_CLICK: 'banner_click',
+  BANNER_DISMISS: 'banner_dismiss',
 } as const;

@@ -11,13 +11,13 @@ import {
   Text,
   Collapse,
 } from '@mantine/core';
-import { useDisclosure, useWindowScroll } from '@mantine/hooks';
+import { useDisclosure } from '@mantine/hooks';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IconChevronDown, IconCode, IconDeviceMobile, IconShoppingCart, IconSearch, IconChartBar } from '@tabler/icons-react';
-import { Logo } from './Logo';
+import { DiscountBanner, useDiscountBanner } from './DiscountBanner';
 import { trackEvent, EVENTS } from '@/lib/analytics';
 
 const serviceSubLinks = [
@@ -37,11 +37,35 @@ const navLinks = [
 
 export function Navigation() {
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [scroll] = useWindowScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const { isVisible: bannerVisible, handleDismiss: dismissBanner, hasMounted } = useDiscountBanner();
+  const scrollRef = useRef(false);
 
-  const isScrolled = scroll.y > 50;
+  // Throttled scroll handler to prevent flickering
+  useEffect(() => {
+    let ticking = false;
+    
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrolled = window.scrollY > 50;
+          if (scrollRef.current !== scrolled) {
+            scrollRef.current = scrolled;
+            setIsScrolled(scrolled);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const showBanner = hasMounted && bannerVisible && !isScrolled;
 
   return (
     <header
@@ -51,9 +75,16 @@ export function Navigation() {
         left: 0,
         right: 0,
         zIndex: 1000,
-        padding: '16px 24px',
       }}
     >
+      {/* Discount Banner - hides on scroll */}
+      <DiscountBanner isVisible={showBanner} onDismiss={dismissBanner} />
+      
+      <div
+        style={{
+          padding: '16px 24px',
+        }}
+      >
       <Container size="xl">
         {/* Rounded pill navbar with gradient border */}
         <div
@@ -67,8 +98,9 @@ export function Navigation() {
             boxShadow: isScrolled
               ? '0 4px 30px rgba(77, 163, 255, 0.15), 0 0 20px rgba(77, 163, 255, 0.1)'
               : '0 2px 20px rgba(0, 0, 0, 0.2)',
-            transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
-            transform: 'translate3d(0, 0, 0)',
+            transition: 'background 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+            transform: 'translateZ(0)',
+            willChange: 'background, box-shadow',
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
           }}
@@ -106,12 +138,9 @@ export function Navigation() {
 
             {/* Desktop Navigation */}
             <Group gap={40} visibleFrom="md">
-              {navLinks.map((link, index) => (
-                <motion.div
+              {navLinks.map((link) => (
+                <div
                   key={link.label}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * index + 0.3, duration: 0.4 }}
                   style={{ position: 'relative' }}
                   onMouseEnter={() => link.hasDropdown && setServicesOpen(true)}
                   onMouseLeave={() => link.hasDropdown && setServicesOpen(false)}
@@ -268,7 +297,7 @@ export function Navigation() {
                       {link.label}
                     </Link>
                   )}
-                </motion.div>
+                </div>
               ))}
             </Group>
 
@@ -478,6 +507,7 @@ export function Navigation() {
           </Drawer>
         )}
       </AnimatePresence>
+      </div>
     </header>
   );
 }
