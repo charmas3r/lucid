@@ -13,6 +13,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure, useWindowScroll } from '@mantine/hooks';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { IconChevronDown, IconCode, IconDeviceMobile, IconShoppingCart, IconSearch, IconChartBar } from '@tabler/icons-react';
