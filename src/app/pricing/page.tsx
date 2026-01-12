@@ -396,7 +396,6 @@ const addOns = [
   { name: 'Monthly Maintenance', price: '$299/mo', description: 'Updates, backups, security monitoring' },
   { name: 'Logo & Branding', price: '$1,500', description: 'Complete brand identity package' },
   { name: 'Content Writing', price: '$150/page', description: 'SEO-optimized copywriting' },
-  { name: 'Photography', price: '$500', description: 'Professional product/team photos' },
 ];
 
 function PricingCard({ tier, index, isInView, category }: { tier: PricingTier; index: number; isInView: boolean; category: string }) {
