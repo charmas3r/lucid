@@ -15,6 +15,7 @@ import {
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   IconArrowRight,
   IconCode,
@@ -25,11 +26,11 @@ import {
   IconTrendingUp,
   IconUsers,
   IconClock,
-  IconCheck,
   IconStar,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
 import { trackEvent, EVENTS } from '@/lib/analytics';
+import { urlFor } from '@/lib/sanity';
 import type { SanityCaseStudy } from '@/lib/sanity';
 
 const fadeInUp = {
@@ -59,6 +60,11 @@ interface CaseStudyCardProps {
 
 function CaseStudyCard({ study, index }: CaseStudyCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  
+  // Get image URL from Sanity
+  const imageUrl = study.image?.asset?._ref 
+    ? urlFor(study.image).width(600).height(400).quality(85).url()
+    : null;
 
   return (
     <motion.div
@@ -90,11 +96,46 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
         <Box
           style={{
             background: study.gradient || 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-            height: 200,
+            height: imageUrl ? 'auto' : 200,
+            minHeight: 200,
             position: 'relative',
             overflow: 'hidden',
           }}
         >
+          {/* Featured Image */}
+          {imageUrl && (
+            <Box
+              style={{
+                position: 'relative',
+                width: '100%',
+                padding: 12,
+              }}
+            >
+              <Box
+                style={{
+                  borderRadius: 12,
+                  overflow: 'hidden',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.15)',
+                }}
+              >
+                <Image
+                  src={imageUrl}
+                  alt={study.image?.alt || study.title}
+                  width={600}
+                  height={400}
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'cover',
+                    display: 'block',
+                    transition: 'transform 0.4s ease',
+                    transform: isHovered ? 'scale(1.03)' : 'scale(1)',
+                  }}
+                />
+              </Box>
+            </Box>
+          )}
+          
           {/* Industry badge */}
           <Badge
             size="sm"
@@ -102,9 +143,10 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
               position: 'absolute',
               top: 16,
               left: 16,
-              background: 'rgba(0, 0, 0, 0.3)',
+              background: 'rgba(0, 0, 0, 0.4)',
               color: '#FFFFFF',
               backdropFilter: 'blur(10px)',
+              zIndex: 10,
             }}
           >
             {study.clientIndustry || study.industry}
@@ -120,6 +162,7 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
                 background: 'rgba(255, 255, 255, 0.95)',
                 color: '#1F4FD8',
                 fontWeight: 600,
+                zIndex: 10,
               }}
             >
               Featured
@@ -136,6 +179,7 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
               bottom: 16,
               left: 16,
               right: 16,
+              zIndex: 10,
             }}
           >
             <Group gap="xs">
@@ -221,6 +265,11 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
 function FeaturedCaseStudy({ study }: { study: SanityCaseStudy }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  
+  // Get image URL from Sanity
+  const imageUrl = study.image?.asset?._ref 
+    ? urlFor(study.image).width(800).height(500).quality(90).url()
+    : null;
 
   return (
     <motion.div
@@ -329,9 +378,41 @@ function FeaturedCaseStudy({ study }: { study: SanityCaseStudy }) {
             </motion.div>
           </Stack>
 
-          {/* Right - Testimonial */}
-          {study.testimonial && (
-            <Stack justify="center">
+          {/* Right - Image or Testimonial */}
+          <Stack justify="center" gap="xl">
+            {/* Featured Image */}
+            {imageUrl && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Box
+                  style={{
+                    borderRadius: 20,
+                    overflow: 'hidden',
+                    boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                  }}
+                >
+                  <Image
+                    src={imageUrl}
+                    alt={study.image?.alt || study.title}
+                    width={800}
+                    height={500}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                      display: 'block',
+                    }}
+                  />
+                </Box>
+              </motion.div>
+            )}
+            
+            {/* Testimonial */}
+            {study.testimonial && (
               <Box
                 p="xl"
                 style={{
@@ -342,11 +423,11 @@ function FeaturedCaseStudy({ study }: { study: SanityCaseStudy }) {
                 }}
               >
                 <Text
-                  size="xl"
+                  size="lg"
                   fw={500}
                   lh={1.6}
                   style={{ color: '#FFFFFF' }}
-                  mb="xl"
+                  mb="lg"
                 >
                   &ldquo;{study.testimonial.quote}&rdquo;
                 </Text>
@@ -376,8 +457,8 @@ function FeaturedCaseStudy({ study }: { study: SanityCaseStudy }) {
                   </Box>
                 </Group>
               </Box>
-            </Stack>
-          )}
+            )}
+          </Stack>
         </SimpleGrid>
       </Box>
     </motion.div>
