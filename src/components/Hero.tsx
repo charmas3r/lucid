@@ -13,7 +13,7 @@ import {
 } from '@mantine/core';
 import {
   IconArrowRight,
-  IconBrandGoogle,
+  IconCode,
   IconCurrencyDollar,
   IconCalendarCheck,
   IconMapPin,
@@ -61,9 +61,9 @@ function HeroCubeVisual() {
 }
 
 const trustBadges = [
-  { icon: IconBrandGoogle, label: 'Google 5-Star Rated' },
+  { icon: IconCode, label: '10+ Years Experience' },
   { icon: IconCurrencyDollar, label: 'Transparent Pricing' },
-  { icon: IconCalendarCheck, label: 'Established 2015' },
+  { icon: IconCalendarCheck, label: 'Enterprise-Proven Expertise' },
   { icon: IconMapPin, label: 'Located in Escondido, CA' },
 ];
 

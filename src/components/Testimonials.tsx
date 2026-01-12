@@ -20,7 +20,7 @@ export function Testimonials() {
   return (
     <Box
       component="section"
-      id="testimonials"
+      id="promise"
       py={100}
       style={{ background: '#F8F9FB' }}
       ref={ref}
@@ -42,7 +42,7 @@ export function Testimonials() {
             }}
           >
             <Stack align="center" gap="xl">
-              {/* Quote */}
+              {/* Promise Statement */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -58,25 +58,24 @@ export function Testimonials() {
                     color: '#0A1A3F',
                   }}
                 >
-                  Working with this team was an absolute{' '}
+                  A new agency, but{' '}
                   <Text
                     component="span"
                     inherit
                     fw={600}
                     className="metallic-text"
                   >
-                    game-changer for our business.
+                    not new to the craft.
                   </Text>{' '}
-                  Their flexible approach and attention to detail helped us
-                  streamline our processes and{' '}
+                  With over a decade of enterprise experience in Android, iOS, and web development,{' '}
                   <Text component="span" inherit fw={700}>
-                    deliver results faster
+                    your project gets proven expertise
                   </Text>{' '}
-                  than we anticipated.
+                  from day one.
                 </Title>
               </motion.div>
 
-              {/* Author */}
+              {/* Founder Info */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
@@ -97,14 +96,14 @@ export function Testimonials() {
                         boxShadow: '0 4px 20px rgba(31, 79, 216, 0.2)',
                       }}
                     >
-                      EJ
+                      ES
                     </Avatar>
                   </motion.div>
                   <Text fw={600} style={{ color: '#0A1A3F' }}>
-                    Emily Johnson
+                    Evan Smith
                   </Text>
                   <Text size="sm" style={{ color: '#8A9BB8' }}>
-                    Lead Product Manager at NextGen Innovators
+                    Founder & Lead Developer • 10+ Years Experience
                   </Text>
                 </Stack>
               </motion.div>
@@ -118,6 +117,8 @@ export function Testimonials() {
                 <Group gap="md" mt="xl">
                   <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                     <Button
+                      component="a"
+                      href="/contact"
                       size="lg"
                       radius="xl"
                       styles={{
@@ -137,6 +138,8 @@ export function Testimonials() {
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                     <Button
+                      component="a"
+                      href="/about"
                       size="lg"
                       radius="xl"
                       variant="outline"
@@ -152,7 +155,7 @@ export function Testimonials() {
                         },
                       }}
                     >
-                      View our work
+                      Learn about Evan
                     </Button>
                   </motion.div>
                 </Group>

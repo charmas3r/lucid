@@ -39,6 +39,45 @@ export const caseStudy = defineType({
       group: 'content',
       validation: (rule) => rule.required(),
     }),
+    
+    // --- NEW FIELDS AFTER CLIENT NAME ---
+    defineField({
+      name: 'clientIndustry',
+      title: 'Client Industry',
+      type: 'string',
+      description: 'Categorize case studies by industry',
+      group: 'content',
+      options: {
+        list: [
+          { title: 'Wedding Services', value: 'Wedding Services' },
+          { title: 'Events', value: 'Events' },
+          { title: 'Hospitality', value: 'Hospitality' },
+          { title: 'SaaS', value: 'SaaS' },
+          { title: 'Local Business', value: 'Local Business' },
+          { title: 'Healthcare', value: 'Healthcare' },
+          { title: 'Food & Beverage', value: 'Food & Beverage' },
+          { title: 'Health & Fitness', value: 'Health & Fitness' },
+          { title: 'Legal Services', value: 'Legal Services' },
+          { title: 'Home Services', value: 'Home Services' },
+          { title: 'Fashion', value: 'Fashion' },
+          { title: 'Technology', value: 'Technology' },
+          { title: 'Finance', value: 'Finance' },
+          { title: 'Education', value: 'Education' },
+          { title: 'Real Estate', value: 'Real Estate' },
+          { title: 'Non-Profit', value: 'Non-Profit' },
+          { title: 'E-Commerce', value: 'E-Commerce' },
+          { title: 'Other', value: 'Other' },
+        ],
+      },
+    }),
+    defineField({
+      name: 'clientLocation',
+      title: 'Client Location',
+      type: 'string',
+      description: 'Geographic context for the client (e.g., "San Diego, CA")',
+      group: 'content',
+    }),
+    
     defineField({
       name: 'description',
       title: 'Short Description',
@@ -48,6 +87,56 @@ export const caseStudy = defineType({
       rows: 3,
       validation: (rule) => rule.required().max(300),
     }),
+    
+    // --- NEW FIELDS AFTER SHORT DESCRIPTION ---
+    defineField({
+      name: 'projectGoals',
+      title: 'Project Goals',
+      type: 'array',
+      description: 'Primary and secondary objectives of the project',
+      group: 'content',
+      of: [
+        {
+          type: 'object',
+          name: 'goal',
+          fields: [
+            {
+              name: 'goal',
+              title: 'Goal',
+              type: 'string',
+              description: 'e.g., "Increase qualified leads", "Improve mobile usability"',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'isPrimary',
+              title: 'Primary Goal',
+              type: 'boolean',
+              description: 'Mark if this is a primary objective',
+              initialValue: false,
+            },
+          ],
+          preview: {
+            select: {
+              title: 'goal',
+              isPrimary: 'isPrimary',
+            },
+            prepare({ title, isPrimary }) {
+              return {
+                title: isPrimary ? `⭐ ${title}` : title,
+              };
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'timeline',
+      title: 'Timeline / Duration',
+      type: 'string',
+      description: 'How long did the project take? (e.g., "6 weeks", "3 months")',
+      group: 'content',
+    }),
+    
     defineField({
       name: 'challenge',
       title: 'The Challenge',
@@ -64,6 +153,55 @@ export const caseStudy = defineType({
       group: 'content',
       rows: 4,
     }),
+    
+    // --- NEW FIELDS AFTER OUR SOLUTION ---
+    defineField({
+      name: 'processApproach',
+      title: 'Process / Approach',
+      type: 'array',
+      description: 'Explain how the project was executed (Discovery, Design, Development, Launch)',
+      group: 'content',
+      of: [
+        {
+          type: 'object',
+          name: 'phase',
+          fields: [
+            {
+              name: 'phaseName',
+              title: 'Phase Name',
+              type: 'string',
+              description: 'e.g., "Discovery", "Design", "Development", "Launch & Optimization"',
+              validation: (rule) => rule.required(),
+            },
+            {
+              name: 'description',
+              title: 'Description',
+              type: 'text',
+              rows: 3,
+              description: 'What happened during this phase',
+            },
+          ],
+          preview: {
+            select: {
+              title: 'phaseName',
+              subtitle: 'description',
+            },
+          },
+        },
+      ],
+    }),
+    defineField({
+      name: 'techStack',
+      title: 'Technology Stack',
+      type: 'array',
+      description: 'Tools, platforms, and technologies used',
+      group: 'content',
+      of: [{ type: 'string' }],
+      options: {
+        layout: 'tags',
+      },
+    }),
+    
     defineField({
       name: 'services',
       title: 'Services Provided',
@@ -110,6 +248,17 @@ export const caseStudy = defineType({
         },
       ],
     }),
+    
+    // --- NEW FIELD AFTER KEY METRICS ---
+    defineField({
+      name: 'resultsSummary',
+      title: 'Results Summary',
+      type: 'text',
+      description: 'Plain-English explanation of outcomes for non-technical readers',
+      group: 'content',
+      rows: 4,
+    }),
+    
     defineField({
       name: 'testimonial',
       title: 'Client Testimonial',
@@ -136,13 +285,44 @@ export const caseStudy = defineType({
       ],
     }),
     
+    // --- NEW FIELD: CALL TO ACTION ---
+    defineField({
+      name: 'callToAction',
+      title: 'Call to Action',
+      type: 'object',
+      description: 'Convert case study readers into leads',
+      group: 'content',
+      fields: [
+        {
+          name: 'text',
+          title: 'CTA Text',
+          type: 'string',
+          description: 'e.g., "Need a website that converts? Let\'s talk."',
+        },
+        {
+          name: 'linkUrl',
+          title: 'Link URL',
+          type: 'url',
+          description: 'Optional: Where should the CTA link to?',
+          validation: (rule) => rule.uri({ allowRelative: true }),
+        },
+        {
+          name: 'linkText',
+          title: 'Link Button Text',
+          type: 'string',
+          description: 'e.g., "Get Started", "Contact Us"',
+        },
+      ],
+    }),
+    
     // === META GROUP ===
     defineField({
       name: 'industry',
-      title: 'Industry',
+      title: 'Industry (Legacy)',
       type: 'string',
-      description: 'Client industry (e.g., Healthcare, E-Commerce, SaaS)',
+      description: 'Client industry - use "Client Industry" field instead',
       group: 'meta',
+      hidden: true, // Hide legacy field but keep for backward compatibility
       options: {
         list: [
           { title: 'Healthcare', value: 'Healthcare' },
@@ -159,7 +339,6 @@ export const caseStudy = defineType({
           { title: 'Other', value: 'Other' },
         ],
       },
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'category',
@@ -179,17 +358,10 @@ export const caseStudy = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'timeline',
-      title: 'Project Timeline',
-      type: 'string',
-      description: 'How long did the project take? (e.g., "8 weeks", "6 months")',
-      group: 'meta',
-    }),
-    defineField({
       name: 'featured',
       title: 'Featured',
       type: 'boolean',
-      description: 'Feature this case study prominently on the site',
+      description: 'Feature this case study prominently on the landing page',
       group: 'meta',
       initialValue: false,
     }),

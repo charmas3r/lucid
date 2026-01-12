@@ -83,44 +83,44 @@ const coreValues = [
 
 const journeyMilestones = [
   {
-    year: '2015',
-    title: 'The Beginning',
-    description: 'Founded with a simple mission: bring enterprise-quality digital solutions to local businesses.',
+    year: '2014',
+    title: 'Software Engineering Begins',
+    description: 'Evan begins his career as a software engineer, diving deep into mobile and web development.',
   },
   {
-    year: '2017',
-    title: 'First Major Milestone',
-    description: 'Helped 50+ San Diego businesses transform their digital presence and reach new customers.',
+    year: '2016',
+    title: 'Enterprise Experience',
+    description: 'Joins major enterprise companies, building scalable applications used by millions of users.',
   },
   {
-    year: '2020',
-    title: 'Expanding Services',
-    description: 'Added comprehensive SEO and digital marketing to provide complete growth solutions.',
+    year: '2019',
+    title: 'Leadership & Team Building',
+    description: 'Steps into engineering management, leading teams building Android, iOS, and web applications.',
   },
   {
-    year: '2023',
-    title: 'Recognition',
-    description: 'Named top-rated web development agency in San Diego with consistent 5-star reviews.',
+    year: '2022',
+    title: 'Freelance Success',
+    description: 'Expands freelance work, helping startups and established businesses with digital transformation.',
   },
   {
-    year: 'Today',
-    title: 'Looking Forward',
-    description: 'Continuing to innovate and help businesses thrive in an increasingly digital world.',
+    year: '2025',
+    title: 'Lucid Web Studios Founded',
+    description: 'Launches Lucid to bring enterprise-quality digital solutions to local businesses that deserve better.',
   },
 ];
 
 const stats = [
-  { value: '150+', label: 'Projects Delivered' },
-  { value: '9', label: 'Years of Excellence' },
-  { value: '98%', label: 'Client Satisfaction' },
-  { value: '5.0', label: 'Google Rating' },
+  { value: '10+', label: 'Years in Software' },
+  { value: '3', label: 'Platforms Mastered' },
+  { value: '50+', label: 'Projects Shipped' },
+  { value: '∞', label: 'Commitment to Quality' },
 ];
 
 const team = [
   {
     name: 'Evan Smith',
     role: 'Founder & Lead Developer',
-    bio: 'Full-stack developer with a passion for crafting clean, performant web experiences. Specializing in React, Next.js, and modern web technologies.',
+    bio: 'Software engineer with over a decade of experience building Android, iOS, and web applications. Former engineering manager at enterprise companies, now bringing that expertise to help local businesses thrive digitally.',
     avatar: 'ES',
     icon: IconCode,
   },
@@ -593,20 +593,20 @@ export default function AboutPage() {
                     <IconQuote size={40} color="#1F4FD8" style={{ opacity: 0.3, marginBottom: 16 }} />
                     <Stack gap="lg">
                       <Text size="lg" lh={1.9} style={{ color: '#0A1A3F' }}>
-                        I started Lucid Web Studios because I saw too many amazing local San Diego
-                        businesses struggling with outdated websites and confusing digital strategies.
-                        They deserved better.
+                        After more than a decade as a software engineer—building apps at enterprise 
+                        companies, leading mobile and web teams, and freelancing for startups—I saw 
+                        a gap I couldn&apos;t ignore: local businesses deserve better digital experiences.
                       </Text>
                       <Text size="lg" lh={1.9} style={{ color: '#5A7099' }}>
-                        Having worked with enterprise companies, I knew the power of great digital 
-                        experiences. I wanted to bring that same level of expertise to the businesses 
-                        that form the backbone of our community—the family-owned restaurants, the 
-                        independent contractors, the local professionals who take pride in their work.
+                        I&apos;ve shipped Android and iOS apps used by millions, architected web platforms 
+                        at scale, and managed engineering teams. Now I&apos;m channeling that experience 
+                        into something more personal—helping the businesses that form the backbone of 
+                        our community compete in the digital world.
                       </Text>
                       <Text size="lg" lh={1.9} style={{ color: '#5A7099' }}>
-                        Every project we take on is personal. When your phone rings because someone 
-                        found you online, when your revenue grows because customers trust what they 
-                        see—that&apos;s why we do what we do. That&apos;s the clarity we bring.
+                        Lucid Web Studios is new, but the expertise behind it isn&apos;t. Every project 
+                        gets the same level of care and technical excellence I brought to enterprise 
+                        products—just tailored for businesses that need it most.
                       </Text>
                       <Divider my="md" color="rgba(31, 79, 216, 0.1)" />
                       <Text size="md" fw={600} style={{ color: '#1F4FD8' }}>
@@ -774,7 +774,7 @@ export default function AboutPage() {
                       color: '#0A1A3F',
                     }}
                   >
-                    Growing Together Since 2015
+                    A Decade of Building
                   </Title>
                 </motion.div>
               </Stack>

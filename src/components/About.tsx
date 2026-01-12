@@ -22,7 +22,7 @@ const team = [
   {
     name: 'Evan Smith',
     role: 'FOUNDER & LEAD DEVELOPER',
-    bio: 'Full-stack developer with a passion for crafting clean, performant web experiences. Specializing in React, Next.js, and modern web technologies to help San Diego businesses achieve digital clarity.',
+    bio: '10+ years building Android, iOS, and web applications at enterprise companies. Former engineering manager now bringing that expertise to help local businesses compete digitally.',
     avatar: 'ES',
   },
   {

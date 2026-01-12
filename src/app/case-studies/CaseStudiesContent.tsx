@@ -107,7 +107,7 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
               backdropFilter: 'blur(10px)',
             }}
           >
-            {study.industry}
+            {study.clientIndustry || study.industry}
           </Badge>
 
           {study.featured && (
@@ -197,7 +197,7 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
             <motion.div
               whileHover={{ x: 5 }}
               transition={{ duration: 0.2 }}
-              onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: study.title, industry: study.industry })}
+              onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: study.title, industry: study.clientIndustry || study.industry || 'Unknown' })}
             >
               <Link
                 href={`/case-studies/${study.slug?.current || study._id}`}
@@ -263,7 +263,7 @@ function FeaturedCaseStudy({ study }: { study: SanityCaseStudy }) {
                 {study.title}
               </Title>
               <Text size="lg" style={{ color: 'rgba(255, 255, 255, 0.8)' }} mt="xs">
-                {study.industry}
+                {study.clientIndustry || study.industry}
               </Text>
             </Box>
 

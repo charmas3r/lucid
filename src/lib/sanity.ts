@@ -25,6 +25,28 @@ export interface CaseStudyMetric {
   icon?: string;
 }
 
+export interface CaseStudyGoal {
+  goal: string;
+  isPrimary?: boolean;
+}
+
+export interface CaseStudyPhase {
+  phaseName: string;
+  description?: string;
+}
+
+export interface CaseStudyTestimonial {
+  quote: string;
+  author: string;
+  role: string;
+}
+
+export interface CaseStudyCTA {
+  text?: string;
+  linkUrl?: string;
+  linkText?: string;
+}
+
 export interface SanityCaseStudy {
   _id: string;
   title: string;
@@ -32,47 +54,64 @@ export interface SanityCaseStudy {
     current: string;
   };
   client: string;
-  industry: string;
+  // New fields after Client Name
+  clientIndustry?: string;
+  clientLocation?: string;
+  // Legacy industry field (for backward compatibility)
+  industry?: string;
   category: 'web' | 'mobile' | 'ecommerce' | 'seo';
   description: string;
-  challenge: string;
-  solution: string;
-  services: string[];
-  metrics: CaseStudyMetric[];
-  timeline: string;
+  // New fields after Short Description
+  projectGoals?: CaseStudyGoal[];
+  timeline?: string;
+  challenge?: string;
+  solution?: string;
+  // New fields after Our Solution
+  processApproach?: CaseStudyPhase[];
+  techStack?: string[];
+  services?: string[];
+  metrics?: CaseStudyMetric[];
+  // New field after Key Metrics
+  resultsSummary?: string;
+  testimonial?: CaseStudyTestimonial;
+  // New CTA field
+  callToAction?: CaseStudyCTA;
   featured: boolean;
   image?: {
     asset: {
       _ref: string;
     };
+    alt?: string;
   };
   gradient?: string;
-  testimonial?: {
-    quote: string;
-    author: string;
-    role: string;
-  };
   publishedAt: string;
 }
 
-// GROQ Queries
+// GROQ Queries - includes all fields for frontend rendering
 export const caseStudiesQuery = `*[_type == "caseStudy"] | order(featured desc, publishedAt desc) {
   _id,
   title,
   slug,
   client,
+  clientIndustry,
+  clientLocation,
   industry,
   category,
   description,
+  projectGoals,
+  timeline,
   challenge,
   solution,
+  processApproach,
+  techStack,
   services,
   metrics,
-  timeline,
+  resultsSummary,
+  testimonial,
+  callToAction,
   featured,
   image,
   gradient,
-  testimonial,
   publishedAt
 }`;
 
@@ -81,12 +120,16 @@ export const featuredCaseStudiesQuery = `*[_type == "caseStudy" && featured == t
   title,
   slug,
   client,
+  clientIndustry,
+  clientLocation,
   industry,
   category,
   description,
+  projectGoals,
+  timeline,
   services,
   metrics,
-  timeline,
+  resultsSummary,
   featured,
   image,
   gradient
@@ -97,18 +140,25 @@ export const caseStudyBySlugQuery = `*[_type == "caseStudy" && slug.current == $
   title,
   slug,
   client,
+  clientIndustry,
+  clientLocation,
   industry,
   category,
   description,
+  projectGoals,
+  timeline,
   challenge,
   solution,
+  processApproach,
+  techStack,
   services,
   metrics,
-  timeline,
+  resultsSummary,
+  testimonial,
+  callToAction,
   featured,
   image,
   gradient,
-  testimonial,
   publishedAt
 }`;
 
