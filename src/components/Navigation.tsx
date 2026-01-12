@@ -16,7 +16,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { IconChevronDown, IconCode, IconDeviceMobile, IconShoppingCart, IconSearch, IconChartBar } from '@tabler/icons-react';
+import { IconChevronDown, IconCode, IconDeviceMobile, IconShoppingCart, IconSearch, IconChartBar, IconX } from '@tabler/icons-react';
 import { DiscountBanner, useDiscountBanner } from './DiscountBanner';
 import { trackEvent, EVENTS } from '@/lib/analytics';
 
@@ -68,6 +68,7 @@ export function Navigation() {
   const showBanner = hasMounted && bannerVisible && !isScrolled;
 
   return (
+    <>
     <header
       style={{
         position: 'fixed',
@@ -342,6 +343,8 @@ export function Navigation() {
           </div>
         </div>
       </Container>
+      </div>
+    </header>
 
       {/* Mobile Drawer */}
       <Drawer
@@ -354,11 +357,17 @@ export function Navigation() {
         size="100%"
         padding="xl"
         hiddenFrom="md"
-        withCloseButton
-        closeButtonProps={{
-          'aria-label': 'Close navigation menu',
+        withCloseButton={false}
+        transitionProps={{ duration: 200 }}
+        zIndex={1100}
+        styles={{
+          content: { background: '#0A1A3F' },
+          body: { background: '#0A1A3F', paddingTop: 16 },
+          header: { display: 'none' },
         }}
-        title={
+      >
+        {/* Custom Header */}
+        <Group justify="space-between" align="center" mb="xl" style={{ padding: '0' }}>
           <Link 
             href="/" 
             onClick={() => {
@@ -375,25 +384,30 @@ export function Navigation() {
               style={{ height: 40, width: 'auto' }}
             />
           </Link>
-        }
-        transitionProps={{ duration: 200 }}
-        styles={{
-          root: { overflow: 'hidden' },
-          inner: { overflow: 'hidden' },
-          content: { background: '#0A1A3F', overflow: 'hidden' },
-          body: { background: '#0A1A3F', height: '100%', overflow: 'hidden' },
-          header: { background: '#0A1A3F', borderBottom: 'none', padding: '16px 24px' },
-          close: { 
-            color: '#FFFFFF', 
-            width: 44, 
-            height: 44,
-            '&:hover': {
-              background: 'rgba(255, 255, 255, 0.1)',
-            },
-          },
-        }}
-      >
-            <Stack gap="xl" mt="md">
+          <button
+            type="button"
+            aria-label="Close navigation menu"
+            onClick={() => {
+              close();
+              setMobileServicesOpen(false);
+              trackEvent(EVENTS.NAV_CLOSE_MOBILE_MENU);
+            }}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 8,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 8,
+            }}
+          >
+            <IconX size={28} color="#FFFFFF" stroke={2} />
+          </button>
+        </Group>
+
+        <Stack gap="xl">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.label}
@@ -541,7 +555,6 @@ export function Navigation() {
               </motion.div>
             </Stack>
       </Drawer>
-      </div>
-    </header>
+    </>
   );
 }

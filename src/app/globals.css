@@ -134,12 +134,13 @@ html {
 /* On mobile: visual (order 1) comes before content (order 2) */
 /* On desktop (md and up): reset to natural order */
 
-/* Mobile: smaller cube animation */
+/* Mobile: smaller cube animation and positioning */
 @media (max-width: 61.99em) {
   .hero-visual {
     max-height: 200px !important;
     min-height: 200px !important;
     height: 200px !important;
+    margin-top: -40px !important;
   }
 }
 

@@ -86,7 +86,7 @@ export function Hero() {
   return (
     <Box
       component="section"
-      pt={160}
+      pt={{ base: 160, md: 200 }}
       pb={80}
       style={{ background: '#0A1A3F', position: 'relative' }}
     >
