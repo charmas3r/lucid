@@ -119,47 +119,9 @@ export function Footer() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <Group justify="space-between" mt="xl" wrap="wrap" gap="md">
-            <Text size="xs" style={{ color: '#7A94BA' }}>
-              © {new Date().getFullYear()} Lucid Web Studios. All rights reserved
-            </Text>
-            <Group gap="xl">
-              <motion.div whileHover={{ y: -1 }}>
-                <Anchor
-                  href="#"
-                  size="xs"
-                  underline="hover"
-                  onClick={() => trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: 'privacy_policy' })}
-                  style={{ color: '#7A94BA' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#4DA3FF';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = '#7A94BA';
-                  }}
-                >
-                  Privacy Policy
-                </Anchor>
-              </motion.div>
-              <motion.div whileHover={{ y: -1 }}>
-                <Anchor
-                  href="#"
-                  size="xs"
-                  underline="hover"
-                  onClick={() => trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: 'terms_of_service' })}
-                  style={{ color: '#7A94BA' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#4DA3FF';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = '#7A94BA';
-                  }}
-                >
-                  Terms of Service
-                </Anchor>
-              </motion.div>
-            </Group>
-          </Group>
+          <Text size="xs" style={{ color: '#7A94BA' }} mt="xl">
+            © {new Date().getFullYear()} Lucid Web Studios. All rights reserved
+          </Text>
         </motion.div>
       </Container>
     </Box>

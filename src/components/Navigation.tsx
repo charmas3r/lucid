@@ -83,6 +83,10 @@ export function Navigation() {
       <div
         style={{
           padding: '16px 24px',
+          // Hide navbar pill when mobile drawer is open
+          opacity: opened ? 0 : 1,
+          pointerEvents: opened ? 'none' : 'auto',
+          transition: 'opacity 0.2s ease',
         }}
       >
       <Container size="xl">

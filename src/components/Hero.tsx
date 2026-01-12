@@ -223,14 +223,18 @@ export function Hero() {
         <Box
           mt={80}
           py="lg"
-          px="xl"
+          px={{ base: 'md', sm: 'xl' }}
           style={{
             background: 'rgba(13, 31, 74, 0.6)',
             borderRadius: 16,
             border: '1px solid rgba(255, 255, 255, 0.1)',
           }}
         >
-          <Group justify="center" gap={40} wrap="wrap">
+          <SimpleGrid 
+            cols={{ base: 2, sm: 2, md: 4 }} 
+            spacing={{ base: 'md', sm: 'lg', md: 40 }}
+            verticalSpacing={{ base: 'lg', md: 'md' }}
+          >
             {trustBadges.map((badge) => (
               <Group key={badge.label} gap="sm" wrap="nowrap" className="trust-badge">
                 <Box
@@ -242,6 +246,7 @@ export function Hero() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
+                    flexShrink: 0,
                   }}
                 >
                   <badge.icon size={18} color="#4DA3FF" stroke={1.8} />
@@ -251,14 +256,13 @@ export function Hero() {
                   fw={600}
                   style={{
                     color: '#FFFFFF',
-                    whiteSpace: 'nowrap',
                   }}
                 >
                   {badge.label}
                 </Text>
               </Group>
             ))}
-          </Group>
+          </SimpleGrid>
         </Box>
       </Container>
     </Box>
