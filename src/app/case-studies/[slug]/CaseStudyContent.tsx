@@ -409,7 +409,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                           rightSection={<IconExternalLink size={18} />}
                           onClick={() => trackEvent(EVENTS.CASE_STUDY_EXTERNAL_LINK, {
                             study: caseStudy.title,
-                            url: caseStudy.newSiteUrl,
+                            url: caseStudy.newSiteUrl || '',
                           })}
                           styles={{
                             root: {
