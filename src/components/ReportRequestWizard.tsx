@@ -37,6 +37,7 @@ import {
   IconTargetArrow,
   IconTrendingUp,
 } from '@tabler/icons-react';
+import { trackEvent, EVENTS } from '@/lib/analytics';
 
 type ReportType = 'seo' | 'geo' | 'conversion' | 'full';
 
@@ -148,6 +149,7 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
   const progress = ((step + 1) / totalSteps) * 100;
 
   const handleReportToggle = (reportId: ReportType) => {
+    trackEvent(EVENTS.WIZARD_SELECT_REPORT, { report: reportId });
     setFormData(prev => {
       // If selecting "full", deselect others
       if (reportId === 'full') {
@@ -198,8 +200,13 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
         throw new Error(result.error || 'Failed to submit request');
       }
 
+      trackEvent(EVENTS.WIZARD_COMPLETE, { 
+        reports: formData.reportTypes.join(','),
+        business_type: formData.businessType || 'not_specified'
+      });
       setIsComplete(true);
     } catch (err) {
+      trackEvent(EVENTS.FORM_ERROR, { form: 'report_wizard', error: err instanceof Error ? err.message : 'unknown' });
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -207,6 +214,7 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
   };
 
   const handleClose = () => {
+    trackEvent(EVENTS.WIZARD_CLOSE, { step, completed: isComplete });
     onClose();
     // Reset after modal animation
     setTimeout(() => {
@@ -734,7 +742,10 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
                 variant="gradient"
                 gradient={{ from: '#4DABF7', to: '#228BE6' }}
                 rightSection={<IconArrowRight size={16} />}
-                onClick={() => setStep(s => s + 1)}
+                onClick={() => {
+                  trackEvent(EVENTS.WIZARD_STEP, { from: step, to: step + 1 });
+                  setStep(s => s + 1);
+                }}
                 disabled={!canProceed()}
               >
                 Continue
@@ -793,6 +804,11 @@ export function RequestReportButton({
 }: RequestReportButtonProps) {
   const [opened, setOpened] = useState(false);
 
+  const handleOpen = () => {
+    trackEvent(EVENTS.WIZARD_OPEN, { report_type: reportType || 'none' });
+    setOpened(true);
+  };
+
   // Custom styles for white variant (for dark backgrounds)
   const getButtonProps = () => {
     if (variant === 'white') {
@@ -826,7 +842,7 @@ export function RequestReportButton({
         radius="xl"
         fullWidth={fullWidth}
         rightSection={<IconFileAnalytics size={16} />}
-        onClick={() => setOpened(true)}
+        onClick={handleOpen}
       >
         {children}
       </Button>

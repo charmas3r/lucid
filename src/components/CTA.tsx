@@ -11,6 +11,7 @@ import {
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
+import { trackEvent, EVENTS } from '@/lib/analytics';
 
 export function CTA() {
   const ref = useRef(null);
@@ -66,12 +67,15 @@ export function CTA() {
   const handleDaySelect = (dayIndex: number) => {
     if (!isDayPast(dayIndex)) {
       setSelectedDay(dayIndex);
+      trackEvent(EVENTS.CALENDAR_SELECT_DATE, { day: dayIndex + 1, month: monthNames[currentMonth] });
     }
   };
 
   const handleTimeSelect = (time: string) => {
     if (isTimePast(time)) return;
     const date = `${monthNames[currentMonth]} ${selectedDay + 1}, ${currentYear}`;
+    trackEvent(EVENTS.CALENDAR_SELECT_TIME, { time, date });
+    trackEvent(EVENTS.CTA_CLICK_BOOK_CALL, { location: 'cta_calendar', date, time });
     router.push(`/contact?date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`);
   };
 

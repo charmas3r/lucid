@@ -32,6 +32,7 @@ import {
   IconCrown,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
+import { trackEvent, EVENTS } from '@/lib/analytics';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -366,7 +367,7 @@ const addOns = [
   { name: 'Photography', price: '$500', description: 'Professional product/team photos' },
 ];
 
-function PricingCard({ tier, index, isInView }: { tier: typeof webPricing[0]; index: number; isInView: boolean }) {
+function PricingCard({ tier, index, isInView, category }: { tier: typeof webPricing[0]; index: number; isInView: boolean; category: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -493,6 +494,7 @@ function PricingCard({ tier, index, isInView }: { tier: typeof webPricing[0]; in
               size="lg"
               radius="xl"
               rightSection={<IconArrowRight size={18} />}
+              onClick={() => trackEvent(EVENTS.PRICING_SELECT_PLAN, { plan: tier.name, category, price: tier.price })}
               styles={{
                 root: {
                   background: tier.popular 
@@ -646,7 +648,10 @@ export default function PricingPage() {
             >
               <Tabs
                 value={activeTab}
-                onChange={setActiveTab}
+                onChange={(value) => {
+                  setActiveTab(value);
+                  if (value) trackEvent(EVENTS.PRICING_VIEW_TAB, { tab: value });
+                }}
                 variant="pills"
                 radius="xl"
                 styles={{
@@ -698,6 +703,7 @@ export default function PricingPage() {
                   tier={tier}
                   index={index}
                   isInView={pricingInView}
+                  category={activeTab || 'web'}
                 />
               ))}
             </SimpleGrid>

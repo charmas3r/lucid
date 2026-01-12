@@ -18,6 +18,7 @@ import {
 } from '@tabler/icons-react';
 import Link from 'next/link';
 import { Logo } from './Logo';
+import { trackEvent, EVENTS } from '@/lib/analytics';
 
 const socialLinks = [
   { icon: IconBrandFacebook, href: '#', label: 'Facebook' },
@@ -49,7 +50,11 @@ export function Footer() {
           <Group justify="space-between" align="center" mb="xl">
             {/* Logo and tagline */}
             <Box>
-              <Link href="/" style={{ textDecoration: 'none' }}>
+              <Link 
+                href="/" 
+                style={{ textDecoration: 'none' }}
+                onClick={() => trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: 'logo' })}
+              >
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Group gap="sm" mb="xs">
                     <Logo size={36} />
@@ -79,6 +84,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     aria-label={social.label}
+                    onClick={() => trackEvent(EVENTS.FOOTER_CLICK_SOCIAL, { platform: social.label })}
                     style={{
                       color: '#8A9BB8',
                       transition: 'color 0.2s ease',
@@ -122,6 +128,7 @@ export function Footer() {
                   href="#"
                   size="xs"
                   underline="hover"
+                  onClick={() => trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: 'privacy_policy' })}
                   style={{ color: '#8A9BB8' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#1F4FD8';
@@ -138,6 +145,7 @@ export function Footer() {
                   href="#"
                   size="xs"
                   underline="hover"
+                  onClick={() => trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: 'terms_of_service' })}
                   style={{ color: '#8A9BB8' }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#1F4FD8';

@@ -36,6 +36,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <ColorSchemeScript defaultColorScheme="light" />
+        {/* Umami Analytics */}
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="ae124929-f7d4-40d9-9ff4-07df58658a41"
+        />
       </head>
       <body className={dmSans.variable}>
         <MantineProvider theme={theme} defaultColorScheme="light">

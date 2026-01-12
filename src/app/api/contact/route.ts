@@ -1,5 +1,6 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { InquiryConfirmationEmail } from '@/emails';
 
 interface ContactFormData {
   name: string;
@@ -121,47 +122,21 @@ export async function POST(request: Request) {
       );
     }
 
-    // Send confirmation email to the user
+    // Generate a simple reference ID
+    const inquiryId = `LWS-${Date.now().toString(36).toUpperCase()}`;
+
+    // Send confirmation email to the user using React Email template
     await resend.emails.send({
       from: 'Lucid Web Studios <noreply@notifications.lucidweb.studio>',
       to: [email],
-      subject: "We've received your message!",
-      html: `
-        <!DOCTYPE html>
-        <html>
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          </head>
-          <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 0; padding: 0; background-color: #f5f5f5;">
-            <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
-              <div style="background: linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%); padding: 30px; border-radius: 16px 16px 0 0; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 24px;">Thanks for reaching out!</h1>
-              </div>
-              
-              <div style="background: white; padding: 30px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-                <p style="color: #0A1A3F; font-size: 16px; line-height: 1.6;">Hi ${name},</p>
-                <p style="color: #5A7099; font-size: 16px; line-height: 1.6;">Thank you for contacting Lucid Web Studios! We've received your message and will get back to you within 24 hours.</p>
-                
-                ${preferredDate && preferredTime ? `
-                <div style="background: rgba(31, 79, 216, 0.05); padding: 16px; border-radius: 12px; margin: 20px 0; border-left: 4px solid #1F4FD8;">
-                  <p style="margin: 0; color: #1F4FD8; font-weight: 500;">📅 Requested consultation time:</p>
-                  <p style="margin: 8px 0 0 0; color: #0A1A3F;">${preferredDate} at ${preferredTime}</p>
-                </div>
-                ` : ''}
-                
-                <p style="color: #5A7099; font-size: 16px; line-height: 1.6;">In the meantime, feel free to check out our recent work or learn more about our services on our website.</p>
-                
-                <p style="color: #0A1A3F; font-size: 16px; line-height: 1.6; margin-top: 24px;">Best regards,<br><strong>The Lucid Team</strong></p>
-              </div>
-              
-              <div style="text-align: center; margin-top: 20px;">
-                <a href="https://lucidweb.studio" style="color: #1F4FD8; text-decoration: none; font-size: 14px;">lucidweb.studio</a>
-              </div>
-            </div>
-          </body>
-        </html>
-      `,
+      subject: "We've received your inquiry! Here's what happens next",
+      react: InquiryConfirmationEmail({
+        customerName: name,
+        service,
+        preferredDate,
+        preferredTime,
+        inquiryId,
+      }),
     });
 
     return NextResponse.json({ success: true, id: data?.id });

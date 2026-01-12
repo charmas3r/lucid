@@ -1,0 +1,1 @@
+export { InquiryConfirmationEmail } from './InquiryConfirmation';

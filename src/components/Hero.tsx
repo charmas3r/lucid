@@ -19,6 +19,7 @@ import {
   IconMapPin,
 } from '@tabler/icons-react';
 import dynamic from 'next/dynamic';
+import { trackEvent, EVENTS } from '@/lib/analytics';
 
 // Dynamic import with SSR disabled
 const RubiksCube3D = dynamic(
@@ -170,6 +171,7 @@ export function Hero() {
                     href="/contact"
                     size="lg"
                     radius="xl"
+                    onClick={() => trackEvent(EVENTS.CTA_CLICK_BOOK_CALL, { location: 'hero' })}
                     styles={{
                       root: {
                         background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
@@ -186,10 +188,13 @@ export function Hero() {
                     Book a call
                   </Button>
                   <Button
+                    component="a"
+                    href="/case-studies"
                     size="lg"
                     radius="xl"
                     variant="outline"
                     rightSection={<IconArrowRight size={18} />}
+                    onClick={() => trackEvent(EVENTS.CTA_CLICK_VIEW_WORK, { location: 'hero' })}
                     styles={{
                       root: {
                         borderColor: '#C9D2E3',

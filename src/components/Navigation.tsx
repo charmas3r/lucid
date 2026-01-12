@@ -17,6 +17,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { IconChevronDown, IconCode, IconDeviceMobile, IconShoppingCart, IconSearch, IconChartBar } from '@tabler/icons-react';
 import { Logo } from './Logo';
+import { trackEvent, EVENTS } from '@/lib/analytics';
 
 const serviceSubLinks = [
   { label: 'Web Development', href: '/services/web-development', icon: IconCode },
@@ -72,7 +73,11 @@ export function Navigation() {
         >
           <Group justify="space-between" align="center">
             {/* Logo */}
-            <Link href="/" style={{ textDecoration: 'none' }}>
+            <Link 
+              href="/" 
+              style={{ textDecoration: 'none' }}
+              onClick={() => trackEvent(EVENTS.NAV_CLICK_LOGO)}
+            >
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -182,6 +187,7 @@ export function Navigation() {
                                   <Link
                                     href={subLink.href}
                                     style={{ textDecoration: 'none' }}
+                                    onClick={() => trackEvent(EVENTS.NAV_CLICK_DROPDOWN, { item: subLink.label })}
                                   >
                                     <motion.div
                                       whileHover={{ x: 4 }}
@@ -242,6 +248,7 @@ export function Navigation() {
                         letterSpacing: '0.5px',
                         transition: 'color 0.2s ease',
                       }}
+                      onClick={() => trackEvent(EVENTS.NAV_CLICK_MENU_ITEM, { item: link.label })}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.color = '#1F4FD8';
                       }}
@@ -263,6 +270,7 @@ export function Navigation() {
                 href="/contact"
                 radius="xl"
                 visibleFrom="sm"
+                onClick={() => trackEvent(EVENTS.CTA_CLICK_CONTACT, { location: 'nav' })}
                 styles={{
                   root: {
                     background: '#0A1A3F',
@@ -279,7 +287,10 @@ export function Navigation() {
               </Button>
               <Burger
                 opened={opened}
-                onClick={toggle}
+                onClick={() => {
+                  toggle();
+                  trackEvent(opened ? EVENTS.NAV_CLOSE_MOBILE_MENU : EVENTS.NAV_OPEN_MOBILE_MENU);
+                }}
                 hiddenFrom="md"
                 color="#0A1A3F"
                 size="sm"
@@ -349,7 +360,10 @@ export function Navigation() {
                             >
                               <Link
                                 href={subLink.href}
-                                onClick={close}
+                                onClick={() => {
+                                  close();
+                                  trackEvent(EVENTS.NAV_CLICK_DROPDOWN, { item: subLink.label, source: 'mobile' });
+                                }}
                                 style={{ textDecoration: 'none' }}
                               >
                                 <Group gap="sm">
@@ -386,7 +400,10 @@ export function Navigation() {
                           >
                             <Link
                               href="/services"
-                              onClick={close}
+                              onClick={() => {
+                                close();
+                                trackEvent(EVENTS.NAV_CLICK_MENU_ITEM, { item: 'View All Services', source: 'mobile' });
+                              }}
                               style={{ textDecoration: 'none' }}
                             >
                               <Text
@@ -404,7 +421,10 @@ export function Navigation() {
                   ) : (
                     <Link
                       href={link.href}
-                      onClick={close}
+                      onClick={() => {
+                        close();
+                        trackEvent(EVENTS.NAV_CLICK_MENU_ITEM, { item: link.label, source: 'mobile' });
+                      }}
                       style={{
                         textDecoration: 'none',
                         color: '#0A1A3F',
@@ -429,7 +449,10 @@ export function Navigation() {
                   fullWidth
                   component={Link}
                   href="/contact"
-                  onClick={close}
+                  onClick={() => {
+                    close();
+                    trackEvent(EVENTS.CTA_CLICK_CONTACT, { location: 'mobile_nav' });
+                  }}
                   styles={{
                     root: {
                       background: '#0A1A3F',

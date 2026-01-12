@@ -25,9 +25,12 @@ import {
   IconClock,
   IconSend,
   IconCalendar,
+  IconX,
+  IconCheck,
 } from '@tabler/icons-react';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { trackEvent, EVENTS } from '@/lib/analytics';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -65,6 +68,32 @@ function ContactForm() {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [countdown, setCountdown] = useState(8);
+
+  // Auto-close success message after countdown
+  useEffect(() => {
+    if (submitted && countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+      return () => clearTimeout(timer);
+    } else if (submitted && countdown === 0) {
+      handleReset();
+    }
+  }, [submitted, countdown]);
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setCountdown(8);
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      service: '',
+      preferredDate: '',
+      preferredTime: '',
+      message: '',
+    });
+  };
 
   // Update form when URL params change
   useEffect(() => {
@@ -99,8 +128,13 @@ function ContactForm() {
         throw new Error(result.error || 'Failed to send message');
       }
 
+      trackEvent(EVENTS.FORM_SUBMIT_CONTACT, { 
+        service: formData.service || 'not_specified',
+        has_consultation: Boolean(formData.preferredDate && formData.preferredTime)
+      });
       setSubmitted(true);
     } catch (err) {
+      trackEvent(EVENTS.FORM_ERROR, { form: 'contact', error: err instanceof Error ? err.message : 'unknown' });
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -168,6 +202,11 @@ function ContactForm() {
   ];
 
   if (submitted) {
+    // Calculate progress for the countdown ring (0 to 1)
+    const progress = countdown / 8;
+    const circumference = 2 * Math.PI * 46; // radius of 46
+    const strokeDashoffset = circumference * (1 - progress);
+
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
@@ -181,26 +220,114 @@ function ContactForm() {
             borderRadius: 24,
             border: '1px solid rgba(10, 26, 63, 0.06)',
             textAlign: 'center',
+            position: 'relative',
           }}
         >
+          {/* Close button */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            style={{
+              position: 'absolute',
+              top: 20,
+              right: 20,
+            }}
+          >
+            <Button
+              variant="subtle"
+              size="sm"
+              onClick={handleReset}
+              aria-label="Close success message"
+              styles={{
+                root: {
+                  color: '#8A9BB8',
+                  padding: 8,
+                  minWidth: 'auto',
+                  height: 'auto',
+                  '&:hover': {
+                    background: 'rgba(10, 26, 63, 0.05)',
+                    color: '#0A1A3F',
+                  },
+                },
+              }}
+            >
+              <IconX size={20} />
+            </Button>
+          </motion.div>
+
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
           >
+            {/* Countdown ring around the icon */}
             <Box
               style={{
-                width: 80,
-                height: 80,
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                position: 'relative',
+                width: 100,
+                height: 100,
                 margin: '0 auto 24px',
               }}
             >
-              <IconSend size={36} color="#FFFFFF" />
+              {/* SVG Progress Ring */}
+              <svg
+                width="100"
+                height="100"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  transform: 'rotate(-90deg)',
+                }}
+              >
+                {/* Background circle */}
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="46"
+                  fill="none"
+                  stroke="rgba(31, 79, 216, 0.1)"
+                  strokeWidth="4"
+                />
+                {/* Progress circle */}
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="46"
+                  fill="none"
+                  stroke="url(#gradient)"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeDasharray={circumference}
+                  strokeDashoffset={strokeDashoffset}
+                  style={{ transition: 'stroke-dashoffset 1s linear' }}
+                />
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#1F4FD8" />
+                    <stop offset="100%" stopColor="#4DA3FF" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              {/* Icon */}
+              <Box
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: 80,
+                  height: 80,
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <IconCheck size={36} color="#FFFFFF" />
+              </Box>
             </Box>
           </motion.div>
           <Title order={2} mb="md" style={{ color: '#0A1A3F' }}>
@@ -222,6 +349,34 @@ function ContactForm() {
               Consultation: {formData.preferredDate} at {formData.preferredTime}
             </Badge>
           )}
+          
+          {/* Action buttons */}
+          <Group justify="center" mt="xl" gap="md">
+            <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <Button
+                variant="light"
+                onClick={handleReset}
+                styles={{
+                  root: {
+                    background: 'rgba(31, 79, 216, 0.08)',
+                    color: '#1F4FD8',
+                    border: '1px solid rgba(31, 79, 216, 0.15)',
+                    borderRadius: 10,
+                    '&:hover': {
+                      background: 'rgba(31, 79, 216, 0.12)',
+                    },
+                  },
+                }}
+              >
+                Send Another Message
+              </Button>
+            </motion.div>
+          </Group>
+          
+          {/* Countdown text */}
+          <Text size="sm" mt="lg" style={{ color: '#8A9BB8' }}>
+            Closing in {countdown} second{countdown !== 1 ? 's' : ''}...
+          </Text>
         </Box>
       </motion.div>
     );

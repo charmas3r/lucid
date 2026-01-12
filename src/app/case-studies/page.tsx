@@ -33,6 +33,7 @@ import {
   IconExternalLink,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
+import { trackEvent, EVENTS } from '@/lib/analytics';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -430,7 +431,11 @@ function CaseStudyCard({ study, index }: { study: typeof caseStudies[0]; index: 
               <IconClock size={14} color="#8A9BB8" />
               <Text size="xs" style={{ color: '#8A9BB8' }}>{study.timeline}</Text>
             </Group>
-            <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+            <motion.div 
+              whileHover={{ x: 5 }} 
+              transition={{ duration: 0.2 }}
+              onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: study.title, industry: study.industry })}
+            >
               <Group gap={4} style={{ cursor: 'pointer' }}>
                 <Text size="sm" fw={600} style={{ color: '#1F4FD8' }}>
                   View Case Study
@@ -990,7 +995,10 @@ export default function CaseStudiesPage() {
                   >
                     <Box
                       component="button"
-                      onClick={() => setActiveCategory(category.value)}
+                      onClick={() => {
+                        setActiveCategory(category.value);
+                        trackEvent(EVENTS.CASE_STUDY_FILTER, { category: category.value });
+                      }}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
