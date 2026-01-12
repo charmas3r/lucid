@@ -67,6 +67,8 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
     ? urlFor(study.image).width(600).height(400).quality(85).url()
     : null;
 
+  const caseStudyUrl = `/case-studies/${study.slug?.current || study._id}`;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -77,22 +79,28 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
       onMouseLeave={() => setIsHovered(false)}
       style={{ height: '100%' }}
     >
-      <Box
-        style={{
-          background: '#FFFFFF',
-          borderRadius: 24,
-          overflow: 'hidden',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          border: '1px solid rgba(10, 26, 63, 0.06)',
-          boxShadow: isHovered
-            ? '0 25px 60px rgba(10, 26, 63, 0.15)'
-            : '0 4px 20px rgba(10, 26, 63, 0.06)',
-          transform: isHovered ? 'translateY(-12px)' : 'translateY(0)',
-          transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
-        }}
+      <Link
+        href={caseStudyUrl}
+        style={{ textDecoration: 'none', display: 'block', height: '100%' }}
+        onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: study.title, industry: study.clientIndustry || study.industry || 'Unknown' })}
       >
+        <Box
+          style={{
+            background: '#0D1F4A',
+            borderRadius: 24,
+            overflow: 'hidden',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            border: '1px solid rgba(255, 255, 255, 0.08)',
+            boxShadow: isHovered
+              ? '0 25px 60px rgba(0, 0, 0, 0.3)'
+              : '0 4px 20px rgba(0, 0, 0, 0.15)',
+            transform: isHovered ? 'translateY(-12px)' : 'translateY(0)',
+            transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+            cursor: 'pointer',
+          }}
+        >
         {/* Image/Header */}
         <Box
           style={{
@@ -136,7 +144,7 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
               position: 'absolute',
               top: 16,
               left: 16,
-              background: 'rgba(0, 0, 0, 0.5)',
+              background: 'rgba(0, 0, 0, 0.6)',
               color: '#FFFFFF',
               backdropFilter: 'blur(10px)',
               zIndex: 10,
@@ -152,8 +160,8 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
                 position: 'absolute',
                 top: 16,
                 right: 16,
-                background: 'rgba(255, 255, 255, 0.95)',
-                color: '#1F4FD8',
+                background: 'rgba(77, 163, 255, 0.9)',
+                color: '#FFFFFF',
                 fontWeight: 600,
                 zIndex: 10,
               }}
@@ -181,8 +189,8 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
                   key={metric.label}
                   size="sm"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.95)',
-                    color: '#0A1A3F',
+                    background: 'rgba(13, 31, 74, 0.9)',
+                    color: '#FFFFFF',
                     backdropFilter: 'blur(10px)',
                   }}
                 >
@@ -196,15 +204,15 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
         {/* Content */}
         <Stack p="xl" gap="md" style={{ flexGrow: 1 }}>
           <Box>
-            <Text size="sm" fw={500} style={{ color: '#8A9BB8' }} mb={4}>
+            <Text size="sm" fw={500} style={{ color: '#7A94BA' }} mb={4}>
               {study.client || study.title}
             </Text>
-            <Title order={4} style={{ color: '#0A1A3F' }}>
+            <Title order={4} style={{ color: '#FFFFFF' }}>
               {study.title}
             </Title>
           </Box>
 
-          <Text size="sm" lh={1.6} style={{ color: '#5A7099', flexGrow: 1 }}>
+          <Text size="sm" lh={1.6} style={{ color: '#A5B4CF', flexGrow: 1 }}>
             {study.description}
           </Text>
 
@@ -216,8 +224,8 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
                 size="sm"
                 variant="light"
                 style={{
-                  background: 'rgba(31, 79, 216, 0.06)',
-                  color: '#1F4FD8',
+                  background: 'rgba(77, 163, 255, 0.15)',
+                  color: '#4DA3FF',
                 }}
               >
                 {service}
@@ -228,29 +236,19 @@ function CaseStudyCard({ study, index }: CaseStudyCardProps) {
           {/* CTA */}
           <Group justify="space-between" align="center" mt="auto">
             <Group gap="xs">
-              <IconClock size={14} color="#8A9BB8" />
-              <Text size="xs" style={{ color: '#8A9BB8' }}>{study.timeline}</Text>
+              <IconClock size={14} color="#7A94BA" />
+              <Text size="xs" style={{ color: '#7A94BA' }}>{study.timeline}</Text>
             </Group>
-            <motion.div
-              whileHover={{ x: 5 }}
-              transition={{ duration: 0.2 }}
-              onClick={() => trackEvent(EVENTS.CASE_STUDY_VIEW, { study: study.title, industry: study.clientIndustry || study.industry || 'Unknown' })}
-            >
-              <Link
-                href={`/case-studies/${study.slug?.current || study._id}`}
-                style={{ textDecoration: 'none' }}
-              >
-                <Group gap={4} style={{ cursor: 'pointer' }}>
-                  <Text size="sm" fw={600} style={{ color: '#1F4FD8' }}>
-                    View Case Study
-                  </Text>
-                  <IconArrowRight size={16} color="#1F4FD8" />
-                </Group>
-              </Link>
-            </motion.div>
+            <Group gap={4}>
+              <Text size="sm" fw={600} style={{ color: '#4DA3FF' }}>
+                View Case Study
+              </Text>
+              <IconArrowRight size={16} color="#4DA3FF" />
+            </Group>
           </Group>
         </Stack>
-      </Box>
+        </Box>
+      </Link>
     </motion.div>
   );
 }
@@ -490,7 +488,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
         pb={80}
         ref={heroRef}
         style={{
-          background: 'linear-gradient(180deg, #F8F9FB 0%, #FFFFFF 100%)',
+          background: 'linear-gradient(180deg, #0A1A3F 0%, #081430 100%)',
         }}
       >
         <Container size="xl">
@@ -506,9 +504,9 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                 tt="uppercase"
                 fw={600}
                 style={{
-                  background: 'rgba(31, 79, 216, 0.08)',
-                  color: '#1F4FD8',
-                  border: '1px solid rgba(31, 79, 216, 0.15)',
+                  background: 'rgba(77, 163, 255, 0.15)',
+                  color: '#4DA3FF',
+                  border: '1px solid rgba(77, 163, 255, 0.25)',
                   letterSpacing: '1px',
                   fontSize: '0.7rem',
                   padding: '10px 16px',
@@ -522,7 +520,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                 style={{
                   fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                   fontWeight: 700,
-                  color: '#0A1A3F',
+                  color: '#FFFFFF',
                 }}
               >
                 Real Results for{' '}
@@ -534,7 +532,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                 size="xl"
                 ta="center"
                 maw={700}
-                style={{ color: '#5A7099' }}
+                style={{ color: '#A5B4CF' }}
               >
                 {hasCaseStudies 
                   ? "Discover how we've helped businesses transform their digital presence and achieve measurable growth through strategic design and development."
@@ -550,7 +548,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
       {hasCaseStudies && (
         <>
           {/* Stats Section */}
-          <Box component="section" py={60} style={{ background: '#FFFFFF' }}>
+          <Box component="section" py={60} style={{ background: '#0A1A3F' }}>
             <Container size="xl">
               <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
                 {overallStats.map((stat, index) => (
@@ -566,8 +564,8 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                         size={50}
                         radius="xl"
                         style={{
-                          background: 'rgba(31, 79, 216, 0.08)',
-                          color: '#1F4FD8',
+                          background: 'rgba(77, 163, 255, 0.15)',
+                          color: '#4DA3FF',
                         }}
                       >
                         <stat.icon size={24} />
@@ -576,12 +574,12 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                         fw={700}
                         style={{
                           fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
-                          color: '#0A1A3F',
+                          color: '#FFFFFF',
                         }}
                       >
                         {stat.value}
                       </Text>
-                      <Text size="sm" ta="center" style={{ color: '#5A7099' }}>
+                      <Text size="sm" ta="center" style={{ color: '#A5B4CF' }}>
                         {stat.label}
                       </Text>
                     </Stack>
@@ -593,7 +591,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
 
           {/* Featured Case Study */}
           {featuredStudy && (
-            <Box component="section" py={60} style={{ background: '#FFFFFF' }}>
+            <Box component="section" py={60} style={{ background: '#0A1A3F' }}>
               <Container size="xl">
                 <FeaturedCaseStudy study={featuredStudy} />
               </Container>
@@ -604,7 +602,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
           <Box
             component="section"
             py={80}
-            style={{ background: '#F8F9FB' }}
+            style={{ background: '#081430' }}
           >
             <Container size="xl">
               {/* Category Filter */}
@@ -635,7 +633,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                           borderRadius: 50,
                           background: activeCategory === category.value
                             ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'
-                            : 'rgba(31, 79, 216, 0.06)',
+                            : 'rgba(77, 163, 255, 0.1)',
                           border: 'none',
                           cursor: 'pointer',
                           transition: 'all 0.2s ease',
@@ -643,13 +641,13 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                       >
                         <category.icon
                           size={18}
-                          color={activeCategory === category.value ? '#FFFFFF' : '#1F4FD8'}
+                          color={activeCategory === category.value ? '#FFFFFF' : '#4DA3FF'}
                         />
                         <Text
                           size="sm"
                           fw={500}
                           style={{
-                            color: activeCategory === category.value ? '#FFFFFF' : '#1F4FD8',
+                            color: activeCategory === category.value ? '#FFFFFF' : '#4DA3FF',
                           }}
                         >
                           {category.label}
@@ -679,7 +677,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
 
               {filteredStudies.length === 0 && (
                 <Box ta="center" py={60}>
-                  <Text size="lg" style={{ color: '#8A9BB8' }}>
+                  <Text size="lg" style={{ color: '#7A94BA' }}>
                     No case studies found in this category yet.
                   </Text>
                 </Box>
@@ -694,7 +692,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
         component="section"
         py={100}
         ref={ctaRef}
-        style={{ background: '#FFFFFF' }}
+        style={{ background: '#0A1A3F' }}
       >
         <Container size="md">
           <motion.div
@@ -709,7 +707,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                 style={{
                   fontSize: 'clamp(2rem, 4vw, 3rem)',
                   fontWeight: 700,
-                  color: '#0A1A3F',
+                  color: '#FFFFFF',
                 }}
               >
                 Ready to be our next success story?
@@ -718,7 +716,7 @@ export function CaseStudiesContent({ caseStudies }: CaseStudiesContentProps) {
                 size="lg"
                 ta="center"
                 maw={600}
-                style={{ color: '#5A7099' }}
+                style={{ color: '#A5B4CF' }}
               >
                 Let&apos;s discuss how we can help you achieve similar results.
                 Book a free consultation and get a personalized strategy for your business.

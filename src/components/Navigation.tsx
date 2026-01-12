@@ -58,8 +58,8 @@ export function Navigation() {
         <div
           style={{
             backgroundColor: isScrolled 
-              ? 'rgba(10, 26, 63, 0.95)' 
-              : 'rgba(10, 26, 63, 0.85)',
+              ? 'rgba(10, 26, 63, 0.98)' 
+              : 'rgba(10, 26, 63, 0.9)',
             boxShadow: isScrolled
               ? '0 4px 30px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2)'
               : '0 2px 20px rgba(0, 0, 0, 0.2)',
@@ -69,6 +69,9 @@ export function Navigation() {
             padding: '12px 24px',
             border: '1px solid rgba(255, 255, 255, 0.1)',
             transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
+            transform: 'translate3d(0, 0, 0)', // Force GPU compositing layer
+            backfaceVisibility: 'hidden', // Additional GPU optimization
+            WebkitBackfaceVisibility: 'hidden',
           }}
         >
           <Group justify="space-between" align="center">
