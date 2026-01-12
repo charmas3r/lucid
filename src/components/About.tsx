@@ -23,13 +23,13 @@ const team = [
     name: 'Evan Smith',
     role: 'FOUNDER & LEAD DEVELOPER',
     bio: '10+ years building Android, iOS, and web applications at enterprise companies. Former engineering manager now bringing that expertise to help local businesses compete digitally.',
-    avatar: 'ES',
+    avatar: 'https://res.cloudinary.com/dssgz3ocp/image/upload/v1768193686/profile_eoxqvp.jpg',
   },
   {
     name: 'Samantha Smith',
     role: 'CREATIVE DIRECTOR',
     bio: 'Design strategist with an eye for creating memorable brand experiences. Combining user psychology with modern aesthetics to craft interfaces that delight users and drive conversions.',
-    avatar: 'SS',
+    avatar: 'https://res.cloudinary.com/dssgz3ocp/image/upload/v1768193658/1000016402_fse8ij.jpg',
   },
 ];
 
@@ -210,16 +210,15 @@ export function About() {
                         transition={{ type: 'spring', stiffness: 300 }}
                       >
                         <Avatar
+                          src={member.avatar}
+                          alt={member.name}
                           size={80}
                           radius="xl"
                           style={{
-                            background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
                             border: '2px solid rgba(77, 163, 255, 0.3)',
                             boxShadow: '0 4px 15px rgba(77, 163, 255, 0.3)',
                           }}
-                        >
-                          {member.avatar}
-                        </Avatar>
+                        />
                       </motion.div>
 
                       <Stack gap="xs" style={{ flex: 1 }}>

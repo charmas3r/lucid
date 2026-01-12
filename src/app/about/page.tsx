@@ -121,14 +121,14 @@ const team = [
     name: 'Evan Smith',
     role: 'Founder & Lead Developer',
     bio: 'Software engineer with over a decade of experience building Android, iOS, and web applications. Former engineering manager at enterprise companies, now bringing that expertise to help local businesses thrive digitally.',
-    avatar: 'ES',
+    avatar: 'https://res.cloudinary.com/dssgz3ocp/image/upload/v1768193686/profile_eoxqvp.jpg',
     icon: IconCode,
   },
   {
     name: 'Samantha Smith',
     role: 'Creative Director',
     bio: 'Design strategist with an eye for creating memorable brand experiences. Combining user psychology with modern aesthetics to drive conversions.',
-    avatar: 'SS',
+    avatar: 'https://res.cloudinary.com/dssgz3ocp/image/upload/v1768193658/1000016402_fse8ij.jpg',
     icon: IconPalette,
   },
 ];
@@ -697,18 +697,15 @@ export default function AboutPage() {
                         transition={{ type: 'spring', stiffness: 300 }}
                       >
                         <Avatar
+                          src={member.avatar}
+                          alt={member.name}
                           size={100}
                           radius="xl"
                           style={{
-                            background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
                             border: '3px solid #FFFFFF',
                             boxShadow: '0 8px 30px rgba(31, 79, 216, 0.2)',
-                            fontSize: '1.5rem',
-                            fontWeight: 600,
                           }}
-                        >
-                          {member.avatar}
-                        </Avatar>
+                        />
                       </motion.div>
                       <Box>
                         <Text fw={700} size="xl" mb={4} style={{ color: '#FFFFFF' }}>

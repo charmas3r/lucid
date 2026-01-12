@@ -51,7 +51,7 @@ function HeroCubeVisual() {
           top: 0,
           left: 0,
           width: '100%',
-          height: 400,
+          height: '100%',
         }}
       >
         <RubiksCube3D />
