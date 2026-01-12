@@ -17,6 +17,7 @@ import {
   Paper,
   SimpleGrid,
   Checkbox,
+  ScrollArea,
 } from '@mantine/core';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -239,10 +240,11 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
       opened={opened}
       onClose={handleClose}
       size="xl"
-      radius="lg"
+      radius={{ base: 0, sm: 'lg' }}
       padding={0}
       withCloseButton={false}
       centered
+      fullScreen={false}
       styles={{
         root: {
           zIndex: 1100,
@@ -252,18 +254,49 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
         },
         inner: {
           zIndex: 1101,
+          padding: 0,
+          '@media (max-width: 48em)': {
+            padding: 0,
+          },
         },
         content: {
           background: 'linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0f0f23 100%)',
           border: '1px solid rgba(77, 171, 247, 0.2)',
           overflow: 'hidden',
+          maxHeight: '100dvh',
+          display: 'flex',
+          flexDirection: 'column',
+          '@media (max-width: 48em)': {
+            maxHeight: '100dvh',
+            height: '100dvh',
+            borderRadius: 0,
+            border: 'none',
+          },
         },
         body: {
           padding: 0,
+          flex: 1,
+          overflow: 'hidden',
+          display: 'flex',
+          flexDirection: 'column',
         },
       }}
     >
-      <Box p="xl">
+      <ScrollArea 
+        h="100%" 
+        type="auto" 
+        offsetScrollbars
+        styles={{
+          root: { flex: 1 },
+          viewport: { 
+            '& > div': { 
+              display: 'block !important',
+              minHeight: '100%',
+            },
+          },
+        }}
+      >
+      <Box p={{ base: 'md', sm: 'xl' }}>
         {/* Header */}
         <Group justify="space-between" mb="lg">
           <Box>
@@ -387,7 +420,7 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
                     Select the audit(s) you&apos;d like to receive. Each includes actionable recommendations tailored to your business.
                   </Text>
 
-                  <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="md">
+                  <SimpleGrid cols={{ base: 1, sm: 2 }} spacing={{ base: 'sm', sm: 'md' }}>
                     {REPORT_OPTIONS.map((report) => {
                       const isSelected = formData.reportTypes.includes(report.id);
                       return (
@@ -397,7 +430,7 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
                           whileTap={{ scale: 0.98 }}
                         >
                           <Paper
-                            p="md"
+                            p={{ base: 'sm', sm: 'md' }}
                             radius="md"
                             onClick={() => handleReportToggle(report.id)}
                             style={{
@@ -409,16 +442,21 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
                               transition: 'all 0.2s ease',
                             }}
                           >
-                            <Group justify="space-between" mb="xs">
-                              <Group gap="xs">
+                            <Group justify="space-between" wrap="nowrap">
+                              <Group gap="xs" wrap="nowrap" style={{ flex: 1 }}>
                                 <ThemeIcon
                                   size="md"
                                   radius="md"
-                                  style={{ background: `${report.color}20`, color: report.color }}
+                                  style={{ background: `${report.color}20`, color: report.color, flexShrink: 0 }}
                                 >
                                   {report.icon}
                                 </ThemeIcon>
-                                <Text fw={600} c="white" size="sm">{report.title}</Text>
+                                <Box style={{ flex: 1, minWidth: 0 }}>
+                                  <Text fw={600} c="white" size="sm">{report.title}</Text>
+                                  <Text size="xs" c="dimmed" lineClamp={2}>
+                                    {report.description}
+                                  </Text>
+                                </Box>
                               </Group>
                               <Checkbox
                                 checked={isSelected}
@@ -430,10 +468,7 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
                                 }}
                               />
                             </Group>
-                            <Text size="xs" c="dimmed" mb="sm">
-                              {report.description}
-                            </Text>
-                            <Stack gap={4}>
+                            <Stack gap={4} mt="xs" visibleFrom="sm">
                               {report.features.slice(0, 3).map((feature, i) => (
                                 <Group key={i} gap={6}>
                                   <IconCheck size={12} color={report.color} />
@@ -450,9 +485,9 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
                               size="xs"
                               variant="light"
                               color="gray"
-                              mt="sm"
+                              mt="xs"
                             >
-                              Delivered in {report.deliveryTime}
+                              {report.deliveryTime}
                             </Badge>
                           </Paper>
                         </motion.div>
@@ -782,6 +817,7 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
           </Group>
         )}
       </Box>
+      </ScrollArea>
     </Modal>
   );
 }
