@@ -80,7 +80,7 @@ export function CTA() {
   };
 
   return (
-    <Box component="section" py={40} style={{ background: '#FFFFFF' }} ref={ref}>
+    <Box component="section" py={40} style={{ background: '#0A1A3F' }} ref={ref}>
       <Container size="xl">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -197,15 +197,16 @@ export function CTA() {
                   mt="xl"
                   p="xl"
                   style={{
-                    background: '#FFFFFF',
+                    background: 'rgba(13, 31, 74, 0.95)',
                     borderRadius: 16,
                     width: '100%',
                     maxWidth: 400,
-                    boxShadow: '0 20px 60px rgba(10, 26, 63, 0.2)',
+                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <Stack gap="md">
-                    <Text fw={600} style={{ color: '#0A1A3F' }}>
+                    <Text fw={600} style={{ color: '#FFFFFF' }}>
                       {monthNames[currentMonth]} {currentYear}
                     </Text>
                     <Box
@@ -217,7 +218,7 @@ export function CTA() {
                       }}
                     >
                       {['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'].map((day) => (
-                        <Text key={day} size="xs" fw={500} style={{ color: '#8A9BB8' }}>
+                        <Text key={day} size="xs" fw={500} style={{ color: '#7A94BA' }}>
                           {day}
                         </Text>
                       ))}
@@ -242,12 +243,12 @@ export function CTA() {
                                   ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'
                                   : 'transparent',
                               color: isPast 
-                                ? '#C9D2E3' 
+                                ? '#5A7099' 
                                 : selectedDay === i 
                                   ? '#FFFFFF' 
-                                  : '#5A7099',
+                                  : '#A5B4CF',
                               fontSize: '0.875rem',
-                              boxShadow: selectedDay === i ? '0 4px 15px rgba(31, 79, 216, 0.3)' : 'none',
+                              boxShadow: selectedDay === i ? '0 4px 15px rgba(77, 163, 255, 0.4)' : 'none',
                               opacity: isPast ? 0.5 : 1,
                               textDecoration: isPast ? 'line-through' : 'none',
                             }}
@@ -259,7 +260,7 @@ export function CTA() {
                     </Box>
 
                     <Box mt="md">
-                      <Text size="sm" mb="xs" style={{ color: '#8A9BB8' }}>
+                      <Text size="sm" mb="xs" style={{ color: '#7A94BA' }}>
                         Available times:
                       </Text>
                       {['4:30 PM', '5:00 PM', '5:30 PM'].map((time) => {
@@ -278,18 +279,18 @@ export function CTA() {
                               mb="xs"
                               style={{
                                 background: isPast
-                                  ? 'rgba(138, 155, 184, 0.1)'
+                                  ? 'rgba(90, 112, 153, 0.1)'
                                   : hoveredTime === time 
-                                    ? 'rgba(31, 79, 216, 0.1)' 
-                                    : 'rgba(31, 79, 216, 0.05)',
+                                    ? 'rgba(77, 163, 255, 0.2)' 
+                                    : 'rgba(77, 163, 255, 0.1)',
                                 borderRadius: 8,
                                 textAlign: 'center',
                                 cursor: isPast ? 'not-allowed' : 'pointer',
                                 border: `1px solid ${isPast
-                                  ? 'rgba(138, 155, 184, 0.15)'
+                                  ? 'rgba(90, 112, 153, 0.15)'
                                   : hoveredTime === time 
-                                    ? 'rgba(31, 79, 216, 0.2)' 
-                                    : 'rgba(31, 79, 216, 0.1)'}`,
+                                    ? 'rgba(77, 163, 255, 0.4)' 
+                                    : 'rgba(77, 163, 255, 0.2)'}`,
                                 transition: 'all 0.2s ease',
                                 opacity: isPast ? 0.5 : 1,
                               }}
@@ -297,7 +298,7 @@ export function CTA() {
                               <Text 
                                 size="sm" 
                                 style={{ 
-                                  color: isPast ? '#8A9BB8' : '#1F4FD8',
+                                  color: isPast ? '#5A7099' : '#4DA3FF',
                                   textDecoration: isPast ? 'line-through' : 'none',
                                 }}
                               >

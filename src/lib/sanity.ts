@@ -83,6 +83,15 @@ export interface SanityCaseStudy {
     };
     alt?: string;
   };
+  // Old website screenshot for before/after comparison
+  oldWebsiteScreenshot?: {
+    asset: {
+      _ref: string;
+    };
+    alt?: string;
+  };
+  // Link to the new live website
+  newSiteUrl?: string;
   gradient?: string;
   publishedAt: string;
 }
@@ -158,6 +167,8 @@ export const caseStudyBySlugQuery = `*[_type == "caseStudy" && slug.current == $
   callToAction,
   featured,
   image,
+  oldWebsiteScreenshot,
+  newSiteUrl,
   gradient,
   publishedAt
 }`;

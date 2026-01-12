@@ -394,6 +394,34 @@ export const caseStudy = defineType({
       ],
     }),
     defineField({
+      name: 'oldWebsiteScreenshot',
+      title: 'Old Website Screenshot',
+      type: 'image',
+      description: 'Screenshot of the client\'s old website (before redesign)',
+      group: 'visuals',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the image for accessibility',
+        },
+      ],
+    }),
+    defineField({
+      name: 'newSiteUrl',
+      title: 'New Site URL',
+      type: 'url',
+      description: 'Link to the live website we built',
+      group: 'visuals',
+      validation: (rule) => rule.uri({
+        scheme: ['http', 'https'],
+      }),
+    }),
+    defineField({
       name: 'gradient',
       title: 'Card Gradient',
       type: 'string',

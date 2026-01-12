@@ -43,7 +43,7 @@ export function About() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <Box component="section" id="about" py={40} style={{ background: '#FFFFFF' }} ref={ref}>
+    <Box component="section" id="about" py={40} style={{ background: '#0A1A3F' }} ref={ref}>
       <Container size="xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -54,9 +54,9 @@ export function About() {
             py={80}
             px={{ base: 'xl', md: 60 }}
             style={{
-              background: 'linear-gradient(180deg, #F8F9FB 0%, #FFFFFF 100%)',
+              background: 'linear-gradient(180deg, #081430 0%, #0D1F4A 100%)',
               borderRadius: 32,
-              border: '1px solid rgba(10, 26, 63, 0.06)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
               position: 'relative',
               overflow: 'hidden',
             }}
@@ -121,9 +121,9 @@ export function About() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.15)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -139,14 +139,14 @@ export function About() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Who&apos;s behind Lucid
                   </Title>
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                  <Text size="lg" ta="center" maw={600} style={{ color: '#5A7099' }}>
+                  <Text size="lg" ta="center" maw={600} style={{ color: '#A5B4CF' }}>
                     A team of experienced professionals dedicated to building smart, flexible,
                     and reliable software solutions - tailored to your business needs.
                   </Text>
@@ -161,11 +161,12 @@ export function About() {
                       rightSection={<IconArrowRight size={16} />}
                       styles={{
                         root: {
-                          borderColor: '#1F4FD8',
-                          color: '#1F4FD8',
+                          borderColor: 'rgba(77, 163, 255, 0.5)',
+                          color: '#4DA3FF',
                           transition: 'all 0.2s ease',
                           '&:hover': {
-                            background: 'rgba(31, 79, 216, 0.05)',
+                            background: 'rgba(77, 163, 255, 0.1)',
+                            borderColor: '#4DA3FF',
                           },
                         },
                       }}
@@ -195,10 +196,10 @@ export function About() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#FFFFFF',
+                      background: '#0D1F4A',
                       borderRadius: 20,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
-                      boxShadow: '0 2px 12px rgba(10, 26, 63, 0.04)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      boxShadow: '0 2px 12px rgba(0, 0, 0, 0.2)',
                       height: '100%',
                       transition: 'box-shadow 0.3s ease',
                     }}
@@ -213,8 +214,8 @@ export function About() {
                           radius="xl"
                           style={{
                             background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-                            border: '2px solid rgba(31, 79, 216, 0.2)',
-                            boxShadow: '0 4px 15px rgba(31, 79, 216, 0.2)',
+                            border: '2px solid rgba(77, 163, 255, 0.3)',
+                            boxShadow: '0 4px 15px rgba(77, 163, 255, 0.3)',
                           }}
                         >
                           {member.avatar}
@@ -223,20 +224,20 @@ export function About() {
 
                       <Stack gap="xs" style={{ flex: 1 }}>
                         <Box>
-                          <Title order={3} size="h4" mb={4} style={{ color: '#0A1A3F' }}>
+                          <Title order={3} size="h4" mb={4} style={{ color: '#FFFFFF' }}>
                             {member.name}
                           </Title>
                           <Text
                             size="xs"
                             fw={600}
                             tt="uppercase"
-                            style={{ color: '#1F4FD8', letterSpacing: '0.5px' }}
+                            style={{ color: '#4DA3FF', letterSpacing: '0.5px' }}
                           >
                             {member.role}
                           </Text>
                         </Box>
 
-                        <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+                        <Text size="sm" lh={1.7} style={{ color: '#A5B4CF' }}>
                           {member.bio}
                         </Text>
 
@@ -250,17 +251,17 @@ export function About() {
                               display: 'flex',
                               alignItems: 'center',
                               gap: 6,
-                              color: '#8A9BB8',
+                              color: '#7A94BA',
                               fontSize: '0.75rem',
                               textDecoration: 'none',
                               marginTop: 8,
                               transition: 'color 0.2s ease',
                             }}
                             onMouseEnter={(e) => {
-                              e.currentTarget.style.color = '#1F4FD8';
+                              e.currentTarget.style.color = '#4DA3FF';
                             }}
                             onMouseLeave={(e) => {
-                              e.currentTarget.style.color = '#8A9BB8';
+                              e.currentTarget.style.color = '#7A94BA';
                             }}
                           >
                             <IconBrandLinkedin size={16} />

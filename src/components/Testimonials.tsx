@@ -22,7 +22,7 @@ export function Testimonials() {
       component="section"
       id="promise"
       py={100}
-      style={{ background: '#F8F9FB' }}
+      style={{ background: '#081430' }}
       ref={ref}
     >
       <Container size="md">
@@ -34,11 +34,11 @@ export function Testimonials() {
           <Box
             p={{ base: 'xl', md: 60 }}
             style={{
-              background: '#FFFFFF',
+              background: '#0D1F4A',
               borderRadius: 32,
-              border: '1px solid rgba(10, 26, 63, 0.06)',
+              border: '1px solid rgba(255, 255, 255, 0.08)',
               textAlign: 'center',
-              boxShadow: '0 4px 20px rgba(10, 26, 63, 0.04)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.2)',
             }}
           >
             <Stack align="center" gap="xl">
@@ -55,7 +55,7 @@ export function Testimonials() {
                   style={{
                     fontSize: 'clamp(1.25rem, 3vw, 1.75rem)',
                     fontWeight: 400,
-                    color: '#0A1A3F',
+                    color: '#FFFFFF',
                   }}
                 >
                   A new agency, but{' '}
@@ -99,10 +99,10 @@ export function Testimonials() {
                       ES
                     </Avatar>
                   </motion.div>
-                  <Text fw={600} style={{ color: '#0A1A3F' }}>
+                  <Text fw={600} style={{ color: '#FFFFFF' }}>
                     Evan Smith
                   </Text>
-                  <Text size="sm" style={{ color: '#8A9BB8' }}>
+                  <Text size="sm" style={{ color: '#7A94BA' }}>
                     Founder & Lead Developer • 10+ Years Experience
                   </Text>
                 </Stack>
@@ -145,12 +145,12 @@ export function Testimonials() {
                       variant="outline"
                       styles={{
                         root: {
-                          borderColor: '#C9D2E3',
-                          color: '#1F4FD8',
+                          borderColor: 'rgba(255, 255, 255, 0.3)',
+                          color: '#FFFFFF',
                           transition: 'all 0.2s ease',
                           '&:hover': {
-                            background: 'rgba(31, 79, 216, 0.05)',
-                            borderColor: '#1F4FD8',
+                            background: 'rgba(255, 255, 255, 0.1)',
+                            borderColor: '#FFFFFF',
                           },
                         },
                       }}

@@ -160,7 +160,7 @@ export default function AboutPage() {
           pt={160}
           pb={80}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%)',
+            background: 'linear-gradient(180deg, #0A1A3F 0%, #081430 100%)',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -212,9 +212,9 @@ export default function AboutPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.15)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -232,7 +232,7 @@ export default function AboutPage() {
                       fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
                       fontWeight: 700,
                       lineHeight: 1.15,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Bringing{' '}
@@ -256,7 +256,7 @@ export default function AboutPage() {
                     size="xl"
                     ta="center"
                     lh={1.8}
-                    style={{ color: '#5A7099' }}
+                    style={{ color: '#A5B4CF' }}
                   >
                     We&apos;re a San Diego-based digital agency on a mission to help local 
                     businesses cut through the digital noise and connect with their customers 
@@ -285,12 +285,12 @@ export default function AboutPage() {
                         fw={700}
                         style={{
                           fontSize: 'clamp(2rem, 4vw, 2.75rem)',
-                          color: '#1F4FD8',
+                          color: '#4DA3FF',
                         }}
                       >
                         {stat.value}
                       </Text>
-                      <Text size="sm" style={{ color: '#5A7099' }}>
+                      <Text size="sm" style={{ color: '#A5B4CF' }}>
                         {stat.label}
                       </Text>
                     </Stack>
@@ -305,7 +305,7 @@ export default function AboutPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0A1A3F' }}
           ref={missionRef}
         >
           <Container size="lg">
@@ -323,7 +323,7 @@ export default function AboutPage() {
                   mb="lg"
                   style={{
                     background: 'rgba(31, 79, 216, 0.08)',
-                    color: '#1F4FD8',
+                    color: '#4DA3FF',
                     border: '1px solid rgba(31, 79, 216, 0.15)',
                     letterSpacing: '1px',
                     fontSize: '0.7rem',
@@ -338,13 +338,13 @@ export default function AboutPage() {
                   style={{
                     fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
                     fontWeight: 700,
-                    color: '#0A1A3F',
+                    color: '#FFFFFF',
                     lineHeight: 1.2,
                   }}
                 >
                   Empowering local businesses to thrive in the digital age
                 </Title>
-                <Text size="lg" lh={1.8} style={{ color: '#5A7099' }}>
+                <Text size="lg" lh={1.8} style={{ color: '#A5B4CF' }}>
                   Too many talented local businesses struggle online—not because they lack quality, 
                   but because they lack the tools and expertise to communicate their value digitally.
                 </Text>
@@ -356,12 +356,12 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <Stack gap="lg">
-                  <Text size="lg" lh={1.8} style={{ color: '#5A7099' }}>
+                  <Text size="lg" lh={1.8} style={{ color: '#A5B4CF' }}>
                     We exist to change that. Our mission is to be the bridge between exceptional 
                     local services and the customers who need them—creating digital experiences 
                     that are as clear, professional, and trustworthy as the businesses they represent.
                   </Text>
-                  <Text size="lg" lh={1.8} style={{ color: '#5A7099' }}>
+                  <Text size="lg" lh={1.8} style={{ color: '#A5B4CF' }}>
                     Every website we build, every SEO strategy we implement, every piece of content 
                     we craft is designed with one goal: to help real businesses connect with real 
                     customers and grow sustainably.
@@ -405,7 +405,7 @@ export default function AboutPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#F8F9FB' }}
+          style={{ background: '#081430' }}
           ref={valuesRef}
         >
           <Container size="xl">
@@ -422,9 +422,9 @@ export default function AboutPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.15)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -440,14 +440,14 @@ export default function AboutPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     The Principles That Guide Us
                   </Title>
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                  <Text size="lg" ta="center" maw={600} style={{ color: '#5A7099' }}>
+                  <Text size="lg" ta="center" maw={600} style={{ color: '#A5B4CF' }}>
                     These aren&apos;t just words on a wall—they&apos;re the standards we hold 
                     ourselves to on every project.
                   </Text>
@@ -467,9 +467,9 @@ export default function AboutPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#FFFFFF',
+                      background: '#0A1A3F',
                       borderRadius: 20,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
                       transition: 'box-shadow 0.3s ease',
                     }}
@@ -490,10 +490,10 @@ export default function AboutPage() {
                           <value.icon size={26} color="#FFFFFF" stroke={1.5} />
                         </ThemeIcon>
                       </motion.div>
-                      <Title order={4} style={{ color: '#0A1A3F' }}>
+                      <Title order={4} style={{ color: '#FFFFFF' }}>
                         {value.title}
                       </Title>
-                      <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+                      <Text size="sm" lh={1.7} style={{ color: '#A5B4CF' }}>
                         {value.description}
                       </Text>
                     </Stack>
@@ -508,7 +508,7 @@ export default function AboutPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0A1A3F' }}
           ref={founderRef}
         >
           <Container size="lg">
@@ -525,7 +525,7 @@ export default function AboutPage() {
                   fw={600}
                   style={{
                     background: 'rgba(31, 79, 216, 0.08)',
-                    color: '#1F4FD8',
+                    color: '#4DA3FF',
                     border: '1px solid rgba(31, 79, 216, 0.15)',
                     letterSpacing: '1px',
                     fontSize: '0.7rem',
@@ -540,7 +540,7 @@ export default function AboutPage() {
                   style={{
                     fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                     fontWeight: 700,
-                    color: '#0A1A3F',
+                    color: '#FFFFFF',
                   }}
                 >
                   A Note From Our Founder
@@ -580,10 +580,10 @@ export default function AboutPage() {
                       </Avatar>
                     </motion.div>
                     <Box ta="center">
-                      <Text fw={700} size="lg" style={{ color: '#0A1A3F' }}>
+                      <Text fw={700} size="lg" style={{ color: '#FFFFFF' }}>
                         Evan Smith
                       </Text>
-                      <Text size="sm" style={{ color: '#5A7099' }}>
+                      <Text size="sm" style={{ color: '#A5B4CF' }}>
                         Founder & Lead Developer
                       </Text>
                     </Box>
@@ -592,24 +592,24 @@ export default function AboutPage() {
                   <Box style={{ gridColumn: 'span 2' }}>
                     <IconQuote size={40} color="#1F4FD8" style={{ opacity: 0.3, marginBottom: 16 }} />
                     <Stack gap="lg">
-                      <Text size="lg" lh={1.9} style={{ color: '#0A1A3F' }}>
+                      <Text size="lg" lh={1.9} style={{ color: '#FFFFFF' }}>
                         After more than a decade as a software engineer—building apps at enterprise 
                         companies, leading mobile and web teams, and freelancing for startups—I saw 
                         a gap I couldn&apos;t ignore: local businesses deserve better digital experiences.
                       </Text>
-                      <Text size="lg" lh={1.9} style={{ color: '#5A7099' }}>
+                      <Text size="lg" lh={1.9} style={{ color: '#A5B4CF' }}>
                         I&apos;ve shipped Android and iOS apps used by millions, architected web platforms 
                         at scale, and managed engineering teams. Now I&apos;m channeling that experience 
                         into something more personal—helping the businesses that form the backbone of 
                         our community compete in the digital world.
                       </Text>
-                      <Text size="lg" lh={1.9} style={{ color: '#5A7099' }}>
+                      <Text size="lg" lh={1.9} style={{ color: '#A5B4CF' }}>
                         Lucid Web Studios is new, but the expertise behind it isn&apos;t. Every project 
                         gets the same level of care and technical excellence I brought to enterprise 
                         products—just tailored for businesses that need it most.
                       </Text>
-                      <Divider my="md" color="rgba(31, 79, 216, 0.1)" />
-                      <Text size="md" fw={600} style={{ color: '#1F4FD8' }}>
+                      <Divider my="md" color="rgba(77, 163, 255, 0.2)" />
+                      <Text size="md" fw={600} style={{ color: '#4DA3FF' }}>
                         — Evan Smith
                       </Text>
                     </Stack>
@@ -624,7 +624,7 @@ export default function AboutPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0A1A3F' }}
           ref={teamRef}
         >
           <Container size="xl">
@@ -641,9 +641,9 @@ export default function AboutPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.15)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -659,14 +659,14 @@ export default function AboutPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     The People Behind Lucid
                   </Title>
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                  <Text size="lg" ta="center" maw={600} style={{ color: '#5A7099' }}>
+                  <Text size="lg" ta="center" maw={600} style={{ color: '#A5B4CF' }}>
                     A small, dedicated team focused on delivering exceptional results for every client.
                   </Text>
                 </motion.div>
@@ -685,9 +685,9 @@ export default function AboutPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#F8F9FB',
+                      background: '#081430',
                       borderRadius: 24,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
                     }}
                   >
@@ -711,17 +711,17 @@ export default function AboutPage() {
                         </Avatar>
                       </motion.div>
                       <Box>
-                        <Text fw={700} size="xl" mb={4} style={{ color: '#0A1A3F' }}>
+                        <Text fw={700} size="xl" mb={4} style={{ color: '#FFFFFF' }}>
                           {member.name}
                         </Text>
                         <Group gap="xs" justify="center">
                           <member.icon size={16} color="#1F4FD8" stroke={2} />
-                          <Text size="sm" fw={600} style={{ color: '#1F4FD8' }}>
+                          <Text size="sm" fw={600} style={{ color: '#4DA3FF' }}>
                             {member.role}
                           </Text>
                         </Group>
                       </Box>
-                      <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+                      <Text size="sm" lh={1.7} style={{ color: '#A5B4CF' }}>
                         {member.bio}
                       </Text>
                     </Stack>
@@ -736,7 +736,7 @@ export default function AboutPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#F8F9FB' }}
+          style={{ background: '#081430' }}
           ref={journeyRef}
         >
           <Container size="lg">
@@ -753,9 +753,9 @@ export default function AboutPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.15)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -771,7 +771,7 @@ export default function AboutPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     A Decade of Building
@@ -830,10 +830,10 @@ export default function AboutPage() {
                       }}
                     />
                     <Box style={{ flex: 1 }}>
-                      <Text fw={600} size="lg" mb={4} style={{ color: '#0A1A3F' }}>
+                      <Text fw={600} size="lg" mb={4} style={{ color: '#FFFFFF' }}>
                         {milestone.title}
                       </Text>
-                      <Text size="md" style={{ color: '#5A7099' }}>
+                      <Text size="md" style={{ color: '#A5B4CF' }}>
                         {milestone.description}
                       </Text>
                     </Box>
@@ -919,11 +919,11 @@ export default function AboutPage() {
                       rightSection={<IconArrowRight size={18} />}
                       styles={{
                         root: {
-                          background: '#FFFFFF',
-                          color: '#1F4FD8',
+                          background: '#0A1A3F',
+                          color: '#4DA3FF',
                           transition: 'all 0.2s ease',
                           '&:hover': {
-                            background: '#F8F9FB',
+                            background: '#081430',
                           },
                         },
                       }}

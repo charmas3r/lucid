@@ -51,6 +51,7 @@ export const EVENTS = {
   // Case Studies
   CASE_STUDY_FILTER: 'case_study_filter',
   CASE_STUDY_VIEW: 'case_study_view',
+  CASE_STUDY_EXTERNAL_LINK: 'case_study_external_link',
   
   // Footer
   FOOTER_CLICK_LINK: 'footer_click_link',

@@ -88,7 +88,7 @@ export function Hero() {
       component="section"
       pt={160}
       pb={80}
-      style={{ background: '#FFFFFF', position: 'relative' }}
+      style={{ background: '#0A1A3F', position: 'relative' }}
     >
       {/* Static background gradient - no animation for LCP */}
       <div
@@ -98,7 +98,7 @@ export function Hero() {
           right: 0,
           width: '60%',
           height: '100%',
-          background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.03) 0%, rgba(77, 163, 255, 0.05) 100%)',
+          background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.15) 0%, rgba(77, 163, 255, 0.1) 100%)',
           borderRadius: '0 0 0 50%',
           pointerEvents: 'none',
         }}
@@ -119,9 +119,9 @@ export function Hero() {
                   tt="uppercase"
                   fw={600}
                   style={{
-                    background: 'rgba(31, 79, 216, 0.08)',
-                    color: '#1F4FD8',
-                    border: '1px solid rgba(31, 79, 216, 0.15)',
+                    background: 'rgba(77, 163, 255, 0.15)',
+                    color: '#4DA3FF',
+                    border: '1px solid rgba(77, 163, 255, 0.25)',
                     letterSpacing: '1px',
                     fontSize: '0.7rem',
                     padding: '10px 16px',
@@ -138,7 +138,7 @@ export function Hero() {
                     fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
                     fontWeight: 700,
                     lineHeight: 1.15,
-                    color: '#0A1A3F',
+                    color: '#FFFFFF',
                   }}
                 >
                   <Text
@@ -157,7 +157,7 @@ export function Hero() {
                   size="lg"
                   maw={480}
                   lh={1.7}
-                  style={{ color: '#5A7099' }}
+                  style={{ color: '#A5B4CF' }}
                 >
                   From new digital projects to process optimization and support, 
                   we partner with businesses to deliver impactful results.
@@ -197,12 +197,12 @@ export function Hero() {
                     onClick={() => trackEvent(EVENTS.CTA_CLICK_VIEW_WORK, { location: 'hero' })}
                     styles={{
                       root: {
-                        borderColor: '#C9D2E3',
-                        color: '#1F4FD8',
+                        borderColor: 'rgba(255, 255, 255, 0.3)',
+                        color: '#FFFFFF',
                         transition: 'all 0.2s ease',
                         '&:hover': {
-                          background: 'rgba(31, 79, 216, 0.05)',
-                          borderColor: '#1F4FD8',
+                          background: 'rgba(255, 255, 255, 0.1)',
+                          borderColor: '#FFFFFF',
                           transform: 'scale(1.03)',
                         },
                       },
@@ -225,9 +225,9 @@ export function Hero() {
           py="lg"
           px="xl"
           style={{
-            background: '#F8F9FB',
+            background: 'rgba(13, 31, 74, 0.6)',
             borderRadius: 16,
-            border: '1px solid rgba(10, 26, 63, 0.06)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
           }}
         >
           <Group justify="center" gap={40} wrap="wrap">
@@ -238,19 +238,19 @@ export function Hero() {
                     width: 36,
                     height: 36,
                     borderRadius: 10,
-                    background: 'rgba(31, 79, 216, 0.08)',
+                    background: 'rgba(77, 163, 255, 0.15)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}
                 >
-                  <badge.icon size={18} color="#1F4FD8" stroke={1.8} />
+                  <badge.icon size={18} color="#4DA3FF" stroke={1.8} />
                 </Box>
                 <Text
                   size="sm"
                   fw={600}
                   style={{
-                    color: '#0A1A3F',
+                    color: '#FFFFFF',
                     whiteSpace: 'nowrap',
                   }}
                 >

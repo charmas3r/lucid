@@ -2,39 +2,41 @@
 @import 'leaflet/dist/leaflet.css';
 
 /* ============================================
-   Metallic Blue Color System - Light Theme
+   Metallic Blue Color System - Dark Theme
    ============================================ */
 :root {
   --font-dm-sans: 'DM Sans', sans-serif;
   
   /* Primary Palette */
-  --metallic-blue: #1F4FD8;
-  --electric-blue: #4DA3FF;
-  --steel-blue: #3A6EA5;
+  --metallic-blue: #4DA3FF;
+  --electric-blue: #6BB5FF;
+  --steel-blue: #5A9FD4;
   --deep-navy: #0A1A3F;
   
-  /* Light Theme Backgrounds */
-  --bg-white: #FFFFFF;
-  --bg-off-white: #FAFBFC;
-  --bg-light-gray: #F4F6F9;
-  --bg-section: #F8F9FB;
+  /* Dark Theme Backgrounds */
+  --bg-white: #0A1A3F;
+  --bg-off-white: #0D1F4A;
+  --bg-light-gray: #0F2355;
+  --bg-section: #081430;
+  --bg-card: #0D1F4A;
+  --bg-elevated: #112554;
   
   /* Text Colors */
-  --text-primary: #0A1A3F;
-  --text-secondary: #3A6EA5;
-  --text-muted: #5A7099;
-  --text-light: #8A9BB8;
+  --text-primary: #FFFFFF;
+  --text-secondary: #E8F0FF;
+  --text-muted: #A5B4CF;
+  --text-light: #7A94BA;
   
   /* Borders */
-  --border-color: rgba(10, 26, 63, 0.1);
-  --border-light: rgba(10, 26, 63, 0.06);
-  --border-accent: rgba(31, 79, 216, 0.2);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.06);
+  --border-accent: rgba(77, 163, 255, 0.3);
   
   /* Gradients */
   --gradient-metallic: linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%);
   --gradient-button: linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%);
   --gradient-button-hover: linear-gradient(135deg, #2858E8 0%, #5DB3FF 100%);
-  --gradient-subtle: linear-gradient(180deg, #FFFFFF 0%, #F4F6F9 100%);
+  --gradient-subtle: linear-gradient(180deg, #0A1A3F 0%, #081430 100%);
 }
 
 * {
@@ -66,7 +68,7 @@ html {
 }
 
 ::selection {
-  background: rgba(31, 79, 216, 0.2);
+  background: rgba(77, 163, 255, 0.3);
   color: var(--text-primary);
 }
 
@@ -94,14 +96,14 @@ html {
 /* Card with subtle shadow */
 .card-shadow {
   box-shadow: 
-    0 1px 3px rgba(10, 26, 63, 0.08),
-    0 4px 20px rgba(10, 26, 63, 0.04);
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .card-shadow:hover {
   box-shadow: 
-    0 4px 12px rgba(10, 26, 63, 0.1),
-    0 8px 30px rgba(31, 79, 216, 0.08);
+    0 4px 12px rgba(0, 0, 0, 0.25),
+    0 8px 30px rgba(77, 163, 255, 0.15);
 }
 
 /* Border utility */
@@ -112,8 +114,8 @@ html {
 /* Subtle grid pattern for sections */
 .grid-pattern {
   background-image: 
-    linear-gradient(rgba(10, 26, 63, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(10, 26, 63, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
@@ -184,15 +186,15 @@ html {
 
 /* Hide default leaflet attribution styling */
 .leaflet-control-attribution {
-  background: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(10, 26, 63, 0.9) !important;
   border-radius: 8px 0 0 0 !important;
   padding: 4px 8px !important;
   font-size: 10px !important;
-  color: #5A7099 !important;
+  color: #A5B4CF !important;
 }
 
 .leaflet-control-attribution a {
-  color: #1F4FD8 !important;
+  color: #4DA3FF !important;
 }
 
 /* Pricing page tabs */
@@ -201,7 +203,7 @@ html {
 }
 
 .pricing-tab:hover:not([data-active]) {
-  background: rgba(31, 79, 216, 0.08) !important;
+  background: rgba(77, 163, 255, 0.15) !important;
 }
 
 .pricing-tab[data-active] {

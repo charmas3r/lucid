@@ -595,7 +595,7 @@ export default function PricingPage() {
                       fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                       fontWeight: 700,
                       lineHeight: 1.1,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Invest in{' '}
@@ -620,7 +620,7 @@ export default function PricingPage() {
                     ta="center"
                     maw={650}
                     lh={1.8}
-                    style={{ color: '#5A7099' }}
+                    style={{ color: '#A5B4CF' }}
                   >
                     No hidden fees, no surprise charges. Choose the service and package that fits your needs,
                     or let us create a custom solution for your business.
@@ -636,7 +636,7 @@ export default function PricingPage() {
           component="section"
           id="packages"
           py={80}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0A1A3F' }}
           ref={pricingRef}
         >
           <Container size="xl">
@@ -662,7 +662,7 @@ export default function PricingPage() {
                     justifyContent: 'center',
                     gap: 8,
                     flexWrap: 'wrap',
-                    background: '#F8F9FB',
+                    background: '#081430',
                     padding: 8,
                     borderRadius: 50,
                     display: 'inline-flex',
@@ -673,7 +673,7 @@ export default function PricingPage() {
                     fontWeight: 600,
                     fontSize: '0.85rem',
                     padding: '12px 20px',
-                    color: '#5A7099',
+                    color: '#A5B4CF',
                     border: 'none',
                   },
                 }}
@@ -794,7 +794,7 @@ export default function PricingPage() {
         <Box
           component="section"
           py={80}
-          style={{ background: '#F8F9FB' }}
+          style={{ background: '#081430' }}
           ref={addOnsRef}
         >
           <Container size="lg">
@@ -826,7 +826,7 @@ export default function PricingPage() {
                   style={{
                     fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
                     fontWeight: 700,
-                    color: '#0A1A3F',
+                    color: '#FFFFFF',
                   }}
                 >
                   Enhance Any Package
@@ -846,14 +846,14 @@ export default function PricingPage() {
                   <Box
                     p="lg"
                     style={{
-                      background: '#FFFFFF',
+                      background: '#0A1A3F',
                       borderRadius: 16,
                       border: '1px solid rgba(10, 26, 63, 0.06)',
                       height: '100%',
                     }}
                   >
                     <Stack gap="xs">
-                      <Text fw={600} style={{ color: '#0A1A3F' }}>
+                      <Text fw={600} style={{ color: '#FFFFFF' }}>
                         {addon.name}
                       </Text>
                       <Text
@@ -867,7 +867,7 @@ export default function PricingPage() {
                       >
                         {addon.price}
                       </Text>
-                      <Text size="sm" style={{ color: '#5A7099' }}>
+                      <Text size="sm" style={{ color: '#A5B4CF' }}>
                         {addon.description}
                       </Text>
                     </Stack>
@@ -947,11 +947,11 @@ export default function PricingPage() {
                       rightSection={<IconArrowRight size={18} />}
                       styles={{
                         root: {
-                          background: '#FFFFFF',
+                          background: '#0A1A3F',
                           color: '#1F4FD8',
                           transition: 'all 0.2s ease',
                           '&:hover': {
-                            background: '#F8F9FB',
+                            background: '#081430',
                           },
                         },
                       }}

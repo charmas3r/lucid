@@ -58,16 +58,16 @@ export function Navigation() {
         <div
           style={{
             backgroundColor: isScrolled 
-              ? 'rgba(255, 255, 255, 0.95)' 
-              : 'rgba(255, 255, 255, 0.85)',
+              ? 'rgba(10, 26, 63, 0.95)' 
+              : 'rgba(10, 26, 63, 0.85)',
             boxShadow: isScrolled
-              ? '0 4px 30px rgba(10, 26, 63, 0.1), 0 1px 3px rgba(10, 26, 63, 0.06)'
-              : '0 2px 20px rgba(10, 26, 63, 0.05)',
+              ? '0 4px 30px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.2)'
+              : '0 2px 20px rgba(0, 0, 0, 0.2)',
             backdropFilter: 'blur(20px)',
             WebkitBackdropFilter: 'blur(20px)',
             borderRadius: 60,
             padding: '12px 24px',
-            border: '1px solid rgba(255, 255, 255, 0.8)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             transition: 'background-color 0.3s ease, box-shadow 0.3s ease',
           }}
         >
@@ -87,7 +87,7 @@ export function Navigation() {
                   <Text
                     fw={700}
                     size="lg"
-                    style={{ color: '#0A1A3F', fontFamily: 'var(--font-dm-sans)' }}
+                    style={{ color: '#FFFFFF', fontFamily: 'var(--font-dm-sans)' }}
                   >
                     lucid
                   </Text>
@@ -117,7 +117,7 @@ export function Navigation() {
                           href={link.href}
                           style={{
                             textDecoration: 'none',
-                            color: servicesOpen ? '#1F4FD8' : '#5A7099',
+                            color: servicesOpen ? '#4DA3FF' : '#A5B4CF',
                             fontSize: '0.8rem',
                             fontWeight: 500,
                             letterSpacing: '0.5px',
@@ -132,7 +132,7 @@ export function Navigation() {
                         >
                           <IconChevronDown 
                             size={14} 
-                            color={servicesOpen ? '#1F4FD8' : '#5A7099'}
+                            color={servicesOpen ? '#4DA3FF' : '#A5B4CF'}
                             style={{ transition: 'color 0.2s ease' }}
                           />
                         </motion.div>
@@ -152,11 +152,11 @@ export function Navigation() {
                               left: '50%',
                               transform: 'translateX(-50%)',
                               minWidth: 280,
-                              background: 'rgba(255, 255, 255, 0.98)',
+                              background: 'rgba(13, 31, 74, 0.98)',
                               backdropFilter: 'blur(20px)',
                               borderRadius: 16,
-                              boxShadow: '0 10px 40px rgba(10, 26, 63, 0.12), 0 2px 10px rgba(10, 26, 63, 0.08)',
-                              border: '1px solid rgba(10, 26, 63, 0.06)',
+                              boxShadow: '0 10px 40px rgba(0, 0, 0, 0.3), 0 2px 10px rgba(0, 0, 0, 0.2)',
+                              border: '1px solid rgba(255, 255, 255, 0.1)',
                               padding: '8px',
                               zIndex: 1001,
                             }}
@@ -170,9 +170,9 @@ export function Navigation() {
                                 transform: 'translateX(-50%) rotate(45deg)',
                                 width: 12,
                                 height: 12,
-                                background: 'rgba(255, 255, 255, 0.98)',
-                                borderTop: '1px solid rgba(10, 26, 63, 0.06)',
-                                borderLeft: '1px solid rgba(10, 26, 63, 0.06)',
+                                background: 'rgba(13, 31, 74, 0.98)',
+                                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                                borderLeft: '1px solid rgba(255, 255, 255, 0.1)',
                               }}
                             />
                             
@@ -201,7 +201,7 @@ export function Navigation() {
                                           transition: 'background 0.15s ease',
                                         }}
                                         onMouseEnter={(e) => {
-                                          e.currentTarget.style.background = 'rgba(31, 79, 216, 0.06)';
+                                          e.currentTarget.style.background = 'rgba(77, 163, 255, 0.15)';
                                         }}
                                         onMouseLeave={(e) => {
                                           e.currentTarget.style.background = 'transparent';
@@ -212,18 +212,18 @@ export function Navigation() {
                                             width: 36,
                                             height: 36,
                                             borderRadius: 10,
-                                            background: 'linear-gradient(135deg, rgba(77, 163, 255, 0.1) 0%, rgba(31, 79, 216, 0.1) 100%)',
+                                            background: 'linear-gradient(135deg, rgba(77, 163, 255, 0.2) 0%, rgba(31, 79, 216, 0.2) 100%)',
                                             display: 'flex',
                                             alignItems: 'center',
                                             justifyContent: 'center',
                                           }}
                                         >
-                                          <subLink.icon size={18} color="#1F4FD8" stroke={1.5} />
+                                          <subLink.icon size={18} color="#4DA3FF" stroke={1.5} />
                                         </Box>
                                         <Text
                                           size="sm"
                                           fw={500}
-                                          style={{ color: '#0A1A3F', whiteSpace: 'nowrap' }}
+                                          style={{ color: '#FFFFFF', whiteSpace: 'nowrap' }}
                                         >
                                           {subLink.label}
                                         </Text>
@@ -242,7 +242,7 @@ export function Navigation() {
                       href={link.href}
                       style={{
                         textDecoration: 'none',
-                        color: '#5A7099',
+                        color: '#A5B4CF',
                         fontSize: '0.8rem',
                         fontWeight: 500,
                         letterSpacing: '0.5px',
@@ -250,10 +250,10 @@ export function Navigation() {
                       }}
                       onClick={() => trackEvent(EVENTS.NAV_CLICK_MENU_ITEM, { item: link.label })}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = '#1F4FD8';
+                        e.currentTarget.style.color = '#4DA3FF';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.color = '#5A7099';
+                        e.currentTarget.style.color = '#A5B4CF';
                       }}
                     >
                       {link.label}
@@ -273,11 +273,11 @@ export function Navigation() {
                 onClick={() => trackEvent(EVENTS.CTA_CLICK_CONTACT, { location: 'nav' })}
                 styles={{
                   root: {
-                    background: '#0A1A3F',
+                    background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
                     border: 'none',
                     transition: 'all 0.2s ease',
                     '&:hover': {
-                      background: '#1F4FD8',
+                      boxShadow: '0 4px 20px rgba(77, 163, 255, 0.4)',
                       transform: 'scale(1.05)',
                     },
                   },
@@ -292,7 +292,7 @@ export function Navigation() {
                   trackEvent(opened ? EVENTS.NAV_CLOSE_MOBILE_MENU : EVENTS.NAV_OPEN_MOBILE_MENU);
                 }}
                 hiddenFrom="md"
-                color="#0A1A3F"
+                color="#FFFFFF"
                 size="sm"
               />
             </Group>
@@ -313,8 +313,9 @@ export function Navigation() {
             padding="xl"
             hiddenFrom="md"
             styles={{
-              body: { background: '#FFFFFF', height: '100%' },
-              header: { background: '#FFFFFF' },
+              body: { background: '#0A1A3F', height: '100%' },
+              header: { background: '#0A1A3F' },
+              close: { color: '#FFFFFF' },
             }}
           >
             <Stack gap="xl" mt="xl">
@@ -334,7 +335,7 @@ export function Navigation() {
                       >
                         <Text
                           style={{
-                            color: '#0A1A3F',
+                            color: '#FFFFFF',
                             fontSize: '1.25rem',
                             fontWeight: 600,
                           }}
@@ -345,7 +346,7 @@ export function Navigation() {
                           animate={{ rotate: mobileServicesOpen ? 180 : 0 }}
                           transition={{ duration: 0.2 }}
                         >
-                          <IconChevronDown size={20} color="#0A1A3F" />
+                          <IconChevronDown size={20} color="#FFFFFF" />
                         </motion.div>
                       </Group>
                       
@@ -372,18 +373,18 @@ export function Navigation() {
                                       width: 32,
                                       height: 32,
                                       borderRadius: 8,
-                                      background: 'linear-gradient(135deg, rgba(77, 163, 255, 0.1) 0%, rgba(31, 79, 216, 0.1) 100%)',
+                                      background: 'linear-gradient(135deg, rgba(77, 163, 255, 0.2) 0%, rgba(31, 79, 216, 0.2) 100%)',
                                       display: 'flex',
                                       alignItems: 'center',
                                       justifyContent: 'center',
                                     }}
                                   >
-                                    <subLink.icon size={16} color="#1F4FD8" stroke={1.5} />
+                                    <subLink.icon size={16} color="#4DA3FF" stroke={1.5} />
                                   </Box>
                                   <Text
                                     size="md"
                                     fw={500}
-                                    style={{ color: '#5A7099' }}
+                                    style={{ color: '#A5B4CF' }}
                                   >
                                     {subLink.label}
                                   </Text>
@@ -427,7 +428,7 @@ export function Navigation() {
                       }}
                       style={{
                         textDecoration: 'none',
-                        color: '#0A1A3F',
+                        color: '#FFFFFF',
                         fontSize: '1.25rem',
                         fontWeight: 600,
                       }}
@@ -455,7 +456,7 @@ export function Navigation() {
                   }}
                   styles={{
                     root: {
-                      background: '#0A1A3F',
+                      background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
                       border: 'none',
                     },
                   }}

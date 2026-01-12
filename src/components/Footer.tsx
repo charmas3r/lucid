@@ -36,8 +36,8 @@ export function Footer() {
       component="footer"
       py={40}
       style={{
-        background: '#F8F9FB',
-        borderTop: '1px solid rgba(10, 26, 63, 0.06)',
+        background: '#081430',
+        borderTop: '1px solid rgba(255, 255, 255, 0.06)',
       }}
       ref={ref}
     >
@@ -58,13 +58,13 @@ export function Footer() {
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Group gap="sm" mb="xs">
                     <Logo size={36} />
-                    <Text fw={700} size="lg" style={{ color: '#0A1A3F' }}>
+                    <Text fw={700} size="lg" style={{ color: '#FFFFFF' }}>
                       lucid
                     </Text>
                   </Group>
                 </motion.div>
               </Link>
-              <Text size="sm" style={{ color: '#8A9BB8' }}>
+              <Text size="sm" style={{ color: '#7A94BA' }}>
                 Your digital partner for clarity
               </Text>
             </Box>
@@ -86,14 +86,14 @@ export function Footer() {
                     aria-label={social.label}
                     onClick={() => trackEvent(EVENTS.FOOTER_CLICK_SOCIAL, { platform: social.label })}
                     style={{
-                      color: '#8A9BB8',
+                      color: '#7A94BA',
                       transition: 'color 0.2s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = '#1F4FD8';
+                      e.currentTarget.style.color = '#4DA3FF';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = '#8A9BB8';
+                      e.currentTarget.style.color = '#7A94BA';
                     }}
                   >
                     <social.icon size={20} stroke={1.5} />
@@ -110,7 +110,7 @@ export function Footer() {
           transition={{ duration: 0.6, delay: 0.3 }}
           style={{ transformOrigin: 'left' }}
         >
-          <Divider color="rgba(10, 26, 63, 0.08)" />
+          <Divider color="rgba(255, 255, 255, 0.08)" />
         </motion.div>
 
         <motion.div
@@ -119,7 +119,7 @@ export function Footer() {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <Group justify="space-between" mt="xl" wrap="wrap" gap="md">
-            <Text size="xs" style={{ color: '#8A9BB8' }}>
+            <Text size="xs" style={{ color: '#7A94BA' }}>
               © {new Date().getFullYear()} Lucid Web Studios. All rights reserved
             </Text>
             <Group gap="xl">
@@ -129,12 +129,12 @@ export function Footer() {
                   size="xs"
                   underline="hover"
                   onClick={() => trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: 'privacy_policy' })}
-                  style={{ color: '#8A9BB8' }}
+                  style={{ color: '#7A94BA' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#1F4FD8';
+                    e.currentTarget.style.color = '#4DA3FF';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = '#8A9BB8';
+                    e.currentTarget.style.color = '#7A94BA';
                   }}
                 >
                   Privacy Policy
@@ -146,12 +146,12 @@ export function Footer() {
                   size="xs"
                   underline="hover"
                   onClick={() => trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: 'terms_of_service' })}
-                  style={{ color: '#8A9BB8' }}
+                  style={{ color: '#7A94BA' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#1F4FD8';
+                    e.currentTarget.style.color = '#4DA3FF';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = '#8A9BB8';
+                    e.currentTarget.style.color = '#7A94BA';
                   }}
                 >
                   Terms of Service

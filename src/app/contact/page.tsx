@@ -260,9 +260,9 @@ function ContactForm() {
         <Box
           p={60}
           style={{
-            background: '#FFFFFF',
+            background: '#0D1F4A',
             borderRadius: 24,
-            border: '1px solid rgba(10, 26, 63, 0.06)',
+            border: '1px solid rgba(255, 255, 255, 0.1)',
             textAlign: 'center',
             position: 'relative',
           }}
@@ -285,13 +285,13 @@ function ContactForm() {
               aria-label="Close success message"
               styles={{
                 root: {
-                  color: '#8A9BB8',
+                  color: '#7A94BA',
                   padding: 8,
                   minWidth: 'auto',
                   height: 'auto',
                   '&:hover': {
                     background: 'rgba(10, 26, 63, 0.05)',
-                    color: '#0A1A3F',
+                    color: '#FFFFFF',
                   },
                 },
               }}
@@ -374,10 +374,10 @@ function ContactForm() {
               </Box>
             </Box>
           </motion.div>
-          <Title order={2} mb="md" style={{ color: '#0A1A3F' }}>
+          <Title order={2} mb="md" style={{ color: '#FFFFFF' }}>
             Message Sent!
           </Title>
-          <Text size="lg" style={{ color: '#5A7099' }} maw={400} mx="auto">
+          <Text size="lg" style={{ color: '#A5B4CF' }} maw={400} mx="auto">
             Thank you for reaching out. We&apos;ll get back to you within 24 hours to discuss your project.
           </Text>
           {preferredDate && formData.preferredTime && (
@@ -402,9 +402,9 @@ function ContactForm() {
                 onClick={handleReset}
                 styles={{
                   root: {
-                    background: 'rgba(31, 79, 216, 0.08)',
-                    color: '#1F4FD8',
-                    border: '1px solid rgba(31, 79, 216, 0.15)',
+background: 'rgba(77, 163, 255, 0.15)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                     borderRadius: 10,
                     '&:hover': {
                       background: 'rgba(31, 79, 216, 0.12)',
@@ -418,7 +418,7 @@ function ContactForm() {
           </Group>
           
           {/* Countdown text */}
-          <Text size="sm" mt="lg" style={{ color: '#8A9BB8' }}>
+          <Text size="sm" mt="lg" style={{ color: '#7A94BA' }}>
             Closing in {countdown} second{countdown !== 1 ? 's' : ''}...
           </Text>
         </Box>
@@ -445,9 +445,9 @@ function ContactForm() {
                 fw={600}
                 mb="lg"
                 style={{
-                  background: 'rgba(31, 79, 216, 0.08)',
-                  color: '#1F4FD8',
-                  border: '1px solid rgba(31, 79, 216, 0.15)',
+background: 'rgba(77, 163, 255, 0.15)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                   letterSpacing: '1px',
                   fontSize: '0.7rem',
                   padding: '10px 16px',
@@ -455,10 +455,10 @@ function ContactForm() {
               >
                 Get in Touch
               </Badge>
-              <Title order={2} mb="md" style={{ color: '#0A1A3F', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+              <Title order={2} mb="md" style={{ color: '#FFFFFF', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
                 Let&apos;s bring your vision to life
               </Title>
-              <Text size="lg" style={{ color: '#5A7099' }} maw={450}>
+              <Text size="lg" style={{ color: '#A5B4CF' }} maw={450}>
                 Ready to start your project? Fill out the form and we&apos;ll schedule a free consultation to discuss your needs.
               </Text>
             </Box>
@@ -486,7 +486,7 @@ function ContactForm() {
                       <info.icon size={22} color="#FFFFFF" />
                     </Box>
                     <Box>
-                      <Text size="sm" style={{ color: '#8A9BB8' }}>
+                      <Text size="sm" style={{ color: '#7A94BA' }}>
                         {info.label}
                       </Text>
                       {info.href ? (
@@ -494,12 +494,12 @@ function ContactForm() {
                           component="a"
                           href={info.href}
                           fw={500}
-                          style={{ color: '#0A1A3F', textDecoration: 'none' }}
+                          style={{ color: '#FFFFFF', textDecoration: 'none' }}
                         >
                           {info.value}
                         </Text>
                       ) : (
-                        <Text fw={500} style={{ color: '#0A1A3F' }}>
+                        <Text fw={500} style={{ color: '#FFFFFF' }}>
                           {info.value}
                         </Text>
                       )}
@@ -518,9 +518,9 @@ function ContactForm() {
             onSubmit={handleSubmit}
             p={{ base: 'xl', md: 40 }}
             style={{
-              background: '#FFFFFF',
+              background: '#0D1F4A',
               borderRadius: 24,
-              border: '1px solid rgba(10, 26, 63, 0.06)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
               boxShadow: '0 4px 30px rgba(10, 26, 63, 0.06)',
             }}
           >
@@ -533,10 +533,10 @@ function ContactForm() {
                   value={formData.name}
                   onChange={(e) => handleChange('name', e.target.value)}
                   styles={{
-                    label: { color: '#0A1A3F', fontWeight: 500, marginBottom: 6 },
+                    label: { color: '#FFFFFF', fontWeight: 500, marginBottom: 6 },
                     input: {
-                      background: '#F8F9FB',
-                      border: '1px solid rgba(10, 26, 63, 0.08)',
+                      background: '#081430',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
                       borderRadius: 10,
                       '&:focus': {
                         borderColor: '#1F4FD8',
@@ -552,10 +552,10 @@ function ContactForm() {
                   value={formData.email}
                   onChange={(e) => handleChange('email', e.target.value)}
                   styles={{
-                    label: { color: '#0A1A3F', fontWeight: 500, marginBottom: 6 },
+                    label: { color: '#FFFFFF', fontWeight: 500, marginBottom: 6 },
                     input: {
-                      background: '#F8F9FB',
-                      border: '1px solid rgba(10, 26, 63, 0.08)',
+                      background: '#081430',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
                       borderRadius: 10,
                       '&:focus': {
                         borderColor: '#1F4FD8',
@@ -572,10 +572,10 @@ function ContactForm() {
                   value={formData.phone}
                   onChange={(e) => handleChange('phone', e.target.value)}
                   styles={{
-                    label: { color: '#0A1A3F', fontWeight: 500, marginBottom: 6 },
+                    label: { color: '#FFFFFF', fontWeight: 500, marginBottom: 6 },
                     input: {
-                      background: '#F8F9FB',
-                      border: '1px solid rgba(10, 26, 63, 0.08)',
+                      background: '#081430',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
                       borderRadius: 10,
                       '&:focus': {
                         borderColor: '#1F4FD8',
@@ -589,10 +589,10 @@ function ContactForm() {
                   value={formData.company}
                   onChange={(e) => handleChange('company', e.target.value)}
                   styles={{
-                    label: { color: '#0A1A3F', fontWeight: 500, marginBottom: 6 },
+                    label: { color: '#FFFFFF', fontWeight: 500, marginBottom: 6 },
                     input: {
-                      background: '#F8F9FB',
-                      border: '1px solid rgba(10, 26, 63, 0.08)',
+                      background: '#081430',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
                       borderRadius: 10,
                       '&:focus': {
                         borderColor: '#1F4FD8',
@@ -609,10 +609,10 @@ function ContactForm() {
                 value={formData.service}
                 onChange={(value) => handleChange('service', value || '')}
                 styles={{
-                  label: { color: '#0A1A3F', fontWeight: 500, marginBottom: 6 },
+                  label: { color: '#FFFFFF', fontWeight: 500, marginBottom: 6 },
                   input: {
-                    background: '#F8F9FB',
-                    border: '1px solid rgba(10, 26, 63, 0.08)',
+                    background: '#081430',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
                     borderRadius: 10,
                     '&:focus': {
                       borderColor: '#1F4FD8',
@@ -634,7 +634,7 @@ function ContactForm() {
               >
                 <Group gap="xs" mb="sm">
                   <IconCalendar size={18} color="#1F4FD8" />
-                  <Text fw={500} style={{ color: '#0A1A3F' }}>
+                  <Text fw={500} style={{ color: '#FFFFFF' }}>
                     Preferred Consultation Time
                   </Text>
                   {(preferredDate || prefilledTime) && (
@@ -653,10 +653,10 @@ function ContactForm() {
                     clearable
                     valueFormat="MMMM D, YYYY"
                     styles={{
-                      label: { color: '#5A7099', fontWeight: 500, marginBottom: 6, fontSize: '0.85rem' },
+                      label: { color: '#A5B4CF', fontWeight: 500, marginBottom: 6, fontSize: '0.85rem' },
                       input: {
-                        background: '#FFFFFF',
-                        border: '1px solid rgba(10, 26, 63, 0.08)',
+                        background: '#0D1F4A',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
                         borderRadius: 10,
                         '&:focus': {
                           borderColor: '#1F4FD8',
@@ -671,10 +671,10 @@ function ContactForm() {
                     value={formData.preferredTime}
                     onChange={(value) => handleChange('preferredTime', value || '')}
                     styles={{
-                      label: { color: '#5A7099', fontWeight: 500, marginBottom: 6, fontSize: '0.85rem' },
+                      label: { color: '#A5B4CF', fontWeight: 500, marginBottom: 6, fontSize: '0.85rem' },
                       input: {
-                        background: '#FFFFFF',
-                        border: '1px solid rgba(10, 26, 63, 0.08)',
+                        background: '#0D1F4A',
+                        border: '1px solid rgba(255, 255, 255, 0.12)',
                         borderRadius: 10,
                         '&:focus': {
                           borderColor: '#1F4FD8',
@@ -692,10 +692,10 @@ function ContactForm() {
                 value={formData.message}
                 onChange={(e) => handleChange('message', e.target.value)}
                 styles={{
-                  label: { color: '#0A1A3F', fontWeight: 500, marginBottom: 6 },
+                  label: { color: '#FFFFFF', fontWeight: 500, marginBottom: 6 },
                   input: {
-                    background: '#F8F9FB',
-                    border: '1px solid rgba(10, 26, 63, 0.08)',
+                    background: '#081430',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
                     borderRadius: 10,
                     '&:focus': {
                       borderColor: '#1F4FD8',
@@ -754,7 +754,7 @@ export default function ContactPage() {
   return (
     <>
       <Navigation />
-      <Box component="main" pt={120} pb={80} style={{ background: '#F8F9FB', minHeight: '100vh' }}>
+      <Box component="main" pt={120} pb={80} style={{ background: '#081430', minHeight: '100vh' }}>
         <Container size="xl">
           <Suspense fallback={<div>Loading...</div>}>
             <ContactForm />

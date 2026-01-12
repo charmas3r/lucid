@@ -45,4 +45,10 @@ export const theme = createTheme({
   cursorType: 'pointer',
   white: '#FFFFFF',
   black: '#0A1A3F',
+  // Dark theme overrides for Mantine components
+  other: {
+    darkBackground: '#0A1A3F',
+    darkSurface: '#0D1F4A',
+    darkBorder: 'rgba(255, 255, 255, 0.1)',
+  },
 });

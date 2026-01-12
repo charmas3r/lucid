@@ -32,6 +32,7 @@ import {
   IconChartLine,
   IconClock,
   IconTool,
+  IconExternalLink,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
 import { trackEvent, EVENTS } from '@/lib/analytics';
@@ -199,6 +200,10 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
 
   const imageUrl = caseStudy.image?.asset?._ref 
     ? urlFor(caseStudy.image).width(1200).height(600).quality(90).url()
+    : null;
+
+  const oldWebsiteScreenshotUrl = caseStudy.oldWebsiteScreenshot?.asset?._ref 
+    ? urlFor(caseStudy.oldWebsiteScreenshot).width(960).height(600).quality(85).url()
     : null;
 
   const breadcrumbItems = [
@@ -386,6 +391,43 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                           </Badge>
                         ))}
                       </Group>
+                    </motion.div>
+                  )}
+
+                  {/* Visit Site Button */}
+                  {caseStudy.newSiteUrl && (
+                    <motion.div variants={fadeInUp}>
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                        <Button
+                          component="a"
+                          href={caseStudy.newSiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          size="lg"
+                          radius="xl"
+                          mt="md"
+                          rightSection={<IconExternalLink size={18} />}
+                          onClick={() => trackEvent(EVENTS.CASE_STUDY_EXTERNAL_LINK, {
+                            study: caseStudy.title,
+                            url: caseStudy.newSiteUrl,
+                          })}
+                          styles={{
+                            root: {
+                              background: 'rgba(255, 255, 255, 0.15)',
+                              border: '1px solid rgba(255, 255, 255, 0.3)',
+                              color: '#FFFFFF',
+                              backdropFilter: 'blur(10px)',
+                              transition: 'all 0.2s ease',
+                              '&:hover': {
+                                background: 'rgba(255, 255, 255, 0.25)',
+                                borderColor: 'rgba(255, 255, 255, 0.5)',
+                              },
+                            },
+                          }}
+                        >
+                          Visit Live Site
+                        </Button>
+                      </motion.div>
                     </motion.div>
                   )}
                 </Stack>
@@ -632,34 +674,75 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     justifyContent: 'center',
                   }}
                 >
-                  <Box
-                    style={{
-                      width: '100%',
-                      maxWidth: 400,
-                      aspectRatio: '1',
-                      background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.05) 0%, rgba(77, 163, 255, 0.1) 100%)',
-                      borderRadius: 24,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <motion.div
-                      animate={{ rotate: [0, 5, -5, 0] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  {oldWebsiteScreenshotUrl ? (
+                    <Box
+                      style={{
+                        width: '100%',
+                        maxWidth: 480,
+                      }}
                     >
-                      <ThemeIcon
-                        size={120}
-                        radius="xl"
+                      <Text
+                        size="xs"
+                        fw={600}
+                        tt="uppercase"
+                        mb="sm"
+                        ta="center"
+                        style={{ color: '#5A7099', letterSpacing: '1px' }}
+                      >
+                        Old Website
+                      </Text>
+                      <Box
                         style={{
-                          background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-                          boxShadow: '0 20px 40px rgba(31, 79, 216, 0.3)',
+                          borderRadius: 16,
+                          overflow: 'hidden',
+                          boxShadow: '0 10px 40px rgba(10, 26, 63, 0.15)',
+                          border: '1px solid rgba(10, 26, 63, 0.1)',
                         }}
                       >
-                        <IconBriefcase size={60} color="#FFFFFF" stroke={1.5} />
-                      </ThemeIcon>
-                    </motion.div>
-                  </Box>
+                        <Image
+                          src={oldWebsiteScreenshotUrl}
+                          alt={caseStudy.oldWebsiteScreenshot?.alt || `${caseStudy.client} old website`}
+                          width={960}
+                          height={600}
+                          style={{
+                            width: '100%',
+                            height: 'auto',
+                            objectFit: 'cover',
+                            display: 'block',
+                          }}
+                        />
+                      </Box>
+                    </Box>
+                  ) : (
+                    <Box
+                      style={{
+                        width: '100%',
+                        maxWidth: 400,
+                        aspectRatio: '1',
+                        background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.05) 0%, rgba(77, 163, 255, 0.1) 100%)',
+                        borderRadius: 24,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      <motion.div
+                        animate={{ rotate: [0, 5, -5, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                      >
+                        <ThemeIcon
+                          size={120}
+                          radius="xl"
+                          style={{
+                            background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                            boxShadow: '0 20px 40px rgba(31, 79, 216, 0.3)',
+                          }}
+                        >
+                          <IconBriefcase size={60} color="#FFFFFF" stroke={1.5} />
+                        </ThemeIcon>
+                      </motion.div>
+                    </Box>
+                  )}
                 </motion.div>
               </SimpleGrid>
             </Container>
