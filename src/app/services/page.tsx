@@ -17,8 +17,9 @@ import {
   Tooltip,
 } from '@mantine/core';
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { getCaseStudyTestimonials, type CaseStudyWithTestimonial } from '@/lib/sanity';
 import {
   IconCode,
   IconDeviceMobile,
@@ -62,7 +63,7 @@ const staggerContainer = {
   },
 };
 
-// Services with pricing teasers
+// Services with pricing teasers (50% discount applied - matches pricing page)
 const services = [
   {
     icon: IconCode,
@@ -73,7 +74,7 @@ const services = [
     href: '/services/web-development',
     highlights: ['Next.js & React', 'Vercel Hosting', 'Lightning Performance'],
     gradient: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-    startingPrice: '4,500',
+    startingPrice: '1,250',
   },
   {
     icon: IconDeviceMobile,
@@ -84,7 +85,7 @@ const services = [
     href: '/services/mobile-apps',
     highlights: ['Kotlin Multiplatform', 'Flutter', 'iOS & Android'],
     gradient: 'linear-gradient(135deg, #4DA3FF 0%, #3A6EA5 100%)',
-    startingPrice: '12,000',
+    startingPrice: '7,500',
   },
   {
     icon: IconShoppingCart,
@@ -95,7 +96,7 @@ const services = [
     href: '/services/ecommerce',
     highlights: ['Shopify Hydrogen', 'Headless Commerce', 'Payment Integrations'],
     gradient: 'linear-gradient(135deg, #3A6EA5 0%, #0A1A3F 100%)',
-    startingPrice: '6,000',
+    startingPrice: '1,750',
   },
   {
     icon: IconSearch,
@@ -106,7 +107,7 @@ const services = [
     href: '/services/seo-services',
     highlights: ['100 Lighthouse Score', 'Technical SEO', 'Content Strategy'],
     gradient: 'linear-gradient(135deg, #0A1A3F 0%, #1F4FD8 100%)',
-    startingPrice: '1,500',
+    startingPrice: '750',
     priceLabel: '/month',
   },
   {
@@ -118,7 +119,7 @@ const services = [
     href: '/services/conversion-optimization',
     highlights: ['2-3x Conversion Lift', 'A/B Testing', 'Funnel Optimization'],
     gradient: 'linear-gradient(135deg, #1F4FD8 0%, #0CCE6B 100%)',
-    startingPrice: '2,500',
+    startingPrice: '750',
   },
 ];
 
@@ -189,11 +190,21 @@ const comparisonFeatures = [
   { feature: 'Scalable architecture', diy: false, template: false, lucid: true },
   { feature: '100 Lighthouse scores', diy: 'Unlikely', template: 'Rarely', lucid: true },
   { feature: 'Time to launch', diy: '40+ hours DIY', template: '2-4 weeks', lucid: '4-8 weeks' },
-  { feature: 'Typical investment', diy: '$20-50/mo', template: '$2-5K', lucid: '$4.5K+' },
+  { feature: 'Typical investment', diy: '$20-50/mo', template: '$2-5K', lucid: '$1.25K+' },
 ];
 
-// Testimonials
-const testimonials = [
+// Testimonial display type
+interface DisplayTestimonial {
+  quote: string;
+  author: string;
+  role: string;
+  location: string;
+  rating: number;
+  caseStudySlug?: string;
+}
+
+// Fallback testimonials (shown while loading or if no Sanity data)
+const fallbackTestimonials: DisplayTestimonial[] = [
   {
     quote: "Lucid transformed our outdated website into a modern, fast-loading experience. Our leads increased by 40% in the first month.",
     author: 'Sarah Mitchell',
@@ -271,6 +282,27 @@ export default function ServicesPage() {
   const testimonialsInView = useInView(testimonialsRef, { once: true, margin: '-100px' });
   const faqInView = useInView(faqRef, { once: true, margin: '-100px' });
   const ctaInView = useInView(ctaRef, { once: true, margin: '-100px' });
+
+  // Fetch testimonials from Sanity case studies
+  const [sanityTestimonials, setSanityTestimonials] = useState<CaseStudyWithTestimonial[]>([]);
+  
+  useEffect(() => {
+    getCaseStudyTestimonials()
+      .then(setSanityTestimonials)
+      .catch(console.error);
+  }, []);
+
+  // Transform Sanity testimonials to display format, fallback to hardcoded if none
+  const testimonials: DisplayTestimonial[] = sanityTestimonials.length > 0
+    ? sanityTestimonials.slice(0, 3).map((cs) => ({
+        quote: cs.testimonial.quote,
+        author: cs.testimonial.author,
+        role: cs.testimonial.role,
+        location: cs.clientLocation || '',
+        rating: 5,
+        caseStudySlug: cs.slug.current,
+      }))
+    : fallbackTestimonials;
 
   const renderComparisonValue = (value: boolean | string) => {
     if (value === true) {
@@ -991,17 +1023,38 @@ export default function ServicesPage() {
                           >
                             {testimonial.author.split(' ').map(n => n[0]).join('')}
                           </Avatar>
-                          <Box>
+                          <Box style={{ flex: 1 }}>
                             <Text fw={600} c="white" size="sm">
                               {testimonial.author}
                             </Text>
                             <Text size="xs" c="dimmed">
                               {testimonial.role}
                             </Text>
-                            <Text size="xs" c="#4DA3FF">
-                              {testimonial.location}
-                            </Text>
+                            {testimonial.location && (
+                              <Text size="xs" c="#4DA3FF">
+                                {testimonial.location}
+                              </Text>
+                            )}
                           </Box>
+                          {testimonial.caseStudySlug && (
+                            <Button
+                              component={Link}
+                              href={`/case-studies/${testimonial.caseStudySlug}`}
+                              variant="subtle"
+                              size="xs"
+                              radius="xl"
+                              c="#4DA3FF"
+                              styles={{
+                                root: {
+                                  '&:hover': {
+                                    background: 'rgba(77, 163, 255, 0.1)',
+                                  },
+                                },
+                              }}
+                            >
+                              Read Story →
+                            </Button>
+                          )}
                         </Group>
                       </Stack>
                     </Paper>

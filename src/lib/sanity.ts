@@ -139,7 +139,20 @@ export const featuredCaseStudiesQuery = `*[_type == "caseStudy" && featured == t
   services,
   metrics,
   resultsSummary,
+  testimonial,
   featured,
+  image,
+  gradient
+}`;
+
+// Query for case studies with testimonials (for "What Our Clients Say" sections)
+export const caseStudyTestimonialsQuery = `*[_type == "caseStudy" && defined(testimonial.quote) && testimonial.quote != ""] | order(featured desc, publishedAt desc)[0...6] {
+  _id,
+  title,
+  slug,
+  client,
+  clientLocation,
+  testimonial,
   image,
   gradient
 }`;
@@ -173,6 +186,21 @@ export const caseStudyBySlugQuery = `*[_type == "caseStudy" && slug.current == $
   publishedAt
 }`;
 
+// Type for testimonial data from case studies
+export interface CaseStudyWithTestimonial {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  client: string;
+  clientLocation?: string;
+  testimonial: CaseStudyTestimonial;
+  image?: {
+    asset: { _ref: string };
+    alt?: string;
+  };
+  gradient?: string;
+}
+
 // Fetch functions
 export async function getCaseStudies(): Promise<SanityCaseStudy[]> {
   return sanityClient.fetch(caseStudiesQuery);
@@ -184,4 +212,8 @@ export async function getFeaturedCaseStudies(): Promise<SanityCaseStudy[]> {
 
 export async function getCaseStudyBySlug(slug: string): Promise<SanityCaseStudy | null> {
   return sanityClient.fetch(caseStudyBySlugQuery, { slug });
+}
+
+export async function getCaseStudyTestimonials(): Promise<CaseStudyWithTestimonial[]> {
+  return sanityClient.fetch(caseStudyTestimonialsQuery);
 }
