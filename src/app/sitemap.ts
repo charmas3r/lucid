@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getCaseStudies } from '@/lib/sanity';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://lucidwebstudios.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.lucidweb.studio';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static pages with their priorities and change frequencies

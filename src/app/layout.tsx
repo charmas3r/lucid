@@ -14,6 +14,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.lucidweb.studio'),
   title: 'Web Development Company in San Diego | Custom Websites',
   description:
     'Bringing clarity to local businesses through exceptional website design, development, mobile apps, and SEO. Transform your digital presence with Lucid Web Studios.',
