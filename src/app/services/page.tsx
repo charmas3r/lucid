@@ -25,6 +25,7 @@ import {
   IconRocket,
   IconBolt,
   IconChartBar,
+  IconMapPin,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
 
@@ -384,6 +385,73 @@ export default function ServicesPage() {
                 </motion.div>
               ))}
             </SimpleGrid>
+          </Container>
+        </Box>
+
+        {/* Local Service Areas Banner */}
+        <Box
+          component="section"
+          py={60}
+          style={{ background: '#F8F9FB' }}
+        >
+          <Container size="lg">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <Box
+                p={{ base: 'xl', md: 40 }}
+                style={{
+                  background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.05) 0%, rgba(77, 163, 255, 0.08) 100%)',
+                  borderRadius: 24,
+                  border: '1px solid rgba(31, 79, 216, 0.1)',
+                }}
+              >
+                <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl" style={{ alignItems: 'center' }}>
+                  <Stack gap="md">
+                    <Group gap="sm">
+                      <ThemeIcon
+                        size={48}
+                        radius="xl"
+                        style={{ background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)' }}
+                      >
+                        <IconMapPin size={24} color="#FFFFFF" />
+                      </ThemeIcon>
+                      <Box>
+                        <Text size="xs" fw={600} tt="uppercase" style={{ color: '#1F4FD8', letterSpacing: '0.5px' }}>
+                          Proudly Local
+                        </Text>
+                        <Title order={3} style={{ color: '#0A1A3F', fontSize: '1.5rem' }}>
+                          Serving San Diego & Beyond
+                        </Title>
+                      </Box>
+                    </Group>
+                    <Text size="md" lh={1.8} style={{ color: '#5A7099' }}>
+                      Based in Escondido, we provide web development services across San Diego County—from 
+                      San Marcos and Carlsbad to La Jolla and Chula Vista. Local expertise, enterprise-quality results.
+                    </Text>
+                  </Stack>
+                  <Group justify={{ base: 'flex-start', md: 'flex-end' }}>
+                    <Button
+                      component={Link}
+                      href="/service-areas"
+                      size="md"
+                      radius="xl"
+                      rightSection={<IconArrowRight size={16} />}
+                      styles={{
+                        root: {
+                          background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                        },
+                      }}
+                    >
+                      View Service Areas
+                    </Button>
+                  </Group>
+                </SimpleGrid>
+              </Box>
+            </motion.div>
           </Container>
         </Box>
 
