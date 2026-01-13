@@ -211,3 +211,17 @@ html {
   background: linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%) !important;
   color: #FFFFFF !important;
 }
+
+/* Report Wizard Modal - Mobile full screen */
+@media (max-width: 48em) {
+  .report-wizard-modal .mantine-Modal-content {
+    max-height: 100dvh !important;
+    height: 100dvh !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+  
+  .report-wizard-modal .mantine-Modal-inner {
+    padding: 0 !important;
+  }
+}

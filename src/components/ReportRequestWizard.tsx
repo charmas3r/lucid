@@ -240,11 +240,12 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
       opened={opened}
       onClose={handleClose}
       size="xl"
-      radius={{ base: 0, sm: 'lg' }}
+      radius="lg"
       padding={0}
       withCloseButton={false}
       centered
       fullScreen={false}
+      className="report-wizard-modal"
       styles={{
         root: {
           zIndex: 1100,
@@ -255,9 +256,6 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
         inner: {
           zIndex: 1101,
           padding: 0,
-          '@media (max-width: 48em)': {
-            padding: 0,
-          },
         },
         content: {
           background: 'linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0f0f23 100%)',
@@ -266,12 +264,6 @@ export function ReportRequestWizard({ opened, onClose, defaultReportType }: Repo
           maxHeight: '100dvh',
           display: 'flex',
           flexDirection: 'column',
-          '@media (max-width: 48em)': {
-            maxHeight: '100dvh',
-            height: '100dvh',
-            borderRadius: 0,
-            border: 'none',
-          },
         },
         body: {
           padding: 0,
