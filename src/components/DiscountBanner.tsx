@@ -91,7 +91,7 @@ export function DiscountBanner({ isVisible, onDismiss }: { isVisible: boolean; o
                     gap: 8,
                   }}
                 >
-                  🎉 LIMITED TIME: 50% OFF All Services!
+                  LIMITED TIME: 50% OFF All Services!
                   <Text
                     component="span"
                     fw={500}
