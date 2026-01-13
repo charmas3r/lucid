@@ -19,7 +19,6 @@ import {
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   IconCode,
   IconDeviceMobile,
@@ -33,16 +32,13 @@ import {
   IconMapPin,
   IconMessageCircle,
   IconPalette,
-  IconTestPipe,
   IconCheck,
   IconX,
-  IconQuestionMark,
   IconQuote,
   IconStar,
   IconBrandReact,
   IconBrandNextjs,
   IconBrandVercel,
-  IconBrandShopify,
   IconBrandFigma,
   IconBrandTypescript,
   IconBrandTailwind,
@@ -175,7 +171,7 @@ const techStack = [
   { name: 'TypeScript', icon: IconBrandTypescript, category: 'Language' },
   { name: 'Tailwind', icon: IconBrandTailwind, category: 'Styling' },
   { name: 'Vercel', icon: IconBrandVercel, category: 'Hosting' },
-  { name: 'Shopify', icon: IconBrandShopify, category: 'E-commerce' },
+  { name: 'Shopify', icon: IconShoppingCart, category: 'E-commerce' },
   { name: 'Figma', icon: IconBrandFigma, category: 'Design' },
   { name: 'PostgreSQL', icon: IconDatabase, category: 'Database' },
   { name: 'AWS/GCP', icon: IconCloud, category: 'Cloud' },
