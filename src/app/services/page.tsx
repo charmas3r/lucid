@@ -433,7 +433,7 @@ export default function ServicesPage() {
                       San Marcos and Carlsbad to La Jolla and Chula Vista. Local expertise, enterprise-quality results.
                     </Text>
                   </Stack>
-                  <Group justify={{ base: 'flex-start', md: 'flex-end' }}>
+                  <Box ta={{ base: 'left', md: 'right' }}>
                     <Button
                       component={Link}
                       href="/service-areas"
@@ -448,7 +448,7 @@ export default function ServicesPage() {
                     >
                       View Service Areas
                     </Button>
-                  </Group>
+                  </Box>
                 </SimpleGrid>
               </Box>
             </motion.div>

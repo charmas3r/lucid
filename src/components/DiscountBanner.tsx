@@ -1,7 +1,6 @@
 'use client';
 
 import { Box, Container, Text, Group, CloseButton } from '@mantine/core';
-import { IconSparkles } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
@@ -78,13 +77,6 @@ export function DiscountBanner({ isVisible, onDismiss }: { isVisible: boolean; o
                 gap="xs"
                 style={{ position: 'relative' }}
               >
-                <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
-                >
-                  <IconSparkles size={18} color="#FFFFFF" stroke={2} />
-                </motion.div>
-                
                 <Text
                   component={Link}
                   href="/pricing"
@@ -113,13 +105,6 @@ export function DiscountBanner({ isVisible, onDismiss }: { isVisible: boolean; o
                     View Pricing →
                   </Text>
                 </Text>
-
-                <motion.div
-                  animate={{ rotate: [0, -10, 10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
-                >
-                  <IconSparkles size={18} color="#FFFFFF" stroke={2} />
-                </motion.div>
 
                 <CloseButton
                   onClick={onDismiss}
