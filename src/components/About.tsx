@@ -10,19 +10,18 @@ import {
   SimpleGrid,
   Avatar,
   Group,
-  Anchor,
   Button,
 } from '@mantine/core';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
-import { IconBrandLinkedin, IconArrowRight } from '@tabler/icons-react';
+import { IconArrowRight } from '@tabler/icons-react';
 
 const team = [
   {
     name: 'Evan Smith',
     role: 'FOUNDER & LEAD DEVELOPER',
-    bio: '10+ years building Android, iOS, and web applications at enterprise companies. Former engineering manager now bringing that expertise to help local businesses compete digitally.',
+    bio: '10+ years building Android, iOS, and web applications at enterprise companies. Engineering manager now bringing that expertise to help local businesses compete digitally.',
     avatar: 'https://res.cloudinary.com/dssgz3ocp/image/upload/v1768193686/profile_eoxqvp.jpg',
   },
   {
@@ -239,34 +238,6 @@ export function About() {
                         <Text size="sm" lh={1.7} style={{ color: '#A5B4CF' }}>
                           {member.bio}
                         </Text>
-
-                        <motion.div
-                          whileHover={{ x: 3 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <Anchor
-                            href="#"
-                            style={{
-                              display: 'flex',
-                              alignItems: 'center',
-                              gap: 6,
-                              color: '#7A94BA',
-                              fontSize: '0.75rem',
-                              textDecoration: 'none',
-                              marginTop: 8,
-                              transition: 'color 0.2s ease',
-                            }}
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.color = '#4DA3FF';
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.color = '#7A94BA';
-                            }}
-                          >
-                            <IconBrandLinkedin size={16} />
-                            LINKEDIN
-                          </Anchor>
-                        </motion.div>
                       </Stack>
                     </Group>
                   </Box>
