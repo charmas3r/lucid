@@ -21,7 +21,7 @@ const team = [
   {
     name: 'Evan Smith',
     role: 'FOUNDER & LEAD DEVELOPER',
-    bio: '10+ years building Android, iOS, and web applications at enterprise companies. Engineering manager now bringing that expertise to help local businesses compete digitally.',
+    bio: 'BS & MS in Computer Science with 10+ years building Android, iOS, and web applications at enterprise companies. Engineering manager now bringing that expertise to help local businesses compete digitally.',
     avatar: 'https://res.cloudinary.com/dssgz3ocp/image/upload/v1768193686/profile_eoxqvp.jpg',
   },
   {
