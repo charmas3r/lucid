@@ -19,7 +19,7 @@ import {
 import { DatePickerInput } from '@mantine/dates';
 import '@mantine/dates/styles.css';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { 
   IconMail, 
   IconPhone, 
@@ -33,6 +33,7 @@ import {
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { trackEvent, EVENTS } from '@/lib/analytics';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -69,6 +70,7 @@ function ContactForm() {
   const searchParams = useSearchParams();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   
   // Get pre-filled values from URL params
   const prefilledDateStr = searchParams.get('date') || '';
@@ -82,6 +84,7 @@ function ContactForm() {
     service: '',
     preferredTime: prefilledTime,
     message: '',
+    website: '', // Honeypot field
   });
   
   // Separate state for date picker (Date object)
@@ -128,7 +131,12 @@ function ContactForm() {
       service: '',
       preferredTime: '',
       message: '',
+      website: '',
     });
+    // Reset reCAPTCHA
+    if (recaptchaRef.current) {
+      recaptchaRef.current.reset();
+    }
   };
 
   // Update form when URL params change
@@ -151,10 +159,32 @@ function ContactForm() {
     setIsSubmitting(true);
     setError(null);
     
-    // Include formatted date in submission
+    // Check honeypot field - if filled, it's a bot
+    if (formData.website) {
+      setIsSubmitting(false);
+      return; // Silently fail for bots
+    }
+    
+    // Get reCAPTCHA token
+    if (!recaptchaRef.current) {
+      setError('Please verify you are not a robot.');
+      setIsSubmitting(false);
+      return;
+    }
+    
+    const recaptchaToken = await recaptchaRef.current.executeAsync();
+    
+    if (!recaptchaToken) {
+      setError('reCAPTCHA verification failed. Please try again.');
+      setIsSubmitting(false);
+      return;
+    }
+    
+    // Include formatted date and reCAPTCHA token in submission
     const submissionData = {
       ...formData,
       preferredDate: formatDateToString(preferredDate),
+      recaptchaToken,
     };
     
     try {
@@ -180,6 +210,10 @@ function ContactForm() {
     } catch (err) {
       trackEvent(EVENTS.FORM_ERROR, { form: 'contact', error: err instanceof Error ? err.message : 'unknown' });
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+      // Reset reCAPTCHA on error
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -703,6 +737,41 @@ background: 'rgba(77, 163, 255, 0.15)',
                   },
                 }}
               />
+
+              {/* Honeypot field - hidden from users but visible to bots */}
+              <Box
+                component="input"
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={(e) => handleChange('website', e.target.value)}
+                style={{
+                  position: 'absolute',
+                  left: '-9999px',
+                  opacity: 0,
+                  pointerEvents: 'none',
+                  tabIndex: -1,
+                }}
+                aria-hidden="true"
+                tabIndex={-1}
+              />
+
+              {/* reCAPTCHA - invisible mode, badge hidden */}
+              <Box
+                style={{
+                  position: 'absolute',
+                  left: '-9999px',
+                  opacity: 0,
+                  pointerEvents: 'none',
+                }}
+                aria-hidden="true"
+              >
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey="6LfDqFMsAAAAAH4FlNOx78QDqv19T17Y_f7uZPGp"
+                  size="invisible"
+                />
+              </Box>
 
               {error && (
                 <Box

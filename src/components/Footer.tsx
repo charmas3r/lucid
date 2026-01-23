@@ -119,9 +119,32 @@ export function Footer() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <Text size="xs" style={{ color: '#7A94BA' }} mt="xl">
-            © {new Date().getFullYear()} Lucid Web Studios. All rights reserved
-          </Text>
+          <Group justify="space-between" align="center" mt="xl" wrap="wrap">
+            <Text size="xs" style={{ color: '#7A94BA' }}>
+              © {new Date().getFullYear()} Lucid Web Studios. All rights reserved
+            </Text>
+            <Text size="xs" style={{ color: '#7A94BA' }}>
+              This site is protected by reCAPTCHA and the Google{' '}
+              <Anchor
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#7A94BA', textDecoration: 'underline' }}
+              >
+                Privacy Policy
+              </Anchor>
+              {' '}and{' '}
+              <Anchor
+                href="https://policies.google.com/terms"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#7A94BA', textDecoration: 'underline' }}
+              >
+                Terms of Service
+              </Anchor>
+              {' '}apply.
+            </Text>
+          </Group>
         </motion.div>
       </Container>
     </Box>

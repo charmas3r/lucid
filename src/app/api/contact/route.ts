@@ -11,6 +11,28 @@ interface ContactFormData {
   preferredDate?: string;
   preferredTime?: string;
   message?: string;
+  website?: string; // Honeypot field
+  recaptchaToken?: string;
+}
+
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  const secretKey = '6LfDqFMsAAAAAFfqrX402SKOZan-IncGgi0WK3X4';
+  
+  try {
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${secretKey}&response=${token}`,
+    });
+    
+    const data = await response.json();
+    return data.success === true;
+  } catch (error) {
+    console.error('reCAPTCHA verification error:', error);
+    return false;
+  }
 }
 
 export async function POST(request: Request) {
@@ -20,12 +42,37 @@ export async function POST(request: Request) {
     
     const body: ContactFormData = await request.json();
     
-    const { name, email, phone, company, service, preferredDate, preferredTime, message } = body;
+    const { name, email, phone, company, service, preferredDate, preferredTime, message, website, recaptchaToken } = body;
+
+    // Honeypot check - if website field is filled, it's a bot
+    if (website) {
+      // Silently reject - don't give bots any feedback
+      return NextResponse.json(
+        { success: true },
+        { status: 200 }
+      );
+    }
 
     // Validate required fields
     if (!name || !email) {
       return NextResponse.json(
         { error: 'Name and email are required' },
+        { status: 400 }
+      );
+    }
+
+    // Verify reCAPTCHA token
+    if (!recaptchaToken) {
+      return NextResponse.json(
+        { error: 'reCAPTCHA verification required' },
+        { status: 400 }
+      );
+    }
+
+    const isValidRecaptcha = await verifyRecaptcha(recaptchaToken);
+    if (!isValidRecaptcha) {
+      return NextResponse.json(
+        { error: 'reCAPTCHA verification failed' },
         { status: 400 }
       );
     }
