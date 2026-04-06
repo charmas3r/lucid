@@ -29,6 +29,7 @@ import {
   IconMessageCircle,
   IconCode,
   IconPalette,
+  IconShield,
   IconTrendingUp,
   IconQuote,
 } from '@tabler/icons-react';
@@ -119,10 +120,17 @@ const stats = [
 const team = [
   {
     name: 'Evan Smith',
-    role: 'Founder & Lead Developer',
+    role: 'Owner & Founder',
     bio: '10+ years building Android, iOS, and web applications at enterprise companies. Engineering leadership experience now being channeled into helping local businesses thrive digitally.',
     avatar: 'https://res.cloudinary.com/dssgz3ocp/image/upload/v1768193686/profile_eoxqvp.jpg',
     icon: IconCode,
+  },
+  {
+    name: 'Michael Jones',
+    role: 'Lead Developer',
+    bio: 'A decade of service in the military followed by 10+ years in software development — now focused on helping local businesses succeed online.',
+    avatar: 'https://szy24xk8fmehrisa.public.blob.vercel-storage.com/Screenshot%202026-04-05%20at%203.11.44%E2%80%AFPM.png',
+    icon: IconShield,
   },
   {
     name: 'Samantha Smith',
@@ -584,7 +592,7 @@ export default function AboutPage() {
                         Evan Smith
                       </Text>
                       <Text size="sm" style={{ color: '#A5B4CF' }}>
-                        Founder & Lead Developer
+                        Owner & Founder
                       </Text>
                     </Box>
                   </Stack>
@@ -673,7 +681,7 @@ export default function AboutPage() {
               </Stack>
             </motion.div>
 
-            <SimpleGrid cols={{ base: 1, md: 2 }} spacing="xl" maw={900} mx="auto">
+            <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="xl" maw={1100} mx="auto">
               {team.map((member, index) => (
                 <motion.div
                   key={member.name}

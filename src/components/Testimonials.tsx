@@ -103,7 +103,7 @@ export function Testimonials() {
                     Evan Smith
                   </Text>
                   <Text size="sm" style={{ color: '#7A94BA' }}>
-                    Founder & Lead Developer • 10+ Years Experience
+                    Owner & Founder • 10+ Years Experience
                   </Text>
                 </Stack>
               </motion.div>

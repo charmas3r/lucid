@@ -20,9 +20,15 @@ import { IconArrowRight } from '@tabler/icons-react';
 const team = [
   {
     name: 'Evan Smith',
-    role: 'FOUNDER & LEAD DEVELOPER',
+    role: 'OWNER & FOUNDER',
     bio: 'BS & MS in Computer Science with 10+ years building Android, iOS, and web applications at enterprise companies. Engineering manager now bringing that expertise to help local businesses compete digitally.',
     avatar: 'https://res.cloudinary.com/dssgz3ocp/image/upload/v1768193686/profile_eoxqvp.jpg',
+  },
+  {
+    name: 'Michael Jones',
+    role: 'LEAD DEVELOPER',
+    bio: 'A decade of service in the military followed by 10+ years in software development — now focused on helping local businesses succeed online.',
+    avatar: 'https://szy24xk8fmehrisa.public.blob.vercel-storage.com/Screenshot%202026-04-05%20at%203.11.44%E2%80%AFPM.png',
   },
   {
     name: 'Samantha Smith',
@@ -178,9 +184,9 @@ export function About() {
             </motion.div>
 
             <SimpleGrid
-              cols={{ base: 1, md: 2 }}
+              cols={{ base: 1, sm: 2, lg: 3 }}
               spacing="xl"
-              maw={900}
+              maw={1100}
               mx="auto"
               style={{ position: 'relative' }}
             >
