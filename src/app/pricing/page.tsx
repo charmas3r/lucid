@@ -184,7 +184,7 @@ export default function PricingPage() {
           pt={160}
           pb={80}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%)',
+            background: 'linear-gradient(180deg, #0D1F4A 0%, #0A1A3F 100%)',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -200,7 +200,7 @@ export default function PricingPage() {
               right: '5%',
               width: 400,
               height: 400,
-              background: 'radial-gradient(circle, rgba(31, 79, 216, 0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(77, 163, 255, 0.15) 0%, transparent 70%)',
               borderRadius: '50%',
               pointerEvents: 'none',
             }}
@@ -240,7 +240,7 @@ export default function PricingPage() {
                       fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                       fontWeight: 700,
                       lineHeight: 1.1,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Quality Work,{' '}
@@ -264,7 +264,7 @@ export default function PricingPage() {
                     ta="center"
                     maw={650}
                     lh={1.8}
-                    style={{ color: '#5A7099' }}
+                    style={{ color: 'rgba(255, 255, 255, 0.7)' }}
                   >
                     Every project is different. We scope and price based on your specific needs —
                     no cookie-cutter packages, no surprise invoices. Let&apos;s talk about what you need.
