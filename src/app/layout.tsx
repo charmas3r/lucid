@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
+import { Analytics } from '@vercel/analytics/next';
 import { theme } from '@/theme';
 import '@mantine/core/styles.css';
 import './globals.css';
@@ -55,6 +56,7 @@ export default function RootLayout({
         <MantineProvider theme={theme} defaultColorScheme="dark">
           {children}
         </MantineProvider>
+        <Analytics />
       </body>
     </html>
   );
