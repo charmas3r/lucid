@@ -659,11 +659,11 @@ background: 'rgba(77, 163, 255, 0.15)',
               <Box
                 p="md"
                 style={{
-                  background: (preferredDate || prefilledTime) ? 'rgba(31, 79, 216, 0.05)' : '#F8F9FB',
+                  background: (preferredDate || prefilledTime) ? 'rgba(31, 79, 216, 0.08)' : 'rgba(255, 255, 255, 0.03)',
                   borderRadius: 12,
                   border: (preferredDate || prefilledTime)
-                    ? '1px solid rgba(31, 79, 216, 0.2)' 
-                    : '1px solid rgba(10, 26, 63, 0.06)',
+                    ? '1px solid rgba(31, 79, 216, 0.2)'
+                    : '1px solid rgba(255, 255, 255, 0.08)',
                 }}
               >
                 <Group gap="xs" mb="sm">
