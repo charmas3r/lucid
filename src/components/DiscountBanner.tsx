@@ -25,7 +25,7 @@ export function useDiscountBanner() {
   const handleDismiss = () => {
     setIsVisible(false);
     sessionStorage.setItem(BANNER_DISMISSED_KEY, 'true');
-    trackEvent(EVENTS.BANNER_DISMISS, { banner: 'discount-50' });
+    trackEvent(EVENTS.BANNER_DISMISS, { banner: 'managed-hosting' });
   };
 
   // Only show banner after mount to prevent hydration flash
@@ -39,7 +39,7 @@ export function useDiscountBanner() {
 
 export function DiscountBanner({ isVisible, onDismiss }: { isVisible: boolean; onDismiss: () => void }) {
   const handleClick = () => {
-    trackEvent(EVENTS.BANNER_CLICK, { banner: 'discount-50' });
+    trackEvent(EVENTS.BANNER_CLICK, { banner: 'managed-hosting' });
   };
 
   return (
@@ -55,7 +55,7 @@ export function DiscountBanner({ isVisible, onDismiss }: { isVisible: boolean; o
           <Box
             component="div"
             style={{
-              background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 50%, #FF6B35 100%)',
+              background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 50%, #1F4FD8 100%)',
               backgroundSize: '200% 200%',
               animation: 'gradient-shift 3s ease infinite',
             }}
@@ -91,7 +91,7 @@ export function DiscountBanner({ isVisible, onDismiss }: { isVisible: boolean; o
                     gap: 8,
                   }}
                 >
-                  LIMITED TIME: 50% OFF All Services!
+                  Managed Hosting from $20/mo — All-inclusive, no surprises.
                   <Text
                     component="span"
                     fw={500}
@@ -102,7 +102,7 @@ export function DiscountBanner({ isVisible, onDismiss }: { isVisible: boolean; o
                       textDecoration: 'underline',
                     }}
                   >
-                    View Pricing →
+                    Learn More →
                   </Text>
                 </Text>
 

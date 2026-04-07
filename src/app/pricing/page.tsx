@@ -12,11 +12,10 @@ import {
   Group,
   List,
   ThemeIcon,
-  Tabs,
   Divider,
 } from '@mantine/core';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
 import {
   IconCheck,
@@ -27,9 +26,10 @@ import {
   IconChartBar,
   IconSearch,
   IconCalendar,
-  IconSparkles,
-  IconRocket,
-  IconCrown,
+  IconServer,
+  IconMail,
+  IconChartDots3,
+  IconSettings,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
 import { trackEvent, EVENTS } from '@/lib/analytics';
@@ -48,549 +48,131 @@ const staggerContainer = {
   },
 };
 
-// 50% Discount Configuration
-const DISCOUNT_PERCENTAGE = 50;
-const applyDiscount = (price: number) => price * (1 - DISCOUNT_PERCENTAGE / 100);
-const formatPrice = (price: number) => `$${price.toLocaleString()}`;
-
-interface PricingTier {
-  name: string;
-  tagline: string;
-  originalPrice: string | null;
-  price: string;
-  priceNote: string;
-  icon: typeof IconSparkles;
-  popular: boolean;
-  features: string[];
-  gradient: string;
-}
-
-// Web Development Pricing
-const webPricing: PricingTier[] = [
+const services = [
   {
-    name: 'Starter Site',
-    tagline: 'Perfect for small businesses',
-    originalPrice: '$2,500',
-    price: formatPrice(applyDiscount(2500)),
-    priceNote: 'starting at',
-    icon: IconSparkles,
-    popular: false,
-    features: [
-      'Up to 5 pages',
-      'Mobile responsive design',
-      'Basic SEO setup',
-      'Contact form integration',
-      'SSL certificate',
-      '2 rounds of revisions',
-      '30-day support',
-    ],
-    gradient: 'linear-gradient(135deg, #3A6EA5 0%, #4DA3FF 100%)',
-  },
-  {
-    name: 'Business Pro',
-    tagline: 'For growing businesses',
-    originalPrice: '$7,500',
-    price: formatPrice(applyDiscount(7500)),
-    priceNote: 'starting at',
-    icon: IconRocket,
-    popular: true,
-    features: [
-      'Up to 15 pages',
-      'Custom design & animations',
-      'Advanced SEO optimization',
-      'CMS integration (WordPress/Strapi)',
-      'Analytics dashboard',
-      'Blog functionality',
-      'API integrations',
-      'Unlimited revisions',
-      '90-day support',
+    name: 'Web Development',
+    icon: IconCode,
+    signal: 'Projects from low four figures',
+    description: 'From marketing sites to full-stack web applications — designed to convert and built to scale.',
+    highlights: [
+      'Responsive, mobile-first design',
+      'Custom animations & interactions',
+      'CMS integration',
+      'SEO-ready architecture',
+      'Performance optimized',
     ],
     gradient: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
   },
   {
-    name: 'Web Application',
-    tagline: 'Custom web apps & platforms',
-    originalPrice: '$15,000+',
-    price: '$7,500+',
-    priceNote: 'starting at',
-    icon: IconCrown,
-    popular: false,
-    features: [
-      'Custom web application',
-      'User authentication system',
-      'Database design & setup',
-      'Admin dashboard',
-      'Third-party integrations',
-      'Performance optimization',
-      'Security audit included',
-      '6-month support',
-    ],
-    gradient: 'linear-gradient(135deg, #0A1A3F 0%, #1F4FD8 100%)',
-  },
-];
-
-// Mobile App Pricing
-const mobilePricing: PricingTier[] = [
-  {
-    name: 'MVP Launch',
-    tagline: 'Validate your idea fast',
-    originalPrice: '$15,000',
-    price: formatPrice(applyDiscount(15000)),
-    priceNote: 'starting at',
-    icon: IconSparkles,
-    popular: false,
-    features: [
-      'Single platform (iOS or Android)',
-      'Core feature set (up to 5 screens)',
-      'Basic UI design',
-      'Push notifications',
-      'Analytics integration',
-      'App store submission',
-      '60-day bug support',
-    ],
-    gradient: 'linear-gradient(135deg, #3A6EA5 0%, #4DA3FF 100%)',
-  },
-  {
-    name: 'Cross-Platform',
-    tagline: 'iOS & Android from one codebase',
-    originalPrice: '$35,000',
-    price: formatPrice(applyDiscount(35000)),
-    priceNote: 'starting at',
-    icon: IconRocket,
-    popular: true,
-    features: [
-      'iOS & Android apps',
+    name: 'Mobile Apps',
+    icon: IconDeviceMobile,
+    signal: 'Scoped to your requirements',
+    description: 'Native and cross-platform apps for iOS and Android, from MVP to enterprise scale.',
+    highlights: [
+      'iOS & Android development',
       'React Native or Flutter',
-      'Custom UI/UX design',
-      'User authentication',
       'Backend API development',
-      'Push notifications',
-      'In-app purchases ready',
-      'Third-party integrations',
-      '90-day support',
-    ],
-    gradient: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-  },
-  {
-    name: 'Enterprise App',
-    tagline: 'Full-scale mobile solutions',
-    originalPrice: null,
-    price: 'Custom',
-    priceNote: 'tailored to scope',
-    icon: IconCrown,
-    popular: false,
-    features: [
-      'Native iOS & Android',
-      'Complex feature sets',
-      'Offline functionality',
-      'Real-time sync',
-      'Advanced security',
-      'Integration with existing systems',
-      'Dedicated project manager',
-      '1-year maintenance included',
-    ],
-    gradient: 'linear-gradient(135deg, #0A1A3F 0%, #1F4FD8 100%)',
-  },
-];
-
-// E-Commerce Pricing
-const ecommercePricing: PricingTier[] = [
-  {
-    name: 'Shopify Starter',
-    tagline: 'Quick launch online store',
-    originalPrice: '$3,500',
-    price: formatPrice(applyDiscount(3500)),
-    priceNote: 'starting at',
-    icon: IconSparkles,
-    popular: false,
-    features: [
-      'Shopify theme customization',
-      'Up to 50 products',
-      'Payment gateway setup',
-      'Shipping configuration',
-      'Basic SEO setup',
-      'Mobile responsive',
-      'Training session included',
-      '30-day support',
+      'App store submission',
+      'Post-launch support',
     ],
     gradient: 'linear-gradient(135deg, #3A6EA5 0%, #4DA3FF 100%)',
   },
   {
-    name: 'Custom Storefront',
-    tagline: 'Headless commerce solution',
-    originalPrice: '$12,000',
-    price: formatPrice(applyDiscount(12000)),
-    priceNote: 'starting at',
-    icon: IconRocket,
-    popular: true,
-    features: [
-      'Shopify + Hydrogen/Next.js',
-      'Lightning-fast performance',
-      'Custom design & UX',
-      'Unlimited products',
-      'Advanced filtering & search',
-      'Subscription support',
-      'Multi-currency ready',
-      'Inventory management',
-      '90-day support',
-    ],
-    gradient: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-  },
-  {
-    name: 'Enterprise Commerce',
-    tagline: 'High-volume scalable solution',
-    originalPrice: null,
-    price: 'Custom',
-    priceNote: 'based on requirements',
-    icon: IconCrown,
-    popular: false,
-    features: [
-      'Fully custom platform',
-      'Multi-store management',
-      'B2B & B2C capabilities',
-      'ERP/CRM integrations',
-      'Custom checkout flows',
-      'Advanced analytics',
-      'Dedicated support team',
-      'Performance SLA',
+    name: 'E-Commerce',
+    icon: IconShoppingCart,
+    signal: 'Tailored to your catalog size',
+    description: 'Online stores built to sell — from Shopify customizations to fully headless solutions.',
+    highlights: [
+      'Shopify & headless commerce',
+      'Payment & shipping setup',
+      'Product management',
+      'Conversion-optimized checkout',
+      'Multi-currency support',
     ],
     gradient: 'linear-gradient(135deg, #0A1A3F 0%, #1F4FD8 100%)',
   },
-];
-
-// Conversion Optimization Pricing
-const conversionPricing: PricingTier[] = [
   {
-    name: 'Quick Wins Audit',
-    tagline: 'Identify immediate opportunities',
-    originalPrice: '$1,500',
-    price: formatPrice(applyDiscount(1500)),
-    priceNote: 'one-time',
-    icon: IconSparkles,
-    popular: false,
-    features: [
-      'Full site conversion audit',
-      'Heatmap & analytics review',
-      'Top 10 issues identified',
-      'Priority action plan',
-      'Competitor benchmarking',
-      'Video walkthrough',
-      '30-min strategy call',
-    ],
-    gradient: 'linear-gradient(135deg, #3A6EA5 0%, #4DA3FF 100%)',
-  },
-  {
-    name: 'CRO Program',
-    tagline: 'Ongoing optimization',
-    originalPrice: '$2,500',
-    price: formatPrice(applyDiscount(2500)),
-    priceNote: 'per month',
-    icon: IconRocket,
-    popular: true,
-    features: [
-      '2-4 A/B tests per month',
-      'Continuous user research',
-      'Heatmap & session analysis',
-      'Landing page optimization',
-      'Form & checkout optimization',
-      'Monthly strategy calls',
-      'Detailed reporting',
-      'Dedicated CRO specialist',
-    ],
-    gradient: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-  },
-  {
-    name: 'Full Funnel Redesign',
-    tagline: 'Complete conversion overhaul',
-    originalPrice: '$8,000',
-    price: formatPrice(applyDiscount(8000)),
-    priceNote: 'starting at',
-    icon: IconCrown,
-    popular: false,
-    features: [
-      'Complete UX audit',
-      'User journey redesign',
-      'Psychology-driven wireframes',
-      'High-converting landing pages',
-      'Checkout flow optimization',
-      'A/B testing setup',
-      'Post-launch optimization',
-      '90-day performance guarantee',
-    ],
-    gradient: 'linear-gradient(135deg, #0A1A3F 0%, #1F4FD8 100%)',
-  },
-];
-
-// SEO Pricing
-const seoPricing: PricingTier[] = [
-  {
-    name: 'Technical SEO Fix',
-    tagline: 'One-time optimization',
-    originalPrice: '$2,000',
-    price: formatPrice(applyDiscount(2000)),
-    priceNote: 'one-time',
-    icon: IconSparkles,
-    popular: false,
-    features: [
-      'Full technical audit',
-      'Core Web Vitals optimization',
-      'Site speed improvements',
-      'Schema markup setup',
-      'XML sitemap & robots.txt',
-      'Google Search Console setup',
-      'Implementation report',
-    ],
-    gradient: 'linear-gradient(135deg, #3A6EA5 0%, #4DA3FF 100%)',
-  },
-  {
-    name: 'Growth SEO',
-    tagline: 'Monthly optimization',
-    originalPrice: '$1,500',
-    price: formatPrice(applyDiscount(1500)),
-    priceNote: 'per month',
-    icon: IconRocket,
-    popular: true,
-    features: [
-      'Technical SEO maintenance',
-      'Content optimization',
+    name: 'SEO',
+    icon: IconSearch,
+    signal: 'Monthly plans available',
+    description: 'Get found by the right people. Technical SEO, content strategy, and ongoing optimization.',
+    highlights: [
+      'Technical SEO audits',
       'Keyword research & tracking',
+      'Content optimization',
       'Link building outreach',
-      'Competitor analysis',
       'Monthly reporting',
-      'AI assistant optimization',
-      'Quarterly strategy sessions',
     ],
     gradient: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
   },
   {
-    name: 'SEO + Content',
-    tagline: 'Full organic growth',
-    originalPrice: '$3,500',
-    price: formatPrice(applyDiscount(3500)),
-    priceNote: 'per month',
-    icon: IconCrown,
-    popular: false,
-    features: [
-      'Everything in Growth SEO',
-      '4 SEO blog posts/month',
-      'Content strategy & calendar',
-      'Topic cluster development',
-      'Featured snippet optimization',
-      'Local SEO (if applicable)',
-      'Google Business optimization',
-      'Dedicated SEO manager',
+    name: 'Conversion Optimization',
+    icon: IconChartBar,
+    signal: 'ROI-focused engagements',
+    description: 'Turn more visitors into customers with data-driven UX improvements and A/B testing.',
+    highlights: [
+      'Conversion audits',
+      'A/B testing programs',
+      'Landing page optimization',
+      'User journey analysis',
+      'Performance guarantees',
     ],
-    gradient: 'linear-gradient(135deg, #0A1A3F 0%, #1F4FD8 100%)',
+    gradient: 'linear-gradient(135deg, #3A6EA5 0%, #4DA3FF 100%)',
   },
 ];
 
-const serviceCategories: { value: string; label: string; icon: typeof IconCode; pricing: PricingTier[] }[] = [
-  { value: 'web', label: 'Web Development', icon: IconCode, pricing: webPricing },
-  { value: 'mobile', label: 'Mobile Apps', icon: IconDeviceMobile, pricing: mobilePricing },
-  { value: 'ecommerce', label: 'E-Commerce', icon: IconShoppingCart, pricing: ecommercePricing },
-  { value: 'conversion', label: 'Conversion', icon: IconChartBar, pricing: conversionPricing },
-  { value: 'seo', label: 'SEO', icon: IconSearch, pricing: seoPricing },
+const managedAddOns = [
+  {
+    name: 'Email Management',
+    price: '$10',
+    period: '/mo',
+    icon: IconMail,
+    description: 'Full email marketing setup and management',
+    features: [
+      'Complete email platform setup',
+      'Audience management & segmentation',
+      'At least 1 new email template per month',
+      'Campaign performance tracking',
+    ],
+  },
+  {
+    name: 'Analytics',
+    price: '$10',
+    period: '/mo',
+    icon: IconChartDots3,
+    description: 'Comprehensive analytics and insights',
+    features: [
+      'User journey tracking & analysis',
+      'Conversion metrics & reporting',
+      'Full management & configuration',
+      'Monthly insights & recommendations',
+    ],
+  },
+  {
+    name: 'CMS Management',
+    price: '$10',
+    period: '/mo',
+    icon: IconSettings,
+    description: 'Keep your content platform optimized',
+    features: [
+      'Content platform optimizations',
+      'Access to our asset compression tools',
+      'Image & media optimization',
+      'Performance monitoring & tuning',
+    ],
+  },
 ];
-
-const addOns = [
-  { name: 'Monthly Maintenance', price: '$299/mo', description: 'Updates, backups, security monitoring' },
-  { name: 'Logo & Branding', price: '$1,500', description: 'Complete brand identity package' },
-  { name: 'Content Writing', price: '$150/page', description: 'SEO-optimized copywriting' },
-];
-
-function PricingCard({ tier, index, isInView, category }: { tier: PricingTier; index: number; isInView: boolean; category: string }) {
-  const hasDiscount = tier.originalPrice !== null;
-  
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.15 }}
-      whileHover={{ y: -10 }}
-      style={{ height: '100%' }}
-    >
-      <Box
-        p="xl"
-        style={{
-          background: tier.popular ? 'linear-gradient(135deg, #0A1A3F 0%, #1A2F5F 100%)' : '#F8F9FB',
-          borderRadius: 24,
-          border: tier.popular ? 'none' : '1px solid rgba(10, 26, 63, 0.06)',
-          height: '100%',
-          position: 'relative',
-          overflow: 'hidden',
-          boxShadow: tier.popular ? '0 25px 50px rgba(10, 26, 63, 0.25)' : 'none',
-        }}
-      >
-        {tier.popular && (
-          <Badge
-            style={{
-              position: 'absolute',
-              top: 20,
-              right: 20,
-              background: 'linear-gradient(135deg, #4DA3FF 0%, #1F4FD8 100%)',
-              color: '#FFFFFF',
-            }}
-          >
-            Most Popular
-          </Badge>
-        )}
-
-        <Stack gap="lg" h="100%">
-          {/* Discount Badge - inline above icon */}
-          {hasDiscount && (
-            <Badge
-              style={{
-                background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
-                color: '#FFFFFF',
-                fontWeight: 700,
-                fontSize: '0.7rem',
-                padding: '6px 12px',
-                alignSelf: 'flex-start',
-              }}
-            >
-              50% OFF
-            </Badge>
-          )}
-          
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ type: 'spring', stiffness: 300 }}
-          >
-            <ThemeIcon
-              size={60}
-              radius="xl"
-              style={{
-                background: tier.gradient,
-                boxShadow: tier.popular ? '0 8px 25px rgba(77, 163, 255, 0.4)' : '0 8px 25px rgba(31, 79, 216, 0.2)',
-              }}
-            >
-              <tier.icon size={28} color="#FFFFFF" stroke={1.5} />
-            </ThemeIcon>
-          </motion.div>
-
-          <Box>
-            <Text
-              size="sm"
-              fw={500}
-              style={{ color: tier.popular ? 'rgba(255, 255, 255, 0.7)' : '#5A7099' }}
-            >
-              {tier.tagline}
-            </Text>
-            <Title
-              order={3}
-              mt={4}
-              style={{
-                fontSize: '1.5rem',
-                color: tier.popular ? '#FFFFFF' : '#0A1A3F',
-              }}
-            >
-              {tier.name}
-            </Title>
-          </Box>
-
-          <Box>
-            <Text
-              size="xs"
-              tt="uppercase"
-              fw={500}
-              style={{ color: tier.popular ? 'rgba(255, 255, 255, 0.6)' : '#8A9BB8', letterSpacing: '0.5px' }}
-            >
-              {tier.priceNote}
-            </Text>
-            {hasDiscount && (
-              <Text
-                fw={500}
-                style={{
-                  fontSize: '1.1rem',
-                  color: tier.popular ? 'rgba(255, 255, 255, 0.5)' : '#8A9BB8',
-                  textDecoration: 'line-through',
-                  lineHeight: 1.2,
-                }}
-              >
-                {tier.originalPrice}
-              </Text>
-            )}
-            <Text
-              fw={700}
-              style={{
-                fontSize: '2.5rem',
-                color: hasDiscount 
-                  ? '#0CCE6B' 
-                  : tier.popular ? '#FFFFFF' : '#0A1A3F',
-                lineHeight: 1.2,
-              }}
-            >
-              {tier.price}
-            </Text>
-          </Box>
-
-          <List
-            spacing="sm"
-            size="sm"
-            icon={
-              <ThemeIcon
-                size={20}
-                radius="xl"
-                style={{
-                  background: tier.popular ? 'rgba(77, 163, 255, 0.3)' : 'rgba(31, 79, 216, 0.1)',
-                }}
-              >
-                <IconCheck size={12} color={tier.popular ? '#4DA3FF' : '#1F4FD8'} />
-              </ThemeIcon>
-            }
-            style={{ flexGrow: 1 }}
-          >
-            {tier.features.map((feature) => (
-              <List.Item
-                key={feature}
-                style={{ color: tier.popular ? 'rgba(255, 255, 255, 0.9)' : '#5A7099' }}
-              >
-                {feature}
-              </List.Item>
-            ))}
-          </List>
-
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-            <Button
-              component={Link}
-              href="/contact"
-              fullWidth
-              size="lg"
-              radius="xl"
-              rightSection={<IconArrowRight size={18} />}
-              onClick={() => trackEvent(EVENTS.PRICING_SELECT_PLAN, { plan: tier.name, category, price: tier.price })}
-              styles={{
-                root: {
-                  background: tier.popular 
-                    ? 'linear-gradient(135deg, #4DA3FF 0%, #1F4FD8 100%)'
-                    : tier.gradient,
-                  border: 'none',
-                  transition: 'all 0.2s ease',
-                },
-              }}
-            >
-              Get Started
-            </Button>
-          </motion.div>
-        </Stack>
-      </Box>
-    </motion.div>
-  );
-}
 
 export default function PricingPage() {
   const heroRef = useRef(null);
-  const pricingRef = useRef(null);
+  const servicesRef = useRef(null);
   const addOnsRef = useRef(null);
   const faqRef = useRef(null);
-  const [activeTab, setActiveTab] = useState<string | null>('web');
 
   const heroInView = useInView(heroRef, { once: true });
-  const pricingInView = useInView(pricingRef, { once: true, margin: '-100px' });
+  const servicesInView = useInView(servicesRef, { once: true, margin: '-100px' });
   const addOnsInView = useInView(addOnsRef, { once: true, margin: '-100px' });
   const faqInView = useInView(faqRef, { once: true, margin: '-100px' });
-
-  const currentPricing = serviceCategories.find(cat => cat.value === activeTab)?.pricing || webPricing;
 
   return (
     <>
@@ -638,15 +220,14 @@ export default function PricingPage() {
                     tt="uppercase"
                     fw={700}
                     style={{
-                      background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+                      background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
                       color: '#FFFFFF',
                       letterSpacing: '1px',
                       fontSize: '0.75rem',
                       padding: '12px 20px',
-                      boxShadow: '0 4px 15px rgba(255, 107, 53, 0.4)',
                     }}
                   >
-                    🎉 Limited Time: 50% OFF All Services
+                    Transparent & Flexible
                   </Badge>
                 </motion.div>
 
@@ -662,7 +243,7 @@ export default function PricingPage() {
                       color: '#0A1A3F',
                     }}
                   >
-                    Invest in{' '}
+                    Quality Work,{' '}
                     <Text
                       component="span"
                       inherit
@@ -672,9 +253,8 @@ export default function PricingPage() {
                         WebkitTextFillColor: 'transparent',
                       }}
                     >
-                      Quality
-                    </Text>{' '}
-                    That Pays Off
+                      Fair Pricing
+                    </Text>
                   </Title>
                 </motion.div>
 
@@ -686,178 +266,217 @@ export default function PricingPage() {
                     lh={1.8}
                     style={{ color: '#5A7099' }}
                   >
-                    No hidden fees, no surprise charges. Take advantage of our{' '}
-                    <Text component="span" fw={700} style={{ color: '#0CCE6B' }}>
-                      50% discount
-                    </Text>{' '}
-                    and choose the service that fits your needs.
+                    Every project is different. We scope and price based on your specific needs —
+                    no cookie-cutter packages, no surprise invoices. Let&apos;s talk about what you need.
                   </Text>
+                </motion.div>
+
+                <motion.div variants={fadeInUp} transition={{ duration: 0.6 }}>
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                    <Button
+                      component={Link}
+                      href="/contact"
+                      size="lg"
+                      radius="xl"
+                      rightSection={<IconArrowRight size={18} />}
+                      styles={{
+                        root: {
+                          background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                          border: 'none',
+                          transition: 'all 0.2s ease',
+                          paddingInline: 32,
+                        },
+                      }}
+                    >
+                      Get a Free Quote
+                    </Button>
+                  </motion.div>
                 </motion.div>
               </Stack>
             </motion.div>
           </Container>
         </Box>
 
-        {/* Pricing Tabs & Tiers */}
+        {/* Services Overview */}
         <Box
           component="section"
-          id="packages"
           py={80}
           style={{ background: '#0A1A3F' }}
-          ref={pricingRef}
+          ref={servicesRef}
         >
           <Container size="xl">
-            {/* Service Category Tabs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={pricingInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={servicesInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
             >
-              <Tabs
-                value={activeTab}
-                onChange={(value) => {
-                  setActiveTab(value);
-                  if (value) trackEvent(EVENTS.PRICING_VIEW_TAB, { tab: value });
-                }}
-                variant="pills"
-                radius="xl"
-                styles={{
-                  root: {
-                    marginBottom: 50,
-                  },
-                  list: {
-                    justifyContent: 'center',
-                    gap: 8,
-                    flexWrap: 'wrap',
-                    background: '#081430',
-                    padding: 8,
-                    borderRadius: 50,
-                    display: 'inline-flex',
-                    width: 'auto',
-                    margin: '0 auto',
-                  },
-                  tab: {
-                    fontWeight: 600,
-                    fontSize: '0.85rem',
-                    padding: '12px 20px',
-                    color: '#A5B4CF',
-                    border: 'none',
-                  },
-                }}
-                classNames={{
-                  tab: 'pricing-tab',
-                }}
-              >
-                <Tabs.List>
-                  {serviceCategories.map((category) => (
-                    <Tabs.Tab
-                      key={category.value}
-                      value={category.value}
-                      leftSection={<category.icon size={18} />}
-                    >
-                      {category.label}
-                    </Tabs.Tab>
-                  ))}
-                </Tabs.List>
-              </Tabs>
+              <Stack align="center" gap="xl" mb={60}>
+                <Badge
+                  size="lg"
+                  radius="xl"
+                  tt="uppercase"
+                  fw={600}
+                  style={{
+                    background: 'rgba(77, 163, 255, 0.15)',
+                    color: '#4DA3FF',
+                    border: '1px solid rgba(77, 163, 255, 0.25)',
+                    letterSpacing: '1px',
+                    fontSize: '0.7rem',
+                    padding: '10px 16px',
+                  }}
+                >
+                  What We Build
+                </Badge>
+                <Title
+                  order={2}
+                  ta="center"
+                  style={{
+                    fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
+                    fontWeight: 700,
+                    color: '#FFFFFF',
+                  }}
+                >
+                  Services Tailored to Your Goals
+                </Title>
+                <Text
+                  size="lg"
+                  ta="center"
+                  maw={600}
+                  style={{ color: 'rgba(255, 255, 255, 0.7)' }}
+                  lh={1.8}
+                >
+                  We quote every project individually because no two businesses are alike.
+                  Here&apos;s what we can build for you.
+                </Text>
+              </Stack>
             </motion.div>
 
-            {/* Pricing Cards */}
-            <SimpleGrid cols={{ base: 1, md: 3 }} spacing={30}>
-              {currentPricing.map((tier, index) => (
-                <PricingCard
-                  key={`${activeTab}-${tier.name}`}
-                  tier={tier}
-                  index={index}
-                  isInView={pricingInView}
-                  category={activeTab || 'web'}
-                />
+            <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing={24}>
+              {services.map((service, index) => (
+                <motion.div
+                  key={service.name}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={servicesInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  style={{ height: '100%' }}
+                >
+                  <Box
+                    p="xl"
+                    style={{
+                      background: '#0D1F4A',
+                      borderRadius: 24,
+                      border: '1px solid rgba(77, 163, 255, 0.1)',
+                      height: '100%',
+                      transition: 'border-color 0.2s ease',
+                    }}
+                  >
+                    <Stack gap="lg" h="100%">
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                      >
+                        <ThemeIcon
+                          size={56}
+                          radius="xl"
+                          style={{
+                            background: service.gradient,
+                            boxShadow: '0 8px 25px rgba(31, 79, 216, 0.3)',
+                          }}
+                        >
+                          <service.icon size={26} color="#FFFFFF" stroke={1.5} />
+                        </ThemeIcon>
+                      </motion.div>
+
+                      <Box>
+                        <Title order={3} style={{ color: '#FFFFFF', fontSize: '1.35rem' }}>
+                          {service.name}
+                        </Title>
+                        <Text
+                          size="sm"
+                          fw={500}
+                          mt={6}
+                          style={{ color: '#4DA3FF' }}
+                        >
+                          {service.signal}
+                        </Text>
+                      </Box>
+
+                      <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.65)' }} lh={1.7}>
+                        {service.description}
+                      </Text>
+
+                      <List
+                        spacing="xs"
+                        size="sm"
+                        icon={
+                          <ThemeIcon
+                            size={18}
+                            radius="xl"
+                            style={{ background: 'rgba(77, 163, 255, 0.2)' }}
+                          >
+                            <IconCheck size={10} color="#4DA3FF" />
+                          </ThemeIcon>
+                        }
+                        style={{ flexGrow: 1 }}
+                      >
+                        {service.highlights.map((item) => (
+                          <List.Item
+                            key={item}
+                            style={{ color: 'rgba(255, 255, 255, 0.8)' }}
+                          >
+                            {item}
+                          </List.Item>
+                        ))}
+                      </List>
+
+                      <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                        <Button
+                          component={Link}
+                          href="/contact"
+                          fullWidth
+                          size="md"
+                          radius="xl"
+                          variant="outline"
+                          rightSection={<IconArrowRight size={16} />}
+                          onClick={() => trackEvent(EVENTS.PRICING_SELECT_PLAN, { plan: service.name })}
+                          styles={{
+                            root: {
+                              borderColor: 'rgba(77, 163, 255, 0.3)',
+                              color: '#4DA3FF',
+                              transition: 'all 0.2s ease',
+                              '&:hover': {
+                                background: 'rgba(77, 163, 255, 0.1)',
+                                borderColor: '#4DA3FF',
+                              },
+                            },
+                          }}
+                        >
+                          Discuss Your Project
+                        </Button>
+                      </motion.div>
+                    </Stack>
+                  </Box>
+                </motion.div>
               ))}
             </SimpleGrid>
 
-            {/* Note about custom pricing */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={pricingInView ? { opacity: 1 } : {}}
+              animate={servicesInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.8 }}
             >
               <Text ta="center" size="sm" mt={40} style={{ color: '#8A9BB8' }}>
-                All prices are estimates. Final pricing depends on project scope and requirements.{' '}
-                <Text component={Link} href="/contact" style={{ color: '#1F4FD8', textDecoration: 'underline' }}>
-                  Get a custom quote →
+                Every quote includes a detailed scope, timeline, and breakdown — no guesswork.{' '}
+                <Text component={Link} href="/contact" style={{ color: '#4DA3FF', textDecoration: 'underline' }}>
+                  Request a free consultation →
                 </Text>
               </Text>
             </motion.div>
           </Container>
         </Box>
 
-        {/* Bundle Savings */}
-        <Box
-          component="section"
-          py={60}
-          style={{ background: 'linear-gradient(135deg, #0A1A3F 0%, #1A2F5F 100%)' }}
-        >
-          <Container size="lg">
-            <SimpleGrid cols={{ base: 1, md: 2 }} spacing={40} style={{ alignItems: 'center' }}>
-              <Box>
-                <Badge
-                  size="lg"
-                  radius="xl"
-                  mb="md"
-                  style={{
-                    background: 'rgba(77, 163, 255, 0.2)',
-                    color: '#4DA3FF',
-                    border: '1px solid rgba(77, 163, 255, 0.3)',
-                  }}
-                >
-                  Bundle & Save
-                </Badge>
-                <Title order={2} style={{ color: '#FFFFFF', fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
-                  Combine Services for Better Results
-                </Title>
-                <Text size="md" mt="md" style={{ color: 'rgba(255, 255, 255, 0.8)' }} lh={1.8}>
-                  Need a website, mobile app, AND conversion optimization? Bundle services together 
-                  and save 15-20% while ensuring everything works together seamlessly.
-                </Text>
-              </Box>
-              <Stack gap="md">
-                {[
-                  { bundle: 'Website + SEO', savings: 'Save 15%', desc: 'Launch optimized from day one' },
-                  { bundle: 'Website + Conversion', savings: 'Save 15%', desc: 'Built to convert visitors' },
-                  { bundle: 'E-Commerce + SEO + CRO', savings: 'Save 20%', desc: 'Complete growth stack' },
-                ].map((item) => (
-                  <Box
-                    key={item.bundle}
-                    p="md"
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      borderRadius: 12,
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                    }}
-                  >
-                    <Group justify="space-between">
-                      <Box>
-                        <Text fw={600} style={{ color: '#FFFFFF' }}>{item.bundle}</Text>
-                        <Text size="xs" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>{item.desc}</Text>
-                      </Box>
-                      <Badge
-                        size="lg"
-                        style={{
-                          background: 'linear-gradient(135deg, #0CCE6B 0%, #0A9F55 100%)',
-                          color: '#FFFFFF',
-                        }}
-                      >
-                        {item.savings}
-                      </Badge>
-                    </Group>
-                  </Box>
-                ))}
-              </Stack>
-            </SimpleGrid>
-          </Container>
-        </Box>
-
-        {/* Add-ons Section */}
+        {/* Managed Hosting & Services Section */}
         <Box
           component="section"
           py={80}
@@ -885,7 +504,7 @@ export default function PricingPage() {
                     padding: '10px 16px',
                   }}
                 >
-                  Add-Ons
+                  Managed Services
                 </Badge>
                 <Title
                   order={2}
@@ -896,56 +515,268 @@ export default function PricingPage() {
                     color: '#FFFFFF',
                   }}
                 >
-                  Enhance Any Package
+                  We Handle the Technical Stuff
                 </Title>
+                <Text
+                  size="lg"
+                  ta="center"
+                  maw={600}
+                  style={{ color: 'rgba(255, 255, 255, 0.7)' }}
+                  lh={1.8}
+                >
+                  Keep your site running fast and secure with our managed hosting,
+                  plus add-on services to grow your business.
+                </Text>
               </Stack>
             </motion.div>
 
-            <SimpleGrid cols={{ base: 1, sm: 2, md: 4 }} spacing={20}>
-              {addOns.map((addon, index) => (
+            {/* Featured Managed Hosting Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ y: -5 }}
+            >
+              <Box
+                p="xl"
+                mb={30}
+                style={{
+                  background: 'linear-gradient(135deg, #0A1A3F 0%, #1A2F5F 100%)',
+                  borderRadius: 24,
+                  border: '2px solid rgba(77, 163, 255, 0.3)',
+                  boxShadow: '0 25px 50px rgba(10, 26, 63, 0.4)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
                 <motion.div
-                  key={addon.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                >
-                  <Box
-                    p="lg"
-                    style={{
-                      background: '#0A1A3F',
-                      borderRadius: 16,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
-                      height: '100%',
-                    }}
-                  >
-                    <Stack gap="xs">
-                      <Text fw={600} style={{ color: '#FFFFFF' }}>
-                        {addon.name}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 80, repeat: Infinity, ease: 'linear' }}
+                  style={{
+                    position: 'absolute',
+                    top: '-50%',
+                    right: '-10%',
+                    width: 300,
+                    height: 300,
+                    border: '1px solid rgba(77, 163, 255, 0.1)',
+                    borderRadius: '50%',
+                    pointerEvents: 'none',
+                  }}
+                />
+                <SimpleGrid cols={{ base: 1, md: 2 }} spacing={40} style={{ alignItems: 'center', position: 'relative' }}>
+                  <Stack gap="lg">
+                    <Group gap="md">
+                      <ThemeIcon
+                        size={60}
+                        radius="xl"
+                        style={{
+                          background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                          boxShadow: '0 8px 25px rgba(77, 163, 255, 0.4)',
+                        }}
+                      >
+                        <IconServer size={28} color="#FFFFFF" stroke={1.5} />
+                      </ThemeIcon>
+                      <Box>
+                        <Text size="sm" fw={500} style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                          Core Service
+                        </Text>
+                        <Title order={3} style={{ color: '#FFFFFF', fontSize: '1.5rem' }}>
+                          Managed Hosting
+                        </Title>
+                      </Box>
+                    </Group>
+                    <Text style={{ color: 'rgba(255, 255, 255, 0.8)' }} lh={1.8}>
+                      Reliable, fast, and fully managed hosting so you never have to worry about
+                      uptime, security updates, or server maintenance. We handle everything.
+                    </Text>
+                    <List
+                      spacing="sm"
+                      size="sm"
+                      icon={
+                        <ThemeIcon
+                          size={20}
+                          radius="xl"
+                          style={{ background: 'rgba(77, 163, 255, 0.3)' }}
+                        >
+                          <IconCheck size={12} color="#4DA3FF" />
+                        </ThemeIcon>
+                      }
+                    >
+                      <List.Item style={{ color: 'rgba(255, 255, 255, 0.9)' }}>SSL certificate & security monitoring</List.Item>
+                      <List.Item style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Automatic backups & updates</List.Item>
+                      <List.Item style={{ color: 'rgba(255, 255, 255, 0.9)' }}>99.9% uptime guarantee</List.Item>
+                      <List.Item style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Performance optimization</List.Item>
+                      <List.Item style={{ color: 'rgba(255, 255, 255, 0.9)' }}>Priority technical support</List.Item>
+                    </List>
+                  </Stack>
+                  <Stack align="center" gap="md">
+                    <Box ta="center">
+                      <Text size="sm" fw={500} tt="uppercase" style={{ color: 'rgba(255, 255, 255, 0.5)', letterSpacing: '1px' }}>
+                        per month
                       </Text>
                       <Text
                         fw={700}
                         style={{
-                          fontSize: '1.25rem',
-                          background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-                          WebkitBackgroundClip: 'text',
-                          WebkitTextFillColor: 'transparent',
+                          fontSize: '4rem',
+                          color: '#FFFFFF',
+                          lineHeight: 1.1,
                         }}
                       >
-                        {addon.price}
+                        $20
                       </Text>
-                      <Text size="sm" style={{ color: '#A5B4CF' }}>
+                      <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                        Everything included. No hidden fees.
+                      </Text>
+                    </Box>
+                    <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+                      <Button
+                        component={Link}
+                        href="/contact"
+                        size="lg"
+                        radius="xl"
+                        rightSection={<IconArrowRight size={18} />}
+                        styles={{
+                          root: {
+                            background: 'linear-gradient(135deg, #4DA3FF 0%, #1F4FD8 100%)',
+                            border: 'none',
+                            transition: 'all 0.2s ease',
+                            paddingInline: 32,
+                          },
+                        }}
+                      >
+                        Get Started
+                      </Button>
+                    </motion.div>
+                  </Stack>
+                </SimpleGrid>
+              </Box>
+            </motion.div>
+
+            {/* Add-on Services Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <Group gap="sm" justify="center" mb={30}>
+                <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.1)', flex: 1, maxWidth: 100 }} />
+                <Text fw={600} size="sm" tt="uppercase" style={{ color: '#4DA3FF', letterSpacing: '2px' }}>
+                  Add-On Services — $10/mo each
+                </Text>
+                <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.1)', flex: 1, maxWidth: 100 }} />
+              </Group>
+            </motion.div>
+
+            {/* Add-on Cards */}
+            <SimpleGrid cols={{ base: 1, md: 3 }} spacing={20}>
+              {managedAddOns.map((addon, index) => (
+                <motion.div
+                  key={addon.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <Box
+                    p="xl"
+                    style={{
+                      background: '#0A1A3F',
+                      borderRadius: 20,
+                      border: '1px solid rgba(77, 163, 255, 0.1)',
+                      height: '100%',
+                    }}
+                  >
+                    <Stack gap="md" h="100%">
+                      <Group gap="md">
+                        <ThemeIcon
+                          size={48}
+                          radius="xl"
+                          style={{
+                            background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.3) 0%, rgba(77, 163, 255, 0.15) 100%)',
+                          }}
+                        >
+                          <addon.icon size={22} color="#4DA3FF" stroke={1.5} />
+                        </ThemeIcon>
+                        <Box>
+                          <Text fw={600} style={{ color: '#FFFFFF' }}>
+                            {addon.name}
+                          </Text>
+                          <Group gap={4} align="baseline">
+                            <Text
+                              fw={700}
+                              style={{
+                                fontSize: '1.5rem',
+                                color: '#0CCE6B',
+                              }}
+                            >
+                              {addon.price}
+                            </Text>
+                            <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                              {addon.period}
+                            </Text>
+                          </Group>
+                        </Box>
+                      </Group>
+                      <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                         {addon.description}
                       </Text>
+                      <List
+                        spacing="xs"
+                        size="sm"
+                        icon={
+                          <ThemeIcon
+                            size={18}
+                            radius="xl"
+                            style={{ background: 'rgba(12, 206, 107, 0.15)' }}
+                          >
+                            <IconCheck size={10} color="#0CCE6B" />
+                          </ThemeIcon>
+                        }
+                        style={{ flexGrow: 1 }}
+                      >
+                        {addon.features.map((feature) => (
+                          <List.Item
+                            key={feature}
+                            style={{ color: 'rgba(255, 255, 255, 0.8)' }}
+                          >
+                            {feature}
+                          </List.Item>
+                        ))}
+                      </List>
                     </Stack>
                   </Box>
                 </motion.div>
               ))}
             </SimpleGrid>
+
+            {/* Bundle all add-ons note */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={addOnsInView ? { opacity: 1 } : {}}
+              transition={{ delay: 1 }}
+            >
+              <Box
+                mt={30}
+                p="lg"
+                ta="center"
+                style={{
+                  background: 'rgba(12, 206, 107, 0.05)',
+                  borderRadius: 16,
+                  border: '1px solid rgba(12, 206, 107, 0.15)',
+                }}
+              >
+                <Text fw={600} style={{ color: '#0CCE6B' }}>
+                  Bundle all three add-ons with managed hosting for just $50/mo
+                </Text>
+                <Text size="sm" mt={4} style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                  Hosting + Email + Analytics + CMS — everything you need, fully managed.
+                </Text>
+              </Box>
+            </motion.div>
           </Container>
         </Box>
 
-        {/* FAQ / CTA Section */}
+        {/* CTA Section */}
         <Box
           component="section"
           py={100}
