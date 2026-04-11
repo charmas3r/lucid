@@ -171,7 +171,7 @@ export default function EcommercePage() {
           pt={160}
           pb={100}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%)',
+            background: 'linear-gradient(180deg, #0D1F4A 0%, #0A1A3F 100%)',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -187,7 +187,7 @@ export default function EcommercePage() {
               right: '5%',
               width: 450,
               height: 450,
-              background: 'radial-gradient(circle, rgba(58, 110, 165, 0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(77, 163, 255, 0.15) 0%, transparent 70%)',
               borderRadius: '50%',
               pointerEvents: 'none',
             }}
@@ -207,9 +207,9 @@ export default function EcommercePage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -228,7 +228,7 @@ export default function EcommercePage() {
                       fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                       fontWeight: 700,
                       lineHeight: 1.1,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Stores That{' '}
@@ -236,7 +236,7 @@ export default function EcommercePage() {
                       component="span"
                       inherit
                       style={{
-                        background: 'linear-gradient(135deg, #3A6EA5 0%, #0A1A3F 100%)',
+                        background: 'linear-gradient(135deg, #4DA3FF 0%, #8AB6FF 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                       }}
@@ -252,7 +252,7 @@ export default function EcommercePage() {
                     ta="center"
                     maw={750}
                     lh={1.8}
-                    style={{ color: '#5A7099' }}
+                    style={{ color: 'rgba(255, 255, 255, 0.7)' }}
                   >
                     Whether you&apos;re launching with Shopify&apos;s Hydrogen stack or building a
                     completely bespoke headless solution—we create e-commerce experiences that
@@ -275,14 +275,14 @@ export default function EcommercePage() {
                             fw={700}
                             style={{
                               fontSize: '2.5rem',
-                              background: 'linear-gradient(135deg, #3A6EA5 0%, #0A1A3F 100%)',
+                              background: 'linear-gradient(135deg, #4DA3FF 0%, #8AB6FF 100%)',
                               WebkitBackgroundClip: 'text',
                               WebkitTextFillColor: 'transparent',
                             }}
                           >
                             {benefit.value}
                           </Text>
-                          <Text size="sm" ta="center" maw={180} style={{ color: '#8A9BB8' }}>
+                          <Text size="sm" ta="center" maw={180} style={{ color: 'rgba(255, 255, 255, 0.65)' }}>
                             {benefit.label}
                           </Text>
                         </Stack>
@@ -302,9 +302,9 @@ export default function EcommercePage() {
                         rightSection={<IconArrowRight size={18} />}
                         styles={{
                           root: {
-                            background: 'linear-gradient(135deg, #3A6EA5 0%, #0A1A3F 100%)',
+                            background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
                             border: 'none',
-                            boxShadow: '0 4px 20px rgba(58, 110, 165, 0.3)',
+                            boxShadow: '0 4px 20px rgba(31, 79, 216, 0.3)',
                           },
                         }}
                       >
@@ -320,8 +320,8 @@ export default function EcommercePage() {
                         variant="outline"
                         styles={{
                           root: {
-                            borderColor: '#C9D2E3',
-                            color: '#1F4FD8',
+                            borderColor: 'rgba(255, 255, 255, 0.25)',
+                            color: '#FFFFFF',
                           },
                         }}
                       >
@@ -339,7 +339,7 @@ export default function EcommercePage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0D1F4A' }}
           ref={solutionsRef}
         >
           <Container size="xl">
@@ -356,9 +356,9 @@ export default function EcommercePage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -374,14 +374,14 @@ export default function EcommercePage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Two Powerful Approaches
                   </Title>
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                  <Text size="lg" ta="center" maw={700} style={{ color: '#5A7099' }}>
+                  <Text size="lg" ta="center" maw={700} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                     We recommend the right solution based on your business needs, growth plans,
                     and budget—not because it&apos;s easier for us.
                   </Text>
@@ -402,9 +402,9 @@ export default function EcommercePage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#F8F9FB',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 24,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
                       position: 'relative',
                       overflow: 'hidden',
@@ -432,43 +432,43 @@ export default function EcommercePage() {
                             radius="xl"
                             style={{
                               background: solution.gradient,
-                              boxShadow: '0 8px 25px rgba(0, 0, 0, 0.15)',
+                              boxShadow: '0 8px 25px rgba(0, 0, 0, 0.25)',
                             }}
                           >
                             <solution.icon size={32} color="#FFFFFF" stroke={1.5} />
                           </ThemeIcon>
                         </motion.div>
                         <Box>
-                          <Text size="xs" fw={600} tt="uppercase" style={{ color: '#8A9BB8', letterSpacing: '1px' }}>
+                          <Text size="xs" fw={600} tt="uppercase" style={{ color: 'rgba(255, 255, 255, 0.6)', letterSpacing: '1px' }}>
                             {solution.subtitle}
                           </Text>
-                          <Title order={3} style={{ color: '#0A1A3F' }}>
+                          <Title order={3} style={{ color: '#FFFFFF' }}>
                             {solution.title}
                           </Title>
                         </Box>
                       </Group>
 
-                      <Text size="md" lh={1.8} style={{ color: '#5A7099' }}>
+                      <Text size="md" lh={1.8} style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
                         {solution.description}
                       </Text>
 
-                      <Divider color="rgba(10, 26, 63, 0.08)" />
+                      <Divider color="rgba(255, 255, 255, 0.1)" />
 
                       <Box>
-                        <Text size="sm" fw={600} mb="sm" style={{ color: '#0A1A3F' }}>
+                        <Text size="sm" fw={600} mb="sm" style={{ color: '#FFFFFF' }}>
                           Key Features:
                         </Text>
                         <List
                           spacing="sm"
                           icon={
-                            <ThemeIcon size={22} radius="xl" style={{ background: 'rgba(31, 79, 216, 0.1)' }}>
-                              <IconCheck size={12} color="#1F4FD8" stroke={3} />
+                            <ThemeIcon size={22} radius="xl" style={{ background: 'rgba(77, 163, 255, 0.15)' }}>
+                              <IconCheck size={12} color="#4DA3FF" stroke={3} />
                             </ThemeIcon>
                           }
                         >
                           {solution.features.map((feature) => (
                             <List.Item key={feature}>
-                              <Text size="sm" style={{ color: '#5A7099' }}>{feature}</Text>
+                              <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>{feature}</Text>
                             </List.Item>
                           ))}
                         </List>
@@ -478,9 +478,9 @@ export default function EcommercePage() {
                         size="lg"
                         radius="md"
                         style={{
-                          background: 'rgba(31, 79, 216, 0.08)',
-                          color: '#1F4FD8',
-                          border: '1px solid rgba(31, 79, 216, 0.15)',
+                          background: 'rgba(77, 163, 255, 0.12)',
+                          color: '#4DA3FF',
+                          border: '1px solid rgba(77, 163, 255, 0.25)',
                           alignSelf: 'flex-start',
                         }}
                       >
@@ -605,7 +605,7 @@ export default function EcommercePage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#F8F9FB' }}
+          style={{ background: '#0D1F4A' }}
           ref={featuresRef}
         >
           <Container size="xl">
@@ -622,9 +622,9 @@ export default function EcommercePage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -640,7 +640,7 @@ export default function EcommercePage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Full E-Commerce Capabilities
@@ -661,11 +661,10 @@ export default function EcommercePage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#FFFFFF',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 20,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
-                      boxShadow: '0 2px 12px rgba(10, 26, 63, 0.04)',
                     }}
                   >
                     <Stack gap="md">
@@ -677,16 +676,16 @@ export default function EcommercePage() {
                           size={50}
                           radius="xl"
                           style={{
-                            background: 'linear-gradient(135deg, #3A6EA5 0%, #0A1A3F 100%)',
+                            background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
                           }}
                         >
                           <feature.icon size={24} color="#FFFFFF" stroke={1.5} />
                         </ThemeIcon>
                       </motion.div>
-                      <Title order={4} style={{ color: '#0A1A3F' }}>
+                      <Title order={4} style={{ color: '#FFFFFF' }}>
                         {feature.title}
                       </Title>
-                      <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+                      <Text size="sm" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                         {feature.description}
                       </Text>
                     </Stack>

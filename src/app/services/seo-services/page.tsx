@@ -192,7 +192,7 @@ export default function SEOServicesPage() {
           pt={160}
           pb={100}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%)',
+            background: 'linear-gradient(180deg, #0D1F4A 0%, #0A1A3F 100%)',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -208,7 +208,7 @@ export default function SEOServicesPage() {
               right: '5%',
               width: 450,
               height: 450,
-              background: 'radial-gradient(circle, rgba(12, 206, 107, 0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(12, 206, 107, 0.15) 0%, transparent 70%)',
               borderRadius: '50%',
               pointerEvents: 'none',
             }}
@@ -249,7 +249,7 @@ export default function SEOServicesPage() {
                       fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                       fontWeight: 700,
                       lineHeight: 1.1,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Make Your Website{' '}
@@ -257,7 +257,7 @@ export default function SEOServicesPage() {
                       component="span"
                       inherit
                       style={{
-                        background: 'linear-gradient(135deg, #0CCE6B 0%, #0A1A3F 100%)',
+                        background: 'linear-gradient(135deg, #0CCE6B 0%, #4DA3FF 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                       }}
@@ -273,7 +273,7 @@ export default function SEOServicesPage() {
                     ta="center"
                     maw={750}
                     lh={1.8}
-                    style={{ color: '#5A7099' }}
+                    style={{ color: 'rgba(255, 255, 255, 0.7)' }}
                   >
                     A slow website loses customers. A website Google can&apos;t understand loses rankings.
                     We fix both—making your site lightning-fast and easy for search engines (and AI) to find.
@@ -291,17 +291,17 @@ export default function SEOServicesPage() {
                         size={50}
                         radius="xl"
                         style={{
-                          background: '#FFFFFF',
-                          boxShadow: '0 4px 20px rgba(10, 26, 63, 0.1)',
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(12, 206, 107, 0.25)',
                         }}
                       >
                         <IconBrandGoogle size={26} color="#0CCE6B" stroke={1.5} />
                       </ThemeIcon>
                       <Box>
-                        <Text size="sm" fw={600} style={{ color: '#0A1A3F' }}>
+                        <Text size="sm" fw={600} style={{ color: '#FFFFFF' }}>
                           Google Rankings
                         </Text>
-                        <Text size="xs" style={{ color: '#8A9BB8' }}>
+                        <Text size="xs" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                           Get found first
                         </Text>
                       </Box>
@@ -311,17 +311,17 @@ export default function SEOServicesPage() {
                         size={50}
                         radius="xl"
                         style={{
-                          background: '#FFFFFF',
-                          boxShadow: '0 4px 20px rgba(10, 26, 63, 0.1)',
+                          background: 'rgba(255, 255, 255, 0.08)',
+                          border: '1px solid rgba(12, 206, 107, 0.25)',
                         }}
                       >
                         <IconRobot size={26} color="#0CCE6B" stroke={1.5} />
                       </ThemeIcon>
                       <Box>
-                        <Text size="sm" fw={600} style={{ color: '#0A1A3F' }}>
+                        <Text size="sm" fw={600} style={{ color: '#FFFFFF' }}>
                           AI Assistants
                         </Text>
-                        <Text size="xs" style={{ color: '#8A9BB8' }}>
+                        <Text size="xs" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                           ChatGPT & Gemini ready
                         </Text>
                       </Box>
@@ -345,8 +345,8 @@ export default function SEOServicesPage() {
                         variant="outline"
                         styles={{
                           root: {
-                            borderColor: '#C9D2E3',
-                            color: '#1F4FD8',
+                            borderColor: 'rgba(255, 255, 255, 0.25)',
+                            color: '#FFFFFF',
                           },
                         }}
                       >
@@ -365,7 +365,7 @@ export default function SEOServicesPage() {
           component="section"
           id="what-is-lighthouse"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0D1F4A' }}
           ref={whatIsRef}
         >
           <Container size="xl">
@@ -383,9 +383,9 @@ export default function SEOServicesPage() {
                       tt="uppercase"
                       fw={600}
                       style={{
-                        background: 'rgba(12, 206, 107, 0.1)',
+                        background: 'rgba(12, 206, 107, 0.15)',
                         color: '#0CCE6B',
-                        border: '1px solid rgba(12, 206, 107, 0.2)',
+                        border: '1px solid rgba(12, 206, 107, 0.3)',
                         letterSpacing: '1px',
                         fontSize: '0.7rem',
                         padding: '10px 16px',
@@ -400,15 +400,15 @@ export default function SEOServicesPage() {
                       style={{
                         fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                         fontWeight: 700,
-                        color: '#0A1A3F',
+                        color: '#FFFFFF',
                       }}
                     >
                       What is a &quot;Lighthouse Score&quot;?
                     </Title>
                   </motion.div>
                   <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                    <Text size="lg" lh={1.8} style={{ color: '#5A7099' }}>
-                      <strong>Google Lighthouse</strong> is like a report card for your website. Google created it 
+                    <Text size="lg" lh={1.8} style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
+                      <strong>Google Lighthouse</strong> is like a report card for your website. Google created it
                       to measure how good a website really is. It scores your site from 0-100 in four areas:
                     </Text>
                   </motion.div>
@@ -432,7 +432,7 @@ export default function SEOServicesPage() {
                                 width: 24,
                                 height: 24,
                                 borderRadius: '50%',
-                                background: 'linear-gradient(135deg, #0CCE6B 0%, #0A1A3F 100%)',
+                                background: 'linear-gradient(135deg, #0CCE6B 0%, #4DA3FF 100%)',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'center',
@@ -442,10 +442,10 @@ export default function SEOServicesPage() {
                               <IconCheck size={14} color="#FFFFFF" stroke={3} />
                             </Box>
                             <Box>
-                              <Text size="md" fw={600} style={{ color: '#0A1A3F' }}>
+                              <Text size="md" fw={600} style={{ color: '#FFFFFF' }}>
                                 {item.label}
                               </Text>
-                              <Text size="sm" style={{ color: '#5A7099' }}>
+                              <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.65)' }}>
                                 {item.desc}
                               </Text>
                             </Box>
@@ -464,50 +464,50 @@ export default function SEOServicesPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#F8F9FB',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 24,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                     }}
                   >
                     <Stack gap="lg">
                       <Group justify="space-between">
-                        <Text size="sm" fw={600} tt="uppercase" style={{ color: '#8A9BB8', letterSpacing: '1px' }}>
+                        <Text size="sm" fw={600} tt="uppercase" style={{ color: 'rgba(255, 255, 255, 0.6)', letterSpacing: '1px' }}>
                           Why It Matters
                         </Text>
                         <IconBolt size={20} color="#0CCE6B" />
                       </Group>
-                      <Divider color="rgba(10, 26, 63, 0.06)" />
-                      
+                      <Divider color="rgba(255, 255, 255, 0.08)" />
+
                       <Box>
-                        <Text fw={600} mb="xs" style={{ color: '#0A1A3F' }}>
+                        <Text fw={600} mb="xs" style={{ color: '#FFFFFF' }}>
                           Google Uses These Scores to Rank You
                         </Text>
-                        <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
-                          Higher scores = higher rankings = more customers finding you. Sites with perfect 
+                        <Text size="sm" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                          Higher scores = higher rankings = more customers finding you. Sites with perfect
                           scores consistently outrank competitors.
                         </Text>
                       </Box>
 
-                      <Divider color="rgba(10, 26, 63, 0.06)" />
+                      <Divider color="rgba(255, 255, 255, 0.08)" />
 
                       <Box>
-                        <Text fw={600} mb="xs" style={{ color: '#0A1A3F' }}>
+                        <Text fw={600} mb="xs" style={{ color: '#FFFFFF' }}>
                           Most Sites Score 50-70
                         </Text>
-                        <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
-                          The average website has lots of room for improvement. We take sites from 
+                        <Text size="sm" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                          The average website has lots of room for improvement. We take sites from
                           mediocre to perfect—and you&apos;ll see the difference in traffic and leads.
                         </Text>
                       </Box>
 
-                      <Divider color="rgba(10, 26, 63, 0.06)" />
+                      <Divider color="rgba(255, 255, 255, 0.08)" />
 
                       <Box>
-                        <Text fw={600} mb="xs" style={{ color: '#0A1A3F' }}>
+                        <Text fw={600} mb="xs" style={{ color: '#FFFFFF' }}>
                           We Get Perfect 100s
                         </Text>
-                        <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
-                          Our websites consistently score 100 across all categories. That&apos;s not 
+                        <Text size="sm" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                          Our websites consistently score 100 across all categories. That&apos;s not
                           marketing talk—you can test it yourself with Google&apos;s free tool.
                         </Text>
                       </Box>
@@ -710,7 +710,7 @@ export default function SEOServicesPage() {
           component="section"
           py={100}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%)',
+            background: 'linear-gradient(180deg, #0D1F4A 0%, #0A1A3F 100%)',
           }}
           ref={aiSeoRef}
         >
@@ -728,9 +728,9 @@ export default function SEOServicesPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -746,15 +746,15 @@ export default function SEOServicesPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Optimized for AI Assistants
                   </Title>
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                  <Text size="lg" ta="center" maw={750} style={{ color: '#5A7099' }} lh={1.8}>
-                    More people are asking AI for recommendations. &quot;ChatGPT, find me a good web developer.&quot; 
+                  <Text size="lg" ta="center" maw={750} style={{ color: 'rgba(255, 255, 255, 0.7)' }} lh={1.8}>
+                    More people are asking AI for recommendations. &quot;ChatGPT, find me a good web developer.&quot;
                     &quot;Gemini, what&apos;s the best SEO agency?&quot; We ensure your business gets recommended.
                   </Text>
                 </motion.div>
@@ -773,16 +773,16 @@ export default function SEOServicesPage() {
                   <AIQueryDemo isInView={aiSeoInView} />
                 </Box>
                 <Stack gap="lg" pl={{ base: 0, lg: 'xl' }}>
-                  <Text size="sm" fw={600} tt="uppercase" style={{ color: '#1F4FD8', letterSpacing: '1px' }}>
+                  <Text size="sm" fw={600} tt="uppercase" style={{ color: '#4DA3FF', letterSpacing: '1px' }}>
                     Real AI Recommendations
                   </Text>
-                  <Title order={3} style={{ color: '#0A1A3F', fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
+                  <Title order={3} style={{ color: '#FFFFFF', fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
                     This is how AI recommends businesses
                   </Title>
-                  <Text size="md" lh={1.8} style={{ color: '#5A7099' }}>
-                    When someone asks ChatGPT, Gemini, or other AI assistants for recommendations, 
-                    the AI pulls from its knowledge of structured data, reviews, and website content. 
-                    <strong style={{ color: '#0A1A3F' }}> We optimize your site so AI understands exactly what you do 
+                  <Text size="md" lh={1.8} style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
+                    When someone asks ChatGPT, Gemini, or other AI assistants for recommendations,
+                    the AI pulls from its knowledge of structured data, reviews, and website content.
+                    <strong style={{ color: '#FFFFFF' }}> We optimize your site so AI understands exactly what you do
                     and why customers should choose you.</strong>
                   </Text>
                   <Group gap="md" mt="sm">
@@ -795,13 +795,13 @@ export default function SEOServicesPage() {
                         key={item.label}
                         p="sm"
                         style={{
-                          background: 'rgba(31, 79, 216, 0.05)',
+                          background: 'rgba(77, 163, 255, 0.08)',
                           borderRadius: 12,
-                          border: '1px solid rgba(31, 79, 216, 0.1)',
+                          border: '1px solid rgba(77, 163, 255, 0.2)',
                         }}
                       >
-                        <Text size="xs" fw={600} style={{ color: '#1F4FD8' }}>{item.label}</Text>
-                        <Text size="xs" style={{ color: '#8A9BB8' }}>{item.desc}</Text>
+                        <Text size="xs" fw={600} style={{ color: '#4DA3FF' }}>{item.label}</Text>
+                        <Text size="xs" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>{item.desc}</Text>
                       </Box>
                     ))}
                   </Group>
@@ -837,11 +837,10 @@ export default function SEOServicesPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#FFFFFF',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 20,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
-                      boxShadow: '0 4px 20px rgba(10, 26, 63, 0.04)',
                     }}
                   >
                     <Stack gap="md" align="center" ta="center">
@@ -854,10 +853,10 @@ export default function SEOServicesPage() {
                       >
                         <item.icon size={28} color="#FFFFFF" stroke={1.5} />
                       </ThemeIcon>
-                      <Title order={3} size="h4" style={{ color: '#0A1A3F' }}>
+                      <Title order={3} size="h4" style={{ color: '#FFFFFF' }}>
                         {item.title}
                       </Title>
-                      <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+                      <Text size="sm" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                         {item.description}
                       </Text>
                     </Stack>
@@ -872,7 +871,7 @@ export default function SEOServicesPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#F8F9FB' }}
+          style={{ background: '#0D1F4A' }}
           ref={servicesRef}
         >
           <Container size="xl">
@@ -889,9 +888,9 @@ export default function SEOServicesPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(12, 206, 107, 0.15)',
+                      color: '#0CCE6B',
+                      border: '1px solid rgba(12, 206, 107, 0.3)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -907,7 +906,7 @@ export default function SEOServicesPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Everything That&apos;s Holding You Back
@@ -928,9 +927,9 @@ export default function SEOServicesPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#FFFFFF',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 20,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
                     }}
                   >
@@ -943,16 +942,16 @@ export default function SEOServicesPage() {
                           size={50}
                           radius="xl"
                           style={{
-                            background: 'linear-gradient(135deg, #0CCE6B 0%, #0A1A3F 100%)',
+                            background: 'linear-gradient(135deg, #0CCE6B 0%, #1F4FD8 100%)',
                           }}
                         >
                           <service.icon size={24} color="#FFFFFF" stroke={1.5} />
                         </ThemeIcon>
                       </motion.div>
-                      <Title order={3} size="h4" style={{ color: '#0A1A3F' }}>
+                      <Title order={3} size="h4" style={{ color: '#FFFFFF' }}>
                         {service.title}
                       </Title>
-                      <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+                      <Text size="sm" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                         {service.description}
                       </Text>
                     </Stack>
@@ -967,7 +966,7 @@ export default function SEOServicesPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0A1A3F' }}
           ref={processRef}
         >
           <Container size="xl">
@@ -984,9 +983,9 @@ export default function SEOServicesPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -1002,7 +1001,7 @@ export default function SEOServicesPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     From Slow to Perfect in 4 Steps
@@ -1022,12 +1021,12 @@ export default function SEOServicesPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: index === 0 ? 'linear-gradient(135deg, #0CCE6B 0%, #0A1A3F 100%)' : '#F8F9FB',
+                      background: index === 0 ? 'linear-gradient(135deg, #0CCE6B 0%, #1F4FD8 100%)' : 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 20,
-                      border: index === 0 ? 'none' : '1px solid rgba(10, 26, 63, 0.06)',
+                      border: index === 0 ? 'none' : '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
                       position: 'relative',
-                      boxShadow: index === 0 ? '0 10px 30px rgba(12, 206, 107, 0.25)' : undefined,
+                      boxShadow: index === 0 ? '0 10px 30px rgba(12, 206, 107, 0.3)' : undefined,
                     }}
                   >
                     <Text
@@ -1037,7 +1036,7 @@ export default function SEOServicesPage() {
                         top: 15,
                         right: 20,
                         fontSize: '3rem',
-                        opacity: index === 0 ? 0.2 : 0.08,
+                        opacity: index === 0 ? 0.25 : 0.15,
                         color: index === 0 ? '#FFFFFF' : '#0CCE6B',
                         lineHeight: 1,
                       }}
@@ -1048,14 +1047,14 @@ export default function SEOServicesPage() {
                       <Title
                         order={3}
                         size="h4"
-                        style={{ color: index === 0 ? '#FFFFFF' : '#0A1A3F' }}
+                        style={{ color: '#FFFFFF' }}
                       >
                         {item.title}
                       </Title>
                       <Text
                         size="sm"
                         lh={1.7}
-                        style={{ color: index === 0 ? 'rgba(255, 255, 255, 0.85)' : '#5A7099' }}
+                        style={{ color: index === 0 ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.7)' }}
                       >
                         {item.description}
                       </Text>

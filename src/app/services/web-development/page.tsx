@@ -169,7 +169,7 @@ export default function WebDevelopmentPage() {
           pt={160}
           pb={100}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%)',
+            background: 'linear-gradient(180deg, #0D1F4A 0%, #0A1A3F 100%)',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -186,7 +186,7 @@ export default function WebDevelopmentPage() {
               right: '5%',
               width: 450,
               height: 450,
-              background: 'radial-gradient(circle, rgba(31, 79, 216, 0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(77, 163, 255, 0.15) 0%, transparent 70%)',
               borderRadius: '50%',
               pointerEvents: 'none',
             }}
@@ -206,9 +206,9 @@ export default function WebDevelopmentPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -227,7 +227,7 @@ export default function WebDevelopmentPage() {
                       fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                       fontWeight: 700,
                       lineHeight: 1.1,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Built for Speed.{' '}
@@ -251,7 +251,7 @@ export default function WebDevelopmentPage() {
                     ta="center"
                     maw={750}
                     lh={1.8}
-                    style={{ color: '#5A7099' }}
+                    style={{ color: 'rgba(255, 255, 255, 0.7)' }}
                   >
                     We don&apos;t use templates. We craft custom web experiences using the same
                     technologies that power Netflix, Airbnb, and TikTok—optimized for your
@@ -288,8 +288,8 @@ export default function WebDevelopmentPage() {
                         variant="outline"
                         styles={{
                           root: {
-                            borderColor: '#C9D2E3',
-                            color: '#1F4FD8',
+                            borderColor: 'rgba(255, 255, 255, 0.25)',
+                            color: '#FFFFFF',
                           },
                         }}
                       >
@@ -408,7 +408,7 @@ export default function WebDevelopmentPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0D1F4A' }}
           ref={comparisonRef}
         >
           <Container size="xl">
@@ -425,9 +425,9 @@ export default function WebDevelopmentPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -443,14 +443,14 @@ export default function WebDevelopmentPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Templates vs. Custom Development
                   </Title>
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                  <Text size="lg" ta="center" maw={700} style={{ color: '#5A7099' }}>
+                  <Text size="lg" ta="center" maw={700} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                     Many agencies sell you pre-made templates with a fresh coat of paint.
                     Here&apos;s what that really means for your business—and why we do things differently.
                   </Text>
@@ -468,9 +468,9 @@ export default function WebDevelopmentPage() {
                 <Box
                   p="xl"
                   style={{
-                    background: '#F8F9FB',
+                    background: 'rgba(255, 255, 255, 0.04)',
                     borderRadius: 24,
-                    border: '1px solid rgba(10, 26, 63, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
                     height: '100%',
                   }}
                 >
@@ -479,31 +479,31 @@ export default function WebDevelopmentPage() {
                       <ThemeIcon
                         size={50}
                         radius="xl"
-                        style={{ background: 'rgba(220, 53, 69, 0.1)' }}
+                        style={{ background: 'rgba(255, 107, 129, 0.15)' }}
                       >
-                        <IconCode size={24} color="#DC3545" stroke={1.5} />
+                        <IconCode size={24} color="#FF6B81" stroke={1.5} />
                       </ThemeIcon>
                       <Box>
-                        <Text size="xs" fw={600} tt="uppercase" style={{ color: '#DC3545', letterSpacing: '1px' }}>
+                        <Text size="xs" fw={600} tt="uppercase" style={{ color: '#FF6B81', letterSpacing: '1px' }}>
                           Template-Based
                         </Text>
-                        <Title order={4} style={{ color: '#0A1A3F' }}>
+                        <Title order={4} style={{ color: '#FFFFFF' }}>
                           The &quot;Quick Fix&quot;
                         </Title>
                       </Box>
                     </Group>
-                    <Divider color="rgba(10, 26, 63, 0.08)" />
+                    <Divider color="rgba(255, 255, 255, 0.1)" />
                     <List
                       spacing="md"
                       icon={
-                        <ThemeIcon size={24} radius="xl" style={{ background: 'rgba(220, 53, 69, 0.1)' }}>
-                          <IconX size={14} color="#DC3545" stroke={3} />
+                        <ThemeIcon size={24} radius="xl" style={{ background: 'rgba(255, 107, 129, 0.15)' }}>
+                          <IconX size={14} color="#FF6B81" stroke={3} />
                         </ThemeIcon>
                       }
                     >
                       {templateComparison.templates.map((item) => (
                         <List.Item key={item}>
-                          <Text size="sm" style={{ color: '#5A7099' }}>{item}</Text>
+                          <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>{item}</Text>
                         </List.Item>
                       ))}
                     </List>
@@ -570,7 +570,7 @@ export default function WebDevelopmentPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#F8F9FB' }}
+          style={{ background: '#0A1A3F' }}
           ref={benefitsRef}
         >
           <Container size="xl">
@@ -587,9 +587,9 @@ export default function WebDevelopmentPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -605,7 +605,7 @@ export default function WebDevelopmentPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Real Benefits, Measurable Results
@@ -626,11 +626,10 @@ export default function WebDevelopmentPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#FFFFFF',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 20,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
-                      boxShadow: '0 2px 12px rgba(10, 26, 63, 0.04)',
                     }}
                   >
                     <Group gap="lg" align="flex-start">
@@ -650,10 +649,10 @@ export default function WebDevelopmentPage() {
                         </ThemeIcon>
                       </motion.div>
                       <Box style={{ flex: 1 }}>
-                        <Title order={4} mb="xs" style={{ color: '#0A1A3F' }}>
+                        <Title order={4} mb="xs" style={{ color: '#FFFFFF' }}>
                           {benefit.title}
                         </Title>
-                        <Text size="md" lh={1.7} style={{ color: '#5A7099' }}>
+                        <Text size="md" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                           {benefit.description}
                         </Text>
                       </Box>
@@ -669,7 +668,7 @@ export default function WebDevelopmentPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0D1F4A' }}
           ref={hostingRef}
         >
           <Container size="xl">
@@ -688,9 +687,9 @@ export default function WebDevelopmentPage() {
                       fw={600}
                       mb="md"
                       style={{
-                        background: 'rgba(31, 79, 216, 0.08)',
-                        color: '#1F4FD8',
-                        border: '1px solid rgba(31, 79, 216, 0.15)',
+                        background: 'rgba(77, 163, 255, 0.12)',
+                        color: '#4DA3FF',
+                        border: '1px solid rgba(77, 163, 255, 0.25)',
                         letterSpacing: '1px',
                         fontSize: '0.7rem',
                         padding: '10px 16px',
@@ -703,20 +702,20 @@ export default function WebDevelopmentPage() {
                       style={{
                         fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                         fontWeight: 700,
-                        color: '#0A1A3F',
+                        color: '#FFFFFF',
                       }}
                     >
                       Pay-As-You-Go Hosting on Vercel
                     </Title>
                   </Box>
 
-                  <Text size="lg" lh={1.8} style={{ color: '#5A7099' }}>
+                  <Text size="lg" lh={1.8} style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
                     Forget expensive dedicated servers and complex DevOps. We deploy your site on
                     Vercel—the platform built by the creators of Next.js—so you only pay for what
                     you actually use.
                   </Text>
 
-                  <Text size="md" lh={1.8} style={{ color: '#5A7099' }}>
+                  <Text size="md" lh={1.8} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                     Start small and scale infinitely. Whether you&apos;re getting 100 visitors a month
                     or handling viral traffic spikes, your site stays fast and your costs stay
                     predictable.
@@ -732,9 +731,9 @@ export default function WebDevelopmentPage() {
                 <Box
                   p="xl"
                   style={{
-                    background: '#F8F9FB',
+                    background: 'rgba(255, 255, 255, 0.04)',
                     borderRadius: 24,
-                    border: '1px solid rgba(10, 26, 63, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
                   }}
                 >
                   <Group gap="lg" mb="xl">
@@ -748,10 +747,10 @@ export default function WebDevelopmentPage() {
                       <IconBrandVercel size={30} color="#FFFFFF" stroke={1.5} />
                     </ThemeIcon>
                     <Box>
-                      <Text size="xs" fw={600} tt="uppercase" style={{ color: '#8A9BB8', letterSpacing: '1px' }}>
+                      <Text size="xs" fw={600} tt="uppercase" style={{ color: 'rgba(255, 255, 255, 0.6)', letterSpacing: '1px' }}>
                         Powered by
                       </Text>
-                      <Text fw={700} size="xl" style={{ color: '#0A1A3F' }}>
+                      <Text fw={700} size="xl" style={{ color: '#FFFFFF' }}>
                         Vercel
                       </Text>
                     </Box>
@@ -760,8 +759,8 @@ export default function WebDevelopmentPage() {
                   <List
                     spacing="md"
                     icon={
-                      <ThemeIcon size={24} radius="xl" style={{ background: 'rgba(31, 79, 216, 0.1)' }}>
-                        <IconCheck size={14} color="#1F4FD8" stroke={3} />
+                      <ThemeIcon size={24} radius="xl" style={{ background: 'rgba(77, 163, 255, 0.15)' }}>
+                        <IconCheck size={14} color="#4DA3FF" stroke={3} />
                       </ThemeIcon>
                     }
                   >
@@ -773,7 +772,7 @@ export default function WebDevelopmentPage() {
                         transition={{ duration: 0.4, delay: 0.4 + index * 0.08 }}
                       >
                         <List.Item>
-                          <Text size="sm" style={{ color: '#5A7099' }}>{feature}</Text>
+                          <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>{feature}</Text>
                         </List.Item>
                       </motion.div>
                     ))}

@@ -196,7 +196,7 @@ export default function ConversionOptimizationPage() {
           pt={160}
           pb={100}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%)',
+            background: 'linear-gradient(180deg, #0D1F4A 0%, #0A1A3F 100%)',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -212,7 +212,7 @@ export default function ConversionOptimizationPage() {
               right: '5%',
               width: 450,
               height: 450,
-              background: 'radial-gradient(circle, rgba(31, 79, 216, 0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(77, 163, 255, 0.15) 0%, transparent 70%)',
               borderRadius: '50%',
               pointerEvents: 'none',
             }}
@@ -232,9 +232,9 @@ export default function ConversionOptimizationPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.1)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.2)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -253,7 +253,7 @@ export default function ConversionOptimizationPage() {
                       fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                       fontWeight: 700,
                       lineHeight: 1.1,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Turn More Visitors Into{' '}
@@ -261,7 +261,7 @@ export default function ConversionOptimizationPage() {
                       component="span"
                       inherit
                       style={{
-                        background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                        background: 'linear-gradient(135deg, #4DA3FF 0%, #8AB6FF 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                       }}
@@ -277,7 +277,7 @@ export default function ConversionOptimizationPage() {
                     ta="center"
                     maw={750}
                     lh={1.8}
-                    style={{ color: '#5A7099' }}
+                    style={{ color: 'rgba(255, 255, 255, 0.7)' }}
                   >
                     You&apos;re getting traffic, but visitors leave without buying. We fix that.
                     Through psychology-driven design and data-backed optimization, we transform
@@ -307,12 +307,12 @@ export default function ConversionOptimizationPage() {
                             fw={700}
                             style={{
                               fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                              color: '#1F4FD8',
+                              color: '#4DA3FF',
                             }}
                           >
                             {stat.value}
                           </Text>
-                          <Text size="xs" style={{ color: '#8A9BB8' }}>
+                          <Text size="xs" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                             {stat.label}
                           </Text>
                         </Box>
@@ -337,8 +337,8 @@ export default function ConversionOptimizationPage() {
                         variant="outline"
                         styles={{
                           root: {
-                            borderColor: '#C9D2E3',
-                            color: '#1F4FD8',
+                            borderColor: 'rgba(255, 255, 255, 0.25)',
+                            color: '#FFFFFF',
                           },
                         }}
                       >
@@ -357,7 +357,7 @@ export default function ConversionOptimizationPage() {
           component="section"
           id="what-is-conversion"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0D1F4A' }}
           ref={whatIsRef}
         >
           <Container size="xl">
@@ -375,9 +375,9 @@ export default function ConversionOptimizationPage() {
                       tt="uppercase"
                       fw={600}
                       style={{
-                        background: 'rgba(31, 79, 216, 0.1)',
-                        color: '#1F4FD8',
-                        border: '1px solid rgba(31, 79, 216, 0.2)',
+                        background: 'rgba(77, 163, 255, 0.12)',
+                        color: '#4DA3FF',
+                        border: '1px solid rgba(77, 163, 255, 0.25)',
                         letterSpacing: '1px',
                         fontSize: '0.7rem',
                         padding: '10px 16px',
@@ -392,23 +392,23 @@ export default function ConversionOptimizationPage() {
                       style={{
                         fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                         fontWeight: 700,
-                        color: '#0A1A3F',
+                        color: '#FFFFFF',
                       }}
                     >
                       What is a &quot;Conversion&quot;?
                     </Title>
                   </motion.div>
                   <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                    <Text size="lg" lh={1.8} style={{ color: '#5A7099' }}>
-                      A <strong style={{ color: '#0A1A3F' }}>conversion</strong> happens when a visitor 
-                      takes the action you want them to take. It&apos;s the moment someone goes from 
+                    <Text size="lg" lh={1.8} style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
+                      A <strong style={{ color: '#FFFFFF' }}>conversion</strong> happens when a visitor
+                      takes the action you want them to take. It&apos;s the moment someone goes from
                       &quot;just looking&quot; to &quot;taking action.&quot;
                     </Text>
                   </motion.div>
                   <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                    <Text size="md" lh={1.8} style={{ color: '#5A7099' }}>
-                      Your <strong style={{ color: '#0A1A3F' }}>conversion rate</strong> is the percentage 
-                      of visitors who convert. If 100 people visit your site and 3 make a purchase, 
+                    <Text size="md" lh={1.8} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                      Your <strong style={{ color: '#FFFFFF' }}>conversion rate</strong> is the percentage
+                      of visitors who convert. If 100 people visit your site and 3 make a purchase,
                       your conversion rate is 3%.
                     </Text>
                   </motion.div>
@@ -416,19 +416,19 @@ export default function ConversionOptimizationPage() {
                     <Box
                       p="lg"
                       style={{
-                        background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.05) 0%, rgba(77, 163, 255, 0.05) 100%)',
+                        background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.15) 0%, rgba(77, 163, 255, 0.1) 100%)',
                         borderRadius: 16,
-                        border: '1px solid rgba(31, 79, 216, 0.1)',
+                        border: '1px solid rgba(77, 163, 255, 0.2)',
                       }}
                     >
                       <Group gap="sm" mb="sm">
-                        <IconTarget size={20} color="#1F4FD8" />
-                        <Text fw={600} style={{ color: '#0A1A3F' }}>The Math That Matters</Text>
+                        <IconTarget size={20} color="#4DA3FF" />
+                        <Text fw={600} style={{ color: '#FFFFFF' }}>The Math That Matters</Text>
                       </Group>
-                      <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
-                        Doubling your conversion rate = doubling your revenue without spending more on ads. 
-                        If you get 10,000 visitors/month at 2% conversion, that&apos;s 200 customers. 
-                        At 4%? That&apos;s 400 customers—<strong style={{ color: '#1F4FD8' }}>same traffic, double the money.</strong>
+                      <Text size="sm" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
+                        Doubling your conversion rate = doubling your revenue without spending more on ads.
+                        If you get 10,000 visitors/month at 2% conversion, that&apos;s 200 customers.
+                        At 4%? That&apos;s 400 customers—<strong style={{ color: '#4DA3FF' }}>same traffic, double the money.</strong>
                       </Text>
                     </Box>
                   </motion.div>
@@ -442,12 +442,12 @@ export default function ConversionOptimizationPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#F8F9FB',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 24,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                     }}
                   >
-                    <Text size="sm" fw={600} tt="uppercase" mb="lg" style={{ color: '#8A9BB8', letterSpacing: '1px' }}>
+                    <Text size="sm" fw={600} tt="uppercase" mb="lg" style={{ color: 'rgba(255, 255, 255, 0.6)', letterSpacing: '1px' }}>
                       Types of Conversions
                     </Text>
                     <SimpleGrid cols={2} spacing="md">
@@ -461,9 +461,9 @@ export default function ConversionOptimizationPage() {
                           <Box
                             p="md"
                             style={{
-                              background: '#FFFFFF',
+                              background: 'rgba(255, 255, 255, 0.05)',
                               borderRadius: 12,
-                              border: '1px solid rgba(10, 26, 63, 0.06)',
+                              border: '1px solid rgba(255, 255, 255, 0.08)',
                             }}
                           >
                             <ThemeIcon
@@ -476,10 +476,10 @@ export default function ConversionOptimizationPage() {
                             >
                               <type.icon size={20} color="#FFFFFF" />
                             </ThemeIcon>
-                            <Text fw={600} size="sm" style={{ color: '#0A1A3F' }}>
+                            <Text fw={600} size="sm" style={{ color: '#FFFFFF' }}>
                               {type.label}
                             </Text>
-                            <Text size="xs" style={{ color: '#8A9BB8' }}>
+                            <Text size="xs" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                               {type.desc}
                             </Text>
                           </Box>
@@ -650,7 +650,7 @@ export default function ConversionOptimizationPage() {
           component="section"
           py={100}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%)',
+            background: 'linear-gradient(180deg, #0D1F4A 0%, #0A1A3F 100%)',
           }}
           ref={differenceRef}
         >
@@ -668,9 +668,9 @@ export default function ConversionOptimizationPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -686,15 +686,15 @@ export default function ConversionOptimizationPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     What Makes Lucid Different
                   </Title>
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                  <Text size="lg" ta="center" maw={700} style={{ color: '#5A7099' }} lh={1.8}>
-                    Most agencies make pretty websites. We make websites that <em>perform</em>. 
+                  <Text size="lg" ta="center" maw={700} style={{ color: 'rgba(255, 255, 255, 0.7)' }} lh={1.8}>
+                    Most agencies make pretty websites. We make websites that <em>perform</em>.
                     Here&apos;s how we consistently achieve conversion rates 2-3x industry average.
                   </Text>
                 </motion.div>
@@ -713,11 +713,10 @@ export default function ConversionOptimizationPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#FFFFFF',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 20,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
-                      boxShadow: '0 4px 20px rgba(10, 26, 63, 0.04)',
                     }}
                   >
                     <Group justify="space-between" align="flex-start" mb="lg">
@@ -731,18 +730,18 @@ export default function ConversionOptimizationPage() {
                         <item.icon size={28} color="#FFFFFF" stroke={1.5} />
                       </ThemeIcon>
                       <Box ta="right">
-                        <Text fw={700} style={{ fontSize: '1.75rem', color: '#1F4FD8', lineHeight: 1 }}>
+                        <Text fw={700} style={{ fontSize: '1.75rem', color: '#4DA3FF', lineHeight: 1 }}>
                           {item.stat}
                         </Text>
-                        <Text size="xs" style={{ color: '#8A9BB8' }}>
+                        <Text size="xs" style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                           {item.statLabel}
                         </Text>
                       </Box>
                     </Group>
-                    <Title order={3} size="h4" mb="sm" style={{ color: '#0A1A3F' }}>
+                    <Title order={3} size="h4" mb="sm" style={{ color: '#FFFFFF' }}>
                       {item.title}
                     </Title>
-                    <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+                    <Text size="sm" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                       {item.description}
                     </Text>
                   </Box>
@@ -756,7 +755,7 @@ export default function ConversionOptimizationPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#F8F9FB' }}
+          style={{ background: '#0D1F4A' }}
           ref={servicesRef}
         >
           <Container size="xl">
@@ -773,9 +772,9 @@ export default function ConversionOptimizationPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -791,7 +790,7 @@ export default function ConversionOptimizationPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     How We Increase Your Conversions
@@ -812,9 +811,9 @@ export default function ConversionOptimizationPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#FFFFFF',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 20,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
                     }}
                   >
@@ -833,13 +832,13 @@ export default function ConversionOptimizationPage() {
                           <service.icon size={24} color="#FFFFFF" stroke={1.5} />
                         </ThemeIcon>
                       </motion.div>
-                      <Title order={3} size="h4" style={{ color: '#0A1A3F' }}>
+                      <Title order={3} size="h4" style={{ color: '#FFFFFF' }}>
                         {service.title}
                       </Title>
-                      <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+                      <Text size="sm" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                         {service.description}
                       </Text>
-                      <Divider color="rgba(10, 26, 63, 0.06)" />
+                      <Divider color="rgba(255, 255, 255, 0.1)" />
                       <Group gap={6} wrap="wrap">
                         {service.features.map((feature) => (
                           <Badge
@@ -847,8 +846,8 @@ export default function ConversionOptimizationPage() {
                             size="sm"
                             radius="sm"
                             style={{
-                              background: 'rgba(31, 79, 216, 0.06)',
-                              color: '#1F4FD8',
+                              background: 'rgba(77, 163, 255, 0.12)',
+                              color: '#4DA3FF',
                               border: 'none',
                               fontWeight: 500,
                             }}
@@ -869,7 +868,7 @@ export default function ConversionOptimizationPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0A1A3F' }}
           ref={resultsRef}
         >
           <Container size="xl">
@@ -886,9 +885,9 @@ export default function ConversionOptimizationPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(12, 206, 107, 0.1)',
+                      background: 'rgba(12, 206, 107, 0.15)',
                       color: '#0CCE6B',
-                      border: '1px solid rgba(12, 206, 107, 0.2)',
+                      border: '1px solid rgba(12, 206, 107, 0.3)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -904,14 +903,14 @@ export default function ConversionOptimizationPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     We Beat Industry Benchmarks
                   </Title>
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
-                  <Text size="lg" ta="center" maw={700} style={{ color: '#5A7099' }}>
+                  <Text size="lg" ta="center" maw={700} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                     Don&apos;t just take our word for it. Here&apos;s how our clients compare to industry averages.
                   </Text>
                 </motion.div>
@@ -921,19 +920,19 @@ export default function ConversionOptimizationPage() {
             <Box
               p={{ base: 'lg', md: 'xl' }}
               style={{
-                background: '#F8F9FB',
+                background: 'rgba(255, 255, 255, 0.04)',
                 borderRadius: 24,
-                border: '1px solid rgba(10, 26, 63, 0.06)',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
               }}
             >
               {/* Header */}
               <SimpleGrid cols={{ base: 2, md: 4 }} spacing="md" mb="xl">
-                <Text size="xs" fw={600} tt="uppercase" style={{ color: '#8A9BB8' }}>Industry</Text>
-                <Text size="xs" fw={600} tt="uppercase" ta={{ base: 'left', md: 'center' }} style={{ color: '#8A9BB8' }}>Avg. Rate</Text>
-                <Text size="xs" fw={600} tt="uppercase" ta={{ base: 'left', md: 'center' }} style={{ color: '#8A9BB8' }} display={{ base: 'none', md: 'block' }}>Lucid Rate</Text>
-                <Text size="xs" fw={600} tt="uppercase" ta={{ base: 'left', md: 'center' }} style={{ color: '#8A9BB8' }} display={{ base: 'none', md: 'block' }}>Improvement</Text>
+                <Text size="xs" fw={600} tt="uppercase" style={{ color: 'rgba(255, 255, 255, 0.55)' }}>Industry</Text>
+                <Text size="xs" fw={600} tt="uppercase" ta={{ base: 'left', md: 'center' }} style={{ color: 'rgba(255, 255, 255, 0.55)' }}>Avg. Rate</Text>
+                <Text size="xs" fw={600} tt="uppercase" ta={{ base: 'left', md: 'center' }} style={{ color: 'rgba(255, 255, 255, 0.55)' }} display={{ base: 'none', md: 'block' }}>Lucid Rate</Text>
+                <Text size="xs" fw={600} tt="uppercase" ta={{ base: 'left', md: 'center' }} style={{ color: 'rgba(255, 255, 255, 0.55)' }} display={{ base: 'none', md: 'block' }}>Improvement</Text>
               </SimpleGrid>
-              
+
               <Stack gap="md">
                 {industryBenchmarks.map((benchmark, index) => (
                   <motion.div
@@ -945,23 +944,23 @@ export default function ConversionOptimizationPage() {
                     <Box
                       p="md"
                       style={{
-                        background: '#FFFFFF',
+                        background: 'rgba(255, 255, 255, 0.04)',
                         borderRadius: 12,
-                        border: '1px solid rgba(10, 26, 63, 0.06)',
+                        border: '1px solid rgba(255, 255, 255, 0.08)',
                       }}
                     >
                       <SimpleGrid cols={{ base: 2, md: 4 }} spacing="md" style={{ alignItems: 'center' }}>
-                        <Text fw={600} style={{ color: '#0A1A3F' }}>{benchmark.industry}</Text>
-                        <Text ta={{ base: 'left', md: 'center' }} style={{ color: '#8A9BB8' }}>{benchmark.rate}</Text>
-                        <Text fw={600} ta={{ base: 'left', md: 'center' }} style={{ color: '#1F4FD8' }} display={{ base: 'none', md: 'block' }}>{benchmark.lucidRate}</Text>
+                        <Text fw={600} style={{ color: '#FFFFFF' }}>{benchmark.industry}</Text>
+                        <Text ta={{ base: 'left', md: 'center' }} style={{ color: 'rgba(255, 255, 255, 0.6)' }}>{benchmark.rate}</Text>
+                        <Text fw={600} ta={{ base: 'left', md: 'center' }} style={{ color: '#4DA3FF' }} display={{ base: 'none', md: 'block' }}>{benchmark.lucidRate}</Text>
                         <Group justify="center" display={{ base: 'none', md: 'flex' }}>
                           <Badge
                             size="lg"
                             radius="sm"
                             style={{
-                              background: 'rgba(12, 206, 107, 0.1)',
+                              background: 'rgba(12, 206, 107, 0.15)',
                               color: '#0CCE6B',
-                              border: '1px solid rgba(12, 206, 107, 0.2)',
+                              border: '1px solid rgba(12, 206, 107, 0.3)',
                             }}
                           >
                             {benchmark.improvement}
@@ -971,16 +970,16 @@ export default function ConversionOptimizationPage() {
                         <Box display={{ base: 'block', md: 'none' }} style={{ gridColumn: 'span 2' }}>
                           <Group gap="md">
                             <Box>
-                              <Text size="xs" style={{ color: '#8A9BB8' }}>Lucid Rate</Text>
-                              <Text fw={600} style={{ color: '#1F4FD8' }}>{benchmark.lucidRate}</Text>
+                              <Text size="xs" style={{ color: 'rgba(255, 255, 255, 0.55)' }}>Lucid Rate</Text>
+                              <Text fw={600} style={{ color: '#4DA3FF' }}>{benchmark.lucidRate}</Text>
                             </Box>
                             <Badge
                               size="md"
                               radius="sm"
                               style={{
-                                background: 'rgba(12, 206, 107, 0.1)',
+                                background: 'rgba(12, 206, 107, 0.15)',
                                 color: '#0CCE6B',
-                                border: '1px solid rgba(12, 206, 107, 0.2)',
+                                border: '1px solid rgba(12, 206, 107, 0.3)',
                               }}
                             >
                               {benchmark.improvement}
@@ -1000,7 +999,7 @@ export default function ConversionOptimizationPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#F8F9FB' }}
+          style={{ background: '#0D1F4A' }}
           ref={processRef}
         >
           <Container size="xl">
@@ -1017,9 +1016,9 @@ export default function ConversionOptimizationPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -1035,7 +1034,7 @@ export default function ConversionOptimizationPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     From Analysis to Results
@@ -1055,12 +1054,12 @@ export default function ConversionOptimizationPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: index === 0 ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)' : '#FFFFFF',
+                      background: index === 0 ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)' : 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 20,
-                      border: index === 0 ? 'none' : '1px solid rgba(10, 26, 63, 0.06)',
+                      border: index === 0 ? 'none' : '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
                       position: 'relative',
-                      boxShadow: index === 0 ? '0 10px 30px rgba(31, 79, 216, 0.25)' : undefined,
+                      boxShadow: index === 0 ? '0 10px 30px rgba(31, 79, 216, 0.35)' : undefined,
                     }}
                   >
                     <Text
@@ -1070,8 +1069,8 @@ export default function ConversionOptimizationPage() {
                         top: 15,
                         right: 20,
                         fontSize: '3rem',
-                        opacity: index === 0 ? 0.2 : 0.08,
-                        color: index === 0 ? '#FFFFFF' : '#1F4FD8',
+                        opacity: index === 0 ? 0.25 : 0.15,
+                        color: index === 0 ? '#FFFFFF' : '#4DA3FF',
                         lineHeight: 1,
                       }}
                     >
@@ -1081,14 +1080,14 @@ export default function ConversionOptimizationPage() {
                       <Title
                         order={3}
                         size="h4"
-                        style={{ color: index === 0 ? '#FFFFFF' : '#0A1A3F' }}
+                        style={{ color: '#FFFFFF' }}
                       >
                         {item.title}
                       </Title>
                       <Text
                         size="sm"
                         lh={1.7}
-                        style={{ color: index === 0 ? 'rgba(255, 255, 255, 0.85)' : '#5A7099' }}
+                        style={{ color: index === 0 ? 'rgba(255, 255, 255, 0.85)' : 'rgba(255, 255, 255, 0.7)' }}
                       >
                         {item.description}
                       </Text>

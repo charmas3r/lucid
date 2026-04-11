@@ -143,8 +143,8 @@ const MindbodyLogo = () => (
 
 const SquareLogo = () => (
   <svg viewBox="0 0 24 24" fill="none" height="22" width="22">
-    <rect width="24" height="24" rx="4" fill="#000000"/>
-    <rect x="6" y="6" width="12" height="12" rx="2" fill="white"/>
+    <rect width="24" height="24" rx="4" fill="#FFFFFF"/>
+    <rect x="6" y="6" width="12" height="12" rx="2" fill="#0A1A3F"/>
   </svg>
 );
 
@@ -188,7 +188,7 @@ const FirebaseLogo = () => (
 
 const AWSLogo = () => (
   <svg viewBox="0 0 60 36" fill="none" height="20" style={{ minWidth: 45 }}>
-    <path d="M17.1 13.2l-1.9 6.2-1.9-6.2h-2.7l3.3 9h2.5l3.3-9h-2.6zm6.8 9.2c2.6 0 4.2-1.6 4.2-4.7 0-3-1.6-4.7-4.2-4.7-2.6 0-4.2 1.7-4.2 4.7 0 3.1 1.6 4.7 4.2 4.7zm0-2c-1 0-1.6-.8-1.6-2.7s.6-2.7 1.6-2.7 1.6.8 1.6 2.7-.6 2.7-1.6 2.7zm8.8 2c2.3 0 3.6-1.2 3.8-3h-2.4c-.1.7-.5 1.1-1.3 1.1-.9 0-1.5-.8-1.5-2.7s.6-2.7 1.5-2.7c.8 0 1.2.4 1.3 1.1h2.4c-.2-1.8-1.5-3-3.8-3-2.6 0-4.1 1.7-4.1 4.6 0 3 1.5 4.6 4.1 4.6z" fill="#252F3E"/>
+    <path d="M17.1 13.2l-1.9 6.2-1.9-6.2h-2.7l3.3 9h2.5l3.3-9h-2.6zm6.8 9.2c2.6 0 4.2-1.6 4.2-4.7 0-3-1.6-4.7-4.2-4.7-2.6 0-4.2 1.7-4.2 4.7 0 3.1 1.6 4.7 4.2 4.7zm0-2c-1 0-1.6-.8-1.6-2.7s.6-2.7 1.6-2.7 1.6.8 1.6 2.7-.6 2.7-1.6 2.7zm8.8 2c2.3 0 3.6-1.2 3.8-3h-2.4c-.1.7-.5 1.1-1.3 1.1-.9 0-1.5-.8-1.5-2.7s.6-2.7 1.5-2.7c.8 0 1.2.4 1.3 1.1h2.4c-.2-1.8-1.5-3-3.8-3-2.6 0-4.1 1.7-4.1 4.6 0 3 1.5 4.6 4.1 4.6z" fill="#FFFFFF"/>
     <path d="M4.7 25.2c5 3.7 12.3 5.7 18.6 5.7 8.8 0 16.7-3.2 22.7-8.6.5-.4.1-1-.5-.7-6.5 3.8-14.5 6-22.8 6-5.5 0-11.5-1.1-17.1-3.5-.8-.4-1.5.5-.9 1.1z" fill="#FF9900"/>
     <path d="M2.5 22.9c-.7-.9-.7-6.6 0-7.5.4-.5 2.7-.2 3.6-.1.8.1.9.7.5 1.1l-1.2 1.4c-.2.3-.2.6 0 .9l1.2 1.4c.4.4.3 1-.5 1.1-.9.1-3.2.4-3.6-.3z" fill="#FF9900"/>
   </svg>
@@ -206,18 +206,18 @@ const GoogleMapsLogo = () => (
 
 const ApplePayLogo = () => (
   <svg viewBox="0 0 50 21" fill="none" height="18" style={{ minWidth: 45 }}>
-    <path d="M9.2 2.7c-.6.7-1.5 1.3-2.4 1.2-.1-.9.3-1.9.8-2.5.6-.7 1.6-1.2 2.4-1.3.1 1-.3 1.9-.8 2.6zm.8 1.3c-1.3-.1-2.5.8-3.1.8-.6 0-1.6-.7-2.7-.7C2.7 4.2 1.3 5.3.5 7c-1.6 2.8-.4 6.8 1.1 9.1.8 1.1 1.7 2.3 2.9 2.3 1.1 0 1.6-.7 2.9-.7 1.4 0 1.7.7 2.9.7 1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.4-1-2.5-3.7-.1-2.3 1.9-3.4 2-3.5-1.1-1.6-2.7-1.8-3.3-1.8l-.6-.6z" fill="black"/>
-    <path d="M20.2 1.2c3.5 0 5.9 2.4 5.9 5.9 0 3.5-2.5 5.9-6 5.9h-3.9v6.2h-2.8V1.2h6.8zm-4 9.5h3.2c2.4 0 3.8-1.3 3.8-3.6 0-2.3-1.4-3.6-3.8-3.6h-3.2v7.2z" fill="black"/>
-    <path d="M27 15c0-2.3 1.8-3.7 4.9-3.9l3.6-.2v-1c0-1.5-1-2.3-2.6-2.3-1.5 0-2.5.7-2.7 1.9H27.6c.1-2.3 2.1-4 5.3-4 3.1 0 5.1 1.6 5.1 4.2v8.5h-2.6v-2h-.1c-.8 1.4-2.3 2.3-4 2.3-2.5 0-4.3-1.5-4.3-3.5zm8.5-1.1v-1l-3.2.2c-1.6.1-2.5.8-2.5 1.9 0 1.1 1 1.9 2.4 1.9 1.9 0 3.3-1.3 3.3-3z" fill="black"/>
-    <path d="M40 21.2v-2.1c.2 0 .6.1.8.1 1.2 0 1.8-.5 2.2-1.8l.2-.7-4.7-13h3l3.2 10.5h.1l3.2-10.5h2.9l-4.9 14c-1.1 3.2-2.4 4.2-5.1 4.2-.3-.1-.7-.1-.9-.7z" fill="black"/>
+    <path d="M9.2 2.7c-.6.7-1.5 1.3-2.4 1.2-.1-.9.3-1.9.8-2.5.6-.7 1.6-1.2 2.4-1.3.1 1-.3 1.9-.8 2.6zm.8 1.3c-1.3-.1-2.5.8-3.1.8-.6 0-1.6-.7-2.7-.7C2.7 4.2 1.3 5.3.5 7c-1.6 2.8-.4 6.8 1.1 9.1.8 1.1 1.7 2.3 2.9 2.3 1.1 0 1.6-.7 2.9-.7 1.4 0 1.7.7 2.9.7 1.2 0 2-1.1 2.8-2.2.9-1.3 1.2-2.5 1.3-2.6-.1 0-2.4-1-2.5-3.7-.1-2.3 1.9-3.4 2-3.5-1.1-1.6-2.7-1.8-3.3-1.8l-.6-.6z" fill="#FFFFFF"/>
+    <path d="M20.2 1.2c3.5 0 5.9 2.4 5.9 5.9 0 3.5-2.5 5.9-6 5.9h-3.9v6.2h-2.8V1.2h6.8zm-4 9.5h3.2c2.4 0 3.8-1.3 3.8-3.6 0-2.3-1.4-3.6-3.8-3.6h-3.2v7.2z" fill="#FFFFFF"/>
+    <path d="M27 15c0-2.3 1.8-3.7 4.9-3.9l3.6-.2v-1c0-1.5-1-2.3-2.6-2.3-1.5 0-2.5.7-2.7 1.9H27.6c.1-2.3 2.1-4 5.3-4 3.1 0 5.1 1.6 5.1 4.2v8.5h-2.6v-2h-.1c-.8 1.4-2.3 2.3-4 2.3-2.5 0-4.3-1.5-4.3-3.5zm8.5-1.1v-1l-3.2.2c-1.6.1-2.5.8-2.5 1.9 0 1.1 1 1.9 2.4 1.9 1.9 0 3.3-1.3 3.3-3z" fill="#FFFFFF"/>
+    <path d="M40 21.2v-2.1c.2 0 .6.1.8.1 1.2 0 1.8-.5 2.2-1.8l.2-.7-4.7-13h3l3.2 10.5h.1l3.2-10.5h2.9l-4.9 14c-1.1 3.2-2.4 4.2-5.1 4.2-.3-.1-.7-.1-.9-.7z" fill="#FFFFFF"/>
   </svg>
 );
 
 const GooglePayLogo = () => (
   <svg viewBox="0 0 48 20" fill="none" height="18" style={{ minWidth: 50 }}>
-    <path d="M22.7 9.8v5.7h-1.8V1.8h4.8c1.2 0 2.2.4 3 1.1.9.7 1.3 1.7 1.3 2.8 0 1.2-.4 2.1-1.3 2.8-.8.7-1.8 1.1-3 1.1h-3v.2zm0-6.3v4.6h3c.7 0 1.3-.2 1.8-.7.5-.5.7-1 .7-1.6 0-.6-.2-1.2-.7-1.6-.5-.5-1.1-.7-1.8-.7h-3z" fill="#5F6368"/>
-    <path d="M34 5.8c1.3 0 2.4.4 3.2 1.1.8.7 1.2 1.7 1.2 3v5.7h-1.7v-1.3h-.1c-.7 1.1-1.7 1.6-3 1.6-1.1 0-2-.3-2.7-.9-.7-.6-1-1.4-1-2.3 0-1 .4-1.8 1.1-2.4.7-.6 1.7-.9 2.9-.9 1 0 1.9.2 2.5.6v-.4c0-.6-.3-1.2-.8-1.6-.5-.4-1.1-.7-1.8-.7-.9 0-1.7.4-2.2 1.2l-1.6-.9c.8-1.2 2-1.8 3.6-1.8h.4zm-2.4 7.1c0 .5.2.8.6 1.1.4.3.9.5 1.4.5.8 0 1.5-.3 2-.8.6-.6.9-1.2.9-2-.5-.5-1.3-.7-2.3-.7-.8 0-1.4.2-1.9.5-.4.3-.7.8-.7 1.4z" fill="#5F6368"/>
-    <path d="M47.8 6.1l-6.1 13.7h-1.9l2.3-4.9-4-8.8h2l2.9 6.7h.1l2.8-6.7h1.9z" fill="#5F6368"/>
+    <path d="M22.7 9.8v5.7h-1.8V1.8h4.8c1.2 0 2.2.4 3 1.1.9.7 1.3 1.7 1.3 2.8 0 1.2-.4 2.1-1.3 2.8-.8.7-1.8 1.1-3 1.1h-3v.2zm0-6.3v4.6h3c.7 0 1.3-.2 1.8-.7.5-.5.7-1 .7-1.6 0-.6-.2-1.2-.7-1.6-.5-.5-1.1-.7-1.8-.7h-3z" fill="#FFFFFF"/>
+    <path d="M34 5.8c1.3 0 2.4.4 3.2 1.1.8.7 1.2 1.7 1.2 3v5.7h-1.7v-1.3h-.1c-.7 1.1-1.7 1.6-3 1.6-1.1 0-2-.3-2.7-.9-.7-.6-1-1.4-1-2.3 0-1 .4-1.8 1.1-2.4.7-.6 1.7-.9 2.9-.9 1 0 1.9.2 2.5.6v-.4c0-.6-.3-1.2-.8-1.6-.5-.4-1.1-.7-1.8-.7-.9 0-1.7.4-2.2 1.2l-1.6-.9c.8-1.2 2-1.8 3.6-1.8h.4zm-2.4 7.1c0 .5.2.8.6 1.1.4.3.9.5 1.4.5.8 0 1.5-.3 2-.8.6-.6.9-1.2.9-2-.5-.5-1.3-.7-2.3-.7-.8 0-1.4.2-1.9.5-.4.3-.7.8-.7 1.4z" fill="#FFFFFF"/>
+    <path d="M47.8 6.1l-6.1 13.7h-1.9l2.3-4.9-4-8.8h2l2.9 6.7h.1l2.8-6.7h1.9z" fill="#FFFFFF"/>
     <path d="M15.4 8.5c0-.5 0-1-.1-1.5H7.9v2.8h4.2c-.2.9-.7 1.7-1.5 2.2v1.8h2.4c1.4-1.3 2.2-3.2 2.4-5.3z" fill="#4285F4"/>
     <path d="M7.9 15.5c2 0 3.7-.7 4.9-1.8l-2.4-1.8c-.7.4-1.5.7-2.5.7-1.9 0-3.6-1.3-4.1-3h-2.5v1.9c1.3 2.4 3.8 4 6.6 4z" fill="#34A853"/>
     <path d="M3.8 9.6c-.2-.5-.2-1.1 0-1.6V6.1H1.3c-.7 1.4-.7 3 0 4.4l2.5-1.9z" fill="#FBBC04"/>
@@ -269,7 +269,7 @@ export default function MobileAppsPage() {
           pt={160}
           pb={100}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #F8F9FB 100%)',
+            background: 'linear-gradient(180deg, #0D1F4A 0%, #0A1A3F 100%)',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -285,7 +285,7 @@ export default function MobileAppsPage() {
               right: '5%',
               width: 450,
               height: 450,
-              background: 'radial-gradient(circle, rgba(77, 163, 255, 0.08) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(77, 163, 255, 0.15) 0%, transparent 70%)',
               borderRadius: '50%',
               pointerEvents: 'none',
             }}
@@ -305,9 +305,9 @@ export default function MobileAppsPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -326,7 +326,7 @@ export default function MobileAppsPage() {
                       fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                       fontWeight: 700,
                       lineHeight: 1.1,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Your App.{' '}
@@ -334,7 +334,7 @@ export default function MobileAppsPage() {
                       component="span"
                       inherit
                       style={{
-                        background: 'linear-gradient(135deg, #4DA3FF 0%, #3A6EA5 100%)',
+                        background: 'linear-gradient(135deg, #4DA3FF 0%, #8AB6FF 100%)',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                       }}
@@ -350,7 +350,7 @@ export default function MobileAppsPage() {
                     ta="center"
                     maw={750}
                     lh={1.8}
-                    style={{ color: '#5A7099' }}
+                    style={{ color: 'rgba(255, 255, 255, 0.7)' }}
                   >
                     From investor-ready MVPs to enterprise-scale applications—we build
                     cross-platform mobile experiences that feel native, perform brilliantly,
@@ -374,16 +374,16 @@ export default function MobileAppsPage() {
                             size={60}
                             radius="xl"
                             style={{
-                              background: 'rgba(31, 79, 216, 0.08)',
-                              border: '1px solid rgba(31, 79, 216, 0.15)',
+                              background: 'rgba(77, 163, 255, 0.12)',
+                              border: '1px solid rgba(77, 163, 255, 0.25)',
                             }}
                           >
-                            <platform.icon size={28} color="#1F4FD8" stroke={1.5} />
+                            <platform.icon size={28} color="#4DA3FF" stroke={1.5} />
                           </ThemeIcon>
-                          <Text fw={600} style={{ color: '#0A1A3F' }}>
+                          <Text fw={600} style={{ color: '#FFFFFF' }}>
                             {platform.name}
                           </Text>
-                          <Text size="xs" ta="center" maw={150} style={{ color: '#8A9BB8' }}>
+                          <Text size="xs" ta="center" maw={150} style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
                             {platform.description}
                           </Text>
                         </Stack>
@@ -403,9 +403,9 @@ export default function MobileAppsPage() {
                         rightSection={<IconArrowRight size={18} />}
                         styles={{
                           root: {
-                            background: 'linear-gradient(135deg, #4DA3FF 0%, #3A6EA5 100%)',
+                            background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
                             border: 'none',
-                            boxShadow: '0 4px 20px rgba(77, 163, 255, 0.3)',
+                            boxShadow: '0 4px 20px rgba(31, 79, 216, 0.3)',
                           },
                         }}
                       >
@@ -421,8 +421,8 @@ export default function MobileAppsPage() {
                         variant="outline"
                         styles={{
                           root: {
-                            borderColor: '#C9D2E3',
-                            color: '#1F4FD8',
+                            borderColor: 'rgba(255, 255, 255, 0.25)',
+                            color: '#FFFFFF',
                           },
                         }}
                       >
@@ -440,7 +440,7 @@ export default function MobileAppsPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0D1F4A' }}
           ref={servicesRef}
         >
           <Container size="xl">
@@ -457,9 +457,9 @@ export default function MobileAppsPage() {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -475,7 +475,7 @@ export default function MobileAppsPage() {
                     style={{
                       fontSize: 'clamp(2rem, 4vw, 3rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     From Prototype to Production
@@ -497,9 +497,9 @@ export default function MobileAppsPage() {
                   <Box
                     p="xl"
                     style={{
-                      background: '#F8F9FB',
+                      background: 'rgba(255, 255, 255, 0.04)',
                       borderRadius: 24,
-                      border: '1px solid rgba(10, 26, 63, 0.06)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
                       height: '100%',
                     }}
                   >
@@ -512,8 +512,8 @@ export default function MobileAppsPage() {
                           size={70}
                           radius="xl"
                           style={{
-                            background: 'linear-gradient(135deg, #4DA3FF 0%, #3A6EA5 100%)',
-                            boxShadow: '0 8px 25px rgba(77, 163, 255, 0.25)',
+                            background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                            boxShadow: '0 8px 25px rgba(31, 79, 216, 0.3)',
                           }}
                         >
                           <service.icon size={32} color="#FFFFFF" stroke={1.5} />
@@ -521,27 +521,27 @@ export default function MobileAppsPage() {
                       </motion.div>
 
                       <Box>
-                        <Title order={3} mb="xs" style={{ color: '#0A1A3F' }}>
+                        <Title order={3} mb="xs" style={{ color: '#FFFFFF' }}>
                           {service.title}
                         </Title>
-                        <Text size="md" lh={1.7} style={{ color: '#5A7099' }}>
+                        <Text size="md" lh={1.7} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                           {service.description}
                         </Text>
                       </Box>
 
-                      <Divider color="rgba(10, 26, 63, 0.08)" />
+                      <Divider color="rgba(255, 255, 255, 0.1)" />
 
                       <List
                         spacing="sm"
                         icon={
                           <ThemeIcon size={22} radius="xl" style={{ background: 'rgba(77, 163, 255, 0.15)' }}>
-                            <IconCheck size={12} color="#3A6EA5" stroke={3} />
+                            <IconCheck size={12} color="#4DA3FF" stroke={3} />
                           </ThemeIcon>
                         }
                       >
                         {service.features.map((feature) => (
                           <List.Item key={feature}>
-                            <Text size="sm" style={{ color: '#5A7099' }}>{feature}</Text>
+                            <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.75)' }}>{feature}</Text>
                           </List.Item>
                         ))}
                       </List>
@@ -646,7 +646,7 @@ export default function MobileAppsPage() {
         <Box
           component="section"
           py={100}
-          style={{ background: '#FFFFFF' }}
+          style={{ background: '#0D1F4A' }}
           ref={integrationsRef}
         >
           <Container size="xl">
@@ -665,9 +665,9 @@ export default function MobileAppsPage() {
                       fw={600}
                       mb="md"
                       style={{
-                        background: 'rgba(31, 79, 216, 0.08)',
-                        color: '#1F4FD8',
-                        border: '1px solid rgba(31, 79, 216, 0.15)',
+                        background: 'rgba(77, 163, 255, 0.12)',
+                        color: '#4DA3FF',
+                        border: '1px solid rgba(77, 163, 255, 0.25)',
                         letterSpacing: '1px',
                         fontSize: '0.7rem',
                         padding: '10px 16px',
@@ -680,20 +680,20 @@ export default function MobileAppsPage() {
                       style={{
                         fontSize: 'clamp(2rem, 4vw, 2.75rem)',
                         fontWeight: 700,
-                        color: '#0A1A3F',
+                        color: '#FFFFFF',
                       }}
                     >
                       Connect to Everything
                     </Title>
                   </Box>
 
-                  <Text size="lg" lh={1.8} style={{ color: '#5A7099' }}>
+                  <Text size="lg" lh={1.8} style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
                     Your app doesn&apos;t exist in a vacuum. We integrate with the platforms
                     and services your business depends on—from booking systems like Mindbody
                     to payment processors like Square and Stripe.
                   </Text>
 
-                  <Text size="md" lh={1.8} style={{ color: '#5A7099' }}>
+                  <Text size="md" lh={1.8} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                     Need a custom integration? Our API expertise means we can connect your
                     app to virtually any service, including your existing CRM, inventory
                     system, or proprietary tools.
@@ -707,7 +707,7 @@ export default function MobileAppsPage() {
                       rightSection={<IconArrowRight size={16} />}
                       styles={{
                         root: {
-                          background: 'linear-gradient(135deg, #4DA3FF 0%, #3A6EA5 100%)',
+                          background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
                           width: 'fit-content',
                         },
                       }}
@@ -726,12 +726,12 @@ export default function MobileAppsPage() {
                 <Box
                   p="xl"
                   style={{
-                    background: '#F8F9FB',
+                    background: 'rgba(255, 255, 255, 0.04)',
                     borderRadius: 24,
-                    border: '1px solid rgba(10, 26, 63, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
                   }}
                 >
-                  <Text size="sm" fw={600} tt="uppercase" mb="lg" style={{ color: '#8A9BB8', letterSpacing: '1px' }}>
+                  <Text size="sm" fw={600} tt="uppercase" mb="lg" style={{ color: 'rgba(255, 255, 255, 0.6)', letterSpacing: '1px' }}>
                     Popular Integrations
                   </Text>
                   <SimpleGrid cols={{ base: 2, sm: 3, md: 4 }} spacing="md">
@@ -746,20 +746,19 @@ export default function MobileAppsPage() {
                         <Box
                           p="md"
                           style={{
-                            background: '#FFFFFF',
+                            background: 'rgba(255, 255, 255, 0.06)',
                             borderRadius: 12,
-                            border: '1px solid rgba(10, 26, 63, 0.08)',
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center',
                             justifyContent: 'center',
                             gap: 8,
                             minHeight: 70,
-                            boxShadow: '0 1px 3px rgba(10, 26, 63, 0.04)',
                           }}
                         >
                           <integration.logo />
-                          <Text size="xs" fw={500} style={{ color: '#5A7099' }}>
+                          <Text size="xs" fw={500} style={{ color: 'rgba(255, 255, 255, 0.75)' }}>
                             {integration.name}
                           </Text>
                         </Box>
