@@ -412,6 +412,34 @@ export const caseStudy = defineType({
       ],
     }),
     defineField({
+      name: 'mobileSnapshots',
+      title: 'Mobile Snapshots (New Site)',
+      type: 'array',
+      description: 'Up to 3 mobile screens of the new site — shown as a fanned composition in the hero. Recommended: 9:19.5 aspect ratio (e.g., 1170×2532).',
+      group: 'visuals',
+      of: [
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alt Text',
+              type: 'string',
+              description: 'Describe the screen for accessibility',
+            },
+            {
+              name: 'label',
+              title: 'Screen Label',
+              type: 'string',
+              description: 'Optional — e.g., "Home", "Checkout"',
+            },
+          ],
+        },
+      ],
+      validation: (rule) => rule.max(3),
+    }),
+    defineField({
       name: 'newSiteUrl',
       title: 'New Site URL',
       type: 'url',
