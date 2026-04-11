@@ -39,20 +39,16 @@ const FAN_LAYOUTS: Record<number, Array<{ rotate: number; x: number; y: number }
 function PhoneFrame({
   url,
   alt,
-  width = PHONE_WIDTH,
-  height = PHONE_HEIGHT,
 }: {
   url: string;
   alt: string;
-  width?: number;
-  height?: number;
 }) {
   return (
     <Box
       style={{
         position: 'relative',
-        width,
-        height,
+        width: PHONE_WIDTH,
+        height: PHONE_HEIGHT,
         borderRadius: PHONE_RADIUS,
         padding: 6,
         background: 'linear-gradient(135deg, rgba(77, 163, 255, 0.6) 0%, rgba(31, 79, 216, 0.6) 100%)',
@@ -75,7 +71,7 @@ function PhoneFrame({
           src={url}
           alt={alt}
           fill
-          sizes={`${width}px`}
+          sizes={`${PHONE_WIDTH}px`}
           style={{ objectFit: 'cover' }}
         />
         {/* Notch bar */}
@@ -90,6 +86,7 @@ function PhoneFrame({
             borderRadius: 12,
             background: '#000',
             zIndex: 2,
+            pointerEvents: 'none',
           }}
         />
       </Box>
@@ -122,7 +119,7 @@ export function MobileSnapshotsStack({ snapshots, inView }: MobileSnapshotsStack
 
         return (
           <motion.div
-            key={`${snap.url}-${index}`}
+            key={snap.url}
             className={isFrontPhone ? 'mobile-snapshot-front' : 'mobile-snapshot-back'}
             initial={{ opacity: 0, y: 40, rotate: 0 }}
             animate={inView ? { opacity: 1, y, rotate } : { opacity: 0, y: 40, rotate: 0 }}
@@ -145,10 +142,9 @@ export function MobileSnapshotsStack({ snapshots, inView }: MobileSnapshotsStack
       {/* Responsive scaling and base-breakpoint collapse */}
       <style jsx>{`
         @media (max-width: 1199px) and (min-width: 768px) {
-          .mobile-snapshots-stack :global(.mobile-snapshot-front),
-          .mobile-snapshots-stack :global(.mobile-snapshot-back) {
+          .mobile-snapshots-stack {
+            transform: scale(0.75);
             transform-origin: center center;
-            zoom: 0.75;
           }
         }
         @media (max-width: 767px) {
