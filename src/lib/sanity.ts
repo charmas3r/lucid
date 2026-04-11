@@ -48,6 +48,7 @@ export interface CaseStudyCTA {
 }
 
 export interface CaseStudyMobileSnapshot {
+  _key: string;
   asset: {
     _ref: string;
   };
