@@ -37,6 +37,7 @@ import {
 import { Navigation, Footer } from '@/components';
 import { trackEvent, EVENTS } from '@/lib/analytics';
 import { urlFor, SanityCaseStudy } from '@/lib/sanity';
+import { MobileSnapshotsStack } from './MobileSnapshotsStack';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -202,9 +203,17 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
     ? urlFor(caseStudy.image).width(1200).height(600).quality(90).url()
     : null;
 
-  const oldWebsiteScreenshotUrl = caseStudy.oldWebsiteScreenshot?.asset?._ref 
+  const oldWebsiteScreenshotUrl = caseStudy.oldWebsiteScreenshot?.asset?._ref
     ? urlFor(caseStudy.oldWebsiteScreenshot).width(960).height(600).quality(85).url()
     : null;
+
+  const mobileSnapshotUrls = (caseStudy.mobileSnapshots ?? [])
+    .filter((s) => s?.asset?._ref)
+    .slice(0, 3)
+    .map((s, index) => ({
+      url: urlFor(s).width(600).height(1300).quality(90).url(),
+      alt: s.alt || `${caseStudy.client} mobile screen ${index + 1}`,
+    }));
 
   const breadcrumbItems = [
     { title: 'Home', href: '/' },
@@ -433,8 +442,13 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                 </Stack>
               </motion.div>
 
-              {/* Right - Image */}
-              {imageUrl && (
+              {/* Right - Mobile snapshots (preferred) or featured image (fallback) */}
+              {mobileSnapshotUrls.length > 0 ? (
+                <MobileSnapshotsStack
+                  snapshots={mobileSnapshotUrls}
+                  inView={heroInView}
+                />
+              ) : imageUrl ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95, y: 20 }}
                   animate={heroInView ? { opacity: 1, scale: 1, y: 0 } : {}}
@@ -463,7 +477,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     />
                   </Box>
                 </motion.div>
-              )}
+              ) : null}
             </SimpleGrid>
           </Container>
         </Box>
