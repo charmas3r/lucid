@@ -823,7 +823,7 @@ export default function ContactPage() {
   return (
     <>
       <Navigation />
-      <Box component="main" pt={120} pb={80} style={{ background: '#081430', minHeight: '100vh' }}>
+      <Box component="main" pt={160} pb={80} style={{ background: '#081430', minHeight: '100vh' }}>
         <Container size="xl">
           <Suspense fallback={<div>Loading...</div>}>
             <ContactForm />
