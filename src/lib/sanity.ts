@@ -47,6 +47,14 @@ export interface CaseStudyCTA {
   linkText?: string;
 }
 
+export interface CaseStudyMobileSnapshot {
+  asset: {
+    _ref: string;
+  };
+  alt?: string;
+  label?: string;
+}
+
 export interface SanityCaseStudy {
   _id: string;
   title: string;
@@ -90,6 +98,8 @@ export interface SanityCaseStudy {
     };
     alt?: string;
   };
+  // Mobile snapshots of the new site — rendered as a fanned hero composition
+  mobileSnapshots?: CaseStudyMobileSnapshot[];
   // Link to the new live website
   newSiteUrl?: string;
   gradient?: string;
@@ -181,6 +191,7 @@ export const caseStudyBySlugQuery = `*[_type == "caseStudy" && slug.current == $
   featured,
   image,
   oldWebsiteScreenshot,
+  mobileSnapshots,
   newSiteUrl,
   gradient,
   publishedAt
