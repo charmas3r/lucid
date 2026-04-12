@@ -40,6 +40,7 @@ import {
   IconChartBar,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
+import { NORTH_COUNTY_CITIES, getRoutableCitySlugs } from '@/lib/local-seo';
 
 // Dynamically import the map component to avoid SSR issues with Leaflet
 const ServiceAreasMap = dynamic(() => import('./ServiceAreasMap'), {
@@ -697,6 +698,85 @@ export default function ServiceAreasPage() {
                 </Box>
               </Paper>
             </motion.div>
+          </Container>
+        </Box>
+
+        {/* Dedicated City Pages */}
+        <Box
+          component="section"
+          py={80}
+          style={{ background: '#0A1A3F' }}
+        >
+          <Container size="lg">
+            <Title
+              order={2}
+              ta="center"
+              style={{ color: '#FFFFFF', marginBottom: 16 }}
+            >
+              Dedicated City Pages
+            </Title>
+            <Text
+              ta="center"
+              size="lg"
+              style={{ color: '#A5B4CF', marginBottom: 48 }}
+            >
+              Deep dives on the cities we serve most &mdash; with local web design and SEO services.
+            </Text>
+            <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
+              {NORTH_COUNTY_CITIES.filter((c) =>
+                getRoutableCitySlugs().includes(c.slug),
+              ).map((city) => (
+                <Paper
+                  key={city.slug}
+                  component={Link}
+                  href={`/${city.slug}`}
+                  p="xl"
+                  radius="lg"
+                  style={{
+                    background: 'rgba(77, 163, 255, 0.06)',
+                    border: '1px solid rgba(77, 163, 255, 0.18)',
+                    textDecoration: 'none',
+                    display: 'block',
+                  }}
+                >
+                  <Group gap={10} mb={12}>
+                    <IconMapPin size={20} color="#4DA3FF" />
+                    <Title order={3} style={{ color: '#FFFFFF', fontSize: '1.25rem' }}>
+                      {city.displayName}
+                      {city.isHQ && (
+                        <Badge ml={8} variant="light" color="blue" size="sm">
+                          HQ
+                        </Badge>
+                      )}
+                    </Title>
+                  </Group>
+                  <Text size="sm" style={{ color: '#A5B4CF', marginBottom: 16 }}>
+                    {city.shortDescription}
+                  </Text>
+                  <Group gap={8}>
+                    <Anchor
+                      component={Link}
+                      href={`/${city.slug}-web-design`}
+                      size="xs"
+                      style={{ color: '#4DA3FF' }}
+                    >
+                      Web Design
+                    </Anchor>
+                    <Text size="xs" style={{ color: '#4A5878' }}>
+                      &middot;
+                    </Text>
+                    <Anchor
+                      component={Link}
+                      href={`/${city.slug}-seo-services`}
+                      size="xs"
+                      style={{ color: '#10B981' }}
+                    >
+                      SEO Services
+                    </Anchor>
+                  </Group>
+                </Paper>
+              ))}
+            </SimpleGrid>
           </Container>
         </Box>
 
