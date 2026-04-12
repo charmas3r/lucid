@@ -40,7 +40,7 @@ import {
   IconChartBar,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
-import { NORTH_COUNTY_CITIES, getRoutableCitySlugs } from '@/lib/local-seo';
+import { SERVICE_AREA_CITIES, getRoutableCitySlugs } from '@/lib/local-seo';
 
 // Dynamically import the map component to avoid SSR issues with Leaflet
 const ServiceAreasMap = dynamic(() => import('./ServiceAreasMap'), {
@@ -723,7 +723,7 @@ export default function ServiceAreasPage() {
               Deep dives on the cities we serve most &mdash; with local web design and SEO services.
             </Text>
             <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="lg">
-              {NORTH_COUNTY_CITIES.filter((c) =>
+              {SERVICE_AREA_CITIES.filter((c) =>
                 getRoutableCitySlugs().includes(c.slug),
               ).map((city) => (
                 <Paper

@@ -7,6 +7,8 @@ import { vistaContent } from './content/vista';
 import { encinitasContent } from './content/encinitas';
 import { powayContent } from './content/poway';
 import { ranchoBernardoContent } from './content/rancho-bernardo';
+import { sanDiegoContent } from './content/san-diego';
+import { temeculaContent } from './content/temecula';
 
 export * from './types';
 export * from './cities';
@@ -20,6 +22,8 @@ const CITY_CONTENT_REGISTRY: Record<string, CityContent> = {
   encinitas: encinitasContent,
   poway: powayContent,
   'rancho-bernardo': ranchoBernardoContent,
+  'san-diego': sanDiegoContent,
+  temecula: temeculaContent,
 };
 
 export function getCityContent(slug: string): CityContent | undefined {

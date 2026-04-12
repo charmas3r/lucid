@@ -43,7 +43,7 @@ export type ServicePageContent = {
 export type CityContent = {
   slug: string;
   displayName: string;
-  county: 'North County San Diego';
+  county: string;
   population: number;
   neighborhoods: string[];
   hub: HubPageContent;

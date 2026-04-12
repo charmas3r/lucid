@@ -9,7 +9,7 @@ export type CityRegistryEntry = {
   shortDescription: string;
 };
 
-export const NORTH_COUNTY_CITIES: readonly CityRegistryEntry[] = [
+export const SERVICE_AREA_CITIES: readonly CityRegistryEntry[] = [
   {
     slug: 'escondido',
     displayName: 'Escondido',
@@ -74,8 +74,24 @@ export const NORTH_COUNTY_CITIES: readonly CityRegistryEntry[] = [
     shortDescription:
       'Enterprise-quality websites for Rancho Bernardo corporate, tech, and professional service firms.',
   },
+  {
+    slug: 'san-diego',
+    displayName: 'San Diego',
+    population: 1386932,
+    isHQ: false,
+    shortDescription:
+      'Custom websites and local SEO for San Diego businesses — from downtown startups to neighborhood shops across America\u2019s Finest City.',
+  },
+  {
+    slug: 'temecula',
+    displayName: 'Temecula',
+    population: 110003,
+    isHQ: false,
+    shortDescription:
+      'Modern websites and local SEO for Temecula\u2019s wine country businesses, Old Town shops, and growing tech and service economy.',
+  },
 ];
 
 export function getCityRegistryEntry(slug: string): CityRegistryEntry | undefined {
-  return NORTH_COUNTY_CITIES.find((c) => c.slug === slug);
+  return SERVICE_AREA_CITIES.find((c) => c.slug === slug);
 }
