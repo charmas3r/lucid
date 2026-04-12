@@ -633,7 +633,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
           <Box
             component="section"
             py={80}
-            style={{ background: '#F8F9FB' }}
+            style={{ background: '#0A1A3F' }}
             ref={challengeRef}
           >
             <Container size="lg">
@@ -650,9 +650,9 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     fw={600}
                     mb="lg"
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -667,13 +667,13 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     style={{
                       fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                       lineHeight: 1.2,
                     }}
                   >
                     Understanding the Problem
                   </Title>
-                  <Text size="lg" lh={1.9} style={{ color: '#5A7099' }}>
+                  <Text size="lg" lh={1.9} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                     {caseStudy.challenge}
                   </Text>
                 </motion.div>
@@ -701,7 +701,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                         tt="uppercase"
                         mb="sm"
                         ta="center"
-                        style={{ color: '#5A7099', letterSpacing: '1px' }}
+                        style={{ color: 'rgba(255, 255, 255, 0.5)', letterSpacing: '1px' }}
                       >
                         Old Website
                       </Text>
@@ -709,8 +709,8 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                         style={{
                           borderRadius: 16,
                           overflow: 'hidden',
-                          boxShadow: '0 10px 40px rgba(10, 26, 63, 0.15)',
-                          border: '1px solid rgba(10, 26, 63, 0.1)',
+                          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
                         }}
                       >
                         <Image
@@ -727,13 +727,19 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                         />
                       </Box>
                     </Box>
+                  ) : imageUrl ? (
+                    <Box style={{ width: '100%', maxWidth: 480 }}>
+                      <Box style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                        <Image src={imageUrl} alt={caseStudy.image?.alt || `${caseStudy.client} project`} width={960} height={600} style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }} />
+                      </Box>
+                    </Box>
                   ) : (
                     <Box
                       style={{
                         width: '100%',
                         maxWidth: 400,
                         aspectRatio: '1',
-                        background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.05) 0%, rgba(77, 163, 255, 0.1) 100%)',
+                        background: 'rgba(77, 163, 255, 0.1)',
                         borderRadius: 24,
                         display: 'flex',
                         alignItems: 'center',
