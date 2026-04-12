@@ -99,6 +99,12 @@ export interface SanityCaseStudy {
     };
     alt?: string;
   };
+  newWebsiteScreenshot?: {
+    asset: {
+      _ref: string;
+    };
+    alt?: string;
+  };
   // Mobile snapshots of the new site — rendered as a fanned hero composition
   mobileSnapshots?: CaseStudyMobileSnapshot[];
   // Link to the new live website
@@ -192,6 +198,7 @@ export const caseStudyBySlugQuery = `*[_type == "caseStudy" && slug.current == $
   featured,
   image,
   oldWebsiteScreenshot,
+  newWebsiteScreenshot,
   mobileSnapshots,
   newSiteUrl,
   gradient,
