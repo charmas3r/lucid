@@ -215,6 +215,10 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
       alt: s.alt || `${caseStudy.client} mobile screen ${index + 1}`,
     }));
 
+  const newWebsiteScreenshotUrl = caseStudy.newWebsiteScreenshot?.asset?._ref
+    ? urlFor(caseStudy.newWebsiteScreenshot).width(960).height(600).quality(85).url()
+    : null;
+
   const breadcrumbItems = [
     { title: 'Home', href: '/' },
     { title: 'Case Studies', href: '/case-studies' },
@@ -774,7 +778,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
           <Box
             component="section"
             py={80}
-            style={{ background: '#FFFFFF' }}
+            style={{ background: '#0D1F4A' }}
             ref={solutionRef}
           >
             <Container size="lg">
@@ -791,34 +795,30 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                   }}
                   className="solution-icon-mobile"
                 >
-                  <Box
-                    style={{
-                      width: '100%',
-                      maxWidth: 400,
-                      aspectRatio: '1',
-                      background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.05) 0%, rgba(77, 163, 255, 0.1) 100%)',
-                      borderRadius: 24,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <motion.div
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                    >
-                      <ThemeIcon
-                        size={120}
-                        radius="xl"
-                        style={{
-                          background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
-                          boxShadow: '0 20px 40px rgba(31, 79, 216, 0.3)',
-                        }}
-                      >
-                        <IconBulb size={60} color="#FFFFFF" stroke={1.5} />
-                      </ThemeIcon>
-                    </motion.div>
-                  </Box>
+                  {newWebsiteScreenshotUrl ? (
+                    <Box style={{ width: '100%', maxWidth: 480 }}>
+                      <Text size="xs" fw={600} tt="uppercase" mb="sm" ta="center" style={{ color: 'rgba(255, 255, 255, 0.5)', letterSpacing: '1px' }}>
+                        New Website
+                      </Text>
+                      <Box style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                        <Image src={newWebsiteScreenshotUrl} alt={caseStudy.newWebsiteScreenshot?.alt || `${caseStudy.client} new website`} width={960} height={600} style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }} />
+                      </Box>
+                    </Box>
+                  ) : imageUrl ? (
+                    <Box style={{ width: '100%', maxWidth: 480 }}>
+                      <Box style={{ borderRadius: 16, overflow: 'hidden', boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                        <Image src={imageUrl} alt={caseStudy.image?.alt || `${caseStudy.client} project`} width={960} height={600} style={{ width: '100%', height: 'auto', objectFit: 'cover', display: 'block' }} />
+                      </Box>
+                    </Box>
+                  ) : (
+                    <Box style={{ width: '100%', maxWidth: 400, aspectRatio: '1', background: 'rgba(77, 163, 255, 0.1)', borderRadius: 24, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <motion.div animate={{ scale: [1, 1.05, 1] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}>
+                        <ThemeIcon size={120} radius="xl" style={{ background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)', boxShadow: '0 20px 40px rgba(31, 79, 216, 0.3)' }}>
+                          <IconBulb size={60} color="#FFFFFF" stroke={1.5} />
+                        </ThemeIcon>
+                      </motion.div>
+                    </Box>
+                  )}
                 </motion.div>
 
                 <motion.div
@@ -834,9 +834,9 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     fw={600}
                     mb="lg"
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -851,13 +851,13 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     style={{
                       fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                       lineHeight: 1.2,
                     }}
                   >
                     How We Solved It
                   </Title>
-                  <Text size="lg" lh={1.9} style={{ color: '#5A7099' }}>
+                  <Text size="lg" lh={1.9} style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
                     {caseStudy.solution}
                   </Text>
                 </motion.div>
