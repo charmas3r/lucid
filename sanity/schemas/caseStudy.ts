@@ -412,6 +412,24 @@ export const caseStudy = defineType({
       ],
     }),
     defineField({
+      name: 'newWebsiteScreenshot',
+      title: 'New Website Screenshot (Desktop)',
+      type: 'image',
+      description: 'Desktop screenshot of the finished site — shown in the Solution section',
+      group: 'visuals',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the image for accessibility',
+        },
+      ],
+    }),
+    defineField({
       name: 'mobileSnapshots',
       title: 'Mobile Snapshots (New Site)',
       type: 'array',
