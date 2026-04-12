@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { getCaseStudies } from '@/lib/sanity';
+import { getAllLocationSlugs, parseLocationSlug } from '@/lib/local-seo';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.lucidweb.studio';
 
@@ -101,5 +102,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error('Error fetching case studies for sitemap:', error);
   }
 
-  return [...staticPages, ...caseStudyPages];
+  const localSeoPages: MetadataRoute.Sitemap = getAllLocationSlugs().map((slug) => {
+    const parsed = parseLocationSlug(slug)!;
+    return {
+      url: `${BASE_URL}/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: parsed.kind === 'hub' ? 0.75 : 0.7,
+    };
+  });
+
+  return [...staticPages, ...localSeoPages, ...caseStudyPages];
 }
