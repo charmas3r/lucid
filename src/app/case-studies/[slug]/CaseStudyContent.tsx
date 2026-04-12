@@ -69,10 +69,10 @@ function MetricCard({ metric, index }: { metric: { value: string; label: string 
       <Box
         p="xl"
         style={{
-          background: '#FFFFFF',
+          background: 'rgba(255, 255, 255, 0.04)',
           borderRadius: 20,
-          border: '1px solid rgba(10, 26, 63, 0.06)',
-          boxShadow: '0 4px 20px rgba(10, 26, 63, 0.06)',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
           textAlign: 'center',
           height: '100%',
         }}
@@ -89,7 +89,7 @@ function MetricCard({ metric, index }: { metric: { value: string; label: string 
         >
           {metric.value}
         </Text>
-        <Text size="sm" fw={500} style={{ color: '#5A7099' }}>
+        <Text size="sm" fw={500} style={{ color: 'rgba(255,255,255,0.7)' }}>
           {metric.label}
         </Text>
       </Box>
@@ -139,7 +139,7 @@ function ProcessPhase({
               style={{
                 width: 2,
                 height: 60,
-                background: 'linear-gradient(180deg, #1F4FD8 0%, rgba(31, 79, 216, 0.1) 100%)',
+                background: 'linear-gradient(180deg, #4DA3FF 0%, rgba(77, 163, 255, 0.1) 100%)',
                 marginTop: 12,
               }}
             />
@@ -150,17 +150,17 @@ function ProcessPhase({
             size="sm"
             mb="xs"
             style={{
-              background: 'rgba(31, 79, 216, 0.08)',
-              color: '#1F4FD8',
+              background: 'rgba(77, 163, 255, 0.12)',
+              color: '#4DA3FF',
             }}
           >
             Phase {index + 1}
           </Badge>
-          <Title order={4} mb="xs" style={{ color: '#0A1A3F' }}>
+          <Title order={4} mb="xs" style={{ color: '#FFFFFF' }}>
             {phase.phaseName}
           </Title>
           {phase.description && (
-            <Text size="sm" lh={1.7} style={{ color: '#5A7099' }}>
+            <Text size="sm" lh={1.7} style={{ color: 'rgba(255,255,255,0.7)' }}>
               {phase.description}
             </Text>
           )}
@@ -487,7 +487,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
           <Box
             component="section"
             py={80}
-            style={{ background: '#F8F9FB' }}
+            style={{ background: '#0A1A3F' }}
             ref={resultsRef}
           >
             <Container size="xl">
@@ -503,9 +503,9 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -519,13 +519,13 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     style={{
                       fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     The Impact We Made
                   </Title>
                   {caseStudy.resultsSummary && (
-                    <Text size="lg" ta="center" maw={700} style={{ color: '#5A7099' }}>
+                    <Text size="lg" ta="center" maw={700} style={{ color: 'rgba(255,255,255,0.7)' }}>
                       {caseStudy.resultsSummary}
                     </Text>
                   )}
@@ -546,7 +546,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
           <Box
             component="section"
             py={80}
-            style={{ background: '#FFFFFF' }}
+            style={{ background: '#0D1F4A' }}
           >
             <Container size="lg">
               <motion.div
@@ -562,9 +562,9 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -579,7 +579,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     style={{
                       fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     What We Set Out to Achieve
@@ -601,10 +601,10 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                         size={32}
                         radius="xl"
                         style={{
-                          background: goal.isPrimary 
+                          background: goal.isPrimary
                             ? 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)'
-                            : 'rgba(31, 79, 216, 0.08)',
-                          color: goal.isPrimary ? '#FFFFFF' : '#1F4FD8',
+                            : 'rgba(77, 163, 255, 0.12)',
+                          color: goal.isPrimary ? '#FFFFFF' : '#4DA3FF',
                           flexShrink: 0,
                         }}
                       >
@@ -616,7 +616,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                             Primary Goal
                           </Badge>
                         )}
-                        <Text size="md" lh={1.6} style={{ color: '#0A1A3F' }}>
+                        <Text size="md" lh={1.6} style={{ color: '#FFFFFF' }}>
                           {goal.goal}
                         </Text>
                       </Box>
@@ -865,7 +865,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
           <Box
             component="section"
             py={80}
-            style={{ background: '#F8F9FB' }}
+            style={{ background: '#0A1A3F' }}
             ref={processRef}
           >
             <Container size="lg">
@@ -881,9 +881,9 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -897,7 +897,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     style={{
                       fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     How We Got There
@@ -926,7 +926,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
           <Box
             component="section"
             py={80}
-            style={{ background: '#FFFFFF' }}
+            style={{ background: '#0D1F4A' }}
           >
             <Container size="lg">
               <motion.div
@@ -942,9 +942,9 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     tt="uppercase"
                     fw={600}
                     style={{
-                      background: 'rgba(31, 79, 216, 0.08)',
-                      color: '#1F4FD8',
-                      border: '1px solid rgba(31, 79, 216, 0.15)',
+                      background: 'rgba(77, 163, 255, 0.12)',
+                      color: '#4DA3FF',
+                      border: '1px solid rgba(77, 163, 255, 0.25)',
                       letterSpacing: '1px',
                       fontSize: '0.7rem',
                       padding: '10px 16px',
@@ -959,7 +959,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                     style={{
                       fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
                       fontWeight: 700,
-                      color: '#0A1A3F',
+                      color: '#FFFFFF',
                     }}
                   >
                     Built With Modern Tools
@@ -981,9 +981,9 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                       size="xl"
                       radius="md"
                       style={{
-                        background: '#F8F9FB',
-                        color: '#0A1A3F',
-                        border: '1px solid rgba(10, 26, 63, 0.1)',
+                        background: 'rgba(255, 255, 255, 0.06)',
+                        color: '#FFFFFF',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
                         padding: '12px 20px',
                         fontSize: '0.9rem',
                       }}
@@ -1077,7 +1077,7 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
         <Box
           component="section"
           py={100}
-          style={{ background: '#F8F9FB' }}
+          style={{ background: '#0A1A3F' }}
           ref={ctaRef}
         >
           <Container size="md">
@@ -1093,9 +1093,9 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                   tt="uppercase"
                   fw={600}
                   style={{
-                    background: 'rgba(31, 79, 216, 0.08)',
-                    color: '#1F4FD8',
-                    border: '1px solid rgba(31, 79, 216, 0.15)',
+                    background: 'rgba(77, 163, 255, 0.12)',
+                    color: '#4DA3FF',
+                    border: '1px solid rgba(77, 163, 255, 0.25)',
                     letterSpacing: '1px',
                     fontSize: '0.7rem',
                     padding: '10px 16px',
@@ -1109,13 +1109,13 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                   style={{
                     fontSize: 'clamp(2rem, 4vw, 3rem)',
                     fontWeight: 700,
-                    color: '#0A1A3F',
+                    color: '#FFFFFF',
                   }}
                 >
                   {caseStudy.callToAction?.text || 'Want Similar Results for Your Business?'}
                 </Title>
 
-                <Text size="lg" maw={600} style={{ color: '#5A7099' }} lh={1.8}>
+                <Text size="lg" maw={600} style={{ color: 'rgba(255,255,255,0.7)' }} lh={1.8}>
                   Let&apos;s discuss how we can help you achieve transformative growth. 
                   Book a free consultation and get a personalized strategy.
                 </Text>
@@ -1153,12 +1153,12 @@ export function CaseStudyContent({ caseStudy }: CaseStudyContentProps) {
                       leftSection={<IconArrowLeft size={20} />}
                       styles={{
                         root: {
-                          borderColor: 'rgba(31, 79, 216, 0.3)',
-                          color: '#1F4FD8',
+                          borderColor: 'rgba(255, 255, 255, 0.25)',
+                          color: '#FFFFFF',
                           transition: 'all 0.2s ease',
                           '&:hover': {
-                            background: 'rgba(31, 79, 216, 0.05)',
-                            borderColor: '#1F4FD8',
+                            background: 'rgba(255, 255, 255, 0.05)',
+                            borderColor: 'rgba(255, 255, 255, 0.5)',
                           },
                         },
                       }}
