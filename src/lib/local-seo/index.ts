@@ -1,5 +1,4 @@
 import type { CityContent, ParsedLocationSlug } from './types';
-import { NORTH_COUNTY_CITIES, getCityRegistryEntry } from './cities';
 import { escondidoContent } from './content/escondido';
 
 export * from './types';
@@ -43,5 +42,3 @@ export function parseLocationSlug(slug: string): ParsedLocationSlug | null {
   }
   return null;
 }
-
-export { getCityRegistryEntry, NORTH_COUNTY_CITIES };
