@@ -42,6 +42,7 @@ import {
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
+import { useDiscountBanner } from '@/components/DiscountBanner';
 import { trackEvent, EVENTS } from '@/lib/analytics';
 
 const fadeInUp = {
@@ -830,6 +831,10 @@ export default function FreePage() {
   const termsInView = useInView(termsRef, { once: true, margin: '-80px' });
   const addOnsInView = useInView(addOnsRef, { once: true, margin: '-80px' });
 
+  const { isVisible: bannerVisible, bannerHeight } = useDiscountBanner();
+  // Nav pill (~100px) + banner (~44px when visible) + breathing room
+  const anchorOffset = 120 + (bannerVisible ? bannerHeight : 0);
+
   return (
     <>
       <Navigation />
@@ -984,7 +989,7 @@ export default function FreePage() {
           component="section"
           py={80}
           ref={includedRef}
-          style={{ background: '#0A1A3F' }}
+          style={{ background: '#0A1A3F', scrollMarginTop: anchorOffset }}
         >
           <Container size="xl">
             <motion.div
@@ -1345,7 +1350,7 @@ export default function FreePage() {
           id="claim-form"
           component="section"
           py={80}
-          style={{ background: '#081430', scrollMarginTop: 80 }}
+          style={{ background: '#081430', scrollMarginTop: anchorOffset }}
         >
           <Container size="md">
             <Stack align="center" gap="md" mb={48}>
