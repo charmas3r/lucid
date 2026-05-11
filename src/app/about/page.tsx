@@ -576,6 +576,8 @@ export default function AboutPage() {
                       transition={{ type: 'spring', stiffness: 300 }}
                     >
                       <Avatar
+                        src="https://res.cloudinary.com/dssgz3ocp/image/upload/v1768193686/profile_eoxqvp.jpg"
+                        alt="Evan Smith"
                         size={180}
                         radius="xl"
                         style={{

@@ -23,7 +23,6 @@ import {
   IconArrowRight,
   IconMapPin,
   IconBuilding,
-  IconPhone,
   IconCheck,
   IconX,
   IconStar,
@@ -1357,29 +1356,6 @@ export default function ServiceAreasPage() {
                       }}
                     >
                       Schedule Free Consultation
-                    </Button>
-                  </motion.div>
-                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                    <Button
-                      component="a"
-                      href="tel:+16195551234"
-                      size="lg"
-                      radius="xl"
-                      variant="outline"
-                      leftSection={<IconPhone size={18} />}
-                      styles={{
-                        root: {
-                          borderColor: 'rgba(255, 255, 255, 0.4)',
-                          color: '#FFFFFF',
-                          transition: 'all 0.2s ease',
-                          '&:hover': {
-                            background: 'rgba(255, 255, 255, 0.1)',
-                            borderColor: '#FFFFFF',
-                          },
-                        },
-                      }}
-                    >
-                      Call Us
                     </Button>
                   </motion.div>
                 </Group>

@@ -31,7 +31,11 @@ export const EVENTS = {
   // Forms
   FORM_SUBMIT_CONTACT: 'form_submit_contact',
   FORM_SUBMIT_REPORT_REQUEST: 'form_submit_report_request',
+  FORM_SUBMIT_FREE_CLAIM: 'form_submit_free_claim',
   FORM_ERROR: 'form_error',
+
+  // Free Promotion
+  CTA_CLICK_CLAIM_FREE: 'cta_click_claim_free',
   
   // Report Wizard
   WIZARD_OPEN: 'wizard_open',

@@ -20,10 +20,9 @@ import { DatePickerInput } from '@mantine/dates';
 import '@mantine/dates/styles.css';
 import { motion, useInView } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
-import { 
-  IconMail, 
-  IconPhone, 
-  IconMapPin, 
+import {
+  IconMail,
+  IconMapPin,
   IconClock,
   IconSend,
   IconCalendar,
@@ -231,15 +230,9 @@ function ContactForm() {
       href: 'mailto:evan@lucidweb.studio',
     },
     {
-      icon: IconPhone,
-      label: 'Phone',
-      value: '(949) 485-2240',
-      href: 'tel:+19494852240',
-    },
-    {
       icon: IconMapPin,
       label: 'Location',
-      value: 'Orange County, CA',
+      value: 'San Diego, CA',
       href: null,
     },
     {

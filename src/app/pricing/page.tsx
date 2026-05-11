@@ -30,6 +30,10 @@ import {
   IconMail,
   IconChartDots3,
   IconSettings,
+  IconLayoutGrid,
+  IconBrush,
+  IconRefresh,
+  IconServerCog,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
 import { trackEvent, EVENTS } from '@/lib/analytics';
@@ -160,6 +164,72 @@ const managedAddOns = [
       'Image & media optimization',
       'Performance monitoring & tuning',
     ],
+  },
+];
+
+const buildAddOns = [
+  {
+    name: 'Additional pages',
+    price: '$20',
+    period: '/page',
+    icon: IconLayoutGrid,
+    description: 'Expand beyond the base build with extra landing or content pages.',
+  },
+  {
+    name: 'Custom design',
+    price: '$50',
+    period: '/page',
+    icon: IconBrush,
+    description: 'Move beyond templates with bespoke layouts and visuals.',
+  },
+  {
+    name: 'CMS integration',
+    price: '$50',
+    period: '/page',
+    icon: IconServerCog,
+    description: 'Wire up a managed CMS so you can edit content yourself.',
+  },
+  {
+    name: 'Page iterations',
+    price: '$20',
+    period: '/page',
+    icon: IconRefresh,
+    description: 'Additional revision rounds including new copy or assets.',
+  },
+];
+
+const hostingAndSeo = [
+  {
+    name: 'Basic hosting',
+    price: '$20',
+    period: '/mo',
+    icon: IconServer,
+    description: 'Fast, monitored hosting on our infrastructure.',
+    highlighted: false,
+  },
+  {
+    name: 'SEO — Basic',
+    price: '$100',
+    period: '/mo',
+    icon: IconSearch,
+    description: 'Foundational keyword tracking and on-page tweaks.',
+    highlighted: false,
+  },
+  {
+    name: 'SEO — Premier',
+    price: '$250',
+    period: '/mo',
+    icon: IconSearch,
+    description: 'Content optimization plus monthly outreach.',
+    highlighted: true,
+  },
+  {
+    name: 'SEO — Pro',
+    price: '$500',
+    period: '/mo',
+    icon: IconSearch,
+    description: 'Full-stack SEO program with link building and reporting.',
+    highlighted: false,
   },
 ];
 
@@ -661,7 +731,7 @@ export default function PricingPage() {
               <Group gap="sm" justify="center" mb={30}>
                 <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.1)', flex: 1, maxWidth: 100 }} />
                 <Text fw={600} size="sm" tt="uppercase" style={{ color: '#4DA3FF', letterSpacing: '2px' }}>
-                  Add-On Services — $10/mo each
+                  Managed Services — $10/mo each
                 </Text>
                 <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.1)', flex: 1, maxWidth: 100 }} />
               </Group>
@@ -773,6 +843,156 @@ export default function PricingPage() {
                 </Text>
               </Box>
             </motion.div>
+
+            {/* Build Add-Ons Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <Group gap="sm" justify="center" mt={60} mb={30}>
+                <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.1)', flex: 1, maxWidth: 100 }} />
+                <Text fw={600} size="sm" tt="uppercase" style={{ color: '#4DA3FF', letterSpacing: '2px' }}>
+                  Build Add-Ons — per page / one-time
+                </Text>
+                <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.1)', flex: 1, maxWidth: 100 }} />
+              </Group>
+            </motion.div>
+
+            <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing={20}>
+              {buildAddOns.map((addon, index) => (
+                <motion.div
+                  key={addon.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.6 + index * 0.08 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <Box
+                    p="xl"
+                    style={{
+                      background: '#0A1A3F',
+                      borderRadius: 20,
+                      border: '1px solid rgba(77, 163, 255, 0.1)',
+                      height: '100%',
+                    }}
+                  >
+                    <Stack gap="sm" h="100%">
+                      <ThemeIcon
+                        size={48}
+                        radius="xl"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.3) 0%, rgba(77, 163, 255, 0.15) 100%)',
+                        }}
+                      >
+                        <addon.icon size={22} color="#4DA3FF" stroke={1.5} />
+                      </ThemeIcon>
+                      <Text fw={600} style={{ color: '#FFFFFF' }}>
+                        {addon.name}
+                      </Text>
+                      <Group gap={4} align="baseline">
+                        <Text fw={700} style={{ fontSize: '1.5rem', color: '#0CCE6B' }}>
+                          {addon.price}
+                        </Text>
+                        <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                          {addon.period}
+                        </Text>
+                      </Group>
+                      <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.6)', lineHeight: 1.5 }}>
+                        {addon.description}
+                      </Text>
+                    </Stack>
+                  </Box>
+                </motion.div>
+              ))}
+            </SimpleGrid>
+
+            {/* Hosting & SEO Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.7 }}
+            >
+              <Group gap="sm" justify="center" mt={60} mb={30}>
+                <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.1)', flex: 1, maxWidth: 100 }} />
+                <Text fw={600} size="sm" tt="uppercase" style={{ color: '#4DA3FF', letterSpacing: '2px' }}>
+                  Hosting & SEO Programs
+                </Text>
+                <Divider style={{ borderColor: 'rgba(255, 255, 255, 0.1)', flex: 1, maxWidth: 100 }} />
+              </Group>
+            </motion.div>
+
+            <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing={20}>
+              {hostingAndSeo.map((addon, index) => (
+                <motion.div
+                  key={addon.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.8 + index * 0.08 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <Box
+                    p="xl"
+                    style={{
+                      background: addon.highlighted
+                        ? 'linear-gradient(135deg, rgba(31, 79, 216, 0.18) 0%, rgba(77, 163, 255, 0.08) 100%)'
+                        : '#0A1A3F',
+                      borderRadius: 20,
+                      border: addon.highlighted
+                        ? '1px solid rgba(77, 163, 255, 0.4)'
+                        : '1px solid rgba(77, 163, 255, 0.1)',
+                      height: '100%',
+                      position: 'relative',
+                    }}
+                  >
+                    {addon.highlighted && (
+                      <Box
+                        style={{
+                          position: 'absolute',
+                          top: 16,
+                          right: 16,
+                          background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
+                          color: '#FFFFFF',
+                          fontSize: '0.65rem',
+                          fontWeight: 700,
+                          letterSpacing: '0.5px',
+                          textTransform: 'uppercase',
+                          padding: '4px 8px',
+                          borderRadius: 6,
+                        }}
+                      >
+                        Most popular
+                      </Box>
+                    )}
+                    <Stack gap="sm" h="100%">
+                      <ThemeIcon
+                        size={48}
+                        radius="xl"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(31, 79, 216, 0.3) 0%, rgba(77, 163, 255, 0.15) 100%)',
+                        }}
+                      >
+                        <addon.icon size={22} color="#4DA3FF" stroke={1.5} />
+                      </ThemeIcon>
+                      <Text fw={600} style={{ color: '#FFFFFF' }}>
+                        {addon.name}
+                      </Text>
+                      <Group gap={4} align="baseline">
+                        <Text fw={700} style={{ fontSize: '1.5rem', color: '#0CCE6B' }}>
+                          {addon.price}
+                        </Text>
+                        <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                          {addon.period}
+                        </Text>
+                      </Group>
+                      <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.6)', lineHeight: 1.5 }}>
+                        {addon.description}
+                      </Text>
+                    </Stack>
+                  </Box>
+                </motion.div>
+              ))}
+            </SimpleGrid>
           </Container>
         </Box>
 
