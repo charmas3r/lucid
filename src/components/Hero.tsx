@@ -17,6 +17,7 @@ import {
   IconCurrencyDollar,
   IconCalendarCheck,
   IconMapPin,
+  IconGift,
 } from '@tabler/icons-react';
 import dynamic from 'next/dynamic';
 import { trackEvent, EVENTS } from '@/lib/analytics';
@@ -168,10 +169,11 @@ export function Hero() {
                 <Group gap="md" mt="md">
                   <Button
                     component="a"
-                    href="/contact"
+                    href="/free"
                     size="lg"
                     radius="xl"
-                    onClick={() => trackEvent(EVENTS.CTA_CLICK_BOOK_CALL, { location: 'hero' })}
+                    leftSection={<IconGift size={18} />}
+                    onClick={() => trackEvent(EVENTS.CTA_CLICK_CLAIM_FREE, { location: 'hero' })}
                     styles={{
                       root: {
                         background: 'linear-gradient(135deg, #1F4FD8 0%, #4DA3FF 100%)',
@@ -185,7 +187,7 @@ export function Hero() {
                       },
                     }}
                   >
-                    Book a call
+                    Get a free website
                   </Button>
                   <Button
                     component="a"
