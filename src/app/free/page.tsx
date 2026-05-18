@@ -40,6 +40,7 @@ import {
   IconGift,
 } from '@tabler/icons-react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import Script from 'next/script';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { useDiscountBanner } from '@/components/DiscountBanner';
@@ -837,6 +838,18 @@ export default function FreePage() {
 
   return (
     <>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=AW-18082205862"
+        strategy="afterInteractive"
+      />
+      <Script id="google-ads-gtag" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-18082205862');
+        `}
+      </Script>
       <Navigation />
       <Box component="main" style={{ background: '#081430', minHeight: '100vh' }}>
         {/* Hero */}
