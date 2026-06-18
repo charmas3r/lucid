@@ -30,7 +30,7 @@ import {
   IconBrain,
   IconSparkles,
 } from '@tabler/icons-react';
-import { Navigation, Footer, AIQueryDemo, RequestReportButton } from '@/components';
+import { Navigation, Footer, AIQueryDemo, RequestReportButton, SeoPackages } from '@/components';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -961,6 +961,9 @@ export default function SEOServicesPage() {
             </SimpleGrid>
           </Container>
         </Box>
+
+        {/* Packages & Pricing */}
+        <SeoPackages background="#081430" />
 
         {/* Process Section */}
         <Box
