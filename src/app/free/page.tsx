@@ -45,6 +45,7 @@ import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { useDiscountBanner } from '@/components/DiscountBanner';
 import { trackEvent, EVENTS } from '@/lib/analytics';
+import { seoRetainerTiers } from '@/lib/seo-pricing';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -168,29 +169,16 @@ const addOns: AddOn[] = [
   },
 ];
 
-const seoTiers = [
-  {
-    id: 'seo-basic',
-    name: 'SEO — Basic',
-    price: '$100',
-    unit: 'per month',
-    description: 'Foundational keyword tracking & on-page tweaks.',
-  },
-  {
-    id: 'seo-premier',
-    name: 'SEO — Premier',
-    price: '$250',
-    unit: 'per month',
-    description: 'Content optimization + monthly outreach.',
-  },
-  {
-    id: 'seo-pro',
-    name: 'SEO — Pro',
-    price: '$500',
-    unit: 'per month',
-    description: 'Full-stack SEO program with link building & reporting.',
-  },
-];
+// SEO monthly plans sourced from the shared SEO pricing module so the promo
+// page stays in sync with /pricing and the SEO service pages.
+const seoTiers = seoRetainerTiers.map((tier) => ({
+  id: tier.id,
+  name: tier.name,
+  price: tier.price,
+  unit: 'per month',
+  description: tier.description,
+  highlighted: Boolean(tier.highlighted),
+}));
 
 const businessTypes = [
   'Local service business',
@@ -1310,18 +1298,18 @@ export default function FreePage() {
                     <Box
                       p="xl"
                       style={{
-                        background: index === 1
+                        background: tier.highlighted
                           ? 'linear-gradient(135deg, rgba(31, 79, 216, 0.15) 0%, rgba(77, 163, 255, 0.08) 100%)'
                           : '#0D1F4A',
                         borderRadius: 18,
-                        border: index === 1
+                        border: tier.highlighted
                           ? '1px solid rgba(77, 163, 255, 0.4)'
                           : '1px solid rgba(255, 255, 255, 0.08)',
                         height: '100%',
                         position: 'relative',
                       }}
                     >
-                      {index === 1 && (
+                      {tier.highlighted && (
                         <Badge
                           size="xs"
                           radius="sm"

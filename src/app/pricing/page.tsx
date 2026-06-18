@@ -37,6 +37,7 @@ import {
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
 import { trackEvent, EVENTS } from '@/lib/analytics';
+import { seoOneTimeFix, seoRetainerTiers, seoBundleOffer } from '@/lib/seo-pricing';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -207,30 +208,16 @@ const hostingAndSeo = [
     description: 'Fast, monitored hosting on our infrastructure.',
     highlighted: false,
   },
-  {
-    name: 'SEO — Basic',
-    price: '$100',
-    period: '/mo',
+  // SEO monthly plans — sourced from the shared SEO pricing module so the
+  // pricing page can never drift from the SEO service pages and /free.
+  ...seoRetainerTiers.map((tier) => ({
+    name: tier.name,
+    price: tier.price,
+    period: tier.cadence,
     icon: IconSearch,
-    description: 'Foundational keyword tracking and on-page tweaks.',
-    highlighted: false,
-  },
-  {
-    name: 'SEO — Premier',
-    price: '$250',
-    period: '/mo',
-    icon: IconSearch,
-    description: 'Content optimization plus monthly outreach.',
-    highlighted: true,
-  },
-  {
-    name: 'SEO — Pro',
-    price: '$500',
-    period: '/mo',
-    icon: IconSearch,
-    description: 'Full-stack SEO program with link building and reporting.',
-    highlighted: false,
-  },
+    description: tier.description,
+    highlighted: Boolean(tier.highlighted),
+  })),
 ];
 
 export default function PricingPage() {
@@ -922,6 +909,62 @@ export default function PricingPage() {
               </Group>
             </motion.div>
 
+            {/* One-time SEO Foundation Fix */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={addOnsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.75 }}
+            >
+              <Box
+                p="xl"
+                mb={20}
+                style={{
+                  background: 'linear-gradient(135deg, rgba(12, 206, 107, 0.08) 0%, rgba(31, 79, 216, 0.08) 100%)',
+                  borderRadius: 20,
+                  border: '1px solid rgba(12, 206, 107, 0.25)',
+                }}
+              >
+                <SimpleGrid cols={{ base: 1, md: 2 }} spacing="lg" style={{ alignItems: 'center' }}>
+                  <Stack gap="sm">
+                    <Group gap="xs">
+                      <Text size="xs" fw={600} tt="uppercase" style={{ color: '#0CCE6B', letterSpacing: '1px' }}>
+                        Phase 1 — Start here
+                      </Text>
+                    </Group>
+                    <Group gap={6} align="baseline">
+                      <Title order={3} style={{ color: '#FFFFFF', fontSize: '1.4rem' }}>
+                        {seoOneTimeFix.name}
+                      </Title>
+                      <Text fw={700} style={{ color: '#0CCE6B', fontSize: '1.4rem' }}>
+                        {seoOneTimeFix.price}
+                      </Text>
+                      <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>
+                        {seoOneTimeFix.cadence}
+                      </Text>
+                    </Group>
+                    <Text size="sm" style={{ color: 'rgba(255, 255, 255, 0.7)', lineHeight: 1.6 }}>
+                      {seoOneTimeFix.description}
+                    </Text>
+                  </Stack>
+                  <List
+                    spacing="xs"
+                    size="sm"
+                    icon={
+                      <ThemeIcon size={18} radius="xl" style={{ background: 'rgba(12, 206, 107, 0.15)' }}>
+                        <IconCheck size={10} color="#0CCE6B" />
+                      </ThemeIcon>
+                    }
+                  >
+                    {seoOneTimeFix.features.map((feature) => (
+                      <List.Item key={feature} style={{ color: 'rgba(255, 255, 255, 0.82)' }}>
+                        {feature}
+                      </List.Item>
+                    ))}
+                  </List>
+                </SimpleGrid>
+              </Box>
+            </motion.div>
+
             <SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing={20}>
               {hostingAndSeo.map((addon, index) => (
                 <motion.div
@@ -993,6 +1036,31 @@ export default function PricingPage() {
                 </motion.div>
               ))}
             </SimpleGrid>
+
+            {/* SEO bundle incentive */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={addOnsInView ? { opacity: 1 } : {}}
+              transition={{ delay: 1 }}
+            >
+              <Box
+                mt={30}
+                p="lg"
+                ta="center"
+                style={{
+                  background: 'rgba(12, 206, 107, 0.05)',
+                  borderRadius: 16,
+                  border: '1px solid rgba(12, 206, 107, 0.15)',
+                }}
+              >
+                <Text fw={600} style={{ color: '#0CCE6B' }}>
+                  {seoBundleOffer.headline}
+                </Text>
+                <Text size="sm" mt={4} style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
+                  {seoBundleOffer.description}
+                </Text>
+              </Box>
+            </motion.div>
           </Container>
         </Box>
 

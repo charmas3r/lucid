@@ -11,3 +11,4 @@ export { Footer } from './Footer';
 export { AIQueryDemo } from './AIQueryDemo';
 export { ReportRequestWizard, RequestReportButton } from './ReportRequestWizard';
 export { DiscountBanner } from './DiscountBanner';
+export { SeoPackages } from './SeoPackages';

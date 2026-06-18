@@ -48,6 +48,7 @@ import {
   IconBrandGoogle,
 } from '@tabler/icons-react';
 import { Navigation, Footer } from '@/components';
+import { seoStartingPrice } from '@/lib/seo-pricing';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -107,7 +108,7 @@ const services = [
     href: '/services/seo-services',
     highlights: ['100 Lighthouse Score', 'Technical SEO', 'Content Strategy'],
     gradient: 'linear-gradient(135deg, #0A1A3F 0%, #1F4FD8 100%)',
-    startingPrice: '750',
+    startingPrice: seoStartingPrice,
     priceLabel: '/month',
   },
   {

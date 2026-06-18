@@ -30,14 +30,13 @@ import {
   IconCheck,
   IconTrendingUp,
   IconUsers,
-  IconBolt,
   IconRobot,
   IconMessageChatbot,
   IconBrain,
   IconSparkles,
   IconBulb,
 } from '@tabler/icons-react';
-import { Navigation, Footer, RequestReportButton } from '@/components';
+import { Navigation, Footer, RequestReportButton, SeoPackages } from '@/components';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -138,20 +137,12 @@ const processSteps = [
   },
 ];
 
-const metrics = [
-  { value: '312%', label: 'Average Traffic Increase', icon: IconTrendingUp },
-  { value: '67%', label: 'More Leads Generated', icon: IconBolt },
-  { value: '4.2x', label: 'Return on Investment', icon: IconChartLine },
-  { value: '89%', label: 'Clients Stay With Us', icon: IconUsers },
-];
-
 export default function SEOPage() {
   const heroRef = useRef(null);
   const educationRef = useRef(null);
   const servicesRef = useRef(null);
   const aiSeoRef = useRef(null);
   const processRef = useRef(null);
-  const metricsRef = useRef(null);
   const authorityRef = useRef(null);
   const ctaRef = useRef(null);
 
@@ -160,7 +151,6 @@ export default function SEOPage() {
   const servicesInView = useInView(servicesRef, { once: true, margin: '-100px' });
   const aiSeoInView = useInView(aiSeoRef, { once: true, margin: '-100px' });
   const processInView = useInView(processRef, { once: true, margin: '-100px' });
-  const metricsInView = useInView(metricsRef, { once: true, margin: '-100px' });
   const authorityInView = useInView(authorityRef, { once: true, margin: '-100px' });
   const ctaInView = useInView(ctaRef, { once: true, margin: '-100px' });
 
@@ -362,51 +352,6 @@ export default function SEOPage() {
                 </motion.div>
               </Stack>
             </motion.div>
-          </Container>
-        </Box>
-
-        {/* Metrics Section */}
-        <Box
-          component="section"
-          py={60}
-          style={{ background: '#0A1A3F' }}
-          ref={metricsRef}
-        >
-          <Container size="xl">
-            <SimpleGrid cols={{ base: 2, md: 4 }} spacing="xl">
-              {metrics.map((metric, index) => (
-                <motion.div
-                  key={metric.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={metricsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Stack align="center" gap="xs">
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={metricsInView ? { scale: 1 } : {}}
-                      transition={{ type: 'spring', stiffness: 300, delay: index * 0.1 + 0.2 }}
-                    >
-                      <metric.icon size={28} color="#4DA3FF" stroke={1.5} />
-                    </motion.div>
-                    <Text
-                      fw={700}
-                      style={{
-                        fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-                        background: 'linear-gradient(135deg, #4DA3FF 0%, #FFFFFF 100%)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                      }}
-                    >
-                      {metric.value}
-                    </Text>
-                    <Text size="sm" ta="center" style={{ color: '#8A9BB8' }}>
-                      {metric.label}
-                    </Text>
-                  </Stack>
-                </motion.div>
-              ))}
-            </SimpleGrid>
           </Container>
         </Box>
 
@@ -1054,6 +999,9 @@ export default function SEOPage() {
             </SimpleGrid>
           </Container>
         </Box>
+
+        {/* Packages & Pricing */}
+        <SeoPackages background="#0A1A3F" />
 
         {/* CTA Section */}
         <Box
