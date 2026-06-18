@@ -126,14 +126,14 @@ export function SeoPackages({ background = '#0A1A3F' }: { background?: string })
                 </List>
               </Stack>
               <Stack align="center" gap="xs">
+                <Text fw={700} style={{ fontSize: '2.5rem', color: '#FFFFFF', lineHeight: 1.1 }}>
+                  {seoOneTimeFix.price}
+                </Text>
                 <Text size="sm" fw={500} tt="uppercase" style={{ color: 'rgba(255, 255, 255, 0.5)', letterSpacing: '1px' }}>
                   {seoOneTimeFix.cadence}
                 </Text>
-                <Text fw={700} style={{ fontSize: '4rem', color: '#FFFFFF', lineHeight: 1.1 }}>
-                  {seoOneTimeFix.price}
-                </Text>
                 <Text size="sm" ta="center" maw={260} style={{ color: 'rgba(255, 255, 255, 0.6)' }}>
-                  The foundation that sets up every monthly plan below.
+                  Scope and price depend on your site. The foundation that sets up every monthly plan below.
                 </Text>
               </Stack>
             </SimpleGrid>
