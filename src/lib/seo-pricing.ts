@@ -9,10 +9,10 @@
 export interface SeoPackage {
   id: string;
   name: string;
-  /** Display price, e.g. "$2,250" or "$500". */
+  /** Display price, e.g. "$500" or "Custom quote" when scoped per site. */
   price: string;
-  /** Numeric price for any math (discounts, sorting). */
-  priceValue: number;
+  /** Numeric price for any math (discounts, sorting). Omitted for custom quotes. */
+  priceValue?: number;
   /** Cadence label shown next to the price, e.g. "/mo" or "one-time". */
   cadence: string;
   tagline: string;
@@ -29,9 +29,8 @@ export interface SeoPackage {
 export const seoOneTimeFix: SeoPackage = {
   id: 'seo-fix',
   name: 'SEO Foundation Fix',
-  price: '$2,250',
-  priceValue: 2250,
-  cadence: 'one-time',
+  price: 'Custom quote',
+  cadence: 'scoped per site',
   tagline: 'The foundation every engagement starts with',
   description:
     'A one-time, deep technical fix that sets the stage for everything that follows — built on tools and data we could not access during the initial assessment.',
