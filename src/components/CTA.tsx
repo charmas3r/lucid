@@ -186,6 +186,24 @@ export function CTA() {
                 </Text>
               </motion.div>
 
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: 0.45 }}
+              >
+                <Text
+                  component="a"
+                  href="tel:+18582154894"
+                  onClick={() => trackEvent(EVENTS.CTA_CLICK_BOOK_CALL, { location: 'cta_phone' })}
+                  size="md"
+                  fw={600}
+                  ta="center"
+                  style={{ color: '#FFFFFF', textDecoration: 'none' }}
+                >
+                  Or call us at +1 858-215-4894
+                </Text>
+              </motion.div>
+
               {/* Calendar placeholder */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}

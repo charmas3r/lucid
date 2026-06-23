@@ -68,6 +68,25 @@ export function Footer() {
               <Text size="sm" style={{ color: '#7A94BA' }}>
                 Your digital partner for clarity
               </Text>
+              <Anchor
+                href="tel:+18582154894"
+                onClick={() => trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: 'phone' })}
+                style={{
+                  color: '#7A94BA',
+                  fontSize: '0.875rem',
+                  marginTop: 8,
+                  display: 'inline-block',
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#4DA3FF';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#7A94BA';
+                }}
+              >
+                +1 858-215-4894
+              </Anchor>
             </Box>
 
             {/* Social links */}

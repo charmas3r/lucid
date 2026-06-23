@@ -16,7 +16,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { IconChevronDown, IconCode, IconDeviceMobile, IconShoppingCart, IconSearch, IconChartBar, IconX } from '@tabler/icons-react';
+import { IconChevronDown, IconCode, IconDeviceMobile, IconShoppingCart, IconSearch, IconChartBar, IconX, IconPhone } from '@tabler/icons-react';
 import { DiscountBanner, useDiscountBanner } from './DiscountBanner';
 import { trackEvent, EVENTS } from '@/lib/analytics';
 
@@ -308,6 +308,32 @@ export function Navigation() {
 
             {/* CTA Button */}
             <Group gap="md">
+              <Box
+                component={Link}
+                href="tel:+18582154894"
+                visibleFrom="md"
+                onClick={() => trackEvent(EVENTS.NAV_CLICK_MENU_ITEM, { item: 'phone' })}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  textDecoration: 'none',
+                  color: '#A5B4CF',
+                  fontSize: '0.8rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.5px',
+                  transition: 'color 0.2s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#4DA3FF';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#A5B4CF';
+                }}
+              >
+                <IconPhone size={15} stroke={1.5} />
+                +1 858-215-4894
+              </Box>
               <Button
                 component={Link}
                 href="/contact"
@@ -552,6 +578,28 @@ export function Navigation() {
                 >
                   Let&apos;s talk
                 </Button>
+                <Box
+                  component={Link}
+                  href="tel:+18582154894"
+                  onClick={() => {
+                    close();
+                    trackEvent(EVENTS.NAV_CLICK_MENU_ITEM, { item: 'phone', source: 'mobile' });
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 8,
+                    marginTop: 16,
+                    textDecoration: 'none',
+                    color: '#A5B4CF',
+                    fontSize: '1rem',
+                    fontWeight: 500,
+                  }}
+                >
+                  <IconPhone size={18} stroke={1.5} />
+                  +1 858-215-4894
+                </Box>
               </motion.div>
             </Stack>
       </Drawer>

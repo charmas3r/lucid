@@ -22,6 +22,7 @@ import { motion, useInView } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import {
   IconMail,
+  IconPhone,
   IconMapPin,
   IconClock,
   IconSend,
@@ -228,6 +229,12 @@ function ContactForm() {
       label: 'Email',
       value: 'evan@lucidweb.studio',
       href: 'mailto:evan@lucidweb.studio',
+    },
+    {
+      icon: IconPhone,
+      label: 'Phone',
+      value: '+1 858-215-4894',
+      href: 'tel:+18582154894',
     },
     {
       icon: IconMapPin,
