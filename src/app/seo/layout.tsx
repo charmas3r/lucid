@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'SEO Services | Premier Search Engine Optimization | Lucid Web Studios',
+  title: 'SEO & AI Search Optimization',
   description:
-    'Dominate search results with our SEO-first approach. Content strategy, technical SEO, link building, and analytics - we engineer websites for search dominance.',
+    'Dominate search results with our SEO-first approach. Content strategy, technical SEO, link building, and analytics engineered for search dominance.',
   keywords: [
     'SEO services',
     'search engine optimization',

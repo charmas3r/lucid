@@ -17,9 +17,9 @@ export const vistaContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in Vista | Lucid Web Studios',
+    title: 'Web Design & SEO in Vista',
     metaDescription:
-      'Vista web design and SEO from a neighboring North County studio. Based in Deer Springs, we serve Vista\u2019s craft breweries, restaurants, home-service companies, and small businesses with modern Next.js sites and local search optimization.',
+      'Vista web design and SEO from a neighboring Deer Springs studio. Modern Next.js sites and local search for craft breweries, restaurants, and services.',
     ogTitle: 'Lucid Web Studios \u2014 Vista Web Design & SEO',
     heroHeadline: 'Web Design & SEO in Vista',
     heroSubheadline:
@@ -37,9 +37,9 @@ export const vistaContent: CityContent = {
   },
 
   webDesign: {
-    title: 'Vista Web Design | Modern Websites That Rank | Lucid',
+    title: 'Vista Web Design',
     metaDescription:
-      'Vista web design built on Next.js and React. Neighboring North County web designer based in Deer Springs, serving Vista\u2019s craft breweries, restaurants, home-service businesses, and small retailers with fast, modern websites.',
+      'Vista web design on Next.js and React. A neighboring Deer Springs designer for craft breweries, restaurants, and home-service businesses in Vista.',
     ogTitle: 'Vista Web Design \u2014 Lucid Web Studios',
     heroHeadline: 'Vista Web Design',
     heroSubheadline:
@@ -106,9 +106,9 @@ export const vistaContent: CityContent = {
   },
 
   seoServices: {
-    title: 'Vista SEO Services | Local Search Optimization | Lucid',
+    title: 'Vista SEO Services',
     metaDescription:
-      'Vista SEO services for craft breweries, restaurants, home services, and local businesses. Google Business Profile management, local citations, and technical SEO from a neighboring North County studio based in Deer Springs.',
+      'Vista SEO services for craft breweries, restaurants, home services, and local businesses. Google Business Profile management and local search that ranks.',
     ogTitle: 'Vista SEO Services \u2014 Lucid Web Studios',
     heroHeadline: 'Vista SEO Services',
     heroSubheadline:

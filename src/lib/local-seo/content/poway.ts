@@ -17,9 +17,9 @@ export const powayContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in Poway | Lucid Web Studios',
+    title: 'Web Design & SEO in Poway',
     metaDescription:
-      'Poway web design and SEO from a nearby North County studio. We build modern Next.js sites and run local search optimization for home-service companies, medical practices, and professional offices across Poway\u2019s suburban market.',
+      'Poway web design and SEO from a nearby North County studio. Modern Next.js sites and local search for home services, medical, and professional offices.',
     ogTitle: 'Lucid Web Studios \u2014 Poway Web Design & SEO',
     heroHeadline: 'Web Design & SEO in Poway',
     heroSubheadline:
@@ -37,9 +37,9 @@ export const powayContent: CityContent = {
   },
 
   webDesign: {
-    title: 'Poway Web Design | Modern Websites That Rank | Lucid',
+    title: 'Poway Web Design',
     metaDescription:
-      'Poway web design built on Next.js and React. A nearby North County web designer serving home-service companies, medical practices, professional offices, and light-industrial businesses across Poway and the 92064.',
+      'Poway web design on Next.js and React. A nearby North County designer for home-service companies, medical practices, and professional offices.',
     ogTitle: 'Poway Web Design \u2014 Lucid Web Studios',
     heroHeadline: 'Poway Web Design',
     heroSubheadline:
@@ -108,9 +108,9 @@ export const powayContent: CityContent = {
   },
 
   seoServices: {
-    title: 'Poway SEO Services | Local Search Optimization | Lucid',
+    title: 'Poway SEO Services',
     metaDescription:
-      'Poway SEO services for home-service companies, medical practices, professional offices, and local businesses. Google Business Profile management, local citations, and technical SEO from a nearby North County studio.',
+      'Poway SEO services for home services, medical practices, professional offices, and local businesses. Google Business Profile and local search that ranks.',
     ogTitle: 'Poway SEO Services \u2014 Lucid Web Studios',
     heroHeadline: 'Poway SEO Services',
     heroSubheadline:

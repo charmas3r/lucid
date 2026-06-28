@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us | Lucid Web Studios | San Diego Web Design Agency',
+  title: 'About Us | San Diego Web Design Agency',
   description:
-    'Learn about Lucid Web Studios - a San Diego-based digital agency bringing clarity to local businesses through exceptional web design, development, and SEO since 2015.',
+    'Meet Lucid Web Studios, a San Diego digital agency bringing clarity to local businesses through expert web design, development, and SEO since 2015.',
   keywords: [
     'about Lucid Web Studios',
     'San Diego web design agency',

@@ -17,9 +17,9 @@ export const temeculaContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in Temecula | Lucid Web Studios',
+    title: 'Web Design & SEO in Temecula',
     metaDescription:
-      'Temecula web design and SEO agency. Custom Next.js websites and local search optimization for wineries, Old Town businesses, restaurants, and service companies across Temecula and the Inland Empire.',
+      'Temecula web design and SEO agency. Custom Next.js websites and local search for wineries, Old Town businesses, restaurants, and home services.',
     ogTitle: 'Lucid Web Studios — Temecula Web Design & SEO',
     heroHeadline: 'Web Design & SEO in Temecula',
     heroSubheadline:
@@ -37,9 +37,9 @@ export const temeculaContent: CityContent = {
   },
 
   webDesign: {
-    title: 'Temecula Web Design | Modern Websites That Rank | Lucid',
+    title: 'Temecula Web Design',
     metaDescription:
-      'Temecula web design built on Next.js and React. Custom websites for wineries, Old Town businesses, restaurants, home services, and growing companies across Temecula and the Temecula Valley.',
+      'Temecula web design on Next.js and React. Custom websites for wineries, Old Town businesses, restaurants, and home-service companies in Temecula.',
     ogTitle: 'Temecula Web Design — Lucid Web Studios',
     heroHeadline: 'Temecula Web Design',
     heroSubheadline:
@@ -106,9 +106,9 @@ export const temeculaContent: CityContent = {
   },
 
   seoServices: {
-    title: 'Temecula SEO Services | Local Search Optimization | Lucid',
+    title: 'Temecula SEO Services',
     metaDescription:
-      'Temecula SEO services for wineries, restaurants, home services, and local businesses. Google Business Profile management, local citations, and technical SEO from a Southern California studio.',
+      'Temecula SEO services for wineries, restaurants, home services, and local businesses. Google Business Profile management and local search that ranks.',
     ogTitle: 'Temecula SEO Services — Lucid Web Studios',
     heroHeadline: 'Temecula SEO Services',
     heroSubheadline:

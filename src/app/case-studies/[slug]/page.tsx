@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!caseStudy) {
     return {
-      title: 'Case Study Not Found | Lucid Web Studios',
+      title: 'Case Study Not Found',
     };
   }
 
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     : null;
 
   return {
-    title: `${caseStudy.title} | Case Study | Lucid Web Studios`,
+    title: `${caseStudy.title} | Case Study`,
     description: caseStudy.description,
     keywords: [
       caseStudy.client,

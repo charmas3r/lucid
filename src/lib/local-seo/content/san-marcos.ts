@@ -17,9 +17,9 @@ export const sanMarcosContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in San Marcos | Lucid Web Studios',
+    title: 'Web Design & SEO in San Marcos',
     metaDescription:
-      'San Marcos web design and SEO from a neighboring North County studio. We build modern Next.js sites and run local search optimization for restaurants, startups, and service businesses across San Marcos.',
+      'San Marcos web design and SEO from a neighboring North County studio. Modern Next.js sites and local search for restaurants, startups, and healthcare.',
     ogTitle: 'Lucid Web Studios \u2014 San Marcos Web Design & SEO',
     heroHeadline: 'Web Design & SEO in San Marcos',
     heroSubheadline:
@@ -37,9 +37,9 @@ export const sanMarcosContent: CityContent = {
   },
 
   webDesign: {
-    title: 'San Marcos Web Design | Modern Websites That Rank | Lucid',
+    title: 'San Marcos Web Design',
     metaDescription:
-      'San Marcos web design built on Next.js and React. Local North County web designer serving Restaurant Row, Cal State San Marcos area startups, healthcare practices, and service businesses across San Marcos.',
+      'San Marcos web design on Next.js and React. A local North County designer for Restaurant Row, Cal State San Marcos, and growing local businesses.',
     ogTitle: 'San Marcos Web Design \u2014 Lucid Web Studios',
     heroHeadline: 'San Marcos Web Design',
     heroSubheadline:
@@ -107,9 +107,9 @@ export const sanMarcosContent: CityContent = {
   },
 
   seoServices: {
-    title: 'San Marcos SEO Services | Local Search Optimization | Lucid',
+    title: 'San Marcos SEO Services',
     metaDescription:
-      'San Marcos SEO services for restaurants, startups, healthcare, and local businesses. Google Business Profile management, local citations, and technical SEO from a neighboring North County studio in Deer Springs.',
+      'San Marcos SEO services for restaurants, startups, healthcare, and local businesses. Google Business Profile management and local search that ranks.',
     ogTitle: 'San Marcos SEO Services \u2014 Lucid Web Studios',
     heroHeadline: 'San Marcos SEO Services',
     heroSubheadline:

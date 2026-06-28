@@ -17,9 +17,9 @@ export const oceansideContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in Oceanside | Lucid Web Studios',
+    title: 'Web Design & SEO in Oceanside',
     metaDescription:
-      'Oceanside web design and SEO from a North County San Diego studio. We build modern Next.js sites and run local search optimization for Oceanside restaurants, breweries, tourism businesses, and service companies near the pier and beyond.',
+      'Oceanside web design and SEO from a North County San Diego studio. Modern Next.js sites and local search for coastal and downtown businesses.',
     ogTitle: 'Lucid Web Studios \u2014 Oceanside Web Design & SEO',
     heroHeadline: 'Web Design & SEO in Oceanside',
     heroSubheadline:
@@ -37,9 +37,9 @@ export const oceansideContent: CityContent = {
   },
 
   webDesign: {
-    title: 'Oceanside Web Design | Modern Websites That Rank | Lucid',
+    title: 'Oceanside Web Design',
     metaDescription:
-      'Oceanside web design built on Next.js and React. North County web designer serving downtown Oceanside restaurants, craft breweries, tourism businesses, home services, and military-adjacent companies across the city.',
+      'Oceanside web design on Next.js and React. A North County designer for downtown restaurants, craft breweries, tourism, and home-service companies.',
     ogTitle: 'Oceanside Web Design \u2014 Lucid Web Studios',
     heroHeadline: 'Oceanside Web Design',
     heroSubheadline:
@@ -106,9 +106,9 @@ export const oceansideContent: CityContent = {
   },
 
   seoServices: {
-    title: 'Oceanside SEO Services | Local Search Optimization | Lucid',
+    title: 'Oceanside SEO Services',
     metaDescription:
-      'Oceanside SEO services for restaurants, breweries, tourism businesses, home services, and military-adjacent companies. Google Business Profile management, local citations, and technical SEO from a nearby North County studio.',
+      'Oceanside SEO services for restaurants, breweries, tourism, and home services. Google Business Profile management and local search built to rank.',
     ogTitle: 'Oceanside SEO Services \u2014 Lucid Web Studios',
     heroHeadline: 'Oceanside SEO Services',
     heroSubheadline:

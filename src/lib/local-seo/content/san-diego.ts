@@ -17,9 +17,9 @@ export const sanDiegoContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in San Diego | Lucid Web Studios',
+    title: 'Web Design & SEO in San Diego',
     metaDescription:
-      'San Diego web design and SEO agency. Custom Next.js websites and local search optimization for businesses across the Gaslamp, North Park, Pacific Beach, Mission Valley, Kearny Mesa, and every neighborhood in between.',
+      'San Diego web design and SEO agency. Custom Next.js websites and local search optimization for businesses across the city and county.',
     ogTitle: 'Lucid Web Studios — San Diego Web Design & SEO',
     heroHeadline: 'Web Design & SEO in San Diego',
     heroSubheadline:
@@ -37,9 +37,9 @@ export const sanDiegoContent: CityContent = {
   },
 
   webDesign: {
-    title: 'San Diego Web Design | Modern Websites That Rank | Lucid',
+    title: 'San Diego Web Design',
     metaDescription:
-      'San Diego web design built on Next.js and React. Custom websites for startups, restaurants, professional services, and growing businesses across Downtown, North Park, Pacific Beach, Mission Valley, and all of San Diego.',
+      'San Diego web design on Next.js and React. Custom websites for startups, restaurants, professional services, and growing local businesses.',
     ogTitle: 'San Diego Web Design — Lucid Web Studios',
     heroHeadline: 'San Diego Web Design',
     heroSubheadline:
@@ -106,9 +106,9 @@ export const sanDiegoContent: CityContent = {
   },
 
   seoServices: {
-    title: 'San Diego SEO Services | Local Search Optimization | Lucid',
+    title: 'San Diego SEO Services',
     metaDescription:
-      'San Diego SEO services for restaurants, startups, professional services, and local businesses. Google Business Profile management, local citations, and technical SEO from a San Diego County studio.',
+      'San Diego SEO services for restaurants, startups, professional services, and local businesses. Google Business Profile management and local search.',
     ogTitle: 'San Diego SEO Services — Lucid Web Studios',
     heroHeadline: 'San Diego SEO Services',
     heroSubheadline:

@@ -489,7 +489,7 @@ background: 'rgba(77, 163, 255, 0.15)',
               >
                 Get in Touch
               </Badge>
-              <Title order={2} mb="md" style={{ color: '#FFFFFF', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+              <Title order={1} mb="md" style={{ color: '#FFFFFF', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
                 Let&apos;s bring your vision to life
               </Title>
               <Text size="lg" style={{ color: '#A5B4CF' }} maw={450}>

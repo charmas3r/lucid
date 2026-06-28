@@ -15,9 +15,9 @@ export const encinitasContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in Encinitas | Lucid Web Studios',
+    title: 'Web Design & SEO in Encinitas',
     metaDescription:
-      'Encinitas web design and SEO from a North County San Diego studio. We build modern Next.js sites and run local search optimization for wellness brands, boutique retailers, restaurants, and professional services along Coast Highway 101 and beyond.',
+      'Encinitas web design and SEO from a North County San Diego studio. Modern Next.js sites and local search for coastal businesses along Highway 101.',
     ogTitle: 'Lucid Web Studios \u2014 Encinitas Web Design & SEO',
     heroHeadline: 'Web Design & SEO in Encinitas',
     heroSubheadline:
@@ -35,9 +35,9 @@ export const encinitasContent: CityContent = {
   },
 
   webDesign: {
-    title: 'Encinitas Web Design | Coastal-Quality Websites | Lucid',
+    title: 'Encinitas Web Design',
     metaDescription:
-      'Encinitas web design built on Next.js and React. A North County San Diego web designer serving yoga studios, surf brands, boutique retailers, restaurants, and professional services across Leucadia, Cardiff-by-the-Sea, Old Encinitas, and the 101 corridor.',
+      'Encinitas web design on Next.js and React. A North County designer for yoga studios, surf brands, restaurants, and boutiques along Coast Highway 101.',
     ogTitle: 'Encinitas Web Design \u2014 Lucid Web Studios',
     heroHeadline: 'Encinitas Web Design',
     heroSubheadline:
@@ -105,9 +105,9 @@ export const encinitasContent: CityContent = {
   },
 
   seoServices: {
-    title: 'Encinitas SEO Services | Local Search Optimization | Lucid',
+    title: 'Encinitas SEO Services',
     metaDescription:
-      'Encinitas SEO services for yoga studios, boutique retailers, restaurants, and local businesses. Google Business Profile management, local citations, and technical SEO from a nearby North County San Diego studio.',
+      'Encinitas SEO services for yoga studios, boutiques, restaurants, and local businesses. Google Business Profile management and local search that ranks.',
     ogTitle: 'Encinitas SEO Services \u2014 Lucid Web Studios',
     heroHeadline: 'Encinitas SEO Services',
     heroSubheadline:
