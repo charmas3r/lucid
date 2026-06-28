@@ -17,9 +17,9 @@ export const carlsbadContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in Carlsbad | Lucid Web Studios',
+    title: 'Web Design & SEO in Carlsbad',
     metaDescription:
-      'Carlsbad web design and SEO from a North County San Diego studio. We build fast Next.js sites and run local search campaigns for Carlsbad\u2019s tourism, tech, retail, and professional service businesses.',
+      'Carlsbad web design and SEO from a North County San Diego studio. Fast Next.js sites and local search for tourism, tech, retail, and service businesses.',
     ogTitle: 'Lucid Web Studios \u2014 Carlsbad Web Design & SEO',
     heroHeadline: 'Web Design & SEO in Carlsbad',
     heroSubheadline:
@@ -37,9 +37,9 @@ export const carlsbadContent: CityContent = {
   },
 
   webDesign: {
-    title: 'Carlsbad Web Design | Modern Websites That Rank | Lucid',
+    title: 'Carlsbad Web Design',
     metaDescription:
-      'Carlsbad web design on Next.js and React. A North County San Diego web designer serving Village shops, Palomar Airport Road tech companies, tourism businesses, restaurants, and professional services across Carlsbad.',
+      'Carlsbad web design on Next.js and React. A North County San Diego designer for Village shops, Palomar Airport Road tech, tourism, and restaurants.',
     ogTitle: 'Carlsbad Web Design \u2014 Lucid Web Studios',
     heroHeadline: 'Carlsbad Web Design',
     heroSubheadline:
@@ -106,9 +106,9 @@ export const carlsbadContent: CityContent = {
   },
 
   seoServices: {
-    title: 'Carlsbad SEO Services | Local Search Optimization | Lucid',
+    title: 'Carlsbad SEO Services',
     metaDescription:
-      'Carlsbad SEO services for tourism, tech companies, restaurants, and local businesses. Google Business Profile management, local citations, and technical SEO from a North County San Diego studio.',
+      'Carlsbad SEO services for tourism, tech, restaurants, and local businesses. Google Business Profile, local search, and content built to rank.',
     ogTitle: 'Carlsbad SEO Services \u2014 Lucid Web Studios',
     heroHeadline: 'Carlsbad SEO Services',
     heroSubheadline:

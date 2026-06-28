@@ -17,9 +17,9 @@ export const escondidoContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in Escondido | Lucid Web Studios',
+    title: 'Web Design & SEO in Escondido',
     metaDescription:
-      'Local Escondido web design and SEO agency. Based in Deer Springs in northern Escondido, serving restaurants, breweries, and service businesses across the city with modern Next.js sites and local search optimization.',
+      'Escondido web design and SEO agency based in Deer Springs. Modern Next.js sites and local search for restaurants, breweries, and service businesses.',
     ogTitle: 'Lucid Web Studios \u2014 Escondido Web Design & SEO',
     heroHeadline: 'Web Design & SEO in Escondido',
     heroSubheadline:
@@ -37,9 +37,9 @@ export const escondidoContent: CityContent = {
   },
 
   webDesign: {
-    title: 'Escondido Web Design | Modern Websites That Rank | Lucid',
+    title: 'Escondido Web Design',
     metaDescription:
-      'Escondido web design built on Next.js and React. Local web designer based in Deer Springs, serving Grand Avenue businesses, breweries, restaurants, auto shops, and service companies across Escondido and North County San Diego.',
+      'Escondido web design on Next.js and React. A local Deer Springs designer for Grand Avenue businesses, restaurants, breweries, and home services.',
     ogTitle: 'Escondido Web Design \u2014 Lucid Web Studios',
     heroHeadline: 'Escondido Web Design',
     heroSubheadline:
@@ -106,9 +106,9 @@ export const escondidoContent: CityContent = {
   },
 
   seoServices: {
-    title: 'Escondido SEO Services | Local Search Optimization | Lucid',
+    title: 'Escondido SEO Services',
     metaDescription:
-      'Escondido SEO services for restaurants, breweries, home services, and local businesses. Google Business Profile management, local citations, and technical SEO from a local Escondido studio based in Deer Springs.',
+      'Escondido SEO services for restaurants, breweries, home services, and local businesses. Google Business Profile management and local search that ranks.',
     ogTitle: 'Escondido SEO Services \u2014 Lucid Web Studios',
     heroHeadline: 'Escondido SEO Services',
     heroSubheadline:

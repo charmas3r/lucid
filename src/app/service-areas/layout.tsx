@@ -37,9 +37,9 @@ const cityKeywords = [
 ];
 
 export const metadata: Metadata = {
-  title: 'San Diego Web Developer | Web Design Services in San Marcos, Carlsbad & More',
+  title: 'San Diego Web Developer | Service Areas',
   description:
-    'Looking for a web developer in San Diego? Lucid Web Studios serves San Marcos, Carlsbad, Escondido, La Jolla, Chula Vista & all San Diego County. Local expertise, enterprise-quality websites. Free consultation.',
+    'Lucid Web Studios builds enterprise-quality websites for San Marcos, Carlsbad, Escondido, La Jolla & all of San Diego County. Free consultation.',
   keywords: cityKeywords,
   openGraph: {
     title: 'San Diego Web Developer | Local Web Design Experts | Lucid Web Studios',

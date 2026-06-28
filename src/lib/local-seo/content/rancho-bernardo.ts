@@ -16,9 +16,9 @@ export const ranchoBernardoContent: CityContent = {
   ],
 
   hub: {
-    title: 'Web Design & SEO in Rancho Bernardo | Lucid Web Studios',
+    title: 'Web Design & SEO in Rancho Bernardo',
     metaDescription:
-      'Rancho Bernardo web design and SEO from a nearby North County studio. We build modern Next.js sites and run local search optimization for corporate, professional-services, and healthcare businesses across RB.',
+      'Rancho Bernardo web design and SEO from a nearby North County studio. Modern Next.js sites and local search for corporate and professional offices.',
     ogTitle: 'Lucid Web Studios \u2014 Rancho Bernardo Web Design & SEO',
     heroHeadline: 'Web Design & SEO in Rancho Bernardo',
     heroSubheadline:
@@ -36,9 +36,9 @@ export const ranchoBernardoContent: CityContent = {
   },
 
   webDesign: {
-    title: 'Rancho Bernardo Web Design | Modern Websites That Rank | Lucid',
+    title: 'Rancho Bernardo Web Design',
     metaDescription:
-      'Rancho Bernardo web design built on Next.js and React. Nearby North County web studio serving corporate offices, professional-services firms, healthcare practices, and hospitality businesses across RB and Bernardo Heights.',
+      'Rancho Bernardo web design on Next.js and React. A nearby North County studio for corporate offices, professional services, and healthcare businesses.',
     ogTitle: 'Rancho Bernardo Web Design \u2014 Lucid Web Studios',
     heroHeadline: 'Rancho Bernardo Web Design',
     heroSubheadline:
@@ -105,9 +105,9 @@ export const ranchoBernardoContent: CityContent = {
   },
 
   seoServices: {
-    title: 'Rancho Bernardo SEO Services | Local Search Optimization | Lucid',
+    title: 'Rancho Bernardo SEO Services',
     metaDescription:
-      'Rancho Bernardo SEO services for corporate, professional-services, healthcare, and hospitality businesses. Google Business Profile management, local citations, and technical SEO from a nearby North County studio.',
+      'Rancho Bernardo SEO services for corporate, professional services, healthcare, and hospitality. Google Business Profile and local search that ranks.',
     ogTitle: 'Rancho Bernardo SEO Services \u2014 Lucid Web Studios',
     heroHeadline: 'Rancho Bernardo SEO Services',
     heroSubheadline:

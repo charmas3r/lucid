@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Conversion Optimization | Lucid - Turn Visitors Into Customers',
+  title: 'Conversion Optimization',
   description:
-    'Increase your conversion rates with psychology-driven design and data-backed optimization. We help San Diego businesses turn more website visitors into paying customers through A/B testing, funnel optimization, and UX improvements.',
+    'Turn more San Diego website visitors into customers with data-driven CRO — A/B testing, funnel optimization, and UX improvements from Lucid Web Studios.',
   keywords: [
     'conversion optimization',
     'conversion rate optimization',

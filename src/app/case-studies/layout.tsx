@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Case Studies | Lucid Web Studios',
-  description: 'Explore real results from real businesses. See how we\'ve helped companies across web development, mobile apps, e-commerce, SEO, and conversion optimization achieve transformative growth.',
+  title: {
+    default: 'Case Studies',
+    template: '%s | Lucid Web Studios',
+  },
+  description: 'See real results for real businesses — web development, mobile apps, e-commerce, SEO, and conversion optimization projects from Lucid Web Studios.',
   keywords: ['case studies', 'portfolio', 'web development projects', 'success stories', 'client results', 'San Diego web design'],
   openGraph: {
     title: 'Case Studies | Lucid Web Studios',
