@@ -7,6 +7,8 @@ import {
   Box,
   Divider,
   Anchor,
+  SimpleGrid,
+  Stack,
 } from '@mantine/core';
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
@@ -25,6 +27,39 @@ const socialLinks = [
   { icon: IconBrandLinkedin, href: '#', label: 'LinkedIn' },
   { icon: IconBrandInstagram, href: '#', label: 'Instagram' },
   { icon: IconBrandX, href: '#', label: 'X' },
+];
+
+// HTML sitemap: every column links to a main page so every page on the
+// site inlinks to all the others, strengthening crawlability and SEO.
+const sitemap: { heading: string; links: { label: string; href: string }[] }[] = [
+  {
+    heading: 'Services',
+    links: [
+      { label: 'All Services', href: '/services' },
+      { label: 'Web Development', href: '/services/web-development' },
+      { label: 'Mobile Apps', href: '/services/mobile-apps' },
+      { label: 'E-Commerce', href: '/services/ecommerce' },
+      { label: 'SEO Services', href: '/services/seo-services' },
+      { label: 'Conversion Optimization', href: '/services/conversion-optimization' },
+    ],
+  },
+  {
+    heading: 'Company',
+    links: [
+      { label: 'About', href: '/about' },
+      { label: 'Case Studies', href: '/case-studies' },
+      { label: 'Pricing', href: '/pricing' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+  {
+    heading: 'Resources',
+    links: [
+      { label: 'AI & SEO', href: '/seo' },
+      { label: 'Service Areas', href: '/service-areas' },
+      { label: 'Free Website Offer', href: '/free' },
+    ],
+  },
 ];
 
 export function Footer() {
@@ -123,6 +158,51 @@ export function Footer() {
             </Group>
           </Group>
         </motion.div>
+
+        {/* HTML sitemap — inlinks to every main page from every page */}
+        <motion.nav
+          aria-label="Sitemap"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <SimpleGrid cols={{ base: 1, xs: 3 }} spacing="xl" mb="xl">
+            {sitemap.map((column) => (
+              <Stack key={column.heading} gap={10}>
+                <Text
+                  fw={600}
+                  size="sm"
+                  style={{ color: '#E8EEF7', letterSpacing: '0.02em' }}
+                >
+                  {column.heading}
+                </Text>
+                {column.links.map((link) => (
+                  <Anchor
+                    key={link.href}
+                    component={Link}
+                    href={link.href}
+                    onClick={() =>
+                      trackEvent(EVENTS.FOOTER_CLICK_LINK, { item: link.label })
+                    }
+                    style={{
+                      color: '#7A94BA',
+                      fontSize: '0.875rem',
+                      transition: 'color 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = '#4DA3FF';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = '#7A94BA';
+                    }}
+                  >
+                    {link.label}
+                  </Anchor>
+                ))}
+              </Stack>
+            ))}
+          </SimpleGrid>
+        </motion.nav>
 
         <motion.div
           initial={{ scaleX: 0 }}
