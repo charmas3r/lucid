@@ -142,14 +142,14 @@ export function Hero() {
                     color: '#FFFFFF',
                   }}
                 >
+                  Escondido{' '}
                   <Text
                     component="span"
                     inherit
                     className="metallic-text"
                   >
                     Web Development
-                  </Text>{' '}
-                  for San Diego businesses
+                  </Text>
                 </Title>
               </div>
 
