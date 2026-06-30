@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import { Navigation, Hero, Footer } from '@/components';
+import { HomeBusinessSchema } from '@/components/local-seo';
 
 // Lazy load below-the-fold components to improve LCP
 const FeaturedWork = dynamic(() => import('@/components/FeaturedWork').then(m => m.FeaturedWork), { ssr: true });
@@ -12,6 +13,7 @@ const CTA = dynamic(() => import('@/components/CTA').then(m => m.CTA), { ssr: tr
 export default function Home() {
   return (
     <>
+      <HomeBusinessSchema />
       <Navigation />
       <main>
         <Hero />
