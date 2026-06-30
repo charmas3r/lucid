@@ -16,7 +16,6 @@ import {
   IconCode,
   IconCurrencyDollar,
   IconCalendarCheck,
-  IconMapPin,
   IconGift,
 } from '@tabler/icons-react';
 import dynamic from 'next/dynamic';
@@ -65,7 +64,6 @@ const trustBadges = [
   { icon: IconCode, label: '10+ Years Experience' },
   { icon: IconCurrencyDollar, label: 'Transparent Pricing' },
   { icon: IconCalendarCheck, label: 'Enterprise-Proven Expertise' },
-  { icon: IconMapPin, label: 'Located in Escondido, CA' },
 ];
 
 // Simplified animations for better LCP - no initial opacity:0
