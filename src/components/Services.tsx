@@ -121,13 +121,14 @@ export function Services() {
                   color: '#FFFFFF',
                 }}
               >
-                What we can do for you
+                What we can do for your Escondido business
               </Title>
             </motion.div>
             <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
               <Text size="lg" ta="center" maw={600} style={{ color: '#A5B4CF' }}>
-                From new digital projects to process optimization and support,
-                we partner with businesses to deliver impactful results.
+                From custom websites to SEO and ongoing support, we help businesses
+                across Escondido — Grand Avenue, the Old Escondido Historic District,
+                Felicita, and beyond — turn ideas into impactful results.
               </Text>
             </motion.div>
           </Stack>

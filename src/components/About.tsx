@@ -152,8 +152,9 @@ export function About() {
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>
                   <Text size="lg" ta="center" maw={600} style={{ color: '#A5B4CF' }}>
-                    A team of experienced professionals dedicated to building smart, flexible,
-                    and reliable software solutions - tailored to your business needs.
+                    A team of experienced professionals based in the Deer Springs area of
+                    Escondido, dedicated to building smart, flexible, and reliable software
+                    solutions - tailored to your business needs.
                   </Text>
                 </motion.div>
                 <motion.div variants={fadeInUp} transition={{ duration: 0.5 }}>

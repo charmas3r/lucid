@@ -160,8 +160,10 @@ export function Hero() {
                   lh={1.7}
                   style={{ color: '#A5B4CF' }}
                 >
-                  From new digital projects to process optimization and support, 
-                  we partner with businesses to deliver impactful results.
+                  From new digital projects to process optimization and support,
+                  we partner with Escondido and North County San Diego businesses —
+                  from Grand Avenue storefronts to Deer Springs startups — to
+                  deliver impactful results.
                 </Text>
               </div>
 

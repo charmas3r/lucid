@@ -181,8 +181,9 @@ export function CTA() {
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
                 <Text size="lg" ta="center" maw={500} style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
-                  Book a FREE discovery call to discuss your project and challenges
-                  and find the best approach for executing it 👇
+                  Book a FREE discovery call to discuss your project and challenges —
+                  we&apos;ll even meet in person anywhere in Escondido and North County
+                  San Diego — and find the best approach for executing it 👇
                 </Text>
               </motion.div>
 
