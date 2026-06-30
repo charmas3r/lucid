@@ -239,7 +239,7 @@ function ContactForm() {
     {
       icon: IconMapPin,
       label: 'Location',
-      value: 'San Diego, CA',
+      value: 'Escondido, CA',
       href: null,
     },
     {
